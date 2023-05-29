@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "hexgloop",
+  "version": "${version}",
+
+  "name": "HexGloop",
+  "description": "A very gloopy hex addon",
+  "authors": [
+    "samsthenerd"
+  ],
+  "contact": {
+    "homepage": "https://github.com/SamsTheNerd/HexGloop",
+    "sources": "https://github.com/SamsTheNerd/HexGloop",
+    "issues": "https://github.com/SamsTheNerd/HexGloop/issues"
+  },
+
+  "license": "lgpl-3",
+  "icon": "assets/DuckyPeriphsIconLarge.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.samsthenerd.hexgloop.HexGloopFabric"
+    ]
+  },
+  "mixins": [
+    "hexgloop-common.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "fabric-api": "*",
+    "architectury": ">=6.5.82",
+    "minecraft": "~1.19.2",
+    "hexcasting": ">=0.10.3",
+    "java": ">=17"
+  },
+  "suggests":{
+    "hexal": ">=0.2.11"
+  }
+}

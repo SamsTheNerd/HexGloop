@@ -1,0 +1,11 @@
+.DS_Store
+.vscode/
+**/.vscode/
+/TexturePSDs/
+run/
+build/
+bin/
+gradle/
+.gradle/
+/JSScripts/
+remappedSrc/

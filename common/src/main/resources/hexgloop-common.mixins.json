@@ -1,0 +1,15 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "com.samsthenerd.hexgloop.mixins",
+    "compatibilityLevel": "JAVA_17",
+    "mixins": [
+      "SpellbookWNBOI"
+    ],
+    "client": [
+    ],
+    "injectors": {
+      "defaultRequire": 1
+    }
+  }
+  
