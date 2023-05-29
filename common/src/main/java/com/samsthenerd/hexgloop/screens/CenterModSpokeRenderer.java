@@ -41,7 +41,7 @@ public class CenterModSpokeRenderer extends SpokeRenderer{
             return 0x00000000; // clear
         }
         Vec3d colorPos = new Vec3d(vI + iotaProvider.getRNG().nextFloat()*0.5, 
-            sectionIndex + iotaProvider.getRNG().nextFloat()*0.5, vI + iotaProvider.getRNG().nextFloat()*0.5).multiply(0.25);
+            sectionIndex + iotaProvider.getRNG().nextFloat()*0.5, sectionIndex + iotaProvider.getRNG().nextFloat()*0.5).multiply(0.25);
         int color = iotaProvider.getColorizer().getColor((float) currentTime, colorPos);
         return color;
     }

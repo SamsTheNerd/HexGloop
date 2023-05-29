@@ -1,6 +1,7 @@
 package com.samsthenerd.hexgloop.screens;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.lwjgl.glfw.GLFW;
 
@@ -79,7 +80,13 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
         if(iotaNBT == null){
             this.renderTooltip(matrices, Text.of("Empty"), mouseX, mouseY);
         } else {
-            this.renderTooltip(matrices, HexIotaTypes.getDisplay(iotaNBT), mouseX, mouseY);
+            List<Text> tooltip = new ArrayList<Text>();
+            tooltip.add(HexIotaTypes.getDisplay(iotaNBT));
+            Text name = iotaProvider.getName(selectedSection + onPage*iotaProvider.perPage());
+            if(name != null){
+                tooltip.add(name);
+            }
+            this.renderTooltip(matrices, tooltip, mouseX, mouseY);
         }
     }
 

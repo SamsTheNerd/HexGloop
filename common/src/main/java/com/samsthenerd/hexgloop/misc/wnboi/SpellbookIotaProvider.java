@@ -9,6 +9,7 @@ import at.petrak.hexcasting.xplat.IClientXplatAbstractions;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.random.Random;
 
 public class SpellbookIotaProvider implements IotaProvider{
@@ -72,6 +73,18 @@ public class SpellbookIotaProvider implements IotaProvider{
     @Override
     public Random getRNG(){
         return RANDOM;
+    }
+
+    @Override
+    public Text getName(int index){
+        int idx = index + 1;
+        String key = String.valueOf(idx);
+        NbtCompound tag = NBTHelper.getCompound(spellbook, ItemSpellbook.TAG_PAGE_NAMES);
+        if (tag != null && tag.contains(key, NbtElement.STRING_TYPE)) {
+            return Text.Serializer.fromJson(tag.getString(key));
+        } else {
+            return null;
+        }
     }
 
 }
