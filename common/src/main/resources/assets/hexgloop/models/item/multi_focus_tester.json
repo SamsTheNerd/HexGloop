@@ -1,0 +1,13 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "hexgloop:item/multifocus/multi_focus_base",
+        "layer1": "hexgloop:item/multifocus/inner_unsealed",
+        "layer2": "hexgloop:item/multifocus/outers1",
+        "layer3": "hexgloop:item/multifocus/outer2",
+        "layer4": "hexgloop:item/multifocus/outer3",
+        "layer5": "hexgloop:item/multifocus/outer4",
+        "layer6": "hexgloop:item/multifocus/outer5",
+        "layer7": "hexgloop:item/multifocus/outer6"
+    }
+}

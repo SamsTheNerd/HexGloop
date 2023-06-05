@@ -4,9 +4,13 @@
     "package": "com.samsthenerd.hexgloop.mixins",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
-      "SpellbookWNBOI"
+      "MixinHandleScrolling"
     ],
     "client": [
+      "SpellbookWNBOI",
+      "MixinPlsMoreItemLayers",
+      "MixinAddScrollableListener",
+      "MixinPlsMoreItemLayersGetTexture"
     ],
     "injectors": {
       "defaultRequire": 1

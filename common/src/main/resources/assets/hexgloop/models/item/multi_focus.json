@@ -1,0 +1,80 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "hexgloop:item/multifocus/multi_focus_base"
+    },
+    "overrides": [
+        {
+            "predicate": { "selected": 0, "sealed": 0 },
+            "model": "hexgloop:item/multi_focus/multi_focus_0_0"
+          },
+          {
+            "predicate": { "selected": 0, "sealed": 0.5 },
+            "model": "hexgloop:item/multi_focus/multi_focus_0_1"
+          },
+          {
+            "predicate": { "selected": 0, "sealed": 1 },
+            "model": "hexgloop:item/multi_focus/multi_focus_0_2"
+          },
+          {
+            "predicate": { "selected": 0.16666666666666666, "sealed": 0 },
+            "model": "hexgloop:item/multi_focus/multi_focus_1_0"
+          },
+          {
+            "predicate": { "selected": 0.16666666666666666, "sealed": 0.5 },
+            "model": "hexgloop:item/multi_focus/multi_focus_1_1"
+          },
+          {
+            "predicate": { "selected": 0.16666666666666666, "sealed": 1 },
+            "model": "hexgloop:item/multi_focus/multi_focus_1_2"
+          },
+          {
+            "predicate": { "selected": 0.3333333333333333, "sealed": 0 },
+            "model": "hexgloop:item/multi_focus/multi_focus_2_0"
+          },
+          {
+            "predicate": { "selected": 0.3333333333333333, "sealed": 0.5 },
+            "model": "hexgloop:item/multi_focus/multi_focus_2_1"
+          },
+          {
+            "predicate": { "selected": 0.3333333333333333, "sealed": 1 },
+            "model": "hexgloop:item/multi_focus/multi_focus_2_2"
+          },
+          {
+            "predicate": { "selected": 0.5, "sealed": 0 },
+            "model": "hexgloop:item/multi_focus/multi_focus_3_0"
+          },
+          {
+            "predicate": { "selected": 0.5, "sealed": 0.5 },
+            "model": "hexgloop:item/multi_focus/multi_focus_3_1"
+          },
+          {
+            "predicate": { "selected": 0.5, "sealed": 1 },
+            "model": "hexgloop:item/multi_focus/multi_focus_3_2"
+          },
+          {
+            "predicate": { "selected": 0.6666666666666666, "sealed": 0 },
+            "model": "hexgloop:item/multi_focus/multi_focus_4_0"
+          },
+          {
+            "predicate": { "selected": 0.6666666666666666, "sealed": 0.5 },
+            "model": "hexgloop:item/multi_focus/multi_focus_4_1"
+          },
+          {
+            "predicate": { "selected": 0.6666666666666666, "sealed": 1 },
+            "model": "hexgloop:item/multi_focus/multi_focus_4_2"
+          },
+          {
+            "predicate": { "selected": 0.8333333333333333, "sealed": 0 },
+            "model": "hexgloop:item/multi_focus/multi_focus_5_0"
+          },
+          {
+            "predicate": { "selected": 0.8333333333333333, "sealed": 0.5 },
+            "model": "hexgloop:item/multi_focus/multi_focus_5_1"
+          },
+          {
+            "predicate": { "selected": 0.8333333333333333, "sealed": 1 },
+            "model": "hexgloop:item/multi_focus/multi_focus_5_2"
+          }
+    ]
+}

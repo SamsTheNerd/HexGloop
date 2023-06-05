@@ -21,6 +21,9 @@
   "entrypoints": {
     "main": [
       "com.samsthenerd.hexgloop.HexGloopFabric"
+    ],
+    "client": [
+      "com.samsthenerd.hexgloop.HexGloopClientFabric"
     ]
   },
   "mixins": [

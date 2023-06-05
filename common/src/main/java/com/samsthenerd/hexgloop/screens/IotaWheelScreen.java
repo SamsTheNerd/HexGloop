@@ -67,11 +67,13 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
             spokeRenderers.add(genSpokeRenderer(centerX, centerY, outerRadius, this.numSections, i));
         }
         // additional spokes to select between pages of pages
-        for(int i = 0; i < iotaProvider.getCount() / iotaProvider.perPage(); i++){
-            spokeRenderers.add(new CenterModSpokeRenderer(centerX, centerY, outerRadius*0.34, 
-                numSections, i, iotaProvider).setGap(gap).setInnerRadius(0).setAngleOffset(angleOffset));
+        if(iotaProvider.getCount() > iotaProvider.perPage()){
+            for(int i = 0; i < iotaProvider.getCount() / iotaProvider.perPage(); i++){
+                spokeRenderers.add(new CenterModSpokeRenderer(centerX, centerY, outerRadius*0.34, 
+                    numSections, i, iotaProvider).setGap(gap).setInnerRadius(0).setAngleOffset(angleOffset));
+                }
+            ((CenterModSpokeRenderer) spokeRenderers.get(onPage + numSections)).currentPage = true;
         }
-        ((CenterModSpokeRenderer) spokeRenderers.get(onPage + numSections)).currentPage = true;
     }
 
     @Override
@@ -128,13 +130,13 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if(button == 0){
             int inner = didClickInner((int)mouseX, (int)mouseY);
-            if(inner >= 0){
+            if(inner >= 0 && iotaProvider.getCount() > iotaProvider.perPage()){
                 changePage(inner);
                 return true;
             }
             return closeWheel(true);
         }
-        if(button == 1){
+        if(button == 1 && iotaProvider.getCount() > iotaProvider.perPage()){
             changePage(getSectionIndexFromMouse((int)mouseX, (int)mouseY));
             return true;
         }
@@ -146,7 +148,8 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
         if(keyCode >= GLFW.GLFW_KEY_0 && keyCode <= GLFW.GLFW_KEY_9){
             int index = keyCode - GLFW.GLFW_KEY_0 -1; // -1 so that 1 key triggers 0th index
             if(index == -1) index = 9;
-            if(modifiers == GLFW.GLFW_MOD_SHIFT && index <= iotaProvider.getCount() / iotaProvider.perPage()){
+            if(modifiers == GLFW.GLFW_MOD_SHIFT && index <= iotaProvider.getCount() / iotaProvider.perPage()
+                && iotaProvider.getCount() > iotaProvider.perPage()){
                 changePage(index);
                 return true;
             }
