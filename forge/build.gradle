@@ -74,8 +74,8 @@ dependencies {
 
     // modRuntimeOnly "mezz.jei:jei-$minecraft_version-forge:$jeiVersion"
 
-    // compileOnly "top.theillusivec4.curios:curios-forge:$minecraft_version-$curiosVersion:api"
-    // runtimeOnly "top.theillusivec4.curios:curios-forge:$minecraft_version-$curiosVersion"
+    modCompileOnly "top.theillusivec4.curios:curios-forge:$minecraft_version-$curiosVersion:api"
+    modRuntimeOnly "top.theillusivec4.curios:curios-forge:$minecraft_version-$curiosVersion"
 
     // modApi "com.github.Virtuoel:Pehkui:${pehkuiVersion}-${minecraft_version}-forge"
 }

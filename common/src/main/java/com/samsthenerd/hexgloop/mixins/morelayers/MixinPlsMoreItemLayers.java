@@ -1,4 +1,4 @@
-package com.samsthenerd.hexgloop.mixins;
+package com.samsthenerd.hexgloop.mixins.morelayers;
 
 import java.util.List;
 import java.util.function.Function;

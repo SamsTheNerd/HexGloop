@@ -52,6 +52,8 @@ dependencies {
 	modImplementation "at.petra-k.paucal:paucal-fabric-${minecraft_version}:${paucalVersion}"
 	modImplementation "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouliVersion}-FABRIC"
 
+    modImplementation "dev.emi:trinkets:${trinkets_version}"
+
     modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-api:${cardinalComponentsVersion}"
 
     modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${entityReachVersion}"

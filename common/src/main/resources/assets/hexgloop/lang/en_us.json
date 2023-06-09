@@ -1,3 +1,14 @@
 {
-    "item.hexgloop.multi_focus": "Multi Focus"
+    "itemGroup.hexgloop.general": "Hex Gloop",
+    "item.hexgloop.multi_focus": "Multi Focus",
+    "item.hexgloop.casting_ring": "Casting Ring",
+
+    "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
+    "key.hexgloop.casting_ring": "Use Casting Ring",
+    "key.categories.hexgloop": "Hex Gloop",
+
+    "hexgloop.tooltip.multi_focus.page": "Selected Slot %d/%d",
+    "hexgloop.tooltip.multi_focus.page.sealed": "Selected Slot %d/%d (%s)",
+    "hexgloop.tooltip.multi_focus.page_with_name": "Selected Slot %d/%d (\"%s\")",
+    "hexgloop.tooltip.multi_focus.page_with_name.sealed": "Selected Slot %d/%d (\"%s\") (%s)"
 }

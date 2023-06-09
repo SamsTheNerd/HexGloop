@@ -1,8 +1,11 @@
 package com.samsthenerd.hexgloop.items;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.HexGloop;
+import com.samsthenerd.hexgloop.misc.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.misc.wnboi.IotaProvider;
 import com.samsthenerd.hexgloop.screens.IotaWheelScreen;
 import com.samsthenerd.wnboi.interfaces.KeyboundItem;
@@ -16,6 +19,9 @@ import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.network.MsgShiftScrollSyn;
 import at.petrak.hexcasting.xplat.IClientXplatAbstractions;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,6 +39,11 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
     public IotaWheelScreen screen = null;
     ItemStack multifocus = null;
 
+    @Override
+    public KeyBinding getKeyBinding(){
+        return HexGloopKeybinds.IOTA_WHEEL_KEYBIND;
+    }
+
     public ItemMultiFocus(Settings settings){
         super(settings);
     }
@@ -41,9 +52,10 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
     public AbstractContextWheelScreen getScreen(){
         Pair<ItemStack, Boolean> handItemResult = getHandItem();
         multifocus = handItemResult.getLeft();
+        Screen oldScreen = MinecraftClient.getInstance().currentScreen;
         if(screen == null){
             HexGloop.logPrint("multifocus is" + (multifocus == null ? "null" : multifocus.getName().toString()));
-            screen = new IotaWheelScreen(new MultiFocusIotaProvider(multifocus));
+            screen = new IotaWheelScreen(new MultiFocusIotaProvider(multifocus), oldScreen);
         }
         ((MultiFocusIotaProvider) screen.iotaProvider).updateItemStack(multifocus);
         ((MultiFocusIotaProvider) screen.iotaProvider).mainHand = handItemResult.getRight();
@@ -123,6 +135,13 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
         } else {
             names.remove(nameKey);
         }
+    }
+
+    // render tooltips the same way spellbook does
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World level, List<Text> tooltip,
+                                TooltipContext isAdvanced) {
+        HexItems.SPELLBOOK.appendTooltip(stack, level, tooltip, isAdvanced);
     }
 
     public class MultiFocusIotaProvider implements IotaProvider{

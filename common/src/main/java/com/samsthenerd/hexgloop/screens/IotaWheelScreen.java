@@ -5,12 +5,16 @@ import java.util.List;
 
 import org.lwjgl.glfw.GLFW;
 
+import com.samsthenerd.hexgloop.items.HexGloopItems;
+import com.samsthenerd.hexgloop.misc.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.misc.SpellbookScreenInterface;
 import com.samsthenerd.hexgloop.misc.wnboi.IotaProvider;
 import com.samsthenerd.wnboi.screen.AbstractContextWheelScreen;
 import com.samsthenerd.wnboi.screen.SpokeRenderer;
-import com.samsthenerd.wnboi.utils.KeybindUtils;
 
+import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
@@ -19,15 +23,22 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
     public IotaProvider iotaProvider;
 
     public int onPage;
+    private Screen oldScreen;
 
-    public IotaWheelScreen(IotaProvider _iotaProvider){
+    public IotaWheelScreen(IotaProvider _iotaProvider, Screen _oldScreen){
         super(Text.of("Iota Selection Wheel"), _iotaProvider.perPage());
         requireKeydown = true;
-        keyBinding = KeybindUtils.DEFAULT_KEYBINDING;
+        keyBinding = HexGloopKeybinds.IOTA_WHEEL_KEYBIND;
         iotaProvider = _iotaProvider;
         numSections = iotaProvider.perPage();
         onPage = (iotaProvider.currentSlot()-1) / iotaProvider.perPage();     
+        oldScreen = _oldScreen;
     }
+
+    public IotaWheelScreen(IotaProvider _iotaProvider){
+        this(_iotaProvider, null);
+    }
+
 
     public void triggerSpoke(int index){
         // WNBOI.LOGGER.info("triggered spoke " + index);
@@ -74,6 +85,13 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
                 }
             ((CenterModSpokeRenderer) spokeRenderers.get(onPage + numSections)).currentPage = true;
         }
+    }
+
+    @Override
+    public void close(){
+        this.client.setScreen(oldScreen);
+        HexGloopItems.MULTI_FOCUS_ITEM.get().screen = null;
+        ((SpellbookScreenInterface) HexItems.SPELLBOOK).clearScreen();
     }
 
     @Override

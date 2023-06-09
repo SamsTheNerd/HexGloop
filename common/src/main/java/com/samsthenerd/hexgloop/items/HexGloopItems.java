@@ -16,8 +16,12 @@ import net.minecraft.util.registry.Registry;
 public class HexGloopItems {
     public static DeferredRegister<Item> items = DeferredRegister.create(HexGloop.MOD_ID, Registry.ITEM_KEY);
 
-    public static final RegistrySupplier<ItemMultiFocus> MULTI_FOCUS_ITEM = item("multi_focus", () -> new ItemMultiFocus(defaultSettings()));
-
+    public static final RegistrySupplier<ItemMultiFocus> MULTI_FOCUS_ITEM = item("multi_focus", 
+        () -> new ItemMultiFocus(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemCastingRing> CASTING_RING_ITEM = item("casting_ring", 
+        () -> new ItemCastingRing(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemCastingPotion> CASTING_POTION_ITEM = item("casting_potion", 
+        () -> new ItemCastingPotion(defaultSettings().maxCount(1)));
     
 
     public static <T extends Item> RegistrySupplier<T> item(String name, Supplier<T> item) {

@@ -1,4 +1,4 @@
-package com.samsthenerd.hexgloop.mixins;
+package com.samsthenerd.hexgloop.mixins.wnboi;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -48,14 +48,14 @@ public class MixinHandleScrolling {
         MutableText component;
         if (hand == Hand.OFF_HAND && stack.hasCustomName()) {
             if (sealed) {
-                component = Text.translatable("hexcasting.tooltip.spellbook.page_with_name.sealed",
+                component = Text.translatable("hexgloop.tooltip.multi_focus.page_with_name.sealed",
                     Text.literal(String.valueOf(newIdx)).formatted(Formatting.WHITE),
                     Text.literal(String.valueOf(len)).formatted(Formatting.WHITE),
                     Text.literal("").formatted(stack.getRarity().formatting, Formatting.ITALIC)
                         .append(stack.getName()),
                     Text.translatable("hexcasting.tooltip.spellbook.sealed").formatted(Formatting.GOLD));
             } else {
-                component = Text.translatable("hexcasting.tooltip.spellbook.page_with_name",
+                component = Text.translatable("hexgloop.tooltip.multi_focus.page_with_name",
                     Text.literal(String.valueOf(newIdx)).formatted(Formatting.WHITE),
                     Text.literal(String.valueOf(len)).formatted(Formatting.WHITE),
                     Text.literal("").formatted(stack.getRarity().formatting, Formatting.ITALIC)
@@ -63,12 +63,12 @@ public class MixinHandleScrolling {
             }
         } else {
             if (sealed) {
-                component = Text.translatable("hexcasting.tooltip.spellbook.page.sealed",
+                component = Text.translatable("hexgloop.tooltip.multi_focus.page.sealed",
                     Text.literal(String.valueOf(newIdx)).formatted(Formatting.WHITE),
                     Text.literal(String.valueOf(len)).formatted(Formatting.WHITE),
                     Text.translatable("hexcasting.tooltip.spellbook.sealed").formatted(Formatting.GOLD));
             } else {
-                component = Text.translatable("hexcasting.tooltip.spellbook.page",
+                component = Text.translatable("hexgloop.tooltip.multi_focus.page",
                     Text.literal(String.valueOf(newIdx)).formatted(Formatting.WHITE),
                     Text.literal(String.valueOf(len)).formatted(Formatting.WHITE));
             }

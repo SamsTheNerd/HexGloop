@@ -69,6 +69,9 @@ allprojects {
             name = 'Kotlin for Forge'
             url = 'https://thedarkcolour.github.io/KotlinForForge/'
         }
+        maven {
+            url = "https://maven.theillusivec4.top/"
+        }
         exclusiveContent {
             forRepository {
                 maven {
