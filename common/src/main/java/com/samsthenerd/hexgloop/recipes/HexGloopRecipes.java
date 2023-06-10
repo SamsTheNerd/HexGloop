@@ -18,7 +18,7 @@ public class HexGloopRecipes {
         SEAL_MULTI_FOCUS_RECIPE = register("crafting_seal_multi_focus", SealMultiFocusRecipe.SERIALIZER);
     }
 
-    public static void init(){}
+    public static void register(){}
 
     
 

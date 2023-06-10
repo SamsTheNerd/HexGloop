@@ -16,8 +16,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class HexGloopForge {
     public HexGloopForge(){
         // so that we can register properly with architectury
-        EventBuses.registerModEventBus(HexGloop.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
+        EventBuses.registerModEventBus(HexGloop.MOD_ID, modBus);
         modBus.addListener(this::onClientSetup);
 
         // setup curios
@@ -27,7 +27,6 @@ public class HexGloopForge {
         } else {
             HexGloop.TRINKETY_INSTANCE = new TrinketyImplFake();
         }
-
 
         HexGloop.onInitialize();
     }

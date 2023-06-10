@@ -12,6 +12,10 @@ import net.minecraft.util.Identifier;
 
 public class HexGloopRegisterPatterns {
     public static void registerPatterns(){
+        HexGloopItems.CASTING_POTION_ITEM.listen(event -> registerPotionPatterns());
+    }
+
+    public static void registerPotionPatterns(){
         try{
             PatternRegistry.mapPattern(HexPattern.fromAngles("wawwedewwqqq", HexDir.EAST), new Identifier(HexGloop.MOD_ID, "craft/potion"),
                     new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.CRYSTAL_UNIT));

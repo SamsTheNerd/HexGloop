@@ -4,19 +4,19 @@
     "package": "com.samsthenerd.hexgloop.mixins",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
-      "wnboi/MixinHandleScrolling",
-      "ring/MixinRingSendPatterns",
-      "vibrations/MixinCustomCastingEvent",
-      "vibrations/MixinGameEventFrequencies"
+      "wnboi.MixinHandleScrolling",
+      "ring.MixinRingSendPatterns",
+      "vibrations.MixinCustomCastingEvent",
+      "vibrations.MixinGameEventFrequencies"
     ],
     "client": [
-      "wnboi/SpellbookWNBOI",
-      "wnboi/MixinAddScrollableListener",
-      "morelayers/MixinPlsMoreItemLayers",
-      "morelayers/MixinPlsMoreItemLayersGetTexture",
-      "wnboi/MixinWheelInCasting",
-      "ring/MixinKeepRingCastingOpen",
-      "ring/MixinRingCastingSmall"
+      "wnboi.SpellbookWNBOI",
+      "wnboi.MixinAddScrollableListener",
+      "morelayers.MixinPlsMoreItemLayers",
+      "morelayers.MixinPlsMoreItemLayersGetTexture",
+      "wnboi.MixinWheelInCasting",
+      "ring.MixinKeepRingCastingOpen",
+      "ring.MixinRingCastingSmall"
     ],
     "injectors": {
       "defaultRequire": 1

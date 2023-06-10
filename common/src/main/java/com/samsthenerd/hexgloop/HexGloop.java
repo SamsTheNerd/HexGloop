@@ -30,7 +30,7 @@ public class HexGloop {
 
     public static void onInitialize() {
         HexGloopItems.registerItems();
-        HexGloopRecipes.init();
+        HexGloopRecipes.register();
         HexGloopNetwork.register();
         HexGloopRegisterPatterns.registerPatterns();
         HexGloopGameEvents.register();
