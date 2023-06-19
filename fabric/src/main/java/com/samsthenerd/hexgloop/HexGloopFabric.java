@@ -1,5 +1,6 @@
 package com.samsthenerd.hexgloop;
 
+import com.samsthenerd.hexgloop.misc.BundleResourcePackFabric;
 import com.samsthenerd.hexgloop.misc.TrinketyImplFabric;
 import com.samsthenerd.hexgloop.misc.TrinketyImplFake;
 
@@ -15,5 +16,6 @@ public class HexGloopFabric implements ModInitializer {
             HexGloop.TRINKETY_INSTANCE = new TrinketyImplFake();
         }
         HexGloop.onInitialize();
+        BundleResourcePackFabric.register();
     }
 }
