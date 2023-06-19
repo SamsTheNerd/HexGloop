@@ -1,0 +1,21 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "hexgloop:item/castingpotion/flask",
+        "layer1": "hexgloop:item/castingpotion/amethyst_juice"
+    },
+    "overrides": [
+        {
+            "predicate": { "hashex": 1},
+            "model": "hexgloop:item/casting_potion_hexed"
+        },
+        {
+            "predicate": { "colorized": 1, "hashex": 0},
+            "model": "hexgloop:item/casting_potion_colorizer"
+        },
+        {
+            "predicate": { "colorized": 1, "hashex": 1},
+            "model": "hexgloop:item/casting_potion_colorizer_hexed"
+        }
+    ]
+}

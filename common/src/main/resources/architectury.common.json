@@ -1,0 +1,5 @@
+{
+    "injected_interfaces": {
+      "at/petrak/hexcasting/common/items/ItemStaff": ["net/minecraft/item/DyeableItem"]
+    }
+  }

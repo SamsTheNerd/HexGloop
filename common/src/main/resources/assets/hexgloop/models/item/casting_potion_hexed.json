@@ -1,0 +1,8 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "hexgloop:item/castingpotion/flask",
+        "layer1": "hexgloop:item/castingpotion/amethyst_juice",
+        "layer2": "hexgloop:item/castingpotion/tag"
+    }
+}

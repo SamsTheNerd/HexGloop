@@ -11,14 +11,17 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class HexGloopRecipes {
-    public static RegistrySupplier<SpecialRecipeSerializer<SealMultiFocusRecipe>> SEAL_MULTI_FOCUS_RECIPE;
     public static Registrar<RecipeSerializer<?> > recipeSerializers = HexGloop.REGISTRIES.get().get(Registry.RECIPE_SERIALIZER_KEY);
     
-    static {
-        SEAL_MULTI_FOCUS_RECIPE = register("crafting_seal_multi_focus", SealMultiFocusRecipe.SERIALIZER);
-    }
+    public static RegistrySupplier<SpecialRecipeSerializer<SealMultiFocusRecipe>> SEAL_MULTI_FOCUS_RECIPE = 
+        register("crafting_seal_multi_focus", SealMultiFocusRecipe.SERIALIZER);
+    public static RegistrySupplier <SpecialRecipeSerializer<GloopDyeRecipe>> GLOOP_DYE_RECIPE = 
+        register("crafting_gloop_dye", GloopDyeRecipe.SERIALIZER);
+    
 
-    public static void register(){}
+    public static void register(){
+        GloopingRecipes.init();
+    }
 
     
 

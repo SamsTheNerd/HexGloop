@@ -20,13 +20,10 @@ public class MixinKeepRingCastingOpen {
     @Inject(at = @At("HEAD"), 
         method = "tick()V", cancellable = true)
     public void dontCloseWithRing(CallbackInfo callbackInfo){
-        HexGloop.logPrint("MixinKeepRingCastingOpen: is casting screen");
         PlayerEntity player = MinecraftClient.getInstance().player;
         if (player != null) {
-            HexGloop.logPrint("MixinKeepRingCastingOpen: has player");
             // prob want to add a check here that the casting menu was opened by the player
             if(HexGloop.TRINKETY_INSTANCE.isCastingRingEquipped(player)){
-                HexGloop.logPrint("MixinKeepRingCastingOpen: Don't close bc casting ring equipped");
                 callbackInfo.cancel();
             }
         }

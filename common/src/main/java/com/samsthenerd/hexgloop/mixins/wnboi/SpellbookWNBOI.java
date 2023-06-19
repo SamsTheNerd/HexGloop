@@ -2,7 +2,7 @@ package com.samsthenerd.hexgloop.mixins.wnboi;
 
 import org.spongepowered.asm.mixin.Mixin;
 
-import com.samsthenerd.hexgloop.misc.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.misc.SpellbookScreenInterface;
 import com.samsthenerd.hexgloop.misc.wnboi.SpellbookIotaProvider;
 import com.samsthenerd.hexgloop.screens.IotaWheelScreen;

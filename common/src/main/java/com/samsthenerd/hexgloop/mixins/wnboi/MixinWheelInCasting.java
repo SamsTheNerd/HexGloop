@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.samsthenerd.hexgloop.HexGloop;
-import com.samsthenerd.hexgloop.misc.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
 import net.minecraft.client.MinecraftClient;

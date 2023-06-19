@@ -1,7 +1,11 @@
 {
     "itemGroup.hexgloop.general": "Hex Gloop",
+    "item.hexgloop.gloop": "Gloop",
     "item.hexgloop.multi_focus": "Multi Focus",
     "item.hexgloop.casting_ring": "Casting Ring",
+    "item.hexgloop.casting_potion": "Potion of Casting",
+
+    "block.hexgloop.gloop_energizer": "Energizer",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",

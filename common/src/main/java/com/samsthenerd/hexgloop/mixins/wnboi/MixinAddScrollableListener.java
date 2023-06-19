@@ -13,7 +13,7 @@ import net.minecraft.item.Item;
 @Mixin(ShiftScrollListener.class)
 public class MixinAddScrollableListener {
     @Inject(at = @At("HEAD"), method = "IsScrollableItem(Lnet/minecraft/item/Item;)B", cancellable = true)
-    private static void IsScrollableItem(Item item, CallbackInfoReturnable<Boolean> info) {
+    private static void MakeItScrollable(Item item, CallbackInfoReturnable<Boolean> info) {
         if(item == HexGloopItems.MULTI_FOCUS_ITEM.get()){
             info.setReturnValue(true);
         }

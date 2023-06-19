@@ -1,13 +1,17 @@
-package com.samsthenerd.hexgloop.misc;
+package com.samsthenerd.hexgloop.keybinds;
 
 import org.lwjgl.glfw.GLFW;
 
 import com.samsthenerd.hexgloop.items.ItemMultiFocus;
+import com.samsthenerd.hexgloop.misc.CastingRingHelperClient;
+import com.samsthenerd.hexgloop.mixins.wnboi.MixinIsScrollableInvoker;
 import com.samsthenerd.wnboi.interfaces.KeyboundItem;
 import com.samsthenerd.wnboi.utils.KeybindUtils;
 
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
 import at.petrak.hexcasting.common.items.ItemSpellbook;
+import at.petrak.hexcasting.common.network.MsgShiftScrollSyn;
+import at.petrak.hexcasting.xplat.IClientXplatAbstractions;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
@@ -21,9 +25,16 @@ public class HexGloopKeybinds {
     public static final KeyBinding CASTING_RING_KEY_BINDING = new KeyBinding("key.hexgloop.casting_ring",
     InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_G, "key.categories.hexgloop");
 
+    public static final KeyBinding HEX_SCROLL_UP = new KeyBinding("key.hexgloop.scroll_up", 
+        InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_BRACKET, "key.categories.hexgloop");
+    public static final KeyBinding HEX_SCROLL_DOWN = new KeyBinding("key.hexgloop.scroll_down",
+        InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_BRACKET, "key.categories.hexgloop");
+
     public static void registerKeybinds(){
         KeybindUtils.registerKeybind(IOTA_WHEEL_KEYBIND, (keyBinding, client) -> handleIotaWheelItems(keyBinding, client));
         KeybindUtils.registerKeybind(CASTING_RING_KEY_BINDING, CastingRingHelperClient::handleCastingRingKeypress);
+        KeybindUtils.registerKeybind(HEX_SCROLL_UP, (keyBinding, client) -> handleScrollKey(keyBinding, client, true));
+        KeybindUtils.registerKeybind(HEX_SCROLL_DOWN, (keyBinding, client) -> handleScrollKey(keyBinding, client, false));
     }
 
     private static boolean isIotaWheelItem(Item item){
@@ -32,6 +43,20 @@ public class HexGloopKeybinds {
 
     public static void handleIotaWheelItems(KeyBinding keyBinding, MinecraftClient client){
         handleIotaWheelItems(keyBinding, client, keyBinding.isPressed());
+    }
+
+    public static void handleScrollKey(KeyBinding keyBinding, MinecraftClient client, boolean goUp){
+        if(!keyBinding.wasPressed()) return;
+        boolean mainHand = false;
+        if(MixinIsScrollableInvoker.InvokeIsScrollableItem(client.player.getMainHandStack().getItem())){
+            mainHand = true;
+        } else if(!MixinIsScrollableInvoker.InvokeIsScrollableItem(client.player.getOffHandStack().getItem())){
+            return;
+        }
+        int dir = goUp ? -1 : 1;
+        IClientXplatAbstractions.INSTANCE.sendPacketToServer(
+                    new MsgShiftScrollSyn(mainHand ? dir : 0, !mainHand ? dir : 0, true,
+                        false, false));
     }
 
     // modified from default wnboi to support opening from casting context

@@ -9,19 +9,22 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class HexGloopItems {
     public static DeferredRegister<Item> items = DeferredRegister.create(HexGloop.MOD_ID, Registry.ITEM_KEY);
 
+    public static final RegistrySupplier<Item> GLOOP_ITEM = item("gloop", 
+        () -> new Item(defaultSettings()));
     public static final RegistrySupplier<ItemMultiFocus> MULTI_FOCUS_ITEM = item("multi_focus", 
         () -> new ItemMultiFocus(defaultSettings().maxCount(1)));
     public static final RegistrySupplier<ItemCastingRing> CASTING_RING_ITEM = item("casting_ring", 
         () -> new ItemCastingRing(defaultSettings().maxCount(1)));
     public static final RegistrySupplier<ItemCastingPotion> CASTING_POTION_ITEM = item("casting_potion", 
         () -> new ItemCastingPotion(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemGloopDye> GLOOP_DYE_ITEM = item("gloop_dye", 
+        () -> new ItemGloopDye(defaultSettings().maxCount(1)));
     
 
     public static <T extends Item> RegistrySupplier<T> item(String name, Supplier<T> item) {
@@ -34,9 +37,9 @@ public class HexGloopItems {
 
     public static final ItemGroup HEX_GLOOP_GROUP = CreativeTabRegistry.create(
 		new Identifier(HexGloop.MOD_ID, "general"),
-		() -> Items.SLIME_BALL.getDefaultStack());
+		() -> GLOOP_ITEM.get().getDefaultStack());
 
-    public static void registerItems(){
+    public static void register(){
         items.register();
     }
     

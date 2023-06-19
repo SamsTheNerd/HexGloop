@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Suppliers;
+import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
+import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.casting.HexGloopRegisterPatterns;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.misc.HexGloopGameEvents;
@@ -29,7 +31,9 @@ public class HexGloop {
 
 
     public static void onInitialize() {
-        HexGloopItems.registerItems();
+        HexGloopBlocks.register();
+        HexGloopItems.register();
+        HexGloopBEs.register();
         HexGloopRecipes.register();
         HexGloopNetwork.register();
         HexGloopRegisterPatterns.registerPatterns();

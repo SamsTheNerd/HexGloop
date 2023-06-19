@@ -5,15 +5,18 @@
     "compatibilityLevel": "JAVA_17",
     "mixins": [
       "wnboi.MixinHandleScrolling",
+      "wnboi.MixinIsScrollableInvoker",
       "ring.MixinRingSendPatterns",
       "vibrations.MixinCustomCastingEvent",
-      "vibrations.MixinGameEventFrequencies"
+      "vibrations.MixinGameEventFrequencies",
+      "dyeablestaffs.MixinInjectDyeableStaff",
+      "lightning.MixinLightningMakeGloop",
+      "lightning.MixinProtectItems"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
       "wnboi.MixinAddScrollableListener",
-      "morelayers.MixinPlsMoreItemLayers",
-      "morelayers.MixinPlsMoreItemLayersGetTexture",
+      "morelayers.MixinPlsMoreItemLayersBetter",
       "wnboi.MixinWheelInCasting",
       "ring.MixinKeepRingCastingOpen",
       "ring.MixinRingCastingSmall"

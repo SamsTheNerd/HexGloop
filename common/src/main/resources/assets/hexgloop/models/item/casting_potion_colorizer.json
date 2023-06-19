@@ -1,0 +1,10 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "hexgloop:item/castingpotion/flask",
+        "layer1": "hexgloop:item/castingpotion/tjuice1",
+        "layer2": "hexgloop:item/castingpotion/tjuice2",
+        "layer3": "hexgloop:item/castingpotion/tjuice3",
+        "layer4": "hexgloop:item/castingpotion/tjuice4"
+    }
+}

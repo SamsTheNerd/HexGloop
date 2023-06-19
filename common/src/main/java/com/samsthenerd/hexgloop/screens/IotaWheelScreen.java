@@ -6,7 +6,7 @@ import java.util.List;
 import org.lwjgl.glfw.GLFW;
 
 import com.samsthenerd.hexgloop.items.HexGloopItems;
-import com.samsthenerd.hexgloop.misc.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.misc.SpellbookScreenInterface;
 import com.samsthenerd.hexgloop.misc.wnboi.IotaProvider;
 import com.samsthenerd.wnboi.screen.AbstractContextWheelScreen;

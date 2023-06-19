@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "side": "hexgloop:block/energizer_side",
+        "top": "hexgloop:block/energizer_top",
+        "bottom": "hexcasting:block/slate"
+    }
+}

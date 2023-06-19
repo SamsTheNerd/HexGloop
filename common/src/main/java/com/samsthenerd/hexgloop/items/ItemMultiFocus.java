@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.HexGloop;
-import com.samsthenerd.hexgloop.misc.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.misc.wnboi.IotaProvider;
 import com.samsthenerd.hexgloop.screens.IotaWheelScreen;
 import com.samsthenerd.wnboi.interfaces.KeyboundItem;
