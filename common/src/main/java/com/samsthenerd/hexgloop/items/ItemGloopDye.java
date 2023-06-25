@@ -30,7 +30,7 @@ public class ItemGloopDye extends ItemMediaHolder implements IotaHolderItem{
 
     @Override
     public ItemStack getDefaultStack(){
-        return ItemMediaHolder.withMedia(super.getDefaultStack(), 0, 64*MediaConstants.DUST_UNIT);
+        return ItemMediaHolder.withMedia(super.getDefaultStack(), 0xFFFFFF, 64*MediaConstants.DUST_UNIT);
     }
 
     @Override

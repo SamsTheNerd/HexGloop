@@ -11,7 +11,8 @@
       "vibrations.MixinGameEventFrequencies",
       "dyeablestaffs.MixinInjectDyeableStaff",
       "lightning.MixinLightningMakeGloop",
-      "lightning.MixinProtectItems"
+      "lightning.MixinProtectItems",
+      "recipes.MixinBrewCastingPotion"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

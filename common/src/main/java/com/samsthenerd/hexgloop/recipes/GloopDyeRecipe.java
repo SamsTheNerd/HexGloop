@@ -1,8 +1,10 @@
 package com.samsthenerd.hexgloop.recipes;
 
+import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemGloopDye;
 
+import at.petrak.hexcasting.api.misc.MediaConstants;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.DyeableItem;
 import net.minecraft.item.Item;
@@ -41,9 +43,11 @@ public class GloopDyeRecipe extends SpecialCraftingRecipe{
                 if (!gloopDyeStack.isEmpty()) {
                     return false;
                 }
-                if(HexGloopItems.GLOOP_DYE_ITEM.get().getMedia(gloopDyeStack) < 1)
-                    return false;
                 gloopDyeStack = itemStack2;
+                if(HexGloopItems.GLOOP_DYE_ITEM.get().getMedia(gloopDyeStack) < MediaConstants.DUST_UNIT){
+                    HexGloop.logPrint("cringe no media");
+                    return false;
+                }
                 continue;
             }
             return false;
@@ -99,7 +103,9 @@ public class GloopDyeRecipe extends SpecialCraftingRecipe{
             Item item = inventory.getStack(i).getItem();
             if(item instanceof ItemGloopDye){
                 ItemStack smallerGloop = inventory.getStack(i).copy();
-                HexGloopItems.GLOOP_DYE_ITEM.get().decrementMedia(smallerGloop, 1);
+                HexGloopItems.GLOOP_DYE_ITEM.get().decrementMedia(smallerGloop, MediaConstants.DUST_UNIT);
+                defaultedList.set(i, smallerGloop);
+                continue;
             }
             if (!item.hasRecipeRemainder()) continue;
             defaultedList.set(i, new ItemStack(item.getRecipeRemainder()));

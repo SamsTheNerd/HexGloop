@@ -13,6 +13,7 @@ import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.network.MsgShiftScrollSyn;
 import at.petrak.hexcasting.xplat.IClientXplatAbstractions;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.player.PlayerEntity;
@@ -46,7 +47,11 @@ public class HexGloopKeybinds {
     }
 
     public static void handleScrollKey(KeyBinding keyBinding, MinecraftClient client, boolean goUp){
-        if(!keyBinding.wasPressed()) return;
+        handleScrollKey(keyBinding, client, goUp, keyBinding.wasPressed());
+    }
+
+    public static void handleScrollKey(KeyBinding keyBinding, MinecraftClient client, boolean goUp, boolean isPressed){
+        if(!isPressed) return;
         boolean mainHand = false;
         if(MixinIsScrollableInvoker.InvokeIsScrollableItem(client.player.getMainHandStack().getItem())){
             mainHand = true;
@@ -55,7 +60,7 @@ public class HexGloopKeybinds {
         }
         int dir = goUp ? -1 : 1;
         IClientXplatAbstractions.INSTANCE.sendPacketToServer(
-                    new MsgShiftScrollSyn(mainHand ? dir : 0, !mainHand ? dir : 0, true,
+                    new MsgShiftScrollSyn(mainHand ? dir : 0, !mainHand ? dir : 0, Screen.hasControlDown(),
                         false, false));
     }
 

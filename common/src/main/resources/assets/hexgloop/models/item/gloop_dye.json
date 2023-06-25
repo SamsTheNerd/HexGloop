@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "hexgloop:item/gloopdye/dye",
+        "layer1": "hexgloop:item/gloopdye/base"
+    }
+}

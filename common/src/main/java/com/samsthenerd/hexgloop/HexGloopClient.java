@@ -7,6 +7,7 @@ import com.mojang.datafixers.util.Pair;
 import com.samsthenerd.hexgloop.blockentities.BlockEntityGloopEnergizer;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
+import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry;
@@ -50,13 +51,6 @@ public class HexGloopClient {
                 }
                 return HexIotaTypes.getColor(iotaNbt);
             }
-            if(tintIndex > 2 && tintIndex < 9){
-                NbtCompound iotaNbt = HexGloopItems.MULTI_FOCUS_ITEM.get().readSlotIotaTag(stack, tintIndex - 2);
-                if(iotaNbt == null){
-                    return 0xFFFFFF; //white
-                }
-                return HexIotaTypes.getColor(iotaNbt);
-            }
             return 0xFFFFFF; //white
 		}, HexGloopItems.MULTI_FOCUS_ITEM.get());
 
@@ -78,33 +72,47 @@ public class HexGloopClient {
             }
             return tintsFromColorizer(colorizer, tintIndex-1, 4);
         }, HexGloopItems.CASTING_POTION_ITEM.get());
+
+        ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
+            if(tintIndex == 1 || tintIndex > 4){ // base
+                return 0xFFFFFF; //white
+            }
+            int color = ItemGloopDye.getDyeColor(stack);
+            if(tintIndex == 0){
+                return color;
+            }
+            if(tintIndex == 2){ // red
+                return color & 0xFF0000;
+            }
+            if(tintIndex == 3){ // green
+                return color & 0x00FF00;
+            }
+            if(tintIndex == 4){ // blue
+                return color & 0x0000FF;
+            }
+            return 0xFFFFFF; //white
+        }, HexGloopItems.GLOOP_DYE_ITEM.get());
     }
 
     public static int tintsFromColorizer(FrozenColorizer colorizer, int tintIndex, int sections){
         float time = MinecraftClient.getInstance().world.getTime();
-        double section = 8.0 * tintIndex;
-        return colorizer.getColor(time, new Vec3d(random.nextDouble()*0.1 + section, random.nextDouble()*0.1 + section, random.nextDouble()*0.1 + section));
+        double section = 5.0 * tintIndex;
+        return colorizer.getColor(time, new Vec3d(section, 0, 0));
     }
 
     private static void registerModelPredicates(){
         ItemPropertiesRegistry.register(HexGloopItems.MULTI_FOCUS_ITEM.get(), new Identifier("selected"), 
             (ItemStack itemStack, ClientWorld clientWorld, LivingEntity livingEntity, int i) -> {
             int slot = ItemSpellbook.getPage(itemStack, -1);
-            if(slot < 1){
+            if(slot < 1 || HexGloopItems.MULTI_FOCUS_ITEM.get().readIotaTag(itemStack) == null){
                 return 0.0F;
             }
-            return (float)((1/6.0)*(slot-1))+0.0001F;
+            return (float)((1/6.0)*(slot));
         });
 
         ItemPropertiesRegistry.register(HexGloopItems.MULTI_FOCUS_ITEM.get(), new Identifier("sealed"), 
             (ItemStack itemStack, ClientWorld clientWorld, LivingEntity livingEntity, int i) -> {
-            if(HexGloopItems.MULTI_FOCUS_ITEM.get().readIotaTag(itemStack) == null){
-                return 0.0F;
-            }
-            if(ItemSpellbook.isSealed(itemStack)){
-                return 1.0F;
-            }
-            return 0.5F;
+            return ItemSpellbook.isSealed(itemStack) ? 1.0F : 0.0F;
         });
 
         ItemPropertiesRegistry.register(HexGloopItems.CASTING_POTION_ITEM.get(), new Identifier("colorized"),
