@@ -30,7 +30,7 @@ public class ItemGloopDye extends ItemMediaHolder implements IotaHolderItem{
 
     @Override
     public ItemStack getDefaultStack(){
-        return ItemMediaHolder.withMedia(super.getDefaultStack(), 0xFFFFFF, 64*MediaConstants.DUST_UNIT);
+        return ItemMediaHolder.withMedia(super.getDefaultStack(), 0, 64*MediaConstants.DUST_UNIT);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class ItemGloopDye extends ItemMediaHolder implements IotaHolderItem{
     public static int getDyeColor(ItemStack stack){
         NbtCompound iotaNbt = NBTHelper.getCompound(stack, ItemFocus.TAG_DATA);
         if(iotaNbt == null || HexIotaTypes.getTypeFromTag(iotaNbt) != HexIotaTypes.VEC3){
-            return 0;
+            return 0xFFFFFF;
         }
         Vec3d rgbVec = ((Vec3Iota) HexIotaTypes.deserialize(iotaNbt, null)).getVec3();
         return (((int) (rgbVec.x)) << 16) + (((int) (rgbVec.y)) << 8) + ((int) (rgbVec.z));

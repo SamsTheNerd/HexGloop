@@ -1,11 +1,7 @@
 package com.samsthenerd.hexgloop.items;
 
-import java.util.UUID;
-
 import at.petrak.hexcasting.api.misc.FrozenColorizer;
-import at.petrak.hexcasting.common.items.colorizer.ItemPrideColorizer;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
-import at.petrak.hexcasting.common.lib.HexItems;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,7 +12,6 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -36,13 +31,13 @@ public class ItemCastingPotion extends ItemPackagedHex{
         if(this.isIn(group)){
             stacks.add(getDefaultStack());
             // UUID uuid = UUID.randomUUID(); // maybe put mine in ? just for funzies
-            UUID uuid = UUID.fromString("6f07899c-2b26-4221-8033-1f53f7a0e111");
-            FrozenColorizer transColor = new FrozenColorizer(HexItems.PRIDE_COLORIZERS.get(ItemPrideColorizer.Type.TRANSGENDER).getDefaultStack(), uuid);
-            stacks.add(withColorizer(getDefaultStack(), transColor));
-            FrozenColorizer greenColor = new FrozenColorizer(HexItems.DYE_COLORIZERS.get(DyeColor.GREEN).getDefaultStack(), uuid);
-            stacks.add(withColorizer(getDefaultStack(), greenColor));
-            FrozenColorizer pinkColor = new FrozenColorizer(HexItems.DYE_COLORIZERS.get(DyeColor.PINK).getDefaultStack(), uuid);
-            stacks.add(withColorizer(getDefaultStack(), pinkColor));
+            // UUID uuid = UUID.fromString("6f07899c-2b26-4221-8033-1f53f7a0e111");
+        //     FrozenColorizer transColor = new FrozenColorizer(HexItems.PRIDE_COLORIZERS.get(ItemPrideColorizer.Type.TRANSGENDER).getDefaultStack(), uuid);
+        //     stacks.add(withColorizer(getDefaultStack(), transColor));
+        //     FrozenColorizer greenColor = new FrozenColorizer(HexItems.DYE_COLORIZERS.get(DyeColor.GREEN).getDefaultStack(), uuid);
+        //     stacks.add(withColorizer(getDefaultStack(), greenColor));
+        //     FrozenColorizer pinkColor = new FrozenColorizer(HexItems.DYE_COLORIZERS.get(DyeColor.PINK).getDefaultStack(), uuid);
+        //     stacks.add(withColorizer(getDefaultStack(), pinkColor));
         }
     }
 
