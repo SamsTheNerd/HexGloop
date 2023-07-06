@@ -26,7 +26,10 @@
       "ring.MixinRingCastingSmall",
       "textpatterns.MixinTextDrawerPatSty",
       "textpatterns.MixinSetTessBuffer",
-      "textpatterns.MixinPatTextWiden"
+      "textpatterns.MixinPatTextWiden",
+      "textpatterns.MixinParsePatternFormatting",
+      "textpatterns.MixinVisitRegularChars"
+
     ],
     "injectors": {
       "defaultRequire": 1

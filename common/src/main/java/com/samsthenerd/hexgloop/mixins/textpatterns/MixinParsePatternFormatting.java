@@ -37,7 +37,7 @@ public class MixinParsePatternFormatting {
         dirMap.put("ne", HexDir.NORTH_EAST);
     }
 
-    public static boolean skipBrace = false;
+    private static boolean skipBrace = false;
 
     /** ideas before sleep
      * use something static to store the style maybe?
@@ -49,7 +49,7 @@ public class MixinParsePatternFormatting {
     @ModifyVariable(method="visitFormatted(Ljava/lang/String;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
     at=@At(value="INVOKE", target="java/lang/String.charAt (I)C", ordinal = 0), 
     name="j")
-    public static int parsePatternFormatting(int j, String text, int startIndex, Style startingStyle, Style resetStyle, CharacterVisitor visitor){
+    private static int parsePatternFormatting(int j, String text, int startIndex, Style startingStyle, Style resetStyle, CharacterVisitor visitor){
         skipBrace = false; // reset skipBrace
         int startishIndex = j; // where we entered the loop
         if(j < text.length() && text.charAt(j) == '<'){ 
@@ -101,7 +101,7 @@ public class MixinParsePatternFormatting {
 
     @Redirect(method="visitFormatted(Ljava/lang/String;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
     at=@At(value="INVOKE", target="java/lang/String.charAt (I)C"))
-    public char HexPatBoundsCheckCharAt(String text, int index){
+    private char HexPatBoundsCheckCharAt(String text, int index){
         if(index >= text.length()){
             return 24; // just something that probably wouldn't otherwise be there?
         }
@@ -110,16 +110,16 @@ public class MixinParsePatternFormatting {
     
     @Redirect(method="visitFormatted(Ljava/lang/String;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
     at=@At(value="INVOKE", target="java/lang/Character.isHighSurrogate (C)Z"))
-    public static boolean HexPatBoundsCheckIsHighSurrogate(char c){
+    private static boolean HexPatBoundsCheckIsHighSurrogate(char c){
         if(skipBrace || c == 24) return false;
         return Character.isHighSurrogate(c);
     }
 
     @Redirect(method="visitFormatted(Ljava/lang/String;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
     at=@At(value="INVOKE", target="net/minecraft/client/font/TextVisitFactory.visitRegularCharacter (Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;IC)Z"))
-    public static boolean HexPatBoundsCheckVisitRegular(Style style, CharacterVisitor visitor, int index, char c){
+    private static boolean HexPatBoundsCheckVisitRegular(Style style, CharacterVisitor visitor, int index, char c){
         if(skipBrace) return true; // we want to keep going 
         if(c == 24) return false; // we want to not keep going
-        return TextVisitFactory.visitRegularCharacter(style, visitor, index, c);
+        return MixinVisitRegularChars.visitRegularCharacterPublic(style, visitor, index, c);
     }
 }
