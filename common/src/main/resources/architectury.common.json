@@ -1,5 +1,6 @@
 {
     "injected_interfaces": {
-      "at/petrak/hexcasting/common/items/ItemStaff": ["net/minecraft/item/DyeableItem"]
+      "at/petrak/hexcasting/common/items/ItemStaff": ["net/minecraft/item/DyeableItem"],
+      "net/minecraft/text/Style": ["com/samsthenerd/hexgloop/screens/PatternStyle"]
     }
   }

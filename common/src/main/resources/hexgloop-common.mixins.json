@@ -12,7 +12,10 @@
       "dyeablestaffs.MixinInjectDyeableStaff",
       "lightning.MixinLightningMakeGloop",
       "lightning.MixinProtectItems",
-      "recipes.MixinBrewCastingPotion"
+      "recipes.MixinBrewCastingPotion",
+      "textpatterns.MixinPatternStyle",
+      "textpatterns.MixinPatternStyle$MixinPatternStyleSerializer",
+      "textpatterns.MixinChangePatternDisplay"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
@@ -20,7 +23,10 @@
       "morelayers.MixinPlsMoreItemLayersBetter",
       "wnboi.MixinWheelInCasting",
       "ring.MixinKeepRingCastingOpen",
-      "ring.MixinRingCastingSmall"
+      "ring.MixinRingCastingSmall",
+      "textpatterns.MixinTextDrawerPatSty",
+      "textpatterns.MixinSetTessBuffer",
+      "textpatterns.MixinPatTextWiden"
     ],
     "injectors": {
       "defaultRequire": 1
