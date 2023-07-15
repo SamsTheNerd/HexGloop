@@ -14,6 +14,7 @@ import com.samsthenerd.hexgloop.misc.HexGloopGameEvents;
 import com.samsthenerd.hexgloop.misc.ITrinkety;
 import com.samsthenerd.hexgloop.network.HexGloopNetwork;
 import com.samsthenerd.hexgloop.recipes.HexGloopRecipes;
+import com.samsthenerd.hexgloop.utils.StringsToDirMap;
 
 import dev.architectury.registry.registries.Registries;
 
@@ -38,5 +39,6 @@ public class HexGloop {
         HexGloopNetwork.register();
         HexGloopRegisterPatterns.registerPatterns();
         HexGloopGameEvents.register();
+        StringsToDirMap.init();
     }
 }

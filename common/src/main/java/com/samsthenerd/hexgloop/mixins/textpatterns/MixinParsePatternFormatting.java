@@ -1,14 +1,15 @@
 package com.samsthenerd.hexgloop.mixins.textpatterns;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.llamalad7.mixinextras.sugar.Local;
+import com.llamalad7.mixinextras.sugar.ref.LocalIntRef;
+import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.screens.PatternStyle;
+import com.samsthenerd.hexgloop.utils.StringsToDirMap;
 
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -19,43 +20,18 @@ import net.minecraft.text.Style;
 @Mixin(TextVisitFactory.class)
 public class MixinParsePatternFormatting {
 
-    private static final Map<String, HexDir> dirMap = new HashMap<String, HexDir>();
-
-    {
-        dirMap.put("northwest", HexDir.NORTH_WEST);
-        dirMap.put("west", HexDir.WEST);
-        dirMap.put("southwest", HexDir.SOUTH_WEST);
-        dirMap.put("southeast", HexDir.SOUTH_EAST);
-        dirMap.put("east", HexDir.EAST);
-        dirMap.put("northeast", HexDir.NORTH_EAST);
-        dirMap.put("nw", HexDir.NORTH_WEST);
-
-        dirMap.put("w", HexDir.WEST);
-        dirMap.put("sw", HexDir.SOUTH_WEST);
-        dirMap.put("se", HexDir.SOUTH_EAST);
-        dirMap.put("e", HexDir.EAST);
-        dirMap.put("ne", HexDir.NORTH_EAST);
-    }
-
-    private static boolean skipBrace = false;
-
-    /** ideas before sleep
-     * use something static to store the style maybe?
-     * maybe same thing for skipping '>' 
-     * mixin and make charAt(outOfBounds) return null and then null check everything else to prevent out of bounds issues
-     */
-
     // want to mixin to start of the loop in visitFormatted
-    @ModifyVariable(method="visitFormatted(Ljava/lang/String;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
-    at=@At(value="INVOKE", target="java/lang/String.charAt (I)C", ordinal = 0), 
-    name="j")
-    private static int parsePatternFormatting(int j, String text, int startIndex, Style startingStyle, Style resetStyle, CharacterVisitor visitor){
-        skipBrace = false; // reset skipBrace
-        int startishIndex = j; // where we entered the loop
+    @WrapOperation(method="visitFormatted(Ljava/lang/String;ILnet/minecraft/text/Style;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
+    at=@At(value="INVOKE", target="net/minecraft/client/font/TextVisitFactory.visitRegularCharacter (Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;IC)Z"))
+    private static boolean parsePatternFormatting(Style style, CharacterVisitor visitor, int index, char c, Operation<Boolean> operation, @Local(ordinal=2) LocalIntRef jref, @Local(ordinal=0) String text){
+        int startishIndex = jref.get(); // where we entered the loop
+        int j = jref.get();
         if(j < text.length() && text.charAt(j) == '<'){ 
             if(j > 0 && text.charAt(j-1) == '\\'){ // escaped
-                return startishIndex;
+                jref.set(startishIndex);
+                return operation.call(style, visitor, index, c);
             }
+            j++; // skip <
             // want to do pattern matching
             while(j < text.length() && Character.isWhitespace(text.charAt(j))){ // skip whitespace
                 j++;
@@ -66,60 +42,50 @@ public class MixinParsePatternFormatting {
                 j++;
             }
             if(j == text.length() || text.charAt(j) == '>'){ // no direction
-                return startishIndex;
+                // HexGloop.logPrint("no direction");
+                jref.set(startishIndex);
+                return operation.call(style, visitor, index, c);
             }
             String dirString = text.substring(startDirIndex, j).toLowerCase().strip().replace("_", "");
-            HexDir dir = dirMap.get(dirString);
+            HexDir dir = StringsToDirMap.dirMap.get(dirString);
             if(dir == null){
-                return startishIndex;
+                // HexGloop.logPrint("invalid direction: " + dirString);
+                jref.set(startishIndex);
+                return operation.call(style, visitor, index, c);
             }
             // have direction now
             j++; // skip comma
             int startPatternIndex = j;
+            char ch = '\0';
             while(j < text.length() && (text.charAt(j) != '>')){ // run to end
-                char c = text.charAt(j);
-                if(c != 'a' && c != 'A' && c != 'q' && c != 'Q' && c != 'w' && c != 'W'
-                && c != 'e' && c != 'E' && c != 's' && c != 'S' && c != 'd' && c != 'D' && c != ' '){
-                    return startishIndex;
+                ch = text.charAt(j);
+                if(ch != 'a' && ch != 'A' && ch != 'q' && ch != 'Q' && ch != 'w' && ch != 'W'
+                && ch != 'e' && ch != 'E' && ch != 's' && ch != 'S' && ch != 'd' && ch != 'D' && ch != ' '){
+                    // HexGloop.logPrint("found invalid char: " + ch);
+                    jref.set(startishIndex);
+                    return operation.call(style, visitor, index, c);
                 }
                 j++;
             }
-            if(j == text.length()){ // no closing bracket
-                return startishIndex;
+            if(j == text.length() && ch != '>'){ // no closing bracket
+                // HexGloop.logPrint("no closing bracket");
+                jref.set(startishIndex);
+                return operation.call(style, visitor, index, c);
             }
             // have pattern now
             String angleSigs = text.substring(startPatternIndex, j).toLowerCase().strip().replace(" ", "");
-            HexPattern pattern = HexPattern.fromAngles(angleSigs, dir);
+            HexPattern pattern = null;
+            try{
+                pattern = HexPattern.fromAngles(angleSigs, dir);
+            } catch(IllegalStateException e){
+                return operation.call(style, visitor, index, c);
+            }
             // poggers we have everything
-            visitor.accept(j, ((PatternStyle)startingStyle).withPattern(pattern), '!');
-            skipBrace = true;
+            HexGloop.logPrint("found pattern: " + angleSigs + ' ' + dir);
+            visitor.accept(startishIndex, ((PatternStyle)style).withPattern(pattern), '!');
+            jref.set(j);
+            return j < text.length(); // if there's more or not
         }
-        return j;
-    }
-
-    // now do all our redirects down here
-
-    @Redirect(method="visitFormatted(Ljava/lang/String;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
-    at=@At(value="INVOKE", target="java/lang/String.charAt (I)C"))
-    private char HexPatBoundsCheckCharAt(String text, int index){
-        if(index >= text.length()){
-            return 24; // just something that probably wouldn't otherwise be there?
-        }
-        return text.charAt(index);
-    }
-    
-    @Redirect(method="visitFormatted(Ljava/lang/String;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
-    at=@At(value="INVOKE", target="java/lang/Character.isHighSurrogate (C)Z"))
-    private static boolean HexPatBoundsCheckIsHighSurrogate(char c){
-        if(skipBrace || c == 24) return false;
-        return Character.isHighSurrogate(c);
-    }
-
-    @Redirect(method="visitFormatted(Ljava/lang/String;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
-    at=@At(value="INVOKE", target="net/minecraft/client/font/TextVisitFactory.visitRegularCharacter (Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;IC)Z"))
-    private static boolean HexPatBoundsCheckVisitRegular(Style style, CharacterVisitor visitor, int index, char c){
-        if(skipBrace) return true; // we want to keep going 
-        if(c == 24) return false; // we want to not keep going
-        return MixinVisitRegularChars.visitRegularCharacterPublic(style, visitor, index, c);
+        return operation.call(style, visitor, index, c);
     }
 }

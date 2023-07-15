@@ -15,7 +15,8 @@
       "recipes.MixinBrewCastingPotion",
       "textpatterns.MixinPatternStyle",
       "textpatterns.MixinPatternStyle$MixinPatternStyleSerializer",
-      "textpatterns.MixinChangePatternDisplay"
+      "textpatterns.MixinChangePatternDisplay",
+      "textpatterns.MixinParsePatternFormatting"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
@@ -26,10 +27,7 @@
       "ring.MixinRingCastingSmall",
       "textpatterns.MixinTextDrawerPatSty",
       "textpatterns.MixinSetTessBuffer",
-      "textpatterns.MixinPatTextWiden",
-      "textpatterns.MixinParsePatternFormatting",
-      "textpatterns.MixinVisitRegularChars"
-
+      "textpatterns.MixinPatTextWiden"
     ],
     "injectors": {
       "defaultRequire": 1

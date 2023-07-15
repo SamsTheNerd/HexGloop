@@ -35,6 +35,8 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+    runtimeOnly(include("com.github.llamalad7.mixinextras:mixinextras-fabric:${mixinExtrasVersion}"))
+
 	// for REI, making sure it doesn't pop up with the keyboard
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
@@ -65,6 +67,8 @@ dependencies {
 	modImplementation "maven.modrinth:lithium:${lithiumVersion}"
     modRuntimeOnly "maven.modrinth:phosphor:${phosphorVersion}"
 	modImplementation "maven.modrinth:sodium:${sodiumVersion}"
+
+    modRuntimeOnly "maven.modrinth:tooltipfix:${tooltipfixVersion}"
 
      // for sodium matrices?
 	implementation group: "org.joml", name: "joml", version: "1.10.5"

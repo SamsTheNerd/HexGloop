@@ -13,7 +13,9 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.samsthenerd.hexgloop.screens.PatternStyle;
 
+import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.client.RenderLib;
+import kotlin.Pair;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.text.Style;
@@ -31,6 +33,8 @@ public class MixinTextDrawerPatSty {
     @Shadow
     private Matrix4f matrix;
 
+    private static final float RENDER_SIZE = 128f;
+
     @Inject(method = "accept(ILnet/minecraft/text/Style;I)Z", at = @At("HEAD"), cancellable = true)
 	private void PatStyDrawerAccept(int index, Style style, int codepoint, CallbackInfoReturnable<Boolean> cir) {
         PatternStyle pStyle = (PatternStyle) style;
@@ -38,7 +42,14 @@ public class MixinTextDrawerPatSty {
         if(pStyle.getPattern() == null){
             return;
         } else {
-            List<Vec2f> zappyPointsCentered = pStyle.getZappyPoints();
+            HexPattern pattern = pStyle.getPattern();
+            Pair<Float, List<Vec2f> > pair = RenderLib.getCenteredPattern(pattern, RENDER_SIZE, RENDER_SIZE, 16f);
+            Float patScale = pair.getFirst();
+            List<Vec2f> dots = pair.getSecond();
+            List<Vec2f> zappyPointsCentered = RenderLib.makeZappy(
+                dots, RenderLib.findDupIndices(pattern.positions()),
+                10, 0.8f, 0f, 0f, RenderLib.DEFAULT_READABILITY_OFFSET, RenderLib.DEFAULT_LAST_SEGMENT_LEN_PROP,
+                0.0);
             List<Vec2f> pathfinderDotsCentered = pStyle.getPathfinderDots();
             List<Vec2f> zappyPoints = new ArrayList<Vec2f>();
             List<Vec2f> pathfinderDots = new ArrayList<Vec2f>();

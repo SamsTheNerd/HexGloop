@@ -76,6 +76,7 @@ dependencies {
 
     modCompileOnly "top.theillusivec4.curios:curios-forge:$minecraft_version-$curiosVersion:api"
     modRuntimeOnly "top.theillusivec4.curios:curios-forge:$minecraft_version-$curiosVersion"
+    runtimeOnly(include("com.github.llamalad7.mixinextras:mixinextras-forge:${mixinExtrasVersion}"))
 
     // modApi "com.github.Virtuoel:Pehkui:${pehkuiVersion}-${minecraft_version}-forge"
 }

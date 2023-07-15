@@ -24,4 +24,6 @@ public interface PatternStyle {
     public List<Vec2f> getZappyPoints();
 
     public List<Vec2f> getPathfinderDots();
+
+    
 }
