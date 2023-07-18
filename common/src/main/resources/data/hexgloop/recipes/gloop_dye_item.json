@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GDG",
+        "DAD",
+        "GDG"
+    ],
+    "key": {
+        "G": {
+            "item": "hexgloop:gloop"
+        },
+        "D":{
+            "tag": "c:dyes"
+        },
+        "A":{
+            "item": "hexcasting:amethyst_dust"
+        }
+    },
+    "result": {
+        "item": "hexgloop:gloop_dye"
+    }
+}

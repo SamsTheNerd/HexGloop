@@ -16,7 +16,7 @@ import net.minecraft.util.Formatting;
 @Mixin(targets = "at.petrak.hexcasting.api.spell.iota.PatternIota$1")
 public abstract class MixinChangePatternDisplay {
     @Inject(method = "display(Lnet/minecraft/nbt/NbtElement;)Lnet/minecraft/text/Text;", at = @At("HEAD"), cancellable = true)
-    public void display(NbtElement tag, CallbackInfoReturnable<Text> cir) {
-        cir.setReturnValue(Text.literal("!").setStyle(((PatternStyle) Style.EMPTY.withBold(true).withColor(Formatting.DARK_PURPLE)).withPattern(PatternIota.deserialize(tag).getPattern())));
+    public void makePatternIotaVisual(NbtElement tag, CallbackInfoReturnable<Text> cir) {
+        cir.setReturnValue(Text.literal("!").setStyle(((PatternStyle) Style.EMPTY.withBold(true).withStrikethrough(true).withColor(Formatting.WHITE)).withPattern(PatternIota.deserialize(tag).getPattern())));
     }
 }

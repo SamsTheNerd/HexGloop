@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GFG",
+        "FGF",
+        "GFG"
+    ],
+    "key": {
+        "F": {
+            "item": "hexcasting:focus"
+        },
+        "G":{
+            "item": "hexgloop:gloop"
+        }
+    },
+    "result": {
+        "item": "hexgloop:multi_focus"
+    }
+}

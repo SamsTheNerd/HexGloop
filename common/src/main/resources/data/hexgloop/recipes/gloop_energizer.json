@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "NCN",
+        "CBC",
+        "SNS"
+    ],
+    "key": {
+        "N": {
+            "item": "minecraft:netherite_ingot"
+        },
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "B":{
+            "item": "minecraft:blast_furnace"
+        },
+        "S":{
+            "item": "hexcasting:slate_block"
+        }
+    },
+    "result": {
+        "item": "hexgloop:gloop_energizer"
+    }
+}

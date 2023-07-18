@@ -41,7 +41,7 @@ public class MixinPatTextWiden {
 
             // ideally fit into normal height ? maybe *slightly* taller?
             // I think it's 10f for both?
-            float scale = (9f-1.8f) / patHeight;
+            float scale = (9f-1.8f) / Math.max(patHeight, 48);
             cir.setReturnValue(scale*patWidth+2f);
         }
     }

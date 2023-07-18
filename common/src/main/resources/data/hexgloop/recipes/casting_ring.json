@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SIC",
+        "S I",
+        "LSS"
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "I":{
+            "item": "minecraft:iron_nugget"
+        },
+        "S":{
+            "item": "minecraft:stick"
+        },
+        "L":{
+            "item": "minecraft:leather"
+        }
+    },
+    "result": {
+        "item": "hexgloop:casting_ring"
+    }
+}

@@ -19,14 +19,19 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.samsthenerd.hexgloop.screens.PatternStyle;
 
+import at.petrak.hexcasting.api.spell.iota.PatternIota;
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.client.RenderLib;
+import at.petrak.hexcasting.common.lib.HexItems;
 import kotlin.Pair;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
+import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.math.Vec2f;
@@ -68,8 +73,25 @@ public class MixinPatternStyle implements PatternStyle{
     }
 
     @Override
-    public Style withPattern(HexPattern pattern) {
-        return ((Style)(Object)this).withParent(PatternStyle.fromPattern(pattern));
+    public Style withPattern(HexPattern pattern, boolean withPatternHoverEvent, boolean withPatternClickEvent) {
+        Style style = (Style)(Object)this;
+        if (withPatternHoverEvent) {
+            StringBuilder bob = new StringBuilder();
+            bob.append(pattern.getStartDir());
+
+            var sig = pattern.anglesSignature();
+            if (!sig.isEmpty()) {
+                bob.append(" ");
+                bob.append(sig);
+            }
+            Text hoverText = Text.translatable("hexcasting.tooltip.pattern_iota",
+                Text.literal(bob.toString()).formatted(Formatting.WHITE));
+            ItemStack scrollStack = new ItemStack(HexItems.SCROLL_LARGE);
+            scrollStack.setCustomName(hoverText);
+            HexItems.SCROLL_LARGE.writeDatum(scrollStack, new PatternIota(pattern));
+            style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new HoverEvent.ItemStackContent(scrollStack)));
+        }
+        return style.withParent(PatternStyle.fromPattern(pattern));
     }
 
     @Override

@@ -16,6 +16,7 @@
       "textpatterns.MixinPatternStyle",
       "textpatterns.MixinPatternStyle$MixinPatternStyleSerializer",
       "textpatterns.MixinChangePatternDisplay",
+      "textpatterns.MixinChangeListDisplay",
       "textpatterns.MixinParsePatternFormatting"
     ],
     "client": [

@@ -14,7 +14,12 @@ public interface PatternStyle {
     // note that style is meant to be immutable and this mutates it
     public Style setPattern(HexPattern pattern);
 
-    public Style withPattern(HexPattern pattern);
+    public default Style withPattern(HexPattern pattern){
+        return withPattern(pattern, true, true);
+    }
+
+    // in case you don't want the angle sigs / larger render to show on hover/click for whatever reason
+    public Style withPattern(HexPattern pattern, boolean withPatternHoverEvent, boolean withPatternClickEvent);
 
     public static Style fromPattern(HexPattern pattern){
         return ((PatternStyle)Style.EMPTY.withBold(null)).setPattern(pattern); // just to get an empty style
