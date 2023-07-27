@@ -12,6 +12,7 @@ import com.samsthenerd.hexgloop.casting.HexGloopRegisterPatterns;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.misc.HexGloopGameEvents;
 import com.samsthenerd.hexgloop.misc.ITrinkety;
+import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes;
 import com.samsthenerd.hexgloop.network.HexGloopNetwork;
 import com.samsthenerd.hexgloop.recipes.HexGloopRecipes;
 import com.samsthenerd.hexgloop.utils.StringsToDirMap;
@@ -40,5 +41,6 @@ public class HexGloop {
         HexGloopRegisterPatterns.registerPatterns();
         HexGloopGameEvents.register();
         StringsToDirMap.init();
+        LabelTypes.registerIotaLabelFunctions();
     }
 }

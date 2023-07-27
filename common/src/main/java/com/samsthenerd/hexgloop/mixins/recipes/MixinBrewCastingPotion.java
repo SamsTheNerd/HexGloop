@@ -19,7 +19,7 @@ import net.minecraft.recipe.BrewingRecipeRegistry;
 @Mixin(BrewingRecipeRegistry.class)
 public class MixinBrewCastingPotion {
     
-    @Inject(method = "craft(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "craft(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;", at = @At("HEAD"), cancellable = true)
     private static void brewCastingPotion(ItemStack ingredient, ItemStack input, CallbackInfoReturnable<ItemStack> cir) {
         if(!input.isEmpty() && input.getNbt().getString("Potion").equals("minecraft:thick")){
             if(ingredient.getItem() == HexItems.AMETHYST_DUST){

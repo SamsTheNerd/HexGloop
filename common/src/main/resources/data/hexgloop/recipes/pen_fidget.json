@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  C",
+        " C ",
+        "A  "
+    ],
+    "key": {
+        "A": {
+            "item": "hexcasting:amethyst_dust"
+        },
+        "C": {
+            "item": "minecraft:copper_ingot"
+        }
+    },
+    "result": {
+        "item": "hexgloop:copper_pen_fidget"
+    }
+}

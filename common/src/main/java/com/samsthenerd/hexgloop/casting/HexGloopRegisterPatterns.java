@@ -1,6 +1,7 @@
 package com.samsthenerd.hexgloop.casting;
 
 import com.samsthenerd.hexgloop.HexGloop;
+import com.samsthenerd.hexgloop.casting.orchard.OpReadOrchard;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 
 import at.petrak.hexcasting.api.PatternRegistry;
@@ -19,6 +20,13 @@ public class HexGloopRegisterPatterns {
         try{
             PatternRegistry.mapPattern(HexPattern.fromAngles("wawwedewwqqq", HexDir.EAST), new Identifier(HexGloop.MOD_ID, "craft/potion"),
                     new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.CRYSTAL_UNIT));
+            // qwawqwadawqwqwqwqwqw <- simpler sign write with hexagon
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwedwewdweqawqwqwqwqwqw", HexDir.SOUTH_WEST), new Identifier(HexGloop.MOD_ID, "set_label"),
+                    new OpSetLabel());
+            PatternRegistry.mapPattern(HexPattern.fromAngles("dqqqqq", HexDir.SOUTH_EAST), new Identifier(HexGloop.MOD_ID, "read_orchard"),
+                    new OpReadOrchard(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("dqqqqqdeeeqdqeee", HexDir.SOUTH_EAST), new Identifier(HexGloop.MOD_ID, "read_orchard_list"),
+                    new OpReadOrchard(true));
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }

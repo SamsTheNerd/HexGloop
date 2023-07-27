@@ -3,7 +3,6 @@ package com.samsthenerd.hexgloop.mixins.textpatterns;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import javax.annotation.Nullable;
 
@@ -68,7 +67,7 @@ public class MixinPatternStyle implements PatternStyle{
             dots, RenderLib.findDupIndices(pattern.positions()),
             10, 0.8f, 0f, 0f, RenderLib.DEFAULT_READABILITY_OFFSET, RenderLib.DEFAULT_LAST_SEGMENT_LEN_PROP,
             0.0);
-        this.pathfinderDots = dots.stream().distinct().collect(Collectors.toList());
+        this.pathfinderDots = dots;
         return (Style)(Object)this;
     }
 

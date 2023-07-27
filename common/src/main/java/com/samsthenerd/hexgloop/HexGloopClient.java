@@ -20,6 +20,7 @@ import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.DyeableItem;
@@ -34,12 +35,17 @@ import net.minecraft.util.math.Vec3d;
 public class HexGloopClient {
     public static Random random = new Random();
 
+    public static Tessellator newTess;
+
     public static void onInitializeClient() {
         HexGloop.logPrint("Initializing HexGloopClient");
         registerModelPredicates();
         registerColorProviders();
         registerScryingDisplayers();
         HexGloopKeybinds.registerKeybinds();
+
+        newTess = new Tessellator();
+
     }
 
     private static void registerColorProviders(){

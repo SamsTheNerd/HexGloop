@@ -1,9 +1,11 @@
 package com.samsthenerd.hexgloop.screens;
 
 import com.samsthenerd.hexgloop.misc.wnboi.IotaProvider;
+import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker.Label;
 import com.samsthenerd.wnboi.screen.SpokeRenderer;
 
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.ColorHelper.Argb;
 import net.minecraft.util.math.Vec3d;
@@ -48,5 +50,17 @@ public class IotaSpokeRenderer extends SpokeRenderer{
         return color;
     }
 
+    @Override
+    public void renderLabel(MatrixStack matrices, int mouseX, int mouseY, float delta){
+        Label label = iotaProvider.getLabelMaker().getLabel(iotaIndex+1);
+        if(label == null) {
+            return;
+        }
+        // HexGloop.logPrint("rendering label " + (iotaIndex+1) + ": " + label.toNbt().toString());
+        int labelDistToUse = (labelDist == null) ? (int)((outerRadius-innerRadius) / 2 + innerRadius) : labelDist;
+        int x = (int)(originX+offsetX+Math.cos(midAngle)*labelDistToUse);
+        int y = (int)(originY+offsetY+Math.sin(midAngle)*labelDistToUse);
+        label.render(matrices, x, y, 24, 24);
+    }
 
 }

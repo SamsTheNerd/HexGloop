@@ -9,8 +9,8 @@ architectury {
 }
 
 subprojects {
-    apply plugin: "dev.architectury.loom"
     apply plugin: "org.jetbrains.kotlin.jvm"
+    apply plugin: "dev.architectury.loom"
 
     loom {
         silentMojangMappingsLicense()

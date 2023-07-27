@@ -11,19 +11,12 @@ import net.minecraft.util.math.random.Random;
 
 /*
  * An interface that gives Iotas for the IotaWheelScreen. 
+ * 
+ * extends label provider so that all iotaproviders have label providers but we can still have other label providers
  */
-public interface IotaProvider{
-    public int getCount(); // total number of iotas
-
-    // so spellbook will have 8 per page
-    public int perPage();
-
-    public int currentSlot();
+public interface IotaProvider extends LabelProvider{
 
     public NbtCompound getIotaNBT(int index);
-
-    // moves you through the slots
-    public void toSlot(int index);
 
     public Random getRNG();
 
@@ -32,6 +25,4 @@ public interface IotaProvider{
     public default FrozenColorizer getColorizer(){
         return IXplatAbstractions.INSTANCE.getColorizer(MinecraftClient.getInstance().player);
     }
-
-    // want label-based stuff here - need to setup that class first though - also need to make sure that we keep server/client sidedness safe
 }

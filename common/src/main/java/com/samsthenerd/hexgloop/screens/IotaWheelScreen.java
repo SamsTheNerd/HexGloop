@@ -155,8 +155,11 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
             return closeWheel(true);
         }
         if(button == 1 && iotaProvider.getCount() > iotaProvider.perPage()){
-            changePage(getSectionIndexFromMouse((int)mouseX, (int)mouseY));
-            return true;
+            int sectionIndex = getSectionIndexFromMouse((int)mouseX, (int)mouseY);
+            if(sectionIndex >= 0 && sectionIndex < iotaProvider.perPage()){
+                changePage(sectionIndex);
+                return true;
+            }
         }
         return super.mouseClicked(mouseX, mouseY, button);
     }

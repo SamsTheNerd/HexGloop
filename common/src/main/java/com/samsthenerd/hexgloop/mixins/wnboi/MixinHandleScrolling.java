@@ -6,6 +6,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import com.samsthenerd.hexgloop.casting.orchard.IOrchard;
+import com.samsthenerd.hexgloop.items.ItemFidget;
 import com.samsthenerd.hexgloop.items.ItemMultiFocus;
 
 import at.petrak.hexcasting.common.items.ItemSpellbook;
@@ -29,6 +31,9 @@ public class MixinHandleScrolling {
             ItemStack stack = sender.getStackInHand(hand);
             if(stack.getItem() instanceof ItemMultiFocus){
                 handleMultiFocusScroll(sender, hand, stack, delta);
+            }
+            if(stack.getItem() instanceof ItemFidget){
+                handleFidgetScroll(sender, hand, stack, delta);
             }
         }
 	}
@@ -74,6 +79,34 @@ public class MixinHandleScrolling {
             }
         }
 
+        sender.sendMessage(component.formatted(Formatting.GRAY), true);
+    }
+
+    public void handleFidgetScroll(ServerPlayerEntity sender, Hand hand, ItemStack stack, double delta) {
+        if (invertSpellbook) {
+            delta = -delta;
+        }
+        
+        var newIdx = ItemFidget.rotatePageIdx(stack, delta < 0.0);
+
+        ((IOrchard)sender).setOrchardValue(newIdx);
+
+        ItemFidget fidgetItem = (ItemFidget) stack.getItem();
+
+        var len = fidgetItem.fidgetSettings.slots;
+
+        MutableText component;
+        if (hand == Hand.OFF_HAND && stack.hasCustomName()) {
+            component = Text.translatable("hexgloop.tooltip.fidget.page_with_name",
+                Text.literal(String.valueOf(newIdx)).formatted(Formatting.WHITE),
+                Text.literal(String.valueOf(len)).formatted(Formatting.WHITE),
+                Text.literal("").formatted(stack.getRarity().formatting, Formatting.ITALIC)
+                    .append(stack.getName()));
+        } else {
+            component = Text.translatable("hexgloop.tooltip.fidget.page",
+                Text.literal(String.valueOf(newIdx)).formatted(Formatting.WHITE),
+                Text.literal(String.valueOf(len)).formatted(Formatting.WHITE));
+        }
         sender.sendMessage(component.formatted(Formatting.GRAY), true);
     }
 }

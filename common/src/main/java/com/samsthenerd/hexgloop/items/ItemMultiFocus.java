@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.misc.wnboi.IotaProvider;
+import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker;
 import com.samsthenerd.hexgloop.screens.IotaWheelScreen;
 import com.samsthenerd.wnboi.interfaces.KeyboundItem;
 import com.samsthenerd.wnboi.screen.AbstractContextWheelScreen;
@@ -34,7 +35,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 // it's functionally just a restricted spellbook (that's not end locked)
-public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem{
+public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem, LabelyItem{
     public final static int MAX_FOCI_SLOTS = 6;
     public IotaWheelScreen screen = null;
     ItemStack multifocus = null;
@@ -144,8 +145,15 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
         HexItems.SPELLBOOK.appendTooltip(stack, level, tooltip, isAdvanced);
     }
 
+    @Nullable
+    public boolean putLabel(ItemStack stack, NbtCompound labelNbt){
+        int index = ItemSpellbook.getPage(stack, 0);
+        return putLabel(stack, index, labelNbt);
+    }
+
     public class MultiFocusIotaProvider implements IotaProvider{
-        ItemStack multifocus = null;
+        protected ItemStack multifocus = null;
+        protected LabelMaker labelMaker = null;
         public boolean mainHand = true;
         public static final Random RANDOM = Random.create();
 
@@ -154,11 +162,13 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
             super();
             if(_multifocus != null && _multifocus.getItem() instanceof ItemMultiFocus){
                 multifocus = _multifocus;
+                labelMaker = new LabelMaker(multifocus);
             }
         }
 
         public void updateItemStack(ItemStack newMulitFocus){
             multifocus = newMulitFocus;
+            labelMaker = new LabelMaker(multifocus);
         }
 
         @Override
@@ -175,6 +185,11 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
         @Override
         public int currentSlot(){
             return ItemSpellbook.getPage(multifocus, -1);
+        }
+
+        @Override
+        public LabelMaker getLabelMaker(){
+            return labelMaker;
         }
 
         @Override

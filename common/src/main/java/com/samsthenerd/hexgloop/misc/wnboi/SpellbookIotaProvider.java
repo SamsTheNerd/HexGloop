@@ -14,6 +14,7 @@ import net.minecraft.util.math.random.Random;
 
 public class SpellbookIotaProvider implements IotaProvider{
     ItemStack spellbook = null;
+    protected LabelMaker labelMaker = null;
     public boolean mainHand = true;
     public static final Random RANDOM = Random.create();
 
@@ -22,11 +23,13 @@ public class SpellbookIotaProvider implements IotaProvider{
         super();
         if(_spellbook != null && _spellbook.getItem() instanceof ItemSpellbook){
             spellbook = _spellbook;
+            labelMaker = new LabelMaker(spellbook);
         }
     }
 
     public void updateItemStack(ItemStack newSpellbook){
         spellbook = newSpellbook;
+        labelMaker = new LabelMaker(spellbook);
     }
 
     @Override
@@ -37,6 +40,11 @@ public class SpellbookIotaProvider implements IotaProvider{
     @Override
     public int perPage(){
         return 8;
+    }
+
+    @Override
+    public LabelMaker getLabelMaker(){
+        return labelMaker;
     }
 
     // -1 if empty

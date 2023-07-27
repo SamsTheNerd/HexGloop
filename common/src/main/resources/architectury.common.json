@@ -1,6 +1,7 @@
 {
     "injected_interfaces": {
       "at/petrak/hexcasting/common/items/ItemStaff": ["net/minecraft/item/DyeableItem"],
-      "net/minecraft/text/Style": ["com/samsthenerd/hexgloop/screens/PatternStyle"]
+      "net/minecraft/text/Style": ["com/samsthenerd/hexgloop/screens/PatternStyle"],
+      "net/minecraft/server/network/ServerPlayerEntity": ["com/samsthenerd/hexgloop/mixins/orchard/MixinServerPlayerOrchard"]
     }
   }

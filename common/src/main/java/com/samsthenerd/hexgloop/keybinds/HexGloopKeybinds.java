@@ -2,6 +2,7 @@ package com.samsthenerd.hexgloop.keybinds;
 
 import org.lwjgl.glfw.GLFW;
 
+import com.samsthenerd.hexgloop.items.ItemFidget;
 import com.samsthenerd.hexgloop.items.ItemMultiFocus;
 import com.samsthenerd.hexgloop.misc.CastingRingHelperClient;
 import com.samsthenerd.hexgloop.mixins.wnboi.MixinIsScrollableInvoker;
@@ -23,6 +24,8 @@ import net.minecraft.item.ItemStack;
 public class HexGloopKeybinds {
     public static final KeyBinding IOTA_WHEEL_KEYBIND = new KeyBinding("key.hexgloop.open_iota_wheel",
 			InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_V, "key.categories.hexgloop");
+    // public static final KeyBinding FIDGET_WHEEL_KEYBIND = new KeyBinding("key.hexgloop.open_fidget_wheel",
+	// 		InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_V, "key.categories.hexgloop");
     public static final KeyBinding CASTING_RING_KEY_BINDING = new KeyBinding("key.hexgloop.casting_ring",
     InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_G, "key.categories.hexgloop");
 
@@ -38,8 +41,9 @@ public class HexGloopKeybinds {
         KeybindUtils.registerKeybind(HEX_SCROLL_DOWN, (keyBinding, client) -> handleScrollKey(keyBinding, client, false));
     }
 
+    // not the best named anymore but it's just used here. technically catches fidgets too
     private static boolean isIotaWheelItem(Item item){
-        return item instanceof ItemSpellbook || item instanceof ItemMultiFocus;
+        return item instanceof ItemSpellbook || item instanceof ItemMultiFocus || item instanceof ItemFidget;
     }
 
     public static void handleIotaWheelItems(KeyBinding keyBinding, MinecraftClient client){

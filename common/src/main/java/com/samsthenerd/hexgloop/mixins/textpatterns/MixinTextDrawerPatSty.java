@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.samsthenerd.hexgloop.HexGloopClient;
 import com.samsthenerd.hexgloop.screens.PatternStyle;
 
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -54,8 +55,6 @@ public class MixinTextDrawerPatSty {
             HexPattern pattern = pStyle.getPattern();
             Pair<Float, List<Vec2f> > pair = RenderLib.getCenteredPattern(pattern, RENDER_SIZE, RENDER_SIZE, 16f);
             Float patScale = pair.getFirst();
-
-
             List<Vec2f> dots = pair.getSecond();
 
             float speed = 0;
@@ -162,8 +161,7 @@ public class MixinTextDrawerPatSty {
             // store what the tessellator was before
             Tessellator tessHold = Tessellator.getInstance();
             // make a new tessellator for our rendering functions to use
-            Tessellator newTess = new Tessellator();
-            MixinSetTessBuffer.setInstance(newTess);
+            MixinSetTessBuffer.setInstance(HexGloopClient.newTess);
 
             // VertexConsumer vc = vertexConsumers.getBuffer(RenderLayer.getText(new Identifier("")));
 
