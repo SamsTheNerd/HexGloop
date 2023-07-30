@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "IGF",
+        "I G",
+        "NII"
+    ],
+    "key": {
+        "F": {
+            "item": "hexcasting:focus"
+        },
+        "I":{
+            "item": "minecraft:iron_nugget"
+        },
+        "G":{
+            "item": "minecraft:gold_ingot"
+        },
+        "N":{
+            "item": "minecraft:netherite_ingot"
+        }
+    },
+    "result": {
+        "item": "hexgloop:focal_ring"
+    }
+}

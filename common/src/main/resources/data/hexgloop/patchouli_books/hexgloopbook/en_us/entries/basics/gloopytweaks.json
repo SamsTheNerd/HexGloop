@@ -1,0 +1,22 @@
+{
+    "name": "hexgloop.entry.gloopytweaks",
+    "icon": "hexcasting:dark_oak_staff{display: {color: 8439583}}",
+    "category": "hexcasting:basics",
+    "priority": false,
+    "sortnum": 1.5,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopytweaks.0"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopytweaks.1"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopytweaks.2"
+      }
+    ]
+  }

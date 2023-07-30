@@ -24,7 +24,7 @@ public class FidgetWheelScreen extends AbstractContextWheelScreen{
         numSections = labelProvider.perPage();  
         oldScreen = _oldScreen;
         this.settings = settings;
-        
+        this.tooltipTickDelay = 5;
     }
 
     public FidgetWheelScreen(LabelProvider labelProvider){

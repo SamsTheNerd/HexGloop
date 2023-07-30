@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+      {
+        "model": "hexgloop:item/focal_ring",
+        "predicate": {
+          "hexcasting:overlay_layer": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/focal_ring_filled",
+        "predicate": {
+          "hexcasting:overlay_layer": 0.5
+        }
+      },
+      {
+        "model": "hexgloop:item/focal_ring_sealed",
+        "predicate": {
+          "hexcasting:overlay_layer": 1.0
+        }
+      }
+    ],
+    "textures": {
+      "layer0": "hexgloop:item/focalring/empty"
+    }
+  }

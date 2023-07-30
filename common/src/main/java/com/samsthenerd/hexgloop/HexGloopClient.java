@@ -11,8 +11,11 @@ import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry;
+import at.petrak.hexcasting.api.item.IotaHolderItem;
 import at.petrak.hexcasting.api.misc.FrozenColorizer;
 import at.petrak.hexcasting.api.misc.MediaConstants;
+import at.petrak.hexcasting.api.utils.NBTHelper;
+import at.petrak.hexcasting.common.items.ItemFocus;
 import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.items.magic.ItemCreativeUnlocker;
 import at.petrak.hexcasting.common.lib.HexItems;
@@ -20,6 +23,7 @@ import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.item.UnclampedModelPredicateProvider;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
@@ -98,6 +102,15 @@ public class HexGloopClient {
             }
             return 0xFFFFFF; //white
         }, HexGloopItems.GLOOP_DYE_ITEM.get());
+
+        ItemConvertible[] NEW_FOCII = {HexGloopItems.FOCAL_PENDANT.get(), HexGloopItems.FOCAL_RING.get()};
+        
+        ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
+            if(tintIndex == 1){
+                return HexItems.FOCUS.getColor(stack);
+            }
+            return 0xFF_FFFFFF;
+        }, NEW_FOCII);
     }
 
     public static int tintsFromColorizer(FrozenColorizer colorizer, int tintIndex, int sections){
@@ -133,6 +146,19 @@ public class HexGloopClient {
                 return (HexGloopItems.CASTING_POTION_ITEM.get().hasHex(itemStack)) ? 1.0F : 0.0F;
             }
         );
+
+        UnclampedModelPredicateProvider focusModelProvider = (stack, level, holder, holderID) -> {
+            if (HexItems.FOCUS.readIotaTag(stack) == null && !NBTHelper.hasString(stack, IotaHolderItem.TAG_OVERRIDE_VISUALLY)) {
+                return 0;
+            }
+            if (stack.getNbt() != null && stack.getNbt().contains(ItemFocus.TAG_SEALED) && stack.getNbt().getBoolean(ItemFocus.TAG_SEALED)) {
+                return 1;
+            }
+            return 0.5f;
+        };
+
+        ItemPropertiesRegistry.register(HexGloopItems.FOCAL_PENDANT.get(), ItemFocus.OVERLAY_PRED, focusModelProvider);
+        ItemPropertiesRegistry.register(HexGloopItems.FOCAL_RING.get(), ItemFocus.OVERLAY_PRED, focusModelProvider);
     }
 
     public static DecimalFormat DUST_FORMAT = new DecimalFormat("###,###.##");

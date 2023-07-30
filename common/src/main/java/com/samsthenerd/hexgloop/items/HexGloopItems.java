@@ -11,6 +11,7 @@ import com.samsthenerd.wnboi.utils.RenderUtils;
 
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
+import at.petrak.hexcasting.common.items.ItemFocus;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -33,6 +34,11 @@ public class HexGloopItems {
         () -> new ItemCastingPotion(defaultSettings().maxCount(1)));
     public static final RegistrySupplier<ItemGloopDye> GLOOP_DYE_ITEM = item("gloop_dye", 
         () -> new ItemGloopDye(defaultSettings().maxCount(1)));
+
+    public static final RegistrySupplier<ItemFocus> FOCAL_PENDANT = item("focal_pendant",
+        () -> new ItemFocus(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemFocus> FOCAL_RING = item("focal_ring",
+        () -> new ItemFocus(defaultSettings().maxCount(1).fireproof()));
 
     // fidgets
 

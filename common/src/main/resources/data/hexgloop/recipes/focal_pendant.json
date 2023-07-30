@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "G G",
+        "DFD"
+    ],
+    "key": {
+        "F": {
+            "item": "hexcasting:focus"
+        },
+        "G":{
+            "item": "minecraft:gold_nugget"
+        },
+        "D":{
+            "item": "minecraft:diamond"
+        }
+    },
+    "result": {
+        "item": "hexgloop:focal_pendant"
+    }
+}

@@ -74,10 +74,10 @@ public class MixinPatternStyle implements PatternStyle{
     @Override
     public Style withPattern(HexPattern pattern, boolean withPatternHoverEvent, boolean withPatternClickEvent) {
         Style style = (Style)(Object)this;
+
         if (withPatternHoverEvent) {
             StringBuilder bob = new StringBuilder();
             bob.append(pattern.getStartDir());
-
             var sig = pattern.anglesSignature();
             if (!sig.isEmpty()) {
                 bob.append(" ");
@@ -89,6 +89,10 @@ public class MixinPatternStyle implements PatternStyle{
             scrollStack.setCustomName(hoverText);
             HexItems.SCROLL_LARGE.writeDatum(scrollStack, new PatternIota(pattern));
             style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_ITEM, new HoverEvent.ItemStackContent(scrollStack)));
+        }
+        if(withPatternClickEvent){
+            style = style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, "<" + 
+                pattern.getStartDir().toString().replace("_", "").toLowerCase() + "," + pattern.anglesSignature() + ">"));
         }
         return style.withParent(PatternStyle.fromPattern(pattern));
     }

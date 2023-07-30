@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.samsthenerd.hexgloop.HexGloopClient;
 import com.samsthenerd.hexgloop.mixins.textpatterns.MixinSetTessBuffer;
 
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -151,8 +152,7 @@ public class GloopyRenderUtils {
         // store what the tessellator was before
         Tessellator tessHold = Tessellator.getInstance();
         // make a new tessellator for our rendering functions to use
-        Tessellator newTess = new Tessellator();
-        MixinSetTessBuffer.setInstance(newTess);
+        MixinSetTessBuffer.setInstance(HexGloopClient.newTess);
 
         // VertexConsumer vc = vertexConsumers.getBuffer(RenderLayer.getText(new Identifier("")));
 

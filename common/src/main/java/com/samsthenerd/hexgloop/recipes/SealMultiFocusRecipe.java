@@ -1,10 +1,11 @@
 package com.samsthenerd.hexgloop.recipes;
 
-import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemMultiFocus;
 
+import at.petrak.hexcasting.common.items.ItemFocus;
 import at.petrak.hexcasting.common.items.ItemSpellbook;
+import at.petrak.hexcasting.common.lib.HexItems;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -20,29 +21,43 @@ public class SealMultiFocusRecipe extends SpecialCraftingRecipe{
     public static final SpecialRecipeSerializer<SealMultiFocusRecipe> SERIALIZER =
         new SpecialRecipeSerializer<SealMultiFocusRecipe>(SealMultiFocusRecipe::new);
 
+    public static final Item[] FOCUS_ITEMS = {HexGloopItems.MULTI_FOCUS_ITEM.get(), HexGloopItems.FOCAL_PENDANT.get(), HexGloopItems.FOCAL_RING.get()};
+
     public SealMultiFocusRecipe(Identifier id) {
         super(id);
     }
 
     @Override
     public boolean matches(CraftingInventory craftingInventory, World world) {
-        HexGloop.logPrint("trying match to seal multi focus");
         if(craftingInventory.count(Items.HONEYCOMB) == 0){
             return false;
         }
-        if(craftingInventory.count(HexGloopItems.MULTI_FOCUS_ITEM.get()) != 1)
-            return false;
 
-        HexGloop.logPrint("right number of items");
+        boolean foundOne = false;
+        Item foundItem = null;
+        for(int i = 0; i < FOCUS_ITEMS.length; i++){
+            if(craftingInventory.count(FOCUS_ITEMS[i]) == 1){
+                if(foundOne) return false;
+                foundOne = true;
+                foundItem = FOCUS_ITEMS[i];
+            }
+        }
+        if(!foundOne) return false;
+
         for(int s = 0; s < craftingInventory.size(); s++){
             ItemStack stack = craftingInventory.getStack(s);
-            if(stack.getItem() instanceof ItemMultiFocus){
-                if(!ItemSpellbook.isSealed(stack) && HexGloopItems.MULTI_FOCUS_ITEM.get().readIotaTag(stack) != null){
-                    return true;
+            if(stack.getItem() == foundItem){
+                if(foundItem instanceof ItemMultiFocus){
+                    if(!ItemSpellbook.isSealed(stack) && HexGloopItems.MULTI_FOCUS_ITEM.get().readIotaTag(stack) != null){
+                        return true;
+                    }
+                } else {
+                    if(!ItemFocus.isSealed(stack) && HexItems.FOCUS.readIotaTag(stack) != null){
+                        return true;
+                    }
                 }
             }
         }
-        HexGloop.logPrint("no unsealed multi focus");
         return false;
     }
 
@@ -54,6 +69,10 @@ public class SealMultiFocusRecipe extends SpecialCraftingRecipe{
             if(stack.getItem() instanceof ItemMultiFocus){
                 ItemStack returnStack = stack.copy();
                 ItemSpellbook.setSealed(returnStack, true);
+                return returnStack;
+            } else if(stack.getItem() instanceof ItemFocus){
+                ItemStack returnStack = stack.copy();
+                returnStack.getNbt().putBoolean(ItemFocus.TAG_SEALED, true);
                 return returnStack;
             }
         }

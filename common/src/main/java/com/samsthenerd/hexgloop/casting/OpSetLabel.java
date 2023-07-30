@@ -42,7 +42,9 @@ public class OpSetLabel implements SpellAction{
     public boolean getAlwaysProcessGreatSpell(){ return false;}
 
     @Override
-    public Text getDisplayName(){ return Text.translatable("hexgloop.spellaction.set_label");}
+    public Text getDisplayName(){ 
+        return DefaultImpls.getDisplayName(this);
+    }
 
     @Override
     public Triple<RenderedSpell, Integer, List<ParticleSpray>> execute(List<? extends Iota> args, CastingContext context){

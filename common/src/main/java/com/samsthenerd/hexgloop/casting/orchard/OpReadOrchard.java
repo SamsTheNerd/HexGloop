@@ -39,7 +39,9 @@ public class OpReadOrchard implements ConstMediaAction{
     public boolean getAlwaysProcessGreatSpell(){ return false;}
 
     @Override
-    public Text getDisplayName(){ return Text.translatable("hexgloop.spellaction.read_orchard");}
+    public Text getDisplayName(){ 
+        return DefaultImpls.getDisplayName(this);
+    }
 
     @Override
     public List<Iota> execute(List<? extends Iota> args, CastingContext context){

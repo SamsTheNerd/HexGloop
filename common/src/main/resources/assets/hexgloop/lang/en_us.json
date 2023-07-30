@@ -3,6 +3,10 @@
     "item.hexgloop.gloop": "Gloop",
     "item.hexgloop.multi_focus": "Multi Focus",
     "item.hexgloop.casting_ring": "Casting Ring",
+    "item.hexgloop.focal_ring": "Focal Ring",
+    "item.hexgloop.focal_ring.sealed": "Sealed Focal Ring",
+    "item.hexgloop.focal_pendant": "Focal Pendant",
+    "item.hexgloop.focal_pendant.sealed": "Sealed Focal Pendant",
     "item.hexgloop.casting_potion": "Potion of Casting",
     "item.hexgloop.gloop_dye": "Gloop Dye",
 
@@ -24,8 +28,39 @@
     "hexgloop.tooltip.fidget.page": "Selected Slot %d/%d",
     "hexgloop.tooltip.fidget.page_with_name": "Selected Slot %d/%d (\"%s\")",
 
-    "hexgloop.craft/potion": "Craft Potion",
-    "hexgloop.set_label": "Dymo's Gambit",
-    "hexgloop.read_orchard": "Orchard's Reflection",
-    "hexgloop.read_orchard_list": "Orchard's Reflection II"
+    "hexcasting.spell.hexgloop:craft/potion": "Craft Potion",
+    "hexcasting.spell.hexgloop:set_label": "Dymo's Gambit",
+    "hexcasting.spell.hexgloop:read_orchard": "Orchard's Reflection",
+    "hexcasting.spell.hexgloop:read_orchard_list": "Orchard's Reflection II",
+
+    "hexcasting.spell.hexgloop:read_pendant": "Memento's Reflection",
+    "hexcasting.spell.hexgloop:write_pendant": "Memento's Gambit",
+    "hexcasting.spell.hexgloop:check_read_pendant": "Cherishing Reflection",
+    "hexcasting.spell.hexgloop:check_write_pendant": "Nostalgic Reflection",
+
+    "hexcasting.spell.hexgloop:read_ring": "Anularis Reflection",
+    "hexcasting.spell.hexgloop:write_ring": "Anularis Gambit",
+
+    "hexcasting.spell.hexgloop:read_right_ring": "Rival's Reflection",
+    "hexcasting.spell.hexgloop:write_right_ring": "Rival's Gambit",
+
+    "hexcasting.spell.hexgloop:read_left_ring": "Lover's Reflection",
+    "hexcasting.spell.hexgloop:write_left_ring": "Lover's Gambit",
+
+    "hexcasting.spell.hexgloop:check_read_ring": "Authenicator's Reflection",
+    "hexcasting.spell.hexgloop:check_write_ring": "Jeweler's Reflection",
+
+    "hexcasting.mishap.bad_item.slot": "%s needs %s in the %s but got %dx %s",
+    "hexcasting.mishap.no_item.slot": "%s needs %s in the %s but got nothing",
+
+    "hexgloop.slotname.necklace": "necklace slot",
+    "hexgloop.slotname.offhandring": "ring slot",
+    "hexgloop.slotname.mainhandring": "ring slot",
+
+    "hexgloop.entry.gloopytweaks": "Glooptastic Changes",
+    "hexgloop.page.gloopytweaks.0": "I have noticed some absolutely glooptastic changes in the world recently.<br2>For one, it's much easier to visualize patterns. I can even hear something like \"\\<southeast,deaqq>\" and visualize it perfectly as $(m)$(0)<southeast,deaqq>$(). Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.",
+    "hexgloop.page.gloopytweaks.1": "I've also been finding it easier to flip through my notes. Pressing $(k:key.hexgloop.open_iota_wheel) allows me to visualize my spellbook, and I can flip through it quickly with $(l)$(k:key.hexgloop.scroll_down)$() and $(l)$(k:key.hexgloop.scroll_up)$().$(br2)By far the strangest change is that my hexes $(o)feel$() different, almost like they're vibrating through my bones. Perhaps a sensitive enough scanner could pick up on this?",
+    "hexgloop.page.gloopytweaks.2": "I've also discovered that I can apply dye to my staffs if I want to make them more colorful",
+    "hexgloop.page.casting_ring.0": "I do love my staff, but occasionally I find myself needing a lighter casting instrument.$(br2)The casting ring, when equipped, let's me open up a staff free casting grid by pressing $(l)$(k:key.hexgloop.casting_ring)$(). I find my grid reduced without the reach of my staff, but still, this may be a worthwhile trade-off.",
+    "hexgloop.page.casting_ring.1": "I've noticed that my hexes prefer to use items in my offhand, perhaps this will be useful with both of my hands free?"
 }
