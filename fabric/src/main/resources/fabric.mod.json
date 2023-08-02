@@ -15,7 +15,7 @@
   },
 
   "license": "lgpl-3",
-  "icon": "assets/DuckyPeriphsIconLarge.png",
+  "icon": "GloopIcon.png",
 
   "environment": "*",
   "entrypoints": {

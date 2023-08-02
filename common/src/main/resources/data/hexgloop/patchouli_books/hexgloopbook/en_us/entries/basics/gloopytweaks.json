@@ -1,6 +1,6 @@
 {
     "name": "hexgloop.entry.gloopytweaks",
-    "icon": "hexcasting:dark_oak_staff{display: {color: 8439583}}",
+    "icon": "hexcasting:dark_oak_staff{display:{color:8439583}}",
     "category": "hexcasting:basics",
     "priority": false,
     "sortnum": 1.5,

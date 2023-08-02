@@ -57,10 +57,70 @@
     "hexgloop.slotname.offhandring": "ring slot",
     "hexgloop.slotname.mainhandring": "ring slot",
 
+
+
     "hexgloop.entry.gloopytweaks": "Glooptastic Changes",
-    "hexgloop.page.gloopytweaks.0": "I have noticed some absolutely glooptastic changes in the world recently.<br2>For one, it's much easier to visualize patterns. I can even hear something like \"\\<southeast,deaqq>\" and visualize it perfectly as $(m)$(0)<southeast,deaqq>$(). Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.",
+    "hexgloop.page.gloopytweaks.0": "I have noticed some absolutely glooptastic changes in the world recently.$(br2)For one, it's much easier to visualize patterns. I can even hear something like \"\\<southeast,deaqq>\" and visualize it perfectly as $(m)$(0)<southeast,deaqq>$(). Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.",
     "hexgloop.page.gloopytweaks.1": "I've also been finding it easier to flip through my notes. Pressing $(k:key.hexgloop.open_iota_wheel) allows me to visualize my spellbook, and I can flip through it quickly with $(l)$(k:key.hexgloop.scroll_down)$() and $(l)$(k:key.hexgloop.scroll_up)$().$(br2)By far the strangest change is that my hexes $(o)feel$() different, almost like they're vibrating through my bones. Perhaps a sensitive enough scanner could pick up on this?",
     "hexgloop.page.gloopytweaks.2": "I've also discovered that I can apply dye to my staffs if I want to make them more colorful",
+
+    "hexgloop.entry.casting_ring": "Casting Ring",
     "hexgloop.page.casting_ring.0": "I do love my staff, but occasionally I find myself needing a lighter casting instrument.$(br2)The casting ring, when equipped, let's me open up a staff free casting grid by pressing $(l)$(k:key.hexgloop.casting_ring)$(). I find my grid reduced without the reach of my staff, but still, this may be a worthwhile trade-off.",
-    "hexgloop.page.casting_ring.1": "I've noticed that my hexes prefer to use items in my offhand, perhaps this will be useful with both of my hands free?"
+    "hexgloop.page.casting_ring.1": "I've noticed that my hexes prefer to use items in my offhand, perhaps this will be useful with both of my hands free?",
+
+    "hexgloop.entry.casting_potion": "Casting Potion",
+    "hexgloop.page.casting_potion.0": "I've found that brewing $(l:items/amethyst#dust)amethyst dust$(/l) (or any $(l:items/pigments)pigment$(/l)) into a thick potion will give me a potion that is able to channel media into casting hexes.$(br2)I can craft the potion using the $(l:hexgloop:patterns/craft_potion)Craft Potion$(/l) spell.",
+
+    "hexgloop.entry.fidgets": "Fidgets",
+    "hexgloop.page.fidgets.0": "I've happened upon the most joyous of devices !$(br2)These devices, which I've been calling fidgets, help me channel my thoughts into a form detectable in my hexes. I can interact with them in much the same way as I would with a spellbook, minus the iota storage of course. For accessing these thoughts, see the section on $(l:hexgloop:patterns/minds_orchard)Mind's Orchard$(/l)",
+    "hexgloop.page.fidgets.pen": "A simple device that only toggles between two states. It has a nice clicky noise though.",
+    "hexgloop.page.fidgets.amogus": "At first I was suspicious of this item, but I have now ejected all of my concerns. This whimsical device makes the most delightful popping noises, and lets me channel my thoughts through 6 states.",
+
+    "hexgloop.entry.trinket_focus": "Trinkety Foci",
+    "hexgloop.page.trinket_focus.0": "I have been overcome by a strong desire to accessorize. These trinkets act just like normal foci but I can wear them and use the $(l:hexgloop:patterns/trinket_focus_patterns)Trinkety Focus Patterns$(/l)$(br2)$(o)[Gloopy Dev Note: you need trinkets on fabric or curios on forge to wear these. You can still use them as foci otherwise though]$()",
+    "hexgloop.page.trinket_focus.pendant": "A fashionable pendant, good for iotas you want to keep close to your heart.",
+    "hexgloop.page.trinket_focus.ring": "A ring forged from the strongest nether metals. For the most important iotas.",
+
+    "hexgloop.entry.gloop": "Gloop !",
+    "hexgloop.page.gloop.0": "This is glooptastic ! My calculations suggest that under the right conditions, slime and media may form together into a highly reactive and adaptive material.$(br2)It'll require a way to energize the reactants and some mechanism to prompt the reaction. I've drafted my schematics for such a device on the following page.",
+    "hexgloop.page.gloop.1": "My research suggests that 3 $(item)slime balls$(), 3 $(item)charged amethyst$(), and 1 $(item)amethyst shard$() should react to form some gloop.$(br2)The adaptive nature of this gloop leads me to believe there may be other forms out there to be discovered...",
+    "hexgloop.page.gloop.energizer": "This machine should be strong enough to channel the media through nearby water and into my reactants. I can use a device such as a hopper to feed media in. It should consume about 1 dust per second while active and draw 10 dust for a reaction.$(br2)Now I just need a way to trigger the reaction.. perhaps I can look to nature for guidance ?",
+
+    "hexgloop.entry.multi_focus": "Multi Focus",
+    "hexgloop.page.multi_focus.0": "I can feel the gloop pulling at my mind, maybe I can pull back?$(br2)A gloop constructed multi focus should let me hold multiple iotas in a single item and access them quickly with $(l)$(k:key.hexgloop.open_iota_wheel)$(), sort of like a smaller spellbook. For more organizational techniques I should check my notes on $(l:hexgloop:patterns/labels)labels$(/l)",
+    "hexgloop.page.multi_focus.1": "$(o)I can almost hear it purring..$()",
+
+    "hexgloop.entry.gloop_dye": "Gloop Dye",
+    "hexgloop.page.gloop_dye.0": "I've found that mixing my own dye colors is quite tedious and it would be nice to have something more precise.$(br2)With this gloop dye I should be able to pick any color I'd like for using with items like leather armor or my staffs. I can pick the color by using $(l:patterns/readwrite#hexcasting:write)Scribe's Gambit$(/l) to write a vector holding rgb values between 0-255.$(br2)Using the dye will cost media, but I can recharge it like I would a trinket.",
+    "hexgloop.page.gloop_dye.1": "$(o)so many colors!$()",
+
+    "hexgloop.entry.labels": "Labels",
+    "hexgloop.page.labels.0": "Although my current system lets me flip through my notes quickly, it would be nice to have a way to label them.$(br2)This system should let me label my pages using iotas. I've recorded all the label types that I've found here:$(br)$(li)double$(li)patterns$(li)item entities$(li)entities$(li)null (to clear it)",
+    "hexgloop.page.labels.1": "Assigns a label based on the given iota to the currently selected slot of a labelable item in my offhand.",
+
+    "hexgloop.entry.minds_orchard": "Mind's Orchard",
+    "hexgloop.page.minds_orchard.0": "I've found that if I can hold a concrete enough idea in my mind then I can use these patterns to pick it into my hexes. Something like a $(l:hexgloop:items/fidgets)fidget$(/l) should help me channel my thoughts.$(br2)The value stored in my orchard will always be a list with atleast one number. I haven't yet found a way to store multiple numbers in this list though..",
+    "hexgloop.page.minds_orchard.1": "Picks a number from my mind's orchard representing the index of my thought.",
+    "hexgloop.page.minds_orchard.2": "Picks values from my orchard as a list.",
+
+    "hexgloop.entry.trinket_focus_patterns": "Trinkety Foci Patterns",
+    "hexgloop.page.trinket_focus_patterns.0": "These patterns are useful for interacting with $(l:hexgloop:items/trinket_focus)Trinkety Foci$(/l). Generally they behave very similarly to the other reading and writing patterns.",
+    "hexgloop.page.trinket_focus_patterns.read_pendant": "Copy the iota stored in a pendant I'm wearing and add it to the stack",
+    "hexgloop.page.trinket_focus_patterns.write_pendant": "Remove the top iota from the stack, and save it into the pendant I'm wearing",
+    "hexgloop.page.trinket_focus_patterns.check_read_pendant": "If the pendant I'm wearing holds an iota I can read, returns True. Otherwise, returns False.",
+    "hexgloop.page.trinket_focus_patterns.check_write_pendant": "If I could save an iota into the pendant I'm wearing, returns True. Otherwise, returns False.",
+
+    "hexgloop.page.trinket_focus_patterns.read_ring": "Copy the iota stored in a ring I'm wearing and add it to the stack. If I'm wearing multiple rings this will prefer the one on the hand opposite the one I'm casting with.",
+    "hexgloop.page.trinket_focus_patterns.write_ring": "Remove the top iota from the stack, and save it into the ring I'm wearing. If I'm wearing multiple rings this will prefer the one on the hand opposite the one I'm casting with.",
+    "hexgloop.page.trinket_focus_patterns.read_left_ring": "Copy the iota stored in a ring I'm wearing and add it to the stack. If I'm wearing multiple rings this will prefer the one on my off hand.",
+    "hexgloop.page.trinket_focus_patterns.write_left_ring": "Remove the top iota from the stack, and save it into the ring I'm wearing. If I'm wearing multiple rings this will prefer the one on my off hand.",
+    "hexgloop.page.trinket_focus_patterns.read_right_ring": "Copy the iota stored in a ring I'm wearing and add it to the stack. If I'm wearing multiple rings this will prefer the one on my main hand.",
+    "hexgloop.page.trinket_focus_patterns.write_right_ring": "Remove the top iota from the stack, and save it into the ring I'm wearing. If I'm wearing multiple rings this will prefer the one on my main hand.",
+
+    "hexgloop.page.trinket_focus_patterns.check_read_ring": "If a ring I'm wearing holds an iota I can read, returns True. Otherwise, returns False.",
+    "hexgloop.page.trinket_focus_patterns.check_write_ring": "If I could save an iota into a ring I'm wearing, returns True. Otherwise, returns False.",
+
+    "hexgloop.entry.craft_potion": "Craft Casting Potion",
+    "hexgloop.page.craft_potion.0": "Crafts a $(l:hexgloop:items/casting_potion)Casting Potion$(/l). Costs about 1 shard."
+
 }

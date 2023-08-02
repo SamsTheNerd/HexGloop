@@ -1,0 +1,13 @@
+{
+    "name": "hexgloop.entry.casting_potion",
+    "icon": "hexgloop:casting_potion",
+    "category": "hexcasting:items",
+    "sortnum": 9,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.casting_potion.0"
+      }
+    ]
+  }

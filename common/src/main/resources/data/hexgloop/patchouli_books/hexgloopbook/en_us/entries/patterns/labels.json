@@ -1,0 +1,22 @@
+{
+    "name": "hexgloop.entry.labels",
+    "category": "hexcasting:patterns",
+    "icon": "minecraft:name_tag",
+    "sortnum": 7,
+    "advancement": "hexcasting:root",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "hexgloop.page.labels.0"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:set_label",
+            "anchor": "hexgloop:set_label",
+            "input": "labely",
+            "output": "",
+            "text": "hexgloop.page.labels.1"
+        }
+    ]
+}

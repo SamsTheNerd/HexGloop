@@ -1,0 +1,110 @@
+{
+    "name": "hexgloop.entry.trinket_focus_patterns",
+    "category": "hexcasting:patterns",
+    "icon": "hexgloop:focal_pendant",
+    "sortnum": 7,
+    "advancement": "hexcasting:root",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "hexgloop.page.trinket_focus_patterns.0"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:read_pendant",
+            "anchor": "hexgloop:read_pendant",
+            "input": "",
+            "output": "any",
+            "text": "hexgloop.page.trinket_focus_patterns.read_pendant"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:write_pendant",
+            "anchor": "hexgloop:write_pendant",
+            "input": "any",
+            "output": "",
+            "text": "hexgloop.page.trinket_focus_patterns.write_pendant"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:check_read_pendant",
+            "anchor": "hexgloop:check_read_pendant",
+            "input": "",
+            "output": "boolean",
+            "text": "hexgloop.page.trinket_focus_patterns.check_read_pendant"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:check_write_pendant",
+            "anchor": "hexgloop:check_write_pendant",
+            "input": "",
+            "output": "boolean",
+            "text": "hexgloop.page.trinket_focus_patterns.check_write_pendant"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:read_ring",
+            "anchor": "hexgloop:read_ring",
+            "input": "",
+            "output": "any",
+            "text": "hexgloop.page.trinket_focus_patterns.read_ring"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:write_ring",
+            "anchor": "hexgloop:write_ring",
+            "input": "any",
+            "output": "",
+            "text": "hexgloop.page.trinket_focus_patterns.write_ring"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:read_left_ring",
+            "anchor": "hexgloop:read_left_ring",
+            "input": "",
+            "output": "any",
+            "text": "hexgloop.page.trinket_focus_patterns.read_left_ring"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:write_left_ring",
+            "anchor": "hexgloop:write_left_ring",
+            "input": "any",
+            "output": "",
+            "text": "hexgloop.page.trinket_focus_patterns.write_left_ring"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:read_right_ring",
+            "anchor": "hexgloop:read_right_ring",
+            "input": "",
+            "output": "any",
+            "text": "hexgloop.page.trinket_focus_patterns.read_right_ring"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:write_left_ring",
+            "anchor": "hexgloop:write_left_ring",
+            "input": "any",
+            "output": "",
+            "text": "hexgloop.page.trinket_focus_patterns.write_right_ring"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:check_read_ring",
+            "anchor": "hexgloop:check_read_ring",
+            "input": "",
+            "output": "any",
+            "text": "hexgloop.page.trinket_focus_patterns.check_read_ring"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:check_write_ring",
+            "anchor": "hexgloop:check_write_ring",
+            "input": "any",
+            "output": "",
+            "text": "hexgloop.page.trinket_focus_patterns.check_write_ring"
+        }
+    ]
+}

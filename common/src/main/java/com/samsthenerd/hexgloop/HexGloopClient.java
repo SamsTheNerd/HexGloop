@@ -49,7 +49,6 @@ public class HexGloopClient {
         HexGloopKeybinds.registerKeybinds();
 
         newTess = new Tessellator();
-
     }
 
     private static void registerColorProviders(){

@@ -87,7 +87,7 @@ public class BlockEntityGloopEnergizer extends BlockEntity implements Inventory{
             Set<BlockPos> adjWater = BlockGloopEnergizer.getAdjacentWater(world, pos);
             numConnectedBlocks = adjWater.size();
             if(!adjWater.isEmpty()){
-                double decAmt = MediaConstants.DUST_UNIT * Math.sqrt(adjWater.size()) / 20.0;
+                double decAmt = MediaConstants.DUST_UNIT / 20.0;
                 this.media = (int) Math.max(((double)this.media) - decAmt, 0);
                 for(BlockPos waterPos : adjWater){
                     if(rand.nextDouble() > PARTICLE_SPAWN_CHANCE) continue;

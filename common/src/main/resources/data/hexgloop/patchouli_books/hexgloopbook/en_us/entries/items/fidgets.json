@@ -1,0 +1,25 @@
+{
+    "name": "hexgloop.entry.fidgets",
+    "icon": "hexgloop:rainbow_amogus_fidget",
+    "category": "hexcasting:items",
+    "sortnum": 9,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.fidgets.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:pen_fidget",
+        "text": "hexgloop.page.fidgets.pen",
+        "anchor":"pen"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:amogus_fidget",
+        "text": "hexgloop.page.fidgets.amogus",
+        "anchor":"amogus"
+      }
+    ]
+  }

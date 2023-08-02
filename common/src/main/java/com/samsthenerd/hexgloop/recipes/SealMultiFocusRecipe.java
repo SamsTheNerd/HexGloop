@@ -1,5 +1,6 @@
 package com.samsthenerd.hexgloop.recipes;
 
+import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemMultiFocus;
 
@@ -21,8 +22,6 @@ public class SealMultiFocusRecipe extends SpecialCraftingRecipe{
     public static final SpecialRecipeSerializer<SealMultiFocusRecipe> SERIALIZER =
         new SpecialRecipeSerializer<SealMultiFocusRecipe>(SealMultiFocusRecipe::new);
 
-    public static final Item[] FOCUS_ITEMS = {HexGloopItems.MULTI_FOCUS_ITEM.get(), HexGloopItems.FOCAL_PENDANT.get(), HexGloopItems.FOCAL_RING.get()};
-
     public SealMultiFocusRecipe(Identifier id) {
         super(id);
     }
@@ -35,11 +34,11 @@ public class SealMultiFocusRecipe extends SpecialCraftingRecipe{
 
         boolean foundOne = false;
         Item foundItem = null;
-        for(int i = 0; i < FOCUS_ITEMS.length; i++){
-            if(craftingInventory.count(FOCUS_ITEMS[i]) == 1){
+        for(int i = 0; i < HexGloop.FOCUS_ITEMS.size(); i++){
+            if(craftingInventory.count(HexGloop.FOCUS_ITEMS.get(i).get()) == 1){
                 if(foundOne) return false;
                 foundOne = true;
-                foundItem = FOCUS_ITEMS[i];
+                foundItem = HexGloop.FOCUS_ITEMS.get(i).get();
             }
         }
         if(!foundOne) return false;

@@ -23,8 +23,6 @@ public class HexGloopRecipes {
         GloopingRecipes.init();
     }
 
-    
-
     public static <S extends RecipeSerializer<T>, T extends Recipe<?>> RegistrySupplier<S> register(String id, S serializer) {
         return recipeSerializers.register(new Identifier(HexGloop.MOD_ID, id), () -> serializer);
     }

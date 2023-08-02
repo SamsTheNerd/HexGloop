@@ -1,0 +1,30 @@
+{
+    "name": "hexgloop.entry.minds_orchard",
+    "category": "hexcasting:patterns",
+    "icon": "minecraft:apple",
+    "sortnum": 7,
+    "advancement": "hexcasting:root",
+    "read_by_default": true,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "hexgloop.page.minds_orchard.0"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:read_orchard",
+            "anchor": "hexgloop:read_orchard",
+            "input": "",
+            "output": "num",
+            "text": "hexgloop.page.minds_orchard.1"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:read_orchard_list",
+            "anchor": "hexgloop:read_orchard_list",
+            "input": "",
+            "output": "list",
+            "text": "hexgloop.page.minds_orchard.2"
+        }
+    ]
+}

@@ -37,6 +37,7 @@ public class HexGloopForge {
     private void onClientSetup(FMLClientSetupEvent event) { 
         HexGloopClient.onInitializeClient();
         // event.enqueueWork(() -> {
+        //     HexGloopClient.enqueuedInitClient();
         // });
     }
 }

@@ -2,6 +2,7 @@ package com.samsthenerd.hexgloop.recipes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 
@@ -20,11 +21,11 @@ public class GloopingRecipes {
 
     // register recipes here - sort it by priority if you add them anywhere else
     public static void init(){
-        RECIPES.add(new SimpleGloopingRecipe(List.of(
+        RECIPES.add(new SimpleGloopingRecipe(() -> List.of(
             new Pair<>(3, Items.SLIME_BALL),
             new Pair<>(1, Items.AMETHYST_SHARD),
             new Pair<>(3, HexItems.CHARGED_AMETHYST)
-            ), HexGloopItems.GLOOP_ITEM.get().getDefaultStack(), 5));
+            ), () -> HexGloopItems.GLOOP_ITEM.get().getDefaultStack(), 5));
         
         RECIPES.sort((a, b) -> a.getPriority() - b.getPriority());
     }
@@ -50,9 +51,9 @@ public class GloopingRecipes {
         public int getPriority();
     }
 
-    public record SimpleGloopingRecipe(List<Pair<Integer, Item>> ingredients, ItemStack output, int priority) implements GloopingRecipe{
+    public record SimpleGloopingRecipe(Supplier<List<Pair<Integer, Item>>> ingredients, Supplier<ItemStack> output, int priority) implements GloopingRecipe{
         public boolean matches(List<Entity> inputs) {
-            List<Pair<Integer, Item>> remainingIngredients = new ArrayList<>(ingredients);
+            List<Pair<Integer, Item>> remainingIngredients = new ArrayList<>(ingredients.get());
             for(Entity ent : inputs){
                 if(ent instanceof ItemEntity itemEnt){
                     ItemStack stack = itemEnt.getStack();
@@ -79,7 +80,7 @@ public class GloopingRecipes {
 
         // consumes the earlier items in the input list first
         public ItemStack craft(List<Entity> inputs, boolean forRealzies){
-            List<Pair<Integer, Item>> remainingIngredients = new ArrayList<>(ingredients);
+            List<Pair<Integer, Item>> remainingIngredients = new ArrayList<>(ingredients.get());
             for(Entity ent : inputs){
                 if(ent instanceof ItemEntity itemEnt){
                     ItemStack stack = itemEnt.getStack();
@@ -100,16 +101,16 @@ public class GloopingRecipes {
                                     itemEnt.discard();
                             }
                             if(remainingIngredients.isEmpty())
-                                return output.copy();
+                                return output.get().copy();
                         }
                     }
                 }
             }
-            return output.copy();
+            return output.get().copy();
         }
 
         public ItemStack getOutput(){
-            return output.copy();
+            return output.get().copy();
         }
 
         public int getPriority(){

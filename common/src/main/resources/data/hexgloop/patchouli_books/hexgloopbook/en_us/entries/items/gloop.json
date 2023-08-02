@@ -1,0 +1,22 @@
+{
+    "name": "hexgloop.entry.gloop",
+    "icon": "hexgloop:gloop",
+    "category": "hexcasting:items",
+    "sortnum": 9,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloop.0"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloop.1"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:gloop_energizer",
+        "text": "hexgloop.page.gloop.energizer"
+      }
+    ]
+}

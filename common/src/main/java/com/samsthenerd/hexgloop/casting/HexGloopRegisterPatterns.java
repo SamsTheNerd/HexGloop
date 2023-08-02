@@ -27,7 +27,7 @@ public class HexGloopRegisterPatterns {
         try{
             PatternRegistry.mapPattern(HexPattern.fromAngles("wawwedewwqqq", HexDir.EAST), 
                 new Identifier(HexGloop.MOD_ID, "craft/potion"),
-                new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.CRYSTAL_UNIT));
+                new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.SHARD_UNIT));
             // qwawqwadawqwqwqwqwqw <- simpler sign write with hexagon
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwedwewdweqawqwqwqwqwqw", HexDir.SOUTH_WEST),
                 new Identifier(HexGloop.MOD_ID, "set_label"),

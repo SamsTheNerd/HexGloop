@@ -1,0 +1,23 @@
+{
+    "name": "hexgloop.entry.trinket_focus",
+    "icon": "hexgloop:focal_ring",
+    "category": "hexcasting:items",
+    "sortnum": 9,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.trinket_focus.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:focal_pendant",
+        "text": "hexgloop.page.trinket_focus.pendant"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:focal_ring",
+        "text": "hexgloop.page.trinket_focus.ring"
+      }
+    ]
+  }

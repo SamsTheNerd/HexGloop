@@ -1,5 +1,6 @@
 package com.samsthenerd.hexgloop;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import org.slf4j.Logger;
@@ -18,6 +19,8 @@ import com.samsthenerd.hexgloop.recipes.HexGloopRecipes;
 import com.samsthenerd.hexgloop.utils.StringsToDirMap;
 
 import dev.architectury.registry.registries.Registries;
+import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.item.Item;
 
 public class HexGloop {
     public static final String MOD_ID = "hexgloop";
@@ -31,6 +34,8 @@ public class HexGloop {
 		LOGGER.info(message);
 	}
 
+    public static List<RegistrySupplier<? extends Item>> FOCUS_ITEMS = List.of(HexGloopItems.MULTI_FOCUS_ITEM, 
+        HexGloopItems.FOCAL_PENDANT, HexGloopItems.FOCAL_RING);
 
     public static void onInitialize() {
         HexGloopBlocks.register();
