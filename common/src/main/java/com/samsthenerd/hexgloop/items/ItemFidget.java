@@ -99,6 +99,7 @@ public class ItemFidget extends Item implements LabelyItem, KeyboundItem{
     }
 
     @Override
+    @Environment(EnvType.CLIENT)
     public KeyBinding getKeyBinding(){
         return HexGloopKeybinds.IOTA_WHEEL_KEYBIND;
     }
@@ -106,6 +107,7 @@ public class ItemFidget extends Item implements LabelyItem, KeyboundItem{
     @Environment(EnvType.CLIENT)
     public static FidgetWheelScreen screen = null;
 
+    @Environment(EnvType.CLIENT)
     public AbstractContextWheelScreen getScreen(){
         Pair<ItemStack, Boolean> handItemResult = getHandItem();
         if(screen == null){
@@ -159,6 +161,7 @@ public class ItemFidget extends Item implements LabelyItem, KeyboundItem{
         return idx;
     }
 
+    @Environment(EnvType.CLIENT)
     public Pair<ItemStack, Boolean> getHandItem(){
         ItemStack mainStack = MinecraftClient.getInstance().player.getMainHandStack();
         if(mainStack.getItem() instanceof ItemFidget){
