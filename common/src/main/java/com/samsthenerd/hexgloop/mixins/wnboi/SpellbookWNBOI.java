@@ -10,6 +10,8 @@ import com.samsthenerd.wnboi.interfaces.KeyboundItem;
 import com.samsthenerd.wnboi.screen.AbstractContextWheelScreen;
 
 import at.petrak.hexcasting.common.items.ItemSpellbook;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.option.KeyBinding;
@@ -19,10 +21,13 @@ import net.minecraft.util.Pair;
 @Mixin(ItemSpellbook.class)
 public class SpellbookWNBOI implements KeyboundItem, SpellbookScreenInterface{
     @Override
+    @Environment(EnvType.CLIENT)
     public KeyBinding getKeyBinding(){
         return HexGloopKeybinds.IOTA_WHEEL_KEYBIND;
     }
 
+
+    @Environment(EnvType.CLIENT)
     public IotaWheelScreen screen = null;
 
     @Override
@@ -32,6 +37,7 @@ public class SpellbookWNBOI implements KeyboundItem, SpellbookScreenInterface{
 
     ItemStack spellbook = null;
 
+    @Environment(EnvType.CLIENT)
     @Override
     public AbstractContextWheelScreen getScreen(){
         Pair<ItemStack, Boolean> spellbookResult = getSpellbook();
@@ -46,6 +52,7 @@ public class SpellbookWNBOI implements KeyboundItem, SpellbookScreenInterface{
         return screen;
     }
 
+    @Environment(EnvType.CLIENT)
     public Pair<ItemStack, Boolean> getSpellbook(){
         ItemStack mainStack = MinecraftClient.getInstance().player.getMainHandStack();
         if(mainStack.getItem() instanceof ItemSpellbook){

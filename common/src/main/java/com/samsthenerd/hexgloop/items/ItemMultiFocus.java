@@ -19,6 +19,8 @@ import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.network.MsgShiftScrollSyn;
 import at.petrak.hexcasting.xplat.IClientXplatAbstractions;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
@@ -37,10 +39,14 @@ import net.minecraft.world.World;
 // it's functionally just a restricted spellbook (that's not end locked)
 public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem, LabelyItem{
     public final static int MAX_FOCI_SLOTS = 6;
+
+    @Environment(EnvType.CLIENT)
     public IotaWheelScreen screen = null;
+
     ItemStack multifocus = null;
 
     @Override
+    @Environment(EnvType.CLIENT)
     public KeyBinding getKeyBinding(){
         return HexGloopKeybinds.IOTA_WHEEL_KEYBIND;
     }
@@ -49,6 +55,7 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
         super(settings);
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     public AbstractContextWheelScreen getScreen(){
         Pair<ItemStack, Boolean> handItemResult = getHandItem();
@@ -64,6 +71,7 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
         return screen;
     }
 
+    @Environment(EnvType.CLIENT)
     public Pair<ItemStack, Boolean> getHandItem(){
         ItemStack mainStack = MinecraftClient.getInstance().player.getMainHandStack();
         if(mainStack.getItem() instanceof ItemMultiFocus){
