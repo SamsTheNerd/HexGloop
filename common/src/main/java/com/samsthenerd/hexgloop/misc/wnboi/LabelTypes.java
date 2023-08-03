@@ -5,10 +5,10 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
-import com.mojang.authlib.GameProfile;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker.Label;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker.LabelType;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes.PatternLabel.PatternOptions;
+import com.samsthenerd.hexgloop.utils.ClientUtils;
 import com.samsthenerd.hexgloop.utils.GloopyRenderUtils;
 import com.samsthenerd.wnboi.utils.RenderUtils;
 
@@ -17,9 +17,10 @@ import at.petrak.hexcasting.api.spell.iota.EntityIota;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.PatternIota;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
+import dev.architectury.platform.Platform;
+import net.fabricmc.api.EnvType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.network.OtherClientPlayerEntity;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -59,12 +60,19 @@ public class LabelTypes {
             Entity entity;
             if(nbt.getCompound("entity").contains("player", NbtElement.STRING_TYPE)){
                 UUID playerUUID = UUID.fromString(nbt.getCompound("entity").getString("player"));
-                entity = new OtherClientPlayerEntity(MinecraftClient.getInstance().world, 
-                    new GameProfile(playerUUID, null), null);
+                if(Platform.getEnv() == EnvType.CLIENT){
+                    entity = ClientUtils.makeOtherClientPlayer(playerUUID);
+                } else {
+                    return new EntityLabel(playerUUID);
+                }
             } else {
                 EntityType<?> entType = EntityType.fromNbt(nbt.getCompound("entity")).orElse(null);
                 if(entType == null) return null;
-                entity = EntityType.getEntityFromNbt(nbt.getCompound("entity"), MinecraftClient.getInstance().world).orElse(null);
+                if(Platform.getEnv() == EnvType.CLIENT){
+                    entity = EntityType.getEntityFromNbt(nbt.getCompound("entity"), ClientUtils.getClientWorld()).orElse(null);
+                } else {
+                    return new EntityLabel(nbt.getCompound("entity"));
+                }
             }
             if(entity == null) return null;
             entity.setBodyYaw(215);
@@ -151,10 +159,20 @@ public class LabelTypes {
     }
 
     public static class EntityLabel implements Label{
-        public Entity entity;
+        public Entity entity = null;
+        public UUID playerUUID = null;
+        public NbtCompound entityNbt = null;
 
         public EntityLabel(Entity entity){
             this.entity = entity;
+        }
+
+        public EntityLabel(UUID uuid){
+            this.playerUUID = uuid;
+        }
+
+        public EntityLabel(NbtCompound entityNbt){
+            this.entityNbt = entityNbt;
         }
 
         @Override
@@ -172,6 +190,15 @@ public class LabelTypes {
         public NbtCompound toNbt(){
             NbtCompound nbt = Label.super.toNbt();
             NbtCompound entNbt = new NbtCompound();
+            if(entity== null && playerUUID == null && entityNbt != null){
+                nbt.put("entity", entityNbt);
+                return nbt;
+            }
+            if(entity == null && playerUUID != null){
+                entNbt.putString("player", playerUUID.toString());
+                nbt.put("entity", entNbt);
+                return nbt;
+            }
             if(entity instanceof PlayerEntity player){
                 entNbt.putString("player", player.getUuidAsString());
             } else {

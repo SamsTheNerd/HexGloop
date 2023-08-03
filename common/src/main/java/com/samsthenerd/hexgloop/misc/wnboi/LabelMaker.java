@@ -8,6 +8,8 @@ import javax.annotation.Nullable;
 
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.IotaType;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -110,6 +112,7 @@ public class LabelMaker {
     // an instance of this is made for each label 
     public static interface Label{
         // render the label centered at x,y with the given width and height
+        @Environment(EnvType.CLIENT)
         public void render(MatrixStack matrixStack, int x, int y, int width, int height);
 
         public LabelType<?> getType();
