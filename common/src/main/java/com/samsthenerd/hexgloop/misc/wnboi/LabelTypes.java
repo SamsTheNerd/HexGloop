@@ -33,6 +33,7 @@ import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+// todo: clean up the label system a lot
 public class LabelTypes {
     public static LabelType<TextLabel> TEXT_LABEL_TYPE = LabelMaker.registerLabelType(
         new LabelType<TextLabel>(new Identifier("hexgloop", "text_label"), nbt -> {

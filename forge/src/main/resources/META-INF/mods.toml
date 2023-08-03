@@ -33,9 +33,17 @@ description = "A very gloopy hex addon"
     versionRange="[6.5.82,)"
     ordering="NONE"
     side="BOTH"
+
 [[dependencies.hexgloop]]
     modId="hexcasting"
     mandatory=true
     versionRange="[0.10.3,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.hexgloop]]
+    modId="wnboi"
+    mandatory=true
+    versionRange="[0.0.3,)"
     ordering="NONE"
     side="BOTH"

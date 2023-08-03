@@ -7,12 +7,14 @@ import com.samsthenerd.hexgloop.items.ItemMultiFocus;
 import com.samsthenerd.hexgloop.misc.CastingRingHelperClient;
 import com.samsthenerd.hexgloop.mixins.wnboi.MixinIsScrollableInvoker;
 import com.samsthenerd.wnboi.interfaces.KeyboundItem;
-import com.samsthenerd.wnboi.utils.KeybindUtils;
+import com.samsthenerd.wnboi.utils.KeybindUtils.KeybindHandler;
 
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
 import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.network.MsgShiftScrollSyn;
 import at.petrak.hexcasting.xplat.IClientXplatAbstractions;
+import dev.architectury.event.events.client.ClientTickEvent;
+import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.option.KeyBinding;
@@ -35,10 +37,20 @@ public class HexGloopKeybinds {
         InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_BRACKET, "key.categories.hexgloop");
 
     public static void registerKeybinds(){
-        KeybindUtils.registerKeybind(IOTA_WHEEL_KEYBIND, (keyBinding, client) -> handleIotaWheelItems(keyBinding, client));
-        KeybindUtils.registerKeybind(CASTING_RING_KEY_BINDING, CastingRingHelperClient::handleCastingRingKeypress);
-        KeybindUtils.registerKeybind(HEX_SCROLL_UP, (keyBinding, client) -> handleScrollKey(keyBinding, client, true));
-        KeybindUtils.registerKeybind(HEX_SCROLL_DOWN, (keyBinding, client) -> handleScrollKey(keyBinding, client, false));
+        registerKeybind(IOTA_WHEEL_KEYBIND, (keyBinding, client) -> handleIotaWheelItems(keyBinding, client));
+        registerKeybind(CASTING_RING_KEY_BINDING, CastingRingHelperClient::handleCastingRingKeypress);
+        registerKeybind(HEX_SCROLL_UP, (keyBinding, client) -> handleScrollKey(keyBinding, client, true));
+        registerKeybind(HEX_SCROLL_DOWN, (keyBinding, client) -> handleScrollKey(keyBinding, client, false));
+    }
+
+    // do it architectury instead of relying on wnboi since forge load order is mean
+    public static void registerKeybind(KeyBinding keybinding, KeybindHandler handler){
+        KeyMappingRegistry.register(keybinding);
+        ClientTickEvent.CLIENT_POST.register(minecraft -> {
+            while (keybinding.wasPressed()) {
+                handler.run(keybinding, minecraft);
+            }
+        });
     }
 
     // not the best named anymore but it's just used here. technically catches fidgets too

@@ -52,12 +52,13 @@
 
     "hexcasting.mishap.bad_item.slot": "%s needs %s in the %s but got %dx %s",
     "hexcasting.mishap.no_item.slot": "%s needs %s in the %s but got nothing",
-
+    
     "hexgloop.slotname.necklace": "necklace slot",
     "hexgloop.slotname.offhandring": "ring slot",
     "hexgloop.slotname.mainhandring": "ring slot",
-
-
+    "hexcasting.mishap.bad_item.labely_item": "a labelable item",
+    
+    
 
     "hexgloop.entry.gloopytweaks": "Glooptastic Changes",
     "hexgloop.page.gloopytweaks.0": "I have noticed some absolutely glooptastic changes in the world recently.$(br2)For one, it's much easier to visualize patterns. I can even hear something like \"\\<southeast,deaqq>\" and visualize it perfectly as $(m)$(0)<southeast,deaqq>$(). Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.",
@@ -69,7 +70,7 @@
     "hexgloop.page.casting_ring.1": "I've noticed that my hexes prefer to use items in my offhand, perhaps this will be useful with both of my hands free?",
 
     "hexgloop.entry.casting_potion": "Casting Potion",
-    "hexgloop.page.casting_potion.0": "I've found that brewing $(l:items/amethyst#dust)amethyst dust$(/l) (or any $(l:items/pigments)pigment$(/l)) into a thick potion will give me a potion that is able to channel media into casting hexes.$(br2)I can craft the potion using the $(l:hexgloop:patterns/craft_potion)Craft Potion$(/l) spell.",
+    "hexgloop.page.casting_potion.0": "I've found that brewing $(l:items/amethyst#dust)amethyst dust$(/l) (or any $(l:items/pigments)pigment$(/l)) into a thick potion will give me a potion that is able to channel media into casting hexes.$(br2)I can craft the potion using the $(l:hexgloop:patterns/spells/craft_potion)Craft Potion$(/l) spell.",
 
     "hexgloop.entry.fidgets": "Fidgets",
     "hexgloop.page.fidgets.0": "I've happened upon the most joyous of devices !$(br2)These devices, which I've been calling fidgets, help me channel my thoughts into a form detectable in my hexes. I can interact with them in much the same way as I would with a spellbook, minus the iota storage of course. For accessing these thoughts, see the section on $(l:hexgloop:patterns/minds_orchard)Mind's Orchard$(/l)",

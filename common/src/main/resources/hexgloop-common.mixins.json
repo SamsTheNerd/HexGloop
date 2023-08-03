@@ -6,6 +6,7 @@
     "mixins": [
       "wnboi.MixinHandleScrolling",
       "wnboi.MixinIsScrollableInvoker",
+      "wnboi.MixinLabelySpellbook",
       "ring.MixinRingSendPatterns",
       "ring.MixinLetRingDrawMedia",
       "vibrations.MixinCustomCastingEvent",

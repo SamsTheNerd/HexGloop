@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class ClientUtils {
     public static PlayerEntity makeOtherClientPlayer(UUID uuid){
         return new OtherClientPlayerEntity(MinecraftClient.getInstance().world, 
-                        new GameProfile(uuid, null), null);
+                        new GameProfile(uuid, ""), null);
     }
 
     public static World getClientWorld(){

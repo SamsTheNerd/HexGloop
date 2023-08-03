@@ -26,6 +26,10 @@ public class ItemCastingPotion extends ItemPackagedHex{
         super(settings);
     }
 
+    public int cooldown(){
+        return 0;
+    }
+
     @Override
     public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
         if(this.isIn(group)){

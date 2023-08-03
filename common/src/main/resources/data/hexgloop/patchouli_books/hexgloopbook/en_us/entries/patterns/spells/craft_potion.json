@@ -1,6 +1,6 @@
 {
     "name": "hexgloop.entry.craft_potion",
-    "category": "hexcasting:patterns",
+    "category": "hexcasting:patterns/spells",
     "icon": "hexgloop:casting_potion",
     "sortnum": 7,
     "advancement": "hexcasting:root",

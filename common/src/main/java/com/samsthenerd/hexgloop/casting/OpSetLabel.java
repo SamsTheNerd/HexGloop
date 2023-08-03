@@ -16,6 +16,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.NullIota;
+import at.petrak.hexcasting.api.spell.mishaps.MishapBadOffhandItem;
 import at.petrak.hexcasting.api.spell.mishaps.MishapNotEnoughArgs;
 import kotlin.Triple;
 import net.minecraft.item.ItemStack;
@@ -52,6 +53,10 @@ public class OpSetLabel implements SpellAction{
         ItemStack stack = context.getHeldItemToOperateOn(s -> {
             return s.getItem() instanceof LabelyItem;
         }).getFirst();
+
+        if(!(stack.getItem() instanceof LabelyItem)){
+            MishapThrowerWrapper.throwMishap(MishapBadOffhandItem.of(stack, context.getOtherHand(), "labely_item"));
+        }
 
         Iota labelyIota = new NullIota();
         if(args.size() < 1){
