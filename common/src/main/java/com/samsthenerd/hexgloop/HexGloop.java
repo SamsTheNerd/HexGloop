@@ -18,6 +18,7 @@ import com.samsthenerd.hexgloop.network.HexGloopNetwork;
 import com.samsthenerd.hexgloop.recipes.HexGloopRecipes;
 import com.samsthenerd.hexgloop.utils.StringsToDirMap;
 
+import dev.architectury.platform.Platform;
 import dev.architectury.registry.registries.Registries;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.item.Item;
@@ -31,7 +32,9 @@ public class HexGloop {
     public static final Supplier<Registries> REGISTRIES = Suppliers.memoize(() -> Registries.get(MOD_ID));
 
 	public static final void logPrint(String message){
-		LOGGER.info(message);
+        if(Platform.isDevelopmentEnvironment()){
+            LOGGER.info(message);
+        }
 	}
 
     public static List<RegistrySupplier<? extends Item>> FOCUS_ITEMS = List.of(HexGloopItems.MULTI_FOCUS_ITEM, 
