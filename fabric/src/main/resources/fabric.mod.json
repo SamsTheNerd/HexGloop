@@ -36,9 +36,10 @@
     "architectury": ">=6.5.82",
     "minecraft": "~1.19.2",
     "hexcasting": ">=0.10.3",
-    "java": ">=17"
+    "java": ">=17",
+    "wnboi": ">=0.0.3"
   },
   "suggests":{
-    "hexal": ">=0.2.11"
+    "hexal": ">=0.2.17"
   }
 }

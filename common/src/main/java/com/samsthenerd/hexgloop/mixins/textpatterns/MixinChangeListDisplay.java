@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import com.samsthenerd.hexgloop.HexGloop;
 
 import at.petrak.hexcasting.api.spell.iota.PatternIota;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -55,7 +54,7 @@ public class MixinChangeListDisplay {
                 NbtCompound tagData = csub.getCompound(HexIotaTypes.KEY_DATA);
                 if(tagData == null || tagData.isEmpty()) continue;
                 HexPattern pattern = HexPattern.fromNBT(tagData);
-                HexGloop.logPrint(csub.toString() + " => " + pattern.toString() + "\n");
+                // HexGloop.logPrint(csub.toString() + " => " + pattern.toString() + "\n");
                 copyText += ("<" + pattern.getStartDir().toString().replace("_", "").toLowerCase() + "," + pattern.anglesSignature() + ">");
             } else {
                 copyText += HexIotaTypes.getDisplay(csub).getString();

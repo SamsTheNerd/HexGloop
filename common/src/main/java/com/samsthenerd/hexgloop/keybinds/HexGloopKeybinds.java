@@ -7,6 +7,7 @@ import com.samsthenerd.hexgloop.items.ItemMultiFocus;
 import com.samsthenerd.hexgloop.misc.CastingRingHelperClient;
 import com.samsthenerd.hexgloop.mixins.wnboi.MixinIsScrollableInvoker;
 import com.samsthenerd.wnboi.interfaces.KeyboundItem;
+import com.samsthenerd.wnboi.utils.KeybindUtils;
 import com.samsthenerd.wnboi.utils.KeybindUtils.KeybindHandler;
 
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
@@ -14,6 +15,7 @@ import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.network.MsgShiftScrollSyn;
 import at.petrak.hexcasting.xplat.IClientXplatAbstractions;
 import dev.architectury.event.events.client.ClientTickEvent;
+import dev.architectury.platform.Platform;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
@@ -44,13 +46,18 @@ public class HexGloopKeybinds {
     }
 
     // do it architectury instead of relying on wnboi since forge load order is mean
+    // ok, do it on architectury on forge and normally on fabric, i guess
     public static void registerKeybind(KeyBinding keybinding, KeybindHandler handler){
-        KeyMappingRegistry.register(keybinding);
-        ClientTickEvent.CLIENT_POST.register(minecraft -> {
-            while (keybinding.wasPressed()) {
-                handler.run(keybinding, minecraft);
-            }
-        });
+        if(Platform.isForge()){
+            KeyMappingRegistry.register(keybinding);
+            ClientTickEvent.CLIENT_POST.register(minecraft -> {
+                while (keybinding.wasPressed()) {
+                    handler.run(keybinding, minecraft);
+                }
+            });
+        } else {
+            KeybindUtils.registerKeybind(keybinding, handler);
+        }
     }
 
     // not the best named anymore but it's just used here. technically catches fidgets too

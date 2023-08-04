@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.3
+
+### Fixed
+
+- Fabric keybinds not working
+- Changed double to number
+- Fabric actually has wnboi as dependency
+
 ## 0.0.2
 
 ### Added
