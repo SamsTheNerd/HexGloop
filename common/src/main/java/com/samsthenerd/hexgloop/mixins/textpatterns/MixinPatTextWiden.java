@@ -18,6 +18,10 @@ public class MixinPatTextWiden {
     @Inject(method = "method_27516(ILnet/minecraft/text/Style;)F", at = @At("HEAD"), cancellable = true)
     private void TextHandlerOverrideForPattern(int codepoint, Style style, CallbackInfoReturnable<Float> cir){
         PatternStyle pStyle = (PatternStyle)style;
+        if(pStyle.isHidden()){
+            cir.setReturnValue(0f);
+            return;
+        }
         if(pStyle.getPattern() != null){
             // should prob abstract some of this into pattern style
             List<Vec2f> zappyPointsCentered = pStyle.getZappyPoints();

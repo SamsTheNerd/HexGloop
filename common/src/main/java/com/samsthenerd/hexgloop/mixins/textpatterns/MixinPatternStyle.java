@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.samsthenerd.hexgloop.screens.PatternStyle;
 
@@ -45,15 +46,22 @@ public class MixinPatternStyle implements PatternStyle{
     private List<Vec2f> zappyPoints = null;
     private List<Vec2f> pathfinderDots = null;
     private float patScale; // maybe want to have this exposed somewhere?
+    private boolean _isHidden = false;
 
     private static final String PATTERN_KEY = "hexPatternStyle";
     private static final String PATTERN_START_DIR_KEY = "startDir";
     private static final String PATTERN_ANGLE_SIG_KEY = "angleSig";
+    private static final String PATTERN_HIDDEN_KEY = "isHidden";
     private static final float RENDER_SIZE = 128f;
 
     @Override
     public HexPattern getPattern() {
         return pattern;
+    }
+
+    @Override
+    public boolean isHidden(){
+        return _isHidden;
     }
 
     @Override
@@ -97,6 +105,18 @@ public class MixinPatternStyle implements PatternStyle{
         return style.withParent(PatternStyle.fromPattern(pattern));
     }
 
+    
+    @Override
+    public Style setHidden(boolean hidden){
+        this._isHidden = hidden;
+        return (Style)(Object)this;
+    }
+
+    @Override
+    public Style withHidden(boolean hidden){
+        return ((Style)(Object)this).withParent(((PatternStyle)Style.EMPTY.withBold(null)).setHidden(hidden));
+    }
+
     @Override
     public List<Vec2f> getZappyPoints(){
         return zappyPoints;
@@ -112,6 +132,7 @@ public class MixinPatternStyle implements PatternStyle{
         this.pattern = null;
         this.zappyPoints = null;
         this.pathfinderDots = null;
+        this._isHidden = false;
         this.patScale = 1f;
     }
 
@@ -126,6 +147,10 @@ public class MixinPatternStyle implements PatternStyle{
                 ((PatternStyle) rstyle).setPattern(parentPattern);
             }
         }
+        // i guess?
+        if(this.isHidden() || ((PatternStyle) parent).isHidden()){
+            ((PatternStyle) rstyle).setHidden(true);
+        }
 		cir.setReturnValue(rstyle);
 	}
 
@@ -135,6 +160,9 @@ public class MixinPatternStyle implements PatternStyle{
 			if (!Objects.equals(this.getPattern(), style.getPattern())) {
 				cir.setReturnValue(false);
 			}
+            if(this.isHidden() != style.isHidden()){
+                cir.setReturnValue(false);
+            }
 		}
 	}
 
@@ -150,14 +178,15 @@ public class MixinPatternStyle implements PatternStyle{
 				return;
 			}
             JsonObject patternObj = JsonHelper.getObject(json, PATTERN_KEY);
+            
             String startDirString = JsonHelper.hasString(patternObj, PATTERN_START_DIR_KEY) ? JsonHelper.getString(patternObj, PATTERN_START_DIR_KEY) : null;
             String angleSigString = JsonHelper.hasString(patternObj, PATTERN_ANGLE_SIG_KEY) ? JsonHelper.getString(patternObj, PATTERN_ANGLE_SIG_KEY) : null;
-            
+            Boolean hiddenFromJson = JsonHelper.hasBoolean(patternObj, PATTERN_HIDDEN_KEY) ? JsonHelper.getBoolean(patternObj, PATTERN_HIDDEN_KEY) : false;
             if(startDirString == null || angleSigString == null) return;
 
             HexDir startDir = HexDir.fromString(startDirString);
             HexPattern pattern = HexPattern.fromAngles(angleSigString, startDir);
-            ((PatternStyle) cir.getReturnValue()).setPattern(pattern);
+            ((PatternStyle) cir.getReturnValue()).setPattern(pattern).setHidden(hiddenFromJson);
 		}
 
 		@Inject(method = "serialize", at = @At("RETURN"))
@@ -169,6 +198,7 @@ public class MixinPatternStyle implements PatternStyle{
 				return;
 			}
 			JsonObject json = jsonElement.getAsJsonObject();
+            json.add(PATTERN_HIDDEN_KEY, new JsonPrimitive(pStyle.isHidden()));
             JsonObject patternObj = new JsonObject();
             patternObj.addProperty(PATTERN_START_DIR_KEY, pStyle.getPattern().getStartDir().toString());
             patternObj.addProperty(PATTERN_ANGLE_SIG_KEY, pStyle.getPattern().anglesSignature());

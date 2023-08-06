@@ -1,0 +1,40 @@
+{
+    "display": {
+      "icon": {
+        "item": "hexgloop:gloop"
+      },
+      "title": {
+        "translate": "hexgloop.gloopvancement.title",
+        "color": "#8df2cf",
+        "bold": true
+      },
+      "description": {
+        "translate": "hexgloop.gloopvancement.desc",
+        "color": "#8df2cf",
+        "italic": true
+      },
+      "frame": "task",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": false
+    },
+    "parent": "hexcasting:root",
+    "criteria": {
+      "has_gloop": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "item": "hexgloop:gloop"
+            }
+          ]
+        }
+      }
+    },
+    "requirements": [
+        [
+          "has_gloop"
+        ]
+      ]
+  }
+  

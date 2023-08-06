@@ -7,10 +7,13 @@ import com.samsthenerd.hexgloop.items.HexGloopItems;
 
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -18,7 +21,7 @@ public class HexGloopBlocks {
     public static DeferredRegister<Block> blocks = DeferredRegister.create(HexGloop.MOD_ID, Registry.BLOCK_KEY);
 
     public static final RegistrySupplier<BlockGloopEnergizer> GLOOP_ENERGIZER_BLOCK = block("gloop_energizer", 
-        () -> new BlockGloopEnergizer(Block.Settings.of(Material.AMETHYST)));
+        () -> new BlockGloopEnergizer(AbstractBlock.Settings.of(Material.METAL, MapColor.TERRACOTTA_PURPLE).requiresTool().strength(25.0f, 1200.0f).sounds(BlockSoundGroup.NETHERITE)));
 
     public static Block.Settings defaultSettings(){
         return Block.Settings.of(Material.STONE).hardness((float)1.3);

@@ -13,9 +13,11 @@ import at.petrak.hexcasting.common.items.ItemFocus;
 import at.petrak.hexcasting.common.items.magic.ItemMediaHolder;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.collection.DefaultedList;
@@ -31,6 +33,17 @@ public class ItemGloopDye extends ItemMediaHolder implements IotaHolderItem{
     @Override
     public ItemStack getDefaultStack(){
         return ItemMediaHolder.withMedia(super.getDefaultStack(), 0, 64*MediaConstants.DUST_UNIT);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if(world.isClient) return;
+        NbtCompound nbt = stack.getNbt();
+        if(nbt == null || !nbt.contains(ItemMediaHolder.TAG_MEDIA, NbtElement.INT_TYPE)){
+            withMedia(stack, 0, 64*MediaConstants.DUST_UNIT);
+        } else {
+            return;
+        }
     }
 
     @Override

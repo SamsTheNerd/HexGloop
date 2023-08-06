@@ -5,6 +5,8 @@ plugins {
     id "me.modmuss50.mod-publish-plugin" version "0.3.0"
 }
 
+apply from: '../common/build.gradle'
+
 // sourceCompatibility = JavaVersion.VERSION_17
 // targetCompatibility = JavaVersion.VERSION_17
 
@@ -141,7 +143,7 @@ publishing {
 publishMods {
     file = remapJar.archiveFile
     additionalFiles.from(sourcesJar.archiveFile)
-    changelog = file("$rootDir/changelog.md").text
+    changelog = trimChangelog(file("$rootDir/changelog.md").text)
     type = STABLE
     modLoaders.add("fabric")
     modLoaders.add("quilt")

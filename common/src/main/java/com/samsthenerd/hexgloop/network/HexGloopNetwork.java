@@ -19,7 +19,7 @@ public class HexGloopNetwork {
     public static final Identifier OPEN_CASTING_GRID_PACKET_ID = new Identifier(HexGloop.MOD_ID, "open_casting_grid");
 
     public static void register(){
-        // clear the grid
+        // clears the grid - maybe not actually super useful
         NetworkManager.registerReceiver(NetworkManager.Side.C2S, CLEAR_GRID_PACKET_ID, (buf, context) -> {
             PlayerEntity player = context.getPlayer();
             if(!(player instanceof ServerPlayerEntity)) return;
@@ -30,6 +30,8 @@ public class HexGloopNetwork {
             PlayerEntity player = context.getPlayer();
             if(!(player instanceof ServerPlayerEntity)) return;
             ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+            boolean clear = buf.readBoolean();
+            if(clear) IXplatAbstractions.INSTANCE.clearCastingData((ServerPlayerEntity) player);
             
             CastingHarness harness = IXplatAbstractions.INSTANCE.getHarness(serverPlayer, Hand.MAIN_HAND);
             List<ResolvedPattern> patterns = IXplatAbstractions.INSTANCE.getPatterns(serverPlayer);

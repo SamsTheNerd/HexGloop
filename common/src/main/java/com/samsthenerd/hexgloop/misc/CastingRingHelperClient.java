@@ -12,16 +12,18 @@ import net.minecraft.network.PacketByteBuf;
 
 public class CastingRingHelperClient {
     public static void handleCastingRingKeypress(KeyBinding keyBinding, MinecraftClient client){
-        if(!keyBinding.isPressed()) return;
+        if(!keyBinding.wasPressed()) return;
         if(client.player == null) return;
         if(!HexGloop.TRINKETY_INSTANCE.isCastingRingEquipped(client.player)) return;
+        PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
         if (client.player.isSneaking()) {
             client.player.playSound(HexSounds.FAIL_PATTERN, 1f, 1f);
             // need to add a packet to the server to clear it
-            NetworkManager.sendToServer(HexGloopNetwork.CLEAR_GRID_PACKET_ID, new PacketByteBuf(Unpooled.buffer()));
-            return;
+            buf.writeBoolean(true);
+        } else {
+            buf.writeBoolean(false);
         }
         // need to add a packet to the server to open the casting screen
-        NetworkManager.sendToServer(HexGloopNetwork.OPEN_CASTING_GRID_PACKET_ID, new PacketByteBuf(Unpooled.buffer()));
+        NetworkManager.sendToServer(HexGloopNetwork.OPEN_CASTING_GRID_PACKET_ID, buf);
     }
 }

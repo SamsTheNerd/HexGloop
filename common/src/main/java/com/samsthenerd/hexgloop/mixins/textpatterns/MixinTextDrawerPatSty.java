@@ -47,7 +47,10 @@ public class MixinTextDrawerPatSty {
     @Inject(method = "accept(ILnet/minecraft/text/Style;I)Z", at = @At("HEAD"), cancellable = true)
 	private void PatStyDrawerAccept(int index, Style style, int codepoint, CallbackInfoReturnable<Boolean> cir) {
         PatternStyle pStyle = (PatternStyle) style;
-
+        if(pStyle.isHidden()){
+            cir.setReturnValue(true);
+            return;
+        }
         
         if(pStyle.getPattern() == null){
             return;

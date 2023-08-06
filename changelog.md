@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.0.4
+
+### Added
+
+- Chinese localization (thx ChuijkYahus !)
+- Glooptastic advancment
+
+### Fixed
+
+- Casting ring not opening when you clear it
+- Casting ring spamming close sound if you hold shift + G
+- Gloop Dye crafting unusable (should just need to hold it to fix it)
+- Patterns showing as '!' in logs and reveals
+
+### Changed
+
+- Made energizer harder to break
+- Made energizer cheaper (now requires netherite scrap instead of ingots)
+
 ## 0.0.3
 
 ### Fixed

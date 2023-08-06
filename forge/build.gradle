@@ -138,7 +138,7 @@ publishing {
 publishMods {
     file = remapJar.archiveFile
     additionalFiles.from(sourcesJar.archiveFile)
-    changelog = file("$rootDir/changelog.md").text
+    changelog = trimChangelog(file("$rootDir/changelog.md").text)
     type = STABLE
     modLoaders.add("forge")
 
