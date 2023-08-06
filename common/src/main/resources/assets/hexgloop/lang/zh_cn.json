@@ -1,0 +1,127 @@
+{
+    "itemGroup.hexgloop.general": "咒法凝浆",
+    "item.hexgloop.gloop": "紫晶凝浆",
+    "item.hexgloop.multi_focus": "多重核心",
+    "item.hexgloop.casting_ring": "施法戒指",
+    "item.hexgloop.focal_ring": "核心戒指",
+    "item.hexgloop.focal_ring.sealed": "密封的核心戒指",
+    "item.hexgloop.focal_pendant": "核心吊坠",
+    "item.hexgloop.focal_pendant.sealed": "密封的核心吊坠",
+    "item.hexgloop.casting_potion": "施法药水",
+    "item.hexgloop.gloop_dye": "凝浆染料",
+
+    "item.hexgloop.copper_pen_fidget": "笔指记",
+    "item.hexgloop.rainbow_amogus_fidget": "彩虹色船员按按乐指记",
+
+    "block.hexgloop.gloop_energizer": "充能器",
+
+    "key.hexgloop.open_iota_wheel": "打开Iota轮",
+    "key.hexgloop.casting_ring": "使用施法戒指",
+    "key.hexgloop.scroll_down": "向下滚动法术书",
+    "key.hexgloop.scroll_up": "向上滚动法术书",
+    "key.categories.hexgloop": "咒法凝浆",
+
+    "hexgloop.tooltip.multi_focus.page": "所选槽位 %d/%d",
+    "hexgloop.tooltip.multi_focus.page.sealed": "所选槽位 %d/%d（%s）",
+    "hexgloop.tooltip.multi_focus.page_with_name": "所选槽位 %d/%d（“%s”）",
+    "hexgloop.tooltip.multi_focus.page_with_name.sealed": "所选槽位 %d/%d（“%s”）（%s）",
+    "hexgloop.tooltip.fidget.page": "所选槽位 %d/%d",
+    "hexgloop.tooltip.fidget.page_with_name": "所选槽位 %d/%d（“%s”）",
+
+    "hexcasting.spell.hexgloop:craft/potion": "合成药水",
+    "hexcasting.spell.hexgloop:set_label": "达美之策略",
+    "hexcasting.spell.hexgloop:read_orchard": "果园之精思",
+    "hexcasting.spell.hexgloop:read_orchard_list": "果园之精思，第二型",
+
+    "hexcasting.spell.hexgloop:read_pendant": "纪念之精思",
+    "hexcasting.spell.hexgloop:write_pendant": "纪念之策略",
+    "hexcasting.spell.hexgloop:check_read_pendant": "珍惜之精思",
+    "hexcasting.spell.hexgloop:check_write_pendant": "怀旧之精思",
+
+    "hexcasting.spell.hexgloop:read_ring": "环戒之精思",
+    "hexcasting.spell.hexgloop:write_ring": "环戒之策略",
+
+    "hexcasting.spell.hexgloop:read_right_ring": "对手之精思",
+    "hexcasting.spell.hexgloop:write_right_ring": "对手之策略",
+
+    "hexcasting.spell.hexgloop:read_left_ring": "恋人之精思",
+    "hexcasting.spell.hexgloop:write_left_ring": "恋人之策略",
+
+    "hexcasting.spell.hexgloop:check_read_ring": "验证师之精思",
+    "hexcasting.spell.hexgloop:check_write_ring": "珠宝匠之精思",
+
+    "hexcasting.mishap.bad_item.slot": "%1$s需要在%3$s中有%2$s，而实际为%4$dx %5$s",
+    "hexcasting.mishap.no_item.slot": "%1$s需要在%3$s中有%2$s，而实际无对应物品",
+
+    "hexgloop.slotname.necklace": "项链槽",
+    "hexgloop.slotname.offhandring": "戒指槽",
+    "hexgloop.slotname.mainhandring": "戒指槽",
+    "hexcasting.mishap.bad_item.labely_item": "一个可标签物品",
+
+
+
+    "hexgloop.entry.gloopytweaks": "“凝浆”至极的改变",
+    "hexgloop.page.gloopytweaks.0": "我最近发现世界上出现了某些“凝浆”极了的变化。$(br2)例如，可视化图案变得更简单了。我甚至只需听见类似“\\<southeast,deaqq>”的东西就能将其完美可视化为$(m)$(0)<southeast,deaqq>$()。此外，我还能将鼠标悬停其上以获得更为清晰的视图，还可点击它们以复制。",
+    "hexgloop.page.gloopytweaks.1": "我还发现翻笔记变得更顺畅了。按下$(k:key.hexgloop.open_iota_wheel)就能可视化法术书，并通过$(l)$(k:key.hexgloop.scroll_down)$()和$(l)$(k:key.hexgloop.scroll_up)$()快速翻页。$(br2)到目前为止最奇怪的变化则是咒术的$(o)感觉$()不同了，甚至有种它们顺着我的骨头振动的感受。也许足够敏感的扫描器能发现其中区别？",
+    "hexgloop.page.gloopytweaks.2": "我还发现如果想让法杖更多姿多彩，可以对法杖使用染料。",
+
+    "hexgloop.entry.casting_ring": "施法戒指",
+    "hexgloop.page.casting_ring.0": "我确实很喜欢我的法杖，但偶尔也会想要一种更轻便的施法器具。$(br2)而在佩戴上施法戒指后，我就能通过按$(l)$(k:key.hexgloop.casting_ring)$()直接打开咒术网格而不需法杖辅助。同时因为没有法杖，咒术网格的间距增大了，不过也能算值得。",
+    "hexgloop.page.casting_ring.1": "我注意到我的咒术倾向于使用在我副手中的物品，也许在我双手都空出时这种倾向会有作用？",
+
+    "hexgloop.entry.casting_potion": "施法药水",
+    "hexgloop.page.casting_potion.0": "我发现以$(l:items/amethyst#dust)紫水晶粉$(/l)（或任意$(l:items/pigments)染色剂$(/l)）和浓稠的药水为材料可酿造出一种能向咒术中引导媒质的药水。$(br2)可用$(l:hexgloop:patterns/spells/craft_potion)合成药水$(/l)法术合成这种药水。",
+
+    "hexgloop.entry.fidgets": "指记",
+    "hexgloop.page.fidgets.0": "我偶然发现了些极为有意思的装置！$(br2)我称这些装置为“指记”，它们能将我的思维以可被咒术探察的形态引导入咒术。我可和法术书一样与它交互，只是没有存储 iota 的功能。访问这些思维的方式参见$(l:hexgloop:patterns/minds_orchard)意识果园$(/l)部分。",
+    "hexgloop.page.fidgets.pen": "一种只能在两种状态间切换的简单装置。不过切换时发出的咔哒声还算好听。",
+    "hexgloop.page.fidgets.amogus": "起初我觉得这物品很可疑，不过如今我已经把我的担心全部踢出去了。这个奇异的装置会发出最令人开心的啪啪声，且能以 6 种状态引导我的思维。",
+
+    "hexgloop.entry.trinket_focus": "饰品型核心",
+    "hexgloop.page.trinket_focus.0": "我有了一种配饰的强烈欲望。这些饰品和普通的核心功能一致，区别在于我能佩戴它们并能使用$(l:hexgloop:patterns/trinket_focus_patterns)饰品型核心图案$(/l)。$(br2)$(o)[凝浆开发者笔记：Fabric 需安装 Trinkets，Forge 需安装 Curios 才能佩戴这些物品。不过没有安装时也可将其用作核心。]$()",
+    "hexgloop.page.trinket_focus.pendant": "一种时尚的吊坠，适用于希望保存在心里的 iota。",
+    "hexgloop.page.trinket_focus.ring": "由下界最强韧的金属铸成的戒指。专为最重要的 iota 设计。",
+
+    "hexgloop.entry.gloop": "凝浆！",
+    "hexgloop.page.gloop.0": "这真是“凝浆”极了！计算表明在适合条件下，黏液和媒质会形成一种反应性和适应性极高的材料。$(br2)反应的启动需要给反应物充能和某些机制的帮助。我在下页记录了我对这种装置的设计草稿。",
+    "hexgloop.page.gloop.1": "我的研究表明，3 个$(item)黏液球$()、3 个$(item)充能紫水晶$()，以及 1 个$(item)紫水晶碎片$()能反应产生紫晶凝浆。$(br2)从这种凝浆本身的适应性看来，应当还存在几种其他形态仍待发现……",
+    "hexgloop.page.gloop.energizer": "这个机器应当足够强力，能将媒质引导入周围的水中而进一步导入反应物中。可用漏斗一类的装置送入媒质。其启动时应常态每秒消耗 1 个紫水晶粉，而反应一次则需消耗 10 个紫水晶粉。$(br2)只需要再有触发反应的方式就可以了……也行可以请求自然的指导？",
+
+    "hexgloop.entry.multi_focus": "多重核心",
+    "hexgloop.page.multi_focus.0": "我能感受到紫晶凝浆对我意识的拉扯，也许我能拉扯回来？$(br2)由紫晶凝浆制成的多重核心能在单个物品中存有多个 iota，并可通过$(l)$(k:key.hexgloop.open_iota_wheel)$()快速取用，比较像一本小型法术书。更多组织整理的技巧参见有关$(l:hexgloop:patterns/labels)标签$(/l)的笔记。",
+    "hexgloop.page.multi_focus.1": "$(o)我仿佛能听见它那和猫一样的呼噜声了。$()",
+
+    "hexgloop.entry.gloop_dye": "凝浆染料",
+    "hexgloop.page.gloop_dye.0": "自己混合染料相当累人，能有种更精确的控制方式更是再好不过。$(br2)这个凝浆染料能为皮革盔甲或法杖等物品染上任意颜色。对其使用$(l:patterns/readwrite#hexcasting:write)书吏之策略$(/l)写入各分量在 0 到 255 之间的向量即可用相应 RGB 颜色染色。$(br2)使用染料需要消耗媒质，但我能像缀品一样为其重新充能。",
+    "hexgloop.page.gloop_dye.1": "$(o)五彩缤纷！$()",
+
+    "hexgloop.entry.labels": "标签",
+    "hexgloop.page.labels.0": "尽管现有的系统能让我迅速翻过笔记书页，有个标记书页的方式也不错。$(br2)这种系统可以使用 iota 标记书页。所有可用的标签类型如下：$(br)$(li)数$(li)图案$(li)物品实体$(li)实体$(li)Null（用于清除）",
+    "hexgloop.page.labels.1": "根据所给 iota 为我副手中可标签物品所选槽位分配标签。",
+
+    "hexgloop.entry.minds_orchard": "意识果园",
+    "hexgloop.page.minds_orchard.0": "我发现如果我能在意识中存下一个足够具体的想法，就可用如下图案将其摘入咒术中。类似$(l:hexgloop:items/fidgets)指记$(/l)的事物应该有助于引导思维。$(br2)我意识果园中存储的值必然是包含至少一个数的列表。不过我还没找到在其中存储多个数的方法。",
+    "hexgloop.page.minds_orchard.1": "从我的意识果园中摘出一个代表我思维索引的数。",
+    "hexgloop.page.minds_orchard.2": "从我的意识果园中摘出包含各值的列表。",
+
+    "hexgloop.entry.trinket_focus_patterns": "饰品型核心图案",
+    "hexgloop.page.trinket_focus_patterns.0": "这些图案在有助于与$(l:hexgloop:items/trinket_focus)饰品型核心$(/l)交互。通常状况下它们和其他读写图案功能类似。",
+    "hexgloop.page.trinket_focus_patterns.read_pendant": "复制我所佩戴的吊坠中的 iota，并将其压入栈顶。",
+    "hexgloop.page.trinket_focus_patterns.write_pendant": "移除栈顶 iota，并将其写入我所佩戴的吊坠。",
+    "hexgloop.page.trinket_focus_patterns.check_read_pendant": "如果我所佩戴的吊坠中存有可被读取的 iota，返回 True。否则返回 False。",
+    "hexgloop.page.trinket_focus_patterns.check_write_pendant": "如果能将 iota 写入我所佩戴的吊坠，返回 True。否则返回 False。",
+
+    "hexgloop.page.trinket_focus_patterns.read_ring": "复制我所佩戴的戒指中的 iota，并将其压入栈顶。如果同时佩戴多枚戒指，则优先选择除施法用手外另一只手上的。",
+    "hexgloop.page.trinket_focus_patterns.write_ring": "移除栈顶 iota，并将其写入我所佩戴的戒指。如果同时佩戴多枚戒指，则优先选择除施法用手外另一只手上的。",
+    "hexgloop.page.trinket_focus_patterns.read_left_ring": "复制我所佩戴的戒指中的 iota，并将其压入栈顶。如果同时佩戴多枚戒指，则优先选择副手上的。",
+    "hexgloop.page.trinket_focus_patterns.write_left_ring": "移除栈顶 iota，并将其写入我所佩戴的戒指。如果同时佩戴多枚戒指，则优先选择副手上的。",
+    "hexgloop.page.trinket_focus_patterns.read_right_ring": "复制我所佩戴的戒指中的 iota，并将其压入栈顶。如果同时佩戴多枚戒指，则优先选择主手上的。",
+    "hexgloop.page.trinket_focus_patterns.write_right_ring": "移除栈顶 iota，并将其写入我所佩戴的戒指。如果同时佩戴多枚戒指，则优先选择主手上的。",
+
+    "hexgloop.page.trinket_focus_patterns.check_read_ring": "如果我所佩戴的戒指中存有可被读取的 iota，返回 True。否则返回 False。",
+    "hexgloop.page.trinket_focus_patterns.check_write_ring": "如果能将 iota 写入我所佩戴的戒指，返回 True。否则返回 False。",
+
+    "hexgloop.entry.craft_potion": "合成施法药水",
+    "hexgloop.page.craft_potion.0": "合成一瓶$(l:hexgloop:items/casting_potion)施法药水$(/l)。消耗大约 1 个紫水晶碎片。"
+
+}
