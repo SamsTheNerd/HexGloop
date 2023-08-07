@@ -1,0 +1,21 @@
+{
+  "type": "spectrum:potion_workshop_crafting",
+  "required_advancement": "spectrum:midgame/brew_potion_in_potion_workshop",
+  "secret": true,
+  "base_ingredient": {
+    "item": "minecraft:glass_bottle",
+    "count": 3
+  },
+  "use_up_base_ingredient": true,
+  "ingredient1": {
+    "item": "minecraft:glowstone_dust"
+  },
+  "ingredient2": {
+    "item": "hexcasting:pride_colorizer_agender"
+  },
+  "result": {
+    "item": "hexgloop:casting_potion",
+    "nbt": "{colorizer:{owner:[I;0,0,0,0],stack:{Count:1b,id:\"hexcasting:pride_colorizer_agender\"}}}",
+    "count": 3
+  }
+}
