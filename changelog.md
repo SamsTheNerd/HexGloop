@@ -7,6 +7,7 @@
 - Chinese localization (thx ChuijkYahus !)
 - Glooptastic advancment
 - Hexal/MoreIotas label types
+- Spectrum potion workshop casting potion recipes (thx Shibva !)
 
 ### Fixed
 
@@ -18,7 +19,6 @@
 - Forge server issues
 - Forge keybind issues (again)
 - Brewing dust with glass bottle causing crash.
-
 
 ### Changed
 
