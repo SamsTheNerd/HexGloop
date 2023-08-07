@@ -11,12 +11,16 @@
             "text": "hexgloop.page.labels.0"
         },
         {
+            "type": "patchouli:text",
+            "text": "hexgloop.page.labels.1"
+        },
+        {
             "type": "hexcasting:pattern",
             "op_id": "hexgloop:set_label",
             "anchor": "hexgloop:set_label",
             "input": "labely",
             "output": "",
-            "text": "hexgloop.page.labels.1"
+            "text": "hexgloop.page.labels.2"
         }
     ]
 }

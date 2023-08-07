@@ -98,8 +98,9 @@
     "hexgloop.page.gloop_dye.1": "$(o)so many colors!$()",
 
     "hexgloop.entry.labels": "Labels",
-    "hexgloop.page.labels.0": "Although my current system lets me flip through my notes quickly, it would be nice to have a way to label them.$(br2)This system should let me label my pages using iotas. I've recorded all the label types that I've found here:$(br)$(li)number$(li)patterns$(li)item entities$(li)entities$(li)null (to clear it)",
-    "hexgloop.page.labels.1": "Assigns a label based on the given iota to the currently selected slot of a labelable item in my offhand.",
+    "hexgloop.page.labels.0": "Although my current system lets me flip through my notes quickly, it would be nice to have a way to label them.$(br2)This system should let me label my pages using iotas. I've recorded all the label types that I've found on the following page",
+    "hexgloop.page.labels.1": "$(li)number/string$(li)patterns$(li)items (from an entity or relevant hexal iotas)$(li)entities$(li)null (to clear it)",
+    "hexgloop.page.labels.2": "Assigns a label based on the given iota to the currently selected slot of a labelable item in my offhand.",
 
     "hexgloop.entry.minds_orchard": "Mind's Orchard",
     "hexgloop.page.minds_orchard.0": "I've found that if I can hold a concrete enough idea in my mind then I can use these patterns to pick it into my hexes. Something like a $(l:hexgloop:items/fidgets)fidget$(/l) should help me channel my thoughts.$(br2)The value stored in my orchard will always be a list with atleast one number. I haven't yet found a way to store multiple numbers in this list though..",

@@ -15,6 +15,7 @@
       "lightning.MixinLightningMakeGloop",
       "lightning.MixinProtectItems",
       "recipes.MixinBrewCastingPotion",
+      "recipes.MixinSplitCastingCost",
       "textpatterns.MixinPatternStyle",
       "textpatterns.MixinPatternStyle$MixinPatternStyleSerializer",
       "textpatterns.MixinChangePatternDisplay",

@@ -5,7 +5,7 @@
 ### Added
 
 - Chinese localization (thx ChuijkYahus !)
-- Glooptastic advancment
+- Glooptastic advancement
 - Hexal/MoreIotas label types
 - Spectrum potion workshop casting potion recipes (thx Shibva !)
 
@@ -24,6 +24,8 @@
 
 - Made energizer harder to break
 - Made energizer cheaper (now requires netherite scrap instead of ingots)
+- Changed MultiFocus to use charged amethyst instead of foci in its recipe.
+- Casting potions now stackable up to 16
 
 ## 0.0.3
 

@@ -31,7 +31,7 @@ public class HexGloopItems {
     public static final RegistrySupplier<ItemCastingRing> CASTING_RING_ITEM = item("casting_ring", 
         () -> new ItemCastingRing(defaultSettings().maxCount(1)));
     public static final RegistrySupplier<ItemCastingPotion> CASTING_POTION_ITEM = item("casting_potion", 
-        () -> new ItemCastingPotion(defaultSettings().maxCount(1)));
+        () -> new ItemCastingPotion(defaultSettings().maxCount(16)));
     public static final RegistrySupplier<ItemGloopDye> GLOOP_DYE_ITEM = item("gloop_dye", 
         () -> new ItemGloopDye(defaultSettings().maxCount(1)));
 
