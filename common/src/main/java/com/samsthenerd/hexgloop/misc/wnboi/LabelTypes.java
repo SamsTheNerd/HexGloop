@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import com.samsthenerd.hexgloop.compat.hexal.HexalLabels;
+import com.samsthenerd.hexgloop.compat.moreIotas.MoreIotasLabels;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker.Label;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker.LabelType;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes.PatternLabel.PatternOptions;
@@ -300,6 +302,12 @@ public class LabelTypes {
         LabelMaker.registerIotaLabelFunction(DoubleIota.TYPE, LabelTypes::doubleToTextLabel);
         LabelMaker.registerIotaLabelFunction(PatternIota.TYPE, LabelTypes::patternToLabel);
         LabelMaker.registerIotaLabelFunction(EntityIota.TYPE, LabelTypes::entityToLabel);
+        if(Platform.isModLoaded("hexal")){
+            HexalLabels.register();
+        }
+        if(Platform.isModLoaded("moreiotas")){
+            MoreIotasLabels.register();
+        }
     }
 
     @Nullable

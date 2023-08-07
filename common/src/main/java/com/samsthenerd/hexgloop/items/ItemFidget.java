@@ -105,7 +105,7 @@ public class ItemFidget extends Item implements LabelyItem, KeyboundItem{
     }
 
     @Environment(EnvType.CLIENT)
-    public static FidgetWheelScreen screen = null;
+    public static FidgetWheelScreen screen;
 
     @Environment(EnvType.CLIENT)
     public AbstractContextWheelScreen getScreen(){

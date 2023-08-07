@@ -51,7 +51,12 @@ dependencies {
 
     modImplementation "maven.modrinth:wnboi:${wnboiVersion}-fabric"
     // modRuntimeOnly "maven.modrinth:wnboi:${wnboiVersion}-fabric"
+
     modRuntimeOnly "maven.modrinth:hexal:${hexalVersion}"
+    modRuntimeOnly "maven.modrinth:moreiotas:${moreIotasVersion}"
+
+    modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:${geckolibVersion}"
+    modRuntimeOnly "software.bernie.geckolib:geckolib-fabric-1.19:${geckolibVersion}"
 
 	// Hex Casting Dependencies
 	modImplementation "at.petra-k.paucal:paucal-fabric-${minecraft_version}:${paucalVersion}"

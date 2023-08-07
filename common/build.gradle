@@ -37,7 +37,6 @@ dependencies {
     modImplementation "maven.modrinth:hexal:${hexalVersion}"
 	modImplementation "maven.modrinth:moreiotas:${moreIotasVersion}"
 	modImplementation "maven.modrinth:gravity-api:${gravityApiVersion}"
-
 }
 
 publishing {

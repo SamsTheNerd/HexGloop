@@ -73,6 +73,10 @@ allprojects {
         maven {
             url = "https://maven.theillusivec4.top/"
         }
+        maven {
+            name = 'GeckoLib'
+            url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' 
+        }
         exclusiveContent {
             forRepository {
                 maven {

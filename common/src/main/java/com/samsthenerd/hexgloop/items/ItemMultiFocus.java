@@ -41,7 +41,7 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
     public final static int MAX_FOCI_SLOTS = 6;
 
     @Environment(EnvType.CLIENT)
-    public IotaWheelScreen screen = null;
+    public IotaWheelScreen screen;
 
     ItemStack multifocus = null;
 

@@ -6,6 +6,7 @@
 
 - Chinese localization (thx ChuijkYahus !)
 - Glooptastic advancment
+- Hexal/MoreIotas label types
 
 ### Fixed
 
@@ -13,6 +14,11 @@
 - Casting ring spamming close sound if you hold shift + G
 - Gloop Dye crafting unusable (should just need to hold it to fix it)
 - Patterns showing as '!' in logs and reveals
+- No way to brew soulglimmer casting potion (it will now take on the soulglimmer of the first player who holds it after brewing)
+- Forge server issues
+- Forge keybind issues (again)
+- Brewing dust with glass bottle causing crash.
+
 
 ### Changed
 

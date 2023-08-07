@@ -21,13 +21,13 @@ public class MixinBrewCastingPotion {
     
     @Inject(method = "craft(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;", at = @At("HEAD"), cancellable = true)
     private static void brewCastingPotion(ItemStack ingredient, ItemStack input, CallbackInfoReturnable<ItemStack> cir) {
-        if(!input.isEmpty() && input.getNbt().getString("Potion").equals("minecraft:thick")){
+        if(!input.isEmpty() && input.getNbt() != null && input.getNbt().getString("Potion").equals("minecraft:thick")){
             if(ingredient.getItem() == HexItems.AMETHYST_DUST){
                 cir.setReturnValue(HexGloopItems.CASTING_POTION_ITEM.get().getDefaultStack());
             }
             if(ingredient.getItem() instanceof ColorizerItem){
-                // get rekt only i can use the soulglimmer potion (sorry, idk how to make it work for everyone)
-                UUID uuid = UUID.fromString("6f07899c-2b26-4221-8033-1f53f7a0e111");
+                // use uuid zero so that it gets synced when player touches it
+                UUID uuid = new UUID(0, 0);
                 FrozenColorizer thisFrozen = new FrozenColorizer(ingredient, uuid);
                 ItemStack colorizedPotion = HexGloopItems.CASTING_POTION_ITEM.get().withColorizer(HexGloopItems.CASTING_POTION_ITEM.get().getDefaultStack(), thisFrozen);
                 cir.setReturnValue(colorizedPotion);

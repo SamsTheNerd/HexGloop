@@ -1,8 +1,11 @@
 package com.samsthenerd.hexgloop.items;
 
+import java.util.UUID;
+
 import at.petrak.hexcasting.api.misc.FrozenColorizer;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
 import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
@@ -10,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
@@ -21,6 +25,7 @@ import net.minecraft.world.event.GameEvent;
 
 public class ItemCastingPotion extends ItemPackagedHex{
     public static String TAG_COLORIZER = "colorizer";
+    public static final UUID zeroUuid = new UUID(0,0);
 
     public ItemCastingPotion(Settings settings){
         super(settings);
@@ -74,9 +79,30 @@ public class ItemCastingPotion extends ItemPackagedHex{
         return FrozenColorizer.fromNBT(colorizerTag);
     }
 
+    // shibva's idea for syncing pigment to player
+    @Override
+    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if(world.isClient) return;
+        NbtCompound nbt = stack.getNbt();
+        if(nbt != null && nbt.contains(TAG_COLORIZER, NbtElement.COMPOUND_TYPE)){
+            NbtCompound colorizerNbt = nbt.getCompound(TAG_COLORIZER);
+            if(colorizerNbt.contains(FrozenColorizer.TAG_OWNER, NbtElement.INT_ARRAY_TYPE)){
+                UUID uuid = colorizerNbt.getUuid(FrozenColorizer.TAG_OWNER);
+                if(uuid.equals(zeroUuid)){
+                    colorizerNbt.putUuid(FrozenColorizer.TAG_OWNER, entity.getUuid());
+                    nbt.put(TAG_COLORIZER, colorizerNbt);
+                    stack.setNbt(nbt);
+                }
+            }
+        }
+    }
+
     // make it work like a potion
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        if(!hasHex(user.getStackInHand(hand))){
+            return TypedActionResult.pass(user.getStackInHand(hand));
+        }
         return ItemUsage.consumeHeldItem(world, user, hand);
     }
 

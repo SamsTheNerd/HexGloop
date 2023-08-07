@@ -51,9 +51,7 @@ public class HexGloopKeybinds {
         if(Platform.isForge()){
             KeyMappingRegistry.register(keybinding);
             ClientTickEvent.CLIENT_POST.register(minecraft -> {
-                while (keybinding.wasPressed()) {
-                    handler.run(keybinding, minecraft);
-                }
+                handler.run(keybinding, minecraft);
             });
         } else {
             KeybindUtils.registerKeybind(keybinding, handler);

@@ -70,6 +70,13 @@ dependencies {
     modCompileOnly "maven.modrinth:wnboi:${wnboiVersion}-forge"
     modRuntimeOnly "maven.modrinth:wnboi:${wnboiVersion}-forge"
 
+    modImplementation "maven.modrinth:hexal:${hexalVersionForge}"
+    modRuntimeOnly "maven.modrinth:hexal:${hexalVersionForge}"
+    modImplementation "maven.modrinth:moreiotas:${moreIotasVersionForge}"
+    modRuntimeOnly "maven.modrinth:moreiotas:${moreIotasVersionForge}"
+
+    modImplementation "software.bernie.geckolib:geckolib-forge-1.19:${geckolibVersion}"
+    modRuntimeOnly "software.bernie.geckolib:geckolib-forge-1.19:${geckolibVersion}"
 
     runtimeOnly 'thedarkcolour:kotlinforforge:3.12.0'
 
