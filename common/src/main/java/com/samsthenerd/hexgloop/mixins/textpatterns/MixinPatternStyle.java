@@ -205,4 +205,92 @@ public class MixinPatternStyle implements PatternStyle{
 			json.add(PATTERN_KEY, patternObj);
 		}
 	}
+
+    // meant to be called at the 
+    private Style keepPattern(Style returnedStyle){
+        PatternStyle pStyle = (PatternStyle)(Object)this;
+        if(pStyle.getPattern() != null){
+            ((PatternStyle) returnedStyle).setPattern(pStyle.getPattern());
+        }
+        if(pStyle.isHidden()){
+            ((PatternStyle) returnedStyle).setHidden(true);
+        }
+        return returnedStyle;
+    }
+
+    @Inject(method = "withColor(Lnet/minecraft/text/TextColor;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithColor(TextColor color, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withBold(Ljava/lang/Boolean;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithBold(Boolean boldBool, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+    
+    @Inject(method = "withItalic(Ljava/lang/Boolean;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithItalic(Boolean boldBool, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withUnderline(Ljava/lang/Boolean;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithUnderline(Boolean boldBool, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withStrikethrough(Ljava/lang/Boolean;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithStrikethrough(Boolean boldBool, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withObfuscated(Ljava/lang/Boolean;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithObfuscated(Boolean boldBool, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withClickEvent(Lnet/minecraft/text/ClickEvent;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithClickEvent(ClickEvent clickEvent, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withHoverEvent(Lnet/minecraft/text/HoverEvent;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithHoverEvent(HoverEvent hoverEvent, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withInsertion(Ljava/lang/String;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithInsertion(String insertionString, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withFont(Lnet/minecraft/util/Identifier;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithFont(Identifier fontID, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withFormatting(Lnet/minecraft/util/Formatting;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithFormatting(Formatting formatting, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+    @Inject(method = "withExclusiveFormatting(Lnet/minecraft/util/Formatting;)Lnet/minecraft/text/Style;",
+    at=@At("RETURN"), cancellable = true)
+    private void fixWithExclusiveFormatting(Formatting formatting, CallbackInfoReturnable<Style> cir){
+        cir.setReturnValue(keepPattern(cir.getReturnValue()));
+    }
+
+
+
+
 }

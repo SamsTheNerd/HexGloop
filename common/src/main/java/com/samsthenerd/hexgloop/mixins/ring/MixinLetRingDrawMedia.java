@@ -6,6 +6,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.samsthenerd.hexgloop.HexGloop;
 
+import at.petrak.hexcasting.api.spell.casting.CastingContext;
+import at.petrak.hexcasting.api.spell.casting.CastingContext.CastSource;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import net.minecraft.server.network.ServerPlayerEntity;
 
@@ -15,8 +17,9 @@ public class MixinLetRingDrawMedia {
         method = "withdrawMedia(IZ)I",
         at = @At(value = "INVOKE", target="net/minecraft/item/ItemStack.isIn (Lnet/minecraft/tag/TagKey;)Z"))
     private boolean allowRingCastingMediaDraw(boolean original){
-        ServerPlayerEntity player = ((CastingHarness)(Object)this).getCtx().getCaster();
+        CastingContext ctx = ((CastingHarness)(Object)this).getCtx();
+        ServerPlayerEntity player = ctx.getCaster();
         if(player == null) return original;
-        return original || HexGloop.TRINKETY_INSTANCE.isCastingRingEquipped(player);
+        return original || (HexGloop.TRINKETY_INSTANCE.isCastingRingEquipped(player) && ctx.getSource() == CastSource.STAFF);
     }
 }

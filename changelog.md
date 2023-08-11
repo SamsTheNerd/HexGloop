@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.5
+
+### Fixed
+
+- Casting ring letting non-staff casting draw media from your inventory
+- Gloop dye uncraftable on forge
+- Text Patterns easily overridden by other mods (like ftbranks)
+
 ## 0.0.4
 
 ### Added

@@ -9,9 +9,12 @@
         "G": {
             "item": "hexgloop:gloop"
         },
-        "D":{
+        "D": [{
             "tag": "c:dyes"
         },
+        {
+            "tag": "forge:dyes"
+        }],
         "A":{
             "item": "hexcasting:amethyst_dust"
         }
