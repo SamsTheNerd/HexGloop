@@ -58,6 +58,8 @@
     "hexgloop.slotname.mainhandring": "戒指槽",
     "hexcasting.mishap.bad_item.labely_item": "一个可标签物品",
 
+    "hexgloop.gloopvancement.title": "凝浆十足",
+    "hexgloop.gloopvancement.desc": "往手上沾满凝浆",
 
 
     "hexgloop.entry.gloopytweaks": "“凝浆”至极的改变",
@@ -96,8 +98,9 @@
     "hexgloop.page.gloop_dye.1": "$(o)五彩缤纷！$()",
 
     "hexgloop.entry.labels": "标签",
-    "hexgloop.page.labels.0": "尽管现有的系统能让我迅速翻过笔记书页，有个标记书页的方式也不错。$(br2)这种系统可以使用 iota 标记书页。所有可用的标签类型如下：$(br)$(li)数$(li)图案$(li)物品实体$(li)实体$(li)Null（用于清除）",
-    "hexgloop.page.labels.1": "根据所给 iota 为我副手中可标签物品所选槽位分配标签。",
+    "hexgloop.page.labels.0": "尽管现有的系统能让我迅速翻过笔记书页，有个标记书页的方式也不错。$(br2)这种系统可以使用 iota 标记书页。所有可用的标签类型见后页。",
+    "hexgloop.page.labels.1": "$(li)数/字符串$(li)图案$(li)物品（物品实体或咒法拓展相关 iota 均可）$(li)实体$(li)Null（用于清除）",
+    "hexgloop.page.labels.2": "根据所给 iota 为我副手中可标签物品所选槽位分配标签。",
 
     "hexgloop.entry.minds_orchard": "意识果园",
     "hexgloop.page.minds_orchard.0": "我发现如果我能在意识中存下一个足够具体的想法，就可用如下图案将其摘入咒术中。类似$(l:hexgloop:items/fidgets)指记$(/l)的事物应该有助于引导思维。$(br2)我意识果园中存储的值必然是包含至少一个数的列表。不过我还没找到在其中存储多个数的方法。",
