@@ -26,7 +26,9 @@ dependencies {
     modCompileOnly "at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcastingVersion"
     modCompileOnly "vazkii.patchouli:Patchouli-xplat:$minecraft_version-$patchouliVersion"
 
-    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"
+    modCompileOnly("me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"){
+        transitive = false
+    }
 
     // for moreIotas matrices
 	implementation group: "org.jblas", name: "jblas", version: "1.2.5"

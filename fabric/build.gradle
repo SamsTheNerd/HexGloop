@@ -24,6 +24,8 @@ configurations.all {
    resolutionStrategy {
      force("net.fabricmc:fabric-loader:${project.fabric_loader_version}")
      force("dev.architectury:architectury-fabric:${rootProject.architectury_version}")
+     force("me.shedaniel.cloth:cloth-config:${project.cloth_config_version}")
+     force("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}")
    }
 }
 
@@ -51,7 +53,9 @@ dependencies {
 	// for REI, making sure it doesn't pop up with the keyboard
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
-    modRuntimeOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}")
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"){
+        exclude(group: "net.fabricmc.fabric-api")
+    }
 	// modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
 
 	// for HexCasting

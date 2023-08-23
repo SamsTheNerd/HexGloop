@@ -99,5 +99,4 @@ public class HexGloopItems {
     public static void register(){
         items.register();
     }
-    
 }
