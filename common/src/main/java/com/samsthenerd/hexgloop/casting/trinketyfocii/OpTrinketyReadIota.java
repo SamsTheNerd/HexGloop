@@ -15,7 +15,6 @@ import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation;
 import at.petrak.hexcasting.api.spell.iota.BooleanIota;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.NullIota;
-import at.petrak.hexcasting.common.items.ItemFocus;
 import at.petrak.hexcasting.common.lib.HexItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -86,7 +85,7 @@ public class OpTrinketyReadIota implements ConstMediaAction {
             return List.of(); // doesn't actually return but, y'know, mishaps
         }
         Iota iota = HexItems.FOCUS.readIota(foundStack, context.getWorld());
-        boolean canRead = !ItemFocus.isSealed(foundStack) && iota != null;
+        boolean canRead = iota != null;
         if(simulate) return List.of(new BooleanIota(canRead));
         if(!canRead){
             MishapThrowerWrapper.throwMishap(MishapBadTrinketyItem.of(foundStack, foundTrinket, "iota.read", new Object[0]));
