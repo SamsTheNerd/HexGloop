@@ -110,6 +110,7 @@ public class ItemCastingPotion extends ItemPackagedHex{
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         PlayerEntity playerEntity;
         PlayerEntity playerEntity2 = playerEntity = user instanceof PlayerEntity ? (PlayerEntity)user : null;
+        ItemStack oldStack = stack.copy();
         if (playerEntity instanceof ServerPlayerEntity) {
             Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
         }
@@ -126,6 +127,8 @@ public class ItemCastingPotion extends ItemPackagedHex{
             }
             if (playerEntity != null) {
                 playerEntity.getInventory().insertStack(new ItemStack(Items.GLASS_BOTTLE));
+                // need to make sure it still has media if it was in a stack
+                setMedia(stack, getMaxMedia(oldStack));
             }
         }
         user.emitGameEvent(GameEvent.DRINK);

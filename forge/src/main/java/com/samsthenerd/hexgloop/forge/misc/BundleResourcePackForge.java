@@ -28,7 +28,7 @@ public class BundleResourcePackForge {
                 if (metadataSection != null) {
                     event.addRepositorySource((packConsumer, packConstructor) ->
                             packConsumer.accept(packConstructor.create(
-                                    "builtin/"+HexGloop.MOD_ID, Text.of("Dyeable Staffs"), false,
+                                    "builtin/"+HexGloop.MOD_ID, Text.of("Dyeable Staffs"), true,
                                     () -> pack, metadataSection, ResourcePackProfile.InsertionPosition.BOTTOM, ResourcePackSource.PACK_SOURCE_BUILTIN, false)));
                 }
             }
