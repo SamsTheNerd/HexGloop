@@ -1,5 +1,8 @@
 package com.samsthenerd.hexgloop.mixins.textpatterns;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.annotation.Nullable;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,67 +24,48 @@ import net.minecraft.text.Style;
 @Mixin(TextVisitFactory.class)
 public class MixinParsePatternFormatting {
 
+    // thx object <3
+    private static Pattern PATTERN_PATTERN_REGEX = Pattern.compile("\\A(?<escaped>\\\\?)(HexPattern)?[<(\\[{]\\s*(?<direction>[a-z_-]+)(?:\\s*[, ]\\s*(?<pattern>[aqweds]+))?\\s*[>)\\]}]", Pattern.CASE_INSENSITIVE);
+
     // want to mixin to start of the loop in visitFormatted
     
     @WrapOperation(method="visitFormatted(Ljava/lang/String;ILnet/minecraft/text/Style;Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;)Z",
     at=@At(value="INVOKE", target="net/minecraft/client/font/TextVisitFactory.visitRegularCharacter (Lnet/minecraft/text/Style;Lnet/minecraft/text/CharacterVisitor;IC)Z"))
     private static boolean parsePatternFormatting(Style style, CharacterVisitor visitor, int index, char c, Operation<Boolean> operation, @Local(ordinal=2) LocalIntRef jref, @Local(ordinal=0) String text){
         int startishIndex = jref.get(); // where we entered the loop
-        int j = jref.get();
-        if(j < text.length() && text.charAt(j) == '<'){ 
-            if(j > 0 && text.charAt(j-1) == '\\'){ // escaped
-                jref.set(startishIndex);
-                return operation.call(style, visitor, index, c);
-            }
-            j++; // skip <
-            // want to do pattern matching
-            while(j < text.length() && Character.isWhitespace(text.charAt(j))){ // skip whitespace
-                j++;
-            }
-            int startDirIndex = j;
-            // try to find direction:
-            while(j < text.length() && text.charAt(j) != '>' && text.charAt(j) != ','){
-                j++;
-            }
-            if(j == text.length() || text.charAt(j) == '>'){ // no direction
-                // HexGloop.logPrint("no direction");
-                jref.set(startishIndex);
-                return operation.call(style, visitor, index, c);
-            }
-            String dirString = text.substring(startDirIndex, j).toLowerCase().strip().replace("_", "");
-            HexDir dir = StringsToDirMap.dirMap.get(dirString);
-            if(dir == null){
-                // HexGloop.logPrint("invalid direction: " + dirString);
-                jref.set(startishIndex);
-                return operation.call(style, visitor, index, c);
-            }
-            // have direction now
-            j++; // skip comma
-            int startPatternIndex = j;
-            char ch = '\0';
-            while(j < text.length() && (text.charAt(j) != '>')){ // run to end
-                ch = text.charAt(j);
-                if(ch != 'a' && ch != 'A' && ch != 'q' && ch != 'Q' && ch != 'w' && ch != 'W'
-                && ch != 'e' && ch != 'E' && ch != 's' && ch != 'S' && ch != 'd' && ch != 'D' && ch != ' '){
-                    // HexGloop.logPrint("found invalid char: " + ch);
-                    jref.set(startishIndex);
+        String remainingText = text.substring(startishIndex);
+        Matcher matcher = PATTERN_PATTERN_REGEX.matcher(remainingText);
+        if(matcher.find()){ // should only check beginning of text since we have '\A'
+            if(matcher.group("escaped").length() > 0){ // it's escaped - so just accept everything through the last match ? not the best for compatability but like, it would've broken without the escape too ?
+                int endIndex = matcher.end();
+                // skip the escaped character
+                // HexGloop.logPrint("escaped pattern for '" + remainingText + "'");
+                for(int i = 1; i < endIndex; i++){
+                    // HexGloop.logPrint("\t" + i + " -- " + i + startishIndex + "/" + startishIndex + endIndex + " : '" + text.charAt(i + startishIndex) + "'");
+                    visitor.accept(startishIndex + i, style, text.charAt(startishIndex + i));
+                }
+                jref.set(startishIndex + matcher.end()-1);
+                return jref.get() < text.length();
+            } else { // not escaped
+                // need to check if the direction is valid
+                // HexGloop.logPrint("not escaped for '" + remainingText + "'");
+                String dirString = matcher.group("direction").toLowerCase().strip().replace("_", "");
+                HexDir dir = StringsToDirMap.dirMap.get(dirString);
+                if(dir == null){ // invalid direction
                     return operation.call(style, visitor, index, c);
                 }
-                j++;
+                // HexGloop.logPrint("has direction: " + dir.toString());
+                // now need to get the pattern
+                String angleSigs = matcher.group("pattern");
+                HexPattern pattern = parsePattern(angleSigs, dir);
+                if(pattern == null){
+                    return operation.call(style, visitor, index, c);
+                }
+                // HexGloop.logPrint("has pattern: " + pattern.toString());
+                visitor.accept(startishIndex, ((PatternStyle)style).withPattern(pattern), '!');
+                jref.set(startishIndex + matcher.end()-1);
+                return (startishIndex + matcher.end()-1) < text.length(); // if there's more or not
             }
-            if(j == text.length() && ch != '>'){ // no closing bracket
-                // HexGloop.logPrint("no closing bracket");
-                jref.set(startishIndex);
-                return operation.call(style, visitor, index, c);
-            }
-            // have pattern now
-            String angleSigs = text.substring(startPatternIndex, j).toLowerCase().strip().replace(" ", "");
-            HexPattern pattern = parsePattern(angleSigs, dir);
-            if(pattern == null) return operation.call(style, visitor, index, c);
-            // poggers we have everything
-            visitor.accept(startishIndex, ((PatternStyle)style).withPattern(pattern), '!');
-            jref.set(j);
-            return j < text.length(); // if there's more or not
         }
         return operation.call(style, visitor, index, c);
     }
