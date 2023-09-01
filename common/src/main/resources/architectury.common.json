@@ -2,6 +2,7 @@
     "injected_interfaces": {
       "at/petrak/hexcasting/common/items/ItemStaff": ["net/minecraft/item/DyeableItem"],
       "net/minecraft/text/Style": ["com/samsthenerd/hexgloop/screens/PatternStyle"],
-      "net/minecraft/server/network/ServerPlayerEntity": ["com/samsthenerd/hexgloop/casting/orchard/IOrchard"]
+      "net/minecraft/server/network/ServerPlayerEntity": ["com/samsthenerd/hexgloop/casting/orchard/IOrchard"],
+      "at/petrak/hexcasting/api/spell/iota/EntityIota": ["com/samsthenerd/hexgloop/casting/truenameclassaction/ILockedIota"]
     }
   }

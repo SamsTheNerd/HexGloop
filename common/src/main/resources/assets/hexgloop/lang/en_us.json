@@ -9,6 +9,9 @@
     "item.hexgloop.focal_pendant.sealed": "Sealed Focal Pendant",
     "item.hexgloop.casting_potion": "Potion of Casting",
     "item.hexgloop.gloop_dye": "Gloop Dye",
+    "item.hexgloop.slate_bowl": "Slate Bowl",
+    "item.hexgloop.hexxyos": "Hexxy-O's",
+    "item.hexgloop.hex_snack": "Thought Gummy",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",
@@ -57,6 +60,16 @@
     "hexgloop.slotname.offhandring": "ring slot",
     "hexgloop.slotname.mainhandring": "ring slot",
     "hexcasting.mishap.bad_item.labely_item": "a labelable item",
+
+    "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
+    "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
+    "hexcasting.mishap.wrong_casting_sources": "%s expected to be cast from one of: %s, but was cast from %s",
+
+    "hexgloop.source_type.staff": "a Staff",
+    "hexgloop.source_type.circle": "a Spell Circle",
+    "hexgloop.source_type.packaged_hex": "a Casting Item",
+    "hexgloop.source_type.wisp": "a Wisp",
+
     
     "hexgloop.gloopvancement.title": "Glooptastic",
     "hexgloop.gloopvancement.desc": "Get your hands gloopy",

@@ -21,7 +21,11 @@
       "textpatterns.MixinChangePatternDisplay",
       "textpatterns.MixinChangeListDisplay",
       "textpatterns.MixinParsePatternFormatting",
-      "orchard.MixinServerPlayerOrchard"
+      "orchard.MixinServerPlayerOrchard",
+      "truenameclassactionmixins.MixinSetupLockableEntityIota",
+      "truenameclassactionmixins.MixinTruenameVPN",
+      "truenameclassactionmixins.MixinSorryChloeNoWispNonsense",
+      "truenameclassactionmixins.MixinClearImpetus"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
