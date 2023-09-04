@@ -4,9 +4,15 @@ import java.util.List;
 import java.util.function.Function;
 
 import com.samsthenerd.hexgloop.HexGloop;
+import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
+import com.samsthenerd.hexgloop.casting.dimensions.OpIsInDimension;
 import com.samsthenerd.hexgloop.casting.orchard.OpReadOrchard;
+import com.samsthenerd.hexgloop.casting.redstone.OpConjureRedstone;
+import com.samsthenerd.hexgloop.casting.redstone.OpGetComparator;
 import com.samsthenerd.hexgloop.casting.trinketyfocii.OpTrinketyReadIota;
 import com.samsthenerd.hexgloop.casting.trinketyfocii.OpTrinketyWriteIota;
+import com.samsthenerd.hexgloop.casting.truenameclassaction.OpGetCoinBinder;
+import com.samsthenerd.hexgloop.casting.truenameclassaction.OpRefreshTruename;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 
 import at.petrak.hexcasting.api.PatternRegistry;
@@ -17,21 +23,16 @@ import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.common.casting.operators.spells.OpMakePackagedSpell;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
 
 public class HexGloopRegisterPatterns {
     public static void registerPatterns(){
-        HexGloopItems.CASTING_POTION_ITEM.listen(event -> registerPotionPatterns());
-    }
-
-    public static void registerPotionPatterns(){
+        HexGloopItems.CASTING_POTION_ITEM.listen(event -> registerItemDependentPatterns());
+        HexGloopItems.FOCAL_RING.listen(event -> registerTrinketyFociiPatterns());
+        HexGloopBlocks.CONJURED_REDSTONE_BLOCK.listen(event -> registerRedstonePatterns());
+        // non item dependent stuff: 
         try{
-            PatternRegistry.mapPattern(HexPattern.fromAngles("wawwedewwqqq", HexDir.EAST), 
-                new Identifier(HexGloop.MOD_ID, "craft/potion"),
-                new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.SHARD_UNIT));
-            // qwawqwadawqwqwqwqwqw <- simpler sign write with hexagon
-            PatternRegistry.mapPattern(HexPattern.fromAngles("wwedwewdweqawqwqwqwqwqw", HexDir.SOUTH_WEST),
-                new Identifier(HexGloop.MOD_ID, "set_label"),
-                new OpSetLabel());
+            // orchard patterns
             PatternRegistry.mapPattern(HexPattern.fromAngles("dqqqqq", HexDir.SOUTH_EAST), 
                 new Identifier(HexGloop.MOD_ID, "read_orchard"),
                 new OpReadOrchard(false));
@@ -39,7 +40,66 @@ public class HexGloopRegisterPatterns {
                 new Identifier(HexGloop.MOD_ID, "read_orchard_list"),
                 new OpReadOrchard(true));
             
-            // new focii related patterns:
+            // dimension checks
+            PatternRegistry.mapPattern(HexPattern.fromAngles("aqawqadaqdeeweweweew", HexDir.SOUTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "in_overworld"),
+                new OpIsInDimension(World.OVERWORLD));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("eaqawqadaqdeewewewe", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "in_nether"),
+                new OpIsInDimension(World.NETHER));
+        } catch (PatternRegistry.RegisterPatternException exn) {
+            exn.printStackTrace();
+        }
+    }
+
+    private static void registerItemDependentPatterns(){
+        try{
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wawwedewwqqq", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "craft/potion"),
+                new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.SHARD_UNIT));
+
+            // qwawqwadawqwqwqwqwqw <- simpler sign write with hexagon
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwedwewdweqawqwqwqwqwqw", HexDir.SOUTH_WEST),
+                new Identifier(HexGloop.MOD_ID, "set_label"),
+                new OpSetLabel());
+
+            // snack
+            PatternRegistry.mapPattern(HexPattern.fromAngles("eeewdw", HexDir.SOUTH_WEST),
+                new Identifier(HexGloop.MOD_ID, "conjure_tasty_treat"),
+                new OpConjureTastyTreat());
+            
+            // for coins really, i mean i guess could be expanded to other stuff later though ?
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qaqqaqqqqq", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "get_item_bound_caster"),
+                new OpGetCoinBinder(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qaqqaqqqqqead", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "compare_item_bound_caster"),
+                new OpGetCoinBinder(true));
+        } catch (PatternRegistry.RegisterPatternException exn) {
+            exn.printStackTrace();
+        }
+    }
+
+    private static void registerRedstonePatterns(){
+        try {
+            // redstone stuff
+            PatternRegistry.mapPattern(HexPattern.fromAngles("ddwwdwwdd", HexDir.SOUTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "read_comparator"),
+                new OpGetComparator(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("aawwawwaa", HexDir.SOUTH_WEST),
+                new Identifier(HexGloop.MOD_ID, "read_redstone"),
+                new OpGetComparator(true));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qqadd", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "conjured_redstone"),
+                new OpConjureRedstone());
+        } catch (PatternRegistry.RegisterPatternException exn) {
+            exn.printStackTrace();
+        }
+    }
+
+    private static void registerTrinketyFociiPatterns(){
+        try {
             // pendant read/write
             PatternRegistry.mapPattern(HexPattern.fromAngles("waaqqqqqe", HexDir.SOUTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "read_pendant"),
@@ -92,7 +152,10 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("deeeeeqdwewewewewewq", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "check_write_ring"),
                 new OpTrinketyWriteIota(standardRingFunc, true));
-            
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwwdwwwdwqqaqwedeewawwwawww", HexDir.SOUTH_WEST),
+                new Identifier(HexGloop.MOD_ID, "clear_truename"),
+                new OpRefreshTruename());
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }

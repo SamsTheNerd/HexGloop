@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "hexgloop:item/casterscoin/casters_coin",
+      "layer1": "hexgloop:item/casterscoin/iota_overlay"
+    }
+  }

@@ -12,6 +12,10 @@
     "item.hexgloop.slate_bowl": "Slate Bowl",
     "item.hexgloop.hexxyos": "Hexxy-O's",
     "item.hexgloop.hex_snack": "Thought Gummy",
+    "item.hexgloop.casters_coin": "Caster's Coin",
+    "item.hexgloop.casters_coin.bound": "Bound Caster's Coin",
+    "item.hexgloop.casters_coin.bound_caster": "Bound by %s",
+    "item.hexgloop.heart_pigment": "Sam's Glooptastic Pigment",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",
@@ -55,6 +59,7 @@
 
     "hexcasting.mishap.bad_item.slot": "%s needs %s in the %s but got %dx %s",
     "hexcasting.mishap.no_item.slot": "%s needs %s in the %s but got nothing",
+    "hexcasting.mishap.bad_offhand_item.caster_bound": "an item bound by a hexcaster",
     
     "hexgloop.slotname.necklace": "necklace slot",
     "hexgloop.slotname.offhandring": "ring slot",
@@ -64,6 +69,9 @@
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s expected to be cast from one of: %s, but was cast from %s",
+
+    "hexcasting.mishap.cleared_truename": "%s tried to use %s's truename",
+    "hexgloop.generic_circle_spell": "Spell Circle",
 
     "hexgloop.source_type.staff": "a Staff",
     "hexgloop.source_type.circle": "a Spell Circle",

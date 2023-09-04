@@ -15,6 +15,7 @@ import at.petrak.hexcasting.common.items.ItemFocus;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -40,7 +41,23 @@ public class HexGloopItems {
     public static final RegistrySupplier<ItemFocus> FOCAL_RING = item("focal_ring",
         () -> new ItemFocus(defaultSettings().maxCount(1).fireproof()));
 
-    // fidgets
+    public static final RegistrySupplier<ItemCastersCoin> CASTERS_COIN = item("casters_coin",
+        () -> new ItemCastersCoin(defaultSettings()));
+
+    public static final RegistrySupplier<ItemHeartPigment> HEART_PIGMENT = item("heart_pigment",
+        () -> new ItemHeartPigment(defaultSettings()));
+
+
+    public static final RegistrySupplier<Item> SLATE_BOWL = item("slate_bowl", 
+        () -> new Item(defaultSettings()));
+
+    public static final RegistrySupplier<Item> HEX_SNACK = item("hex_snack",
+        () -> new Item(defaultSettings().food((new FoodComponent.Builder()).hunger(2).saturationModifier(0.3f).snack().build())));
+
+    public static final RegistrySupplier<Item> HEXXY_OS = item("hexxyos",
+        () -> new Item(defaultSettings().food((new FoodComponent.Builder()).hunger(8).saturationModifier(0.8f).build())));
+
+    // fidgets -- todo: maybe move these out of here and into their own file
 
     public static final RegistrySupplier<ItemFidget> COPPER_PEN_FIDGET = item("copper_pen_fidget", 
         () -> new ItemFidget(defaultSettings().maxCount(1), 

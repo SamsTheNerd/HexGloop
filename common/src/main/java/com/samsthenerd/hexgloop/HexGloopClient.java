@@ -4,9 +4,12 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 import com.mojang.datafixers.util.Pair;
+import com.samsthenerd.hexgloop.blockentities.BERConjuredRedstone;
 import com.samsthenerd.hexgloop.blockentities.BlockEntityGloopEnergizer;
+import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
+import com.samsthenerd.hexgloop.items.ItemCastersCoin;
 import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 
@@ -20,10 +23,13 @@ import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.items.magic.ItemCreativeUnlocker;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
+import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
+import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.UnclampedModelPredicateProvider;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
@@ -48,7 +54,14 @@ public class HexGloopClient {
         registerScryingDisplayers();
         HexGloopKeybinds.registerKeybinds();
 
+        registerRenderers();
+
         newTess = new Tessellator();
+    }
+
+    private static void registerRenderers(){
+        BlockEntityRendererRegistry.register(HexGloopBEs.CONJURED_REDSTONE_BE.get(), BERConjuredRedstone::new);
+        RenderTypeRegistry.register(RenderLayer.getTranslucent(), HexGloopBlocks.CONJURED_REDSTONE_BLOCK.get());
     }
 
     private static void registerColorProviders(){
@@ -102,7 +115,7 @@ public class HexGloopClient {
             return 0xFFFFFF; //white
         }, HexGloopItems.GLOOP_DYE_ITEM.get());
 
-        ItemConvertible[] NEW_FOCII = {HexGloopItems.FOCAL_PENDANT.get(), HexGloopItems.FOCAL_RING.get()};
+        ItemConvertible[] NEW_FOCII = {HexGloopItems.FOCAL_PENDANT.get(), HexGloopItems.FOCAL_RING.get(), HexGloopItems.CASTERS_COIN.get()};
         
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
             if(tintIndex == 1){
@@ -158,6 +171,12 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.FOCAL_PENDANT.get(), ItemFocus.OVERLAY_PRED, focusModelProvider);
         ItemPropertiesRegistry.register(HexGloopItems.FOCAL_RING.get(), ItemFocus.OVERLAY_PRED, focusModelProvider);
+
+        ItemPropertiesRegistry.register(HexGloopItems.CASTERS_COIN.get(), ItemCastersCoin.OVERLAY_PRED,
+            (ItemStack itemStack, ClientWorld clientWorld, LivingEntity livingEntity, int i) -> {
+                return (HexGloopItems.CASTERS_COIN.get().isBound(itemStack)) ? 1.0F : 0.0F;
+            }
+        );
     }
 
     public static DecimalFormat DUST_FORMAT = new DecimalFormat("###,###.##");

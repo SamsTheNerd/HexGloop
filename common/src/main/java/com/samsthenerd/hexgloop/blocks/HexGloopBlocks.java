@@ -23,6 +23,10 @@ public class HexGloopBlocks {
     public static final RegistrySupplier<BlockGloopEnergizer> GLOOP_ENERGIZER_BLOCK = block("gloop_energizer", 
         () -> new BlockGloopEnergizer(AbstractBlock.Settings.of(Material.METAL, MapColor.TERRACOTTA_PURPLE).requiresTool().strength(25.0f, 1200.0f).sounds(BlockSoundGroup.NETHERITE)));
 
+    public static final RegistrySupplier<BlockConjuredRedstone> CONJURED_REDSTONE_BLOCK = block("conjured_redstone", 
+        () -> new BlockConjuredRedstone(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).requiresTool().strength(1.5f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)),
+        new Item.Settings()); // don't put it in item group
+
     public static Block.Settings defaultSettings(){
         return Block.Settings.of(Material.STONE).hardness((float)1.3);
     }

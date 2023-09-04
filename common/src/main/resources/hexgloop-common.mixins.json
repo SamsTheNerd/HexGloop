@@ -25,7 +25,8 @@
       "truenameclassactionmixins.MixinSetupLockableEntityIota",
       "truenameclassactionmixins.MixinTruenameVPN",
       "truenameclassactionmixins.MixinSorryChloeNoWispNonsense",
-      "truenameclassactionmixins.MixinClearImpetus"
+      "truenameclassactionmixins.MixinClearImpetus",
+      "truenameclassactionmixins.MixinAttachImpetusKey"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

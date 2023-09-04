@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "side": "hexgloop:block/conjured_redstone",
+        "top": "hexgloop:block/conjured_redstone",
+        "bottom": "hexgloop:block/conjured_redstone"
+    }
+}
