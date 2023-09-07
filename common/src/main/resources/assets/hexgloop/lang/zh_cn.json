@@ -9,6 +9,13 @@
     "item.hexgloop.focal_pendant.sealed": "密封的核心吊坠",
     "item.hexgloop.casting_potion": "施法药水",
     "item.hexgloop.gloop_dye": "凝浆染料",
+    "item.hexgloop.slate_bowl": "板岩碗",
+    "item.hexgloop.hexxyos": "咒法麦片",
+    "item.hexgloop.hex_snack": "思维软糖",
+    "item.hexgloop.casters_coin": "施法者硬币",
+    "item.hexgloop.casters_coin.bound": "已绑定的施法者硬币",
+    "item.hexgloop.casters_coin.bound_caster": "绑定至%s",
+    "item.hexgloop.heart_pigment": "Sam的凝浆十足染色剂",
 
     "item.hexgloop.copper_pen_fidget": "笔指记",
     "item.hexgloop.rainbow_amogus_fidget": "彩虹色船员按按乐指记",
@@ -52,11 +59,25 @@
 
     "hexcasting.mishap.bad_item.slot": "%1$s需要在%3$s中有%2$s，而实际为%4$dx %5$s",
     "hexcasting.mishap.no_item.slot": "%1$s需要在%3$s中有%2$s，而实际无对应物品",
+    "hexcasting.mishap.bad_offhand_item.caster_bound": "一个绑定至咒术师的物品",
 
     "hexgloop.slotname.necklace": "项链槽",
     "hexgloop.slotname.offhandring": "戒指槽",
     "hexgloop.slotname.mainhandring": "戒指槽",
     "hexcasting.mishap.bad_item.labely_item": "一个可标签物品",
+
+    "hexcasting.mishap.wrong_casting_source": "%s本应在%s处施放，而实际施放于%s",
+    "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
+    "hexcasting.mishap.wrong_casting_sources": "%s本应在%s中一处施放，而实际施放于%s",
+
+    "hexcasting.mishap.cleared_truename": "%s试图使用%s的真名",
+    "hexgloop.generic_circle_spell": "法术环",
+
+    "hexgloop.source_type.staff": "法杖",
+    "hexgloop.source_type.circle": "法术环",
+    "hexgloop.source_type.packaged_hex": "施法物品",
+    "hexgloop.source_type.wisp": "咒灵",
+
 
     "hexgloop.gloopvancement.title": "凝浆十足",
     "hexgloop.gloopvancement.desc": "往手上沾满凝浆",
