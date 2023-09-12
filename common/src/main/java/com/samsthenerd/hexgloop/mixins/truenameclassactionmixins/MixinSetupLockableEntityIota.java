@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.casting.truenameclassaction.ILockedIota;
 import com.samsthenerd.hexgloop.misc.worldData.TruenameLockState;
 
@@ -35,19 +34,19 @@ public class MixinSetupLockableEntityIota implements ILockedIota{
     @Inject(method = "serialize()Lnet/minecraft/nbt/NbtElement;", at=@At("RETURN"))
     public void addLockToEntityIotaSerialize(CallbackInfoReturnable<NbtElement> cir){
         NbtCompound nbt = (NbtCompound) cir.getReturnValue();
-        HexGloop.logPrint("in ent iota serialization");
+        // HexGloop.logPrint("in ent iota serialization");
         if(this.keyUuid != null){
-            HexGloop.logPrint("adding lockUUID to nbt: " + keyUuid.toString());
+            // HexGloop.logPrint("adding lockUUID to nbt: " + keyUuid.toString());
             nbt.putUuid("keyUUID", keyUuid);
         }
     }
 
     @Inject(method="<init>(Lnet/minecraft/entity/Entity;)V", at=@At("TAIL"))
     public void attachCurrentLockAtCreation(Entity ent, CallbackInfo ci){
-        HexGloop.logPrint("in ent iota creation");
+        // HexGloop.logPrint("in ent iota creation");
         if(ent instanceof PlayerEntity && ent.getWorld() instanceof ServerWorld sWorld){
             this.keyUuid = TruenameLockState.getServerState(sWorld.getServer()).getLockUUID(ent.getUuid());
-            HexGloop.logPrint("putting lockUUID into ent iota: " + this.keyUuid);
+            // HexGloop.logPrint("putting lockUUID into ent iota: " + this.keyUuid);
         }
     }
 }

@@ -1,0 +1,20 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+      {
+        "model": "hexgloop:item/hand_mirror",
+        "predicate": {
+          "hexgloop:is_mirror_activated": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/hand_mirror_activated",
+        "predicate": {
+          "hexgloop:is_mirror_activated": 1
+        }
+      }
+    ],
+    "textures": {
+      "layer0": "hexgloop:item/mirror/hand_mirror"
+    }
+  }

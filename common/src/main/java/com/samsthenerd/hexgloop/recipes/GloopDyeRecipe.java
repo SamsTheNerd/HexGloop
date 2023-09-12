@@ -1,6 +1,5 @@
 package com.samsthenerd.hexgloop.recipes;
 
-import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemGloopDye;
 
@@ -45,7 +44,7 @@ public class GloopDyeRecipe extends SpecialCraftingRecipe{
                 }
                 gloopDyeStack = itemStack2;
                 if(HexGloopItems.GLOOP_DYE_ITEM.get().getMedia(gloopDyeStack) < MediaConstants.DUST_UNIT){
-                    HexGloop.logPrint("cringe no media");
+                    // HexGloop.logPrint("cringe no media");
                     return false;
                 }
                 continue;

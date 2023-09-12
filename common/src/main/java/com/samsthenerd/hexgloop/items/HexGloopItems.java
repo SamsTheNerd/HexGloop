@@ -9,24 +9,33 @@ import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes.PatternLabel;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes.PatternLabel.PatternOptions;
 import com.samsthenerd.wnboi.utils.RenderUtils;
 
+import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.common.items.ItemFocus;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 
 public class HexGloopItems {
     public static DeferredRegister<Item> items = DeferredRegister.create(HexGloop.MOD_ID, Registry.ITEM_KEY);
 
     public static final RegistrySupplier<Item> GLOOP_ITEM = item("gloop", 
+        () -> new ItemSimpleMediaProvider(defaultSettings(), MediaConstants.CRYSTAL_UNIT * 2, 950));
+    public static final RegistrySupplier<Item> SYNCHRONOUS_GLOOP_ITEM = item("synchronous_gloop", 
         () -> new Item(defaultSettings()));
+    public static final RegistrySupplier<ItemGloopifact> GLOOPIFACT_ITEM = item("gloopifact",
+        () -> new ItemGloopifact(defaultSettings().maxCount(1).fireproof()));
     public static final RegistrySupplier<ItemMultiFocus> MULTI_FOCUS_ITEM = item("multi_focus", 
         () -> new ItemMultiFocus(defaultSettings().maxCount(1)));
     public static final RegistrySupplier<ItemCastingRing> CASTING_RING_ITEM = item("casting_ring", 
@@ -40,6 +49,8 @@ public class HexGloopItems {
         () -> new ItemFocus(defaultSettings().maxCount(1)));
     public static final RegistrySupplier<ItemFocus> FOCAL_RING = item("focal_ring",
         () -> new ItemFocus(defaultSettings().maxCount(1).fireproof()));
+    public static final RegistrySupplier<ItemHandMirror> HAND_MIRROR_ITEM = item("hand_mirror",
+        () -> new ItemHandMirror(defaultSettings().maxCount(1)));
 
     public static final RegistrySupplier<ItemCastersCoin> CASTERS_COIN = item("casters_coin",
         () -> new ItemCastersCoin(defaultSettings()));
@@ -52,10 +63,21 @@ public class HexGloopItems {
         () -> new Item(defaultSettings()));
 
     public static final RegistrySupplier<Item> HEX_SNACK = item("hex_snack",
-        () -> new Item(defaultSettings().food((new FoodComponent.Builder()).hunger(2).saturationModifier(0.3f).snack().build())));
+        () -> new ItemSimpleMediaProvider(defaultSettings().food((new FoodComponent.Builder()).hunger(2).saturationModifier(0.3f).snack().build()),
+            MediaConstants.DUST_UNIT / 64, 1));
 
     public static final RegistrySupplier<Item> HEXXY_OS = item("hexxyos",
-        () -> new Item(defaultSettings().food((new FoodComponent.Builder()).hunger(8).saturationModifier(0.8f).build())));
+        () -> new Item(defaultSettings().food((new FoodComponent.Builder()).hunger(8).saturationModifier(0.8f).build())){
+            // yeah gross anonymous class but i'm not making a whole new class for one cereal method
+            @Override
+            public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+                ItemStack itemStack = super.finishUsing(stack, world, user);
+                if (user instanceof PlayerEntity && ((PlayerEntity)user).getAbilities().creativeMode) {
+                    return itemStack;
+                }
+                return new ItemStack(SLATE_BOWL.get());
+            }
+        });
 
     // fidgets -- todo: maybe move these out of here and into their own file
 

@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.samsthenerd.hexgloop.casting.truenameclassaction.ILockedIota;
 import com.samsthenerd.hexgloop.casting.truenameclassaction.ISetImpetusKey;
+import com.samsthenerd.hexgloop.items.ItemCastersCoin;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
 import at.petrak.hexcasting.api.spell.iota.Iota;
@@ -27,11 +28,16 @@ import net.minecraft.world.World;
 
 @Mixin(BlockStoredPlayerImpetus.class)
 public class MixinAttachImpetusKey {
-    @Inject(method="onUse(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ActionResult;", at=@At(value="INVOKE", target="at/petrak/hexcasting/common/blocks/entity/BlockEntityStoredPlayerImpetus.setPlayer (Lcom/mojang/authlib/GameProfile;Ljava/util/UUID;)V"))
+    @Inject(method="onUse(Lnet/minecraft/block/BlockState;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;Lnet/minecraft/util/hit/BlockHitResult;)Lnet/minecraft/util/ActionResult;", 
+        at=@At(value="INVOKE", target="at/petrak/hexcasting/common/blocks/entity/BlockEntityStoredPlayerImpetus.setPlayer (Lcom/mojang/authlib/GameProfile;Ljava/util/UUID;)V"),
+        cancellable = true)
     public void AttachImpetusKey(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir){
         ItemStack usedStack = player.getStackInHand(hand);
         // while we're here, might as well block coins from being used to.
-        // TODO: do that once we have coin item
+        if(usedStack.getItem() instanceof ItemCastersCoin){
+            cir.setReturnValue(ActionResult.PASS);
+            return;
+        }
         ADIotaHolder datumContainer = IXplatAbstractions.INSTANCE.findDataHolder(usedStack);
         if(datumContainer == null) return;
         if(world instanceof ServerWorld sWorld){

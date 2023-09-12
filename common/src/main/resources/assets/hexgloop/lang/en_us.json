@@ -16,6 +16,10 @@
     "item.hexgloop.casters_coin.bound": "Bound Caster's Coin",
     "item.hexgloop.casters_coin.bound_caster": "Bound by %s",
     "item.hexgloop.heart_pigment": "Sam's Glooptastic Pigment",
+    "item.hexgloop.gloopifact": "Gloopifact",
+    "item.hexgloop.synchronous_gloop": "Synchronous Gloop",
+    "item.hexgloop.hand_mirror": "Hand Mirror",
+    "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",

@@ -53,11 +53,14 @@ public class BERConjuredRedstone implements BlockEntityRenderer<BlockEntityConju
         FrozenColorizer colorizer = be.getColorizer();
         Identifier textureId = new Identifier(HexGloop.MOD_ID, "block/conjured_redstone");
         Sprite sprite = new SpriteIdentifier(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE, textureId).getSprite();
+        float time = be.getWorld().getTime();
         for(Direction dir : Direction.values()){
             Vec3i normal = dir.getVector();
             Vec3i nextVec = startingVectors.get(dir);
+            Vec3d baseWorldVec = new Vec3d(be.getPos().getX(), be.getPos().getY(), be.getPos().getZ());
             for(int i = 0; i < 4; i++){
-                int color = colorizer.getColor(tickDelta, new Vec3d(nextVec.getX(), nextVec.getY(), nextVec.getZ()));
+                Vec3d worldVec = baseWorldVec.add(new Vec3d((nextVec.getX()+1)/2, (nextVec.getY()+1)/2, (nextVec.getZ()+1)/2));
+                int color = colorizer.getColor(time+tickDelta, worldVec);
                 buffer.vertex(stack.peek().getPositionMatrix(), (nextVec.getX()+1)/2, (nextVec.getY()+1)/2, (nextVec.getZ()+1)/2)
                     .color((color >> 16) & 0xFF, (color >> 8) & 0xFF, color & 0xFF, ((power+16) * 8)-1)
                     // .texture((((i >> 1) & 1) ^ (i & 1)) == 0 ? sprite.getMinU() : sprite.getMaxU(), ((i >> 1) & 1) == 0 ? sprite.getMinV() : sprite.getMaxV())

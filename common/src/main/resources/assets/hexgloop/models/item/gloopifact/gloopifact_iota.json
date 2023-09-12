@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "hexgloop:item/gloopifact/gloopifact_made",
+      "layer1": "hexgloop:item/gloopifact/iota_overlay"
+    }
+}

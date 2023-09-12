@@ -34,6 +34,7 @@ public class ItemCastersCoin extends Item implements IotaHolderItem {
     public static final Identifier OVERLAY_PRED = new Identifier(HexAPI.MOD_ID, "overlay_layer");
 
     public static final String TAG_DATA = "data";
+    // these may be garbage data if the data tag isn't set !
     public static final String TAG_CASTER = "caster";
     public static final String TAG_CASTER_DISPLAY = "caster_display";
 
@@ -71,6 +72,7 @@ public class ItemCastersCoin extends Item implements IotaHolderItem {
 
     @Nullable
     public Pair<UUID, String> getBoundCaster(ItemStack stack){
+        if(!isBound(stack)) return null;
         NbtCompound nbt = stack.getNbt();
         if(nbt == null) return null;
         String displayName = "";
@@ -102,8 +104,6 @@ public class ItemCastersCoin extends Item implements IotaHolderItem {
             stack.removeSubNbt(TAG_CASTER_DISPLAY);
         } else {
             NBTHelper.put(stack, TAG_DATA, HexIotaTypes.serialize(datum));
-            stack.removeSubNbt(TAG_CASTER);
-            stack.removeSubNbt(TAG_CASTER_DISPLAY);
         }
     }
 
@@ -112,10 +112,15 @@ public class ItemCastersCoin extends Item implements IotaHolderItem {
                                 TooltipContext pIsAdvanced) {
         IotaHolderItem.appendHoverText(this, pStack, pTooltipComponents, pIsAdvanced);
         NbtCompound nbt = pStack.getNbt();
-        if(nbt != null && nbt.contains(TAG_CASTER_DISPLAY, NbtElement.STRING_TYPE)){
-            MutableText boundCasterMessage = Text.translatable("item.hexgloop.casters_coin.bound_caster", nbt.getString(TAG_CASTER_DISPLAY));
+        if(nbt != null && isBound(pStack) && nbt.contains(TAG_CASTER_DISPLAY, NbtElement.STRING_TYPE)){
+            MutableText actualCasterText = Text.literal(nbt.getString(TAG_CASTER_DISPLAY));
+            Style casterStyle = actualCasterText.getStyle();
+            casterStyle = casterStyle.withItalic(true).withColor(Formatting.AQUA);
+            actualCasterText.setStyle(casterStyle);
+            MutableText boundCasterMessage = Text.translatable("item.hexgloop.casters_coin.bound_caster", actualCasterText);
             Style style = boundCasterMessage.getStyle();
             style = style.withItalic(true).withColor(Formatting.GRAY);
+            boundCasterMessage.setStyle(style);
             pTooltipComponents.add(boundCasterMessage);
         }
     }
