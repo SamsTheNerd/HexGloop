@@ -16,6 +16,10 @@
     "item.hexgloop.casters_coin.bound": "已绑定的施法者硬币",
     "item.hexgloop.casters_coin.bound_caster": "绑定至%s",
     "item.hexgloop.heart_pigment": "Sam的凝浆十足染色剂",
+    "item.hexgloop.gloopifact": "凝浆造物",
+    "item.hexgloop.synchronous_gloop": "同步凝浆",
+    "item.hexgloop.hand_mirror": "手镜",
+    "item.hexgloop.hand_mirror.tooltip": "反射[%s]",
 
     "item.hexgloop.copper_pen_fidget": "笔指记",
     "item.hexgloop.rainbow_amogus_fidget": "彩虹色船员按按乐指记",
