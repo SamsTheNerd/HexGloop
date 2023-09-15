@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.casting.truenameclassaction.ILockedIota;
 import com.samsthenerd.hexgloop.misc.worldData.TruenameLockState;
 
@@ -25,24 +24,24 @@ public class MixinTruenameVPN {
     @Inject(method="deserialize(Lnet/minecraft/nbt/NbtElement;Lnet/minecraft/server/world/ServerWorld;)Lat/petrak/hexcasting/api/spell/iota/EntityIota;"
     , at=@At("RETURN"), cancellable = true)
     public void checkUUIDLockOnEntityIotaDeser(NbtElement tag, ServerWorld sWorld, CallbackInfoReturnable<EntityIota> cir){
-        HexGloop.logPrint("in checkUUIDLockOnEntityIotaDeser");
+        // HexGloop.logPrint("in checkUUIDLockOnEntityIotaDeser");
         if(cir.getReturnValue() == null) return;
-        HexGloop.logPrint("nonnull return value");
+        // HexGloop.logPrint("nonnull return value");
         Entity ent = cir.getReturnValue().getEntity();
         if(ent == null) return;
-        HexGloop.logPrint("nonnull entity");
+        // HexGloop.logPrint("nonnull entity");
         if(ent instanceof PlayerEntity){
             UUID lockUUID = TruenameLockState.getServerState(sWorld.getServer()).getLockUUID(ent.getUuid());
-            HexGloop.logPrint("lockUUID: " + (lockUUID == null ? "null" : lockUUID.toString()));
+            // HexGloop.logPrint("lockUUID: " + (lockUUID == null ? "null" : lockUUID.toString()));
             NbtCompound nbt = HexUtils.downcast(tag, NbtCompound.TYPE);
             UUID keyUUID = null;
             if(nbt.containsUuid("keyUUID")){
                 keyUUID = nbt.getUuid("keyUUID");
             }
             ((ILockedIota)(cir.getReturnValue())).setUUIDKey(keyUUID);
-            HexGloop.logPrint("keyUUID: " + (keyUUID == null ? "null" : keyUUID.toString()));
+            // HexGloop.logPrint("keyUUID: " + (keyUUID == null ? "null" : keyUUID.toString()));
             if(lockUUID != null && !lockUUID.equals(keyUUID)){
-                HexGloop.logPrint("lockUUID != keyUUID");
+                // HexGloop.logPrint("lockUUID != keyUUID");
                 cir.setReturnValue(null);
             }
         }

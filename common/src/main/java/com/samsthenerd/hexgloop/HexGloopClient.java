@@ -11,6 +11,8 @@ import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemCastersCoin;
 import com.samsthenerd.hexgloop.items.ItemGloopDye;
+import com.samsthenerd.hexgloop.items.ItemGloopifact;
+import com.samsthenerd.hexgloop.items.ItemHandMirror;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry;
@@ -115,7 +117,8 @@ public class HexGloopClient {
             return 0xFFFFFF; //white
         }, HexGloopItems.GLOOP_DYE_ITEM.get());
 
-        ItemConvertible[] NEW_FOCII = {HexGloopItems.FOCAL_PENDANT.get(), HexGloopItems.FOCAL_RING.get(), HexGloopItems.CASTERS_COIN.get()};
+        ItemConvertible[] NEW_FOCII = {HexGloopItems.FOCAL_PENDANT.get(), HexGloopItems.FOCAL_RING.get(), HexGloopItems.CASTERS_COIN.get(), 
+            HexGloopItems.GLOOPIFACT_ITEM.get()};
         
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
             if(tintIndex == 1){
@@ -177,6 +180,21 @@ public class HexGloopClient {
                 return (HexGloopItems.CASTERS_COIN.get().isBound(itemStack)) ? 1.0F : 0.0F;
             }
         );
+
+        ItemPropertiesRegistry.register(HexGloopItems.GLOOPIFACT_ITEM.get(), ItemFocus.OVERLAY_PRED, (stack, level, holder, holderID) -> {
+            ItemGloopifact gloopifactItem = HexGloopItems.GLOOPIFACT_ITEM.get();
+            if(!gloopifactItem.hasHex(stack)){
+                return 0;
+            }
+            if(gloopifactItem.readIotaTag(stack) == null){
+                return 0.5f;
+            }
+            return 1f;
+        });
+
+        ItemPropertiesRegistry.register(HexGloopItems.HAND_MIRROR_ITEM.get(), ItemHandMirror.MIRROR_ACTIVATED_PRED, (stack, level, holder, holderID) -> {
+            return HexGloopItems.HAND_MIRROR_ITEM.get().isMirrorActivated(stack) ? 1 : 0;
+        });
     }
 
     public static DecimalFormat DUST_FORMAT = new DecimalFormat("###,###.##");

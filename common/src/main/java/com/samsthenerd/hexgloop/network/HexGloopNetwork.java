@@ -3,6 +3,8 @@ package com.samsthenerd.hexgloop.network;
 import java.util.List;
 
 import com.samsthenerd.hexgloop.HexGloop;
+import com.samsthenerd.hexgloop.network.booktweaks.BookScrollHandlers;
+import com.samsthenerd.hexgloop.network.booktweaks.BookScrollHandlersClient;
 
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.casting.ResolvedPattern;
@@ -17,6 +19,9 @@ import net.minecraft.util.Identifier;
 public class HexGloopNetwork {
     public static final Identifier CLEAR_GRID_PACKET_ID = new Identifier(HexGloop.MOD_ID, "clear_grid");
     public static final Identifier OPEN_CASTING_GRID_PACKET_ID = new Identifier(HexGloop.MOD_ID, "open_casting_grid");
+    public static final Identifier CHANGE_WALL_SCROLL_ID = new Identifier(HexGloop.MOD_ID, "change_wall_scroll");
+    public static final Identifier CLOSE_HEX_BOOK_ID = new Identifier(HexGloop.MOD_ID, "close_hex_book");
+    public static final Identifier PROMPT_REPLACE_SCROLL_ID = new Identifier(HexGloop.MOD_ID, "prompt_replace_scroll");
 
     public static void register(){
         // clears the grid - maybe not actually super useful
@@ -42,6 +47,8 @@ public class HexGloopNetwork {
                     harness.getParenCount()));
         });
 
-
+        NetworkManager.registerReceiver(NetworkManager.Side.C2S, CHANGE_WALL_SCROLL_ID, BookScrollHandlers::handleReplaceScroll);
+        NetworkManager.registerReceiver(NetworkManager.Side.S2C, CLOSE_HEX_BOOK_ID, BookScrollHandlersClient::handleCloseClientBook);
+        NetworkManager.registerReceiver(NetworkManager.Side.S2C, PROMPT_REPLACE_SCROLL_ID, BookScrollHandlersClient::handleReplaceScrollPrompt);
     }
 }

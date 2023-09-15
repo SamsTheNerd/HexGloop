@@ -47,6 +47,15 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("eaqawqadaqdeewewewe", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "in_nether"),
                 new OpIsInDimension(World.NETHER));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("ddeaqq", HexDir.NORTH_EAST), 
+                new Identifier(HexGloop.MOD_ID, "opnop_useless"), 
+                new OpNop());
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wawaw", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "check_ambit"),
+                new OpCheckAmbit());
+            
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }
@@ -57,6 +66,11 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wawwedewwqqq", HexDir.EAST), 
                 new Identifier(HexGloop.MOD_ID, "craft/potion"),
                 new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.SHARD_UNIT));
+
+            // wwaadaqwaweqwqwawewewawqwwwwwadeeeeeqww
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
+                new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), 0));
 
             // qwawqwadawqwqwqwqwqw <- simpler sign write with hexagon
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwedwewdweqawqwqwqwqwqw", HexDir.SOUTH_WEST),
@@ -75,6 +89,12 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("qaqqaqqqqqead", HexDir.NORTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "compare_item_bound_caster"),
                 new OpGetCoinBinder(true));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qaqqwawqwqwqwqwqw", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "cooler_get_item_bound_caster"),
+                new OpGetCoinBinder(false, true));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qaqqwawqwqwqwqwqwead", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "cooler_compare_item_bound_caster"),
+                new OpGetCoinBinder(true, true));
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }

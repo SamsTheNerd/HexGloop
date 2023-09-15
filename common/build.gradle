@@ -24,7 +24,8 @@ dependencies {
 
     modCompileOnly "at.petra-k.paucal:paucal-common-$minecraft_version:$paucalVersion"
     modCompileOnly "at.petra-k.hexcasting:hexcasting-fabric-$minecraft_version:$hexcastingVersion"
-    modCompileOnly "vazkii.patchouli:Patchouli-xplat:$minecraft_version-$patchouliVersion"
+    // modCompileOnly "vazkii.patchouli:Patchouli-xplat:$minecraft_version-$patchouliVersion"
+    modCompileOnly "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouliVersion}-FABRIC" // switch to fabric to hopefully avoid remap weirdness?
 
     modCompileOnly("me.shedaniel:RoughlyEnoughItems-api:${project.rei_version}"){
         transitive = false

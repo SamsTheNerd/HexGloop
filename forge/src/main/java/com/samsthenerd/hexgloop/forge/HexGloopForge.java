@@ -8,6 +8,8 @@ import com.samsthenerd.hexgloop.misc.TrinketyImplFake;
 
 import dev.architectury.platform.Platform;
 import dev.architectury.platform.forge.EventBuses;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -30,6 +32,8 @@ public class HexGloopForge {
         } else {
             HexGloop.TRINKETY_INSTANCE = new TrinketyImplFake();
         }
+
+        MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, HexGloopCaps::attachItemCaps);
 
         HexGloop.onInitialize();
     }

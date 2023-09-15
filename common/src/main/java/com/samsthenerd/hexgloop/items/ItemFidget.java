@@ -1,6 +1,5 @@
 package com.samsthenerd.hexgloop.items;
 
-import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.casting.orchard.IOrchard;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker;
@@ -137,13 +136,15 @@ public class ItemFidget extends Item implements LabelyItem, KeyboundItem{
 
     public static int rotatePageIdx(ItemStack stack, boolean increase) {
         int idx = getPage(stack);
-        if (idx != 0) {
-            idx += increase ? 1 : -1;
-            idx = Math.max(1, idx);
-        }
         int numSlots = 1;
         if(stack.getItem() instanceof ItemFidget fidgetItem){
             numSlots = fidgetItem.fidgetSettings.slots;
+        }
+        if (idx != 0) {
+            idx += increase ? 1 : -1;
+            if(idx <= 0) idx = numSlots;
+            if(idx > numSlots) idx = 1;
+            idx = Math.max(1, idx);
         }
         idx = MathHelper.clamp(idx, 0, numSlots);
         NBTHelper.putInt(stack, ItemSpellbook.TAG_SELECTED_PAGE, idx);
@@ -221,7 +222,7 @@ public class ItemFidget extends Item implements LabelyItem, KeyboundItem{
         @Override
         public void toSlot(int index){
             int current = currentSlot()-1;
-            HexGloop.logPrint("going to slot " + index + " from slot " + current);
+            // HexGloop.logPrint("going to slot " + index + " from slot " + current);
             int dist = Math.abs(index - current);
             int invert = (dist == (index - current)) ? -1 : 1;
             for(int i = 0; i < dist; i++){

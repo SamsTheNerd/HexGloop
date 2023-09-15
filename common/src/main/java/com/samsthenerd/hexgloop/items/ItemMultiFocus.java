@@ -113,6 +113,8 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
         int idx = ItemSpellbook.getPage(stack, 0);
         if (idx != 0) {
             idx += increase ? 1 : -1;
+            if(idx <= 0) idx = MAX_FOCI_SLOTS;
+            if(idx > MAX_FOCI_SLOTS) idx = 1;
             idx = Math.max(1, idx);
         }
         idx = MathHelper.clamp(idx, 0, MAX_FOCI_SLOTS);

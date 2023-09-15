@@ -16,6 +16,12 @@ public class HexGloopBEs {
         = blockEntities.register(new Identifier(HexGloop.MOD_ID, "gloop_energizer_tile"), 
         () -> BlockEntityType.Builder.create(BlockEntityGloopEnergizer::new, HexGloopBlocks.GLOOP_ENERGIZER_BLOCK.get()).build(null));
 
+    public static RegistrySupplier<BlockEntityType<BlockEntityPedestal>> PEDESTAL_BE
+        = blockEntities.register(
+            new Identifier(HexGloop.MOD_ID, "pedestal_tile"),
+            () -> BlockEntityType.Builder.create(BlockEntityPedestal::new, HexGloopBlocks.PEDESTAL_BLOCK.get()).build(null)
+        );
+
     public static RegistrySupplier<BlockEntityType<BlockEntityConjuredRedstone>> CONJURED_REDSTONE_BE 
         = blockEntities.register(new Identifier(HexGloop.MOD_ID, "conjured_redstone_tile"), 
         () -> BlockEntityType.Builder.create(BlockEntityConjuredRedstone::new, HexGloopBlocks.CONJURED_REDSTONE_BLOCK.get()).build(null));

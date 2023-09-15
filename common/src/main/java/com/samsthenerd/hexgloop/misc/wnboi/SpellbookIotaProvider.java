@@ -1,7 +1,5 @@
 package com.samsthenerd.hexgloop.misc.wnboi;
 
-import com.samsthenerd.hexgloop.HexGloop;
-
 import at.petrak.hexcasting.api.utils.NBTHelper;
 import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.network.MsgShiftScrollSyn;
@@ -68,7 +66,7 @@ public class SpellbookIotaProvider implements IotaProvider{
     @Override
     public void toSlot(int index){
         int current = currentSlot()-1;
-        HexGloop.logPrint("going to slot " + index + " from slot " + current);
+        // HexGloop.logPrint("going to slot " + index + " from slot " + current);
         int dist = Math.abs(index - current);
         int invert = (dist == (index - current)) ? -1 : 1;
         for(int i = 0; i < dist; i++){
