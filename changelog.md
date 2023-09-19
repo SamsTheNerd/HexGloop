@@ -1,6 +1,26 @@
 # Changelog
 
-## 0.0.5
+## 0.1.0
+
+### Added
+
+- Gloopifact (new casting item with some iota manipulation abilities)
+- Hex snacks & Hexxy-Os - conjure them with media and get a tasty little treat.
+- Caster's Coins - a coin that can hold iotas that can only be read once
+- Synchronous gloop
+- Hand Mirror - redirects spells that use your offhand to use an item entity stored by the mirror
+- Pedestals - gives a functional item entity based on the item stack in its inventory
+- Truename protection spell - void (almost) all references to your truename
+- Redstone related patterns
+- Dimension related patterns
+- Pattern to check if a position/entity is within ambit
+- Nop pattern
+- Gloop can now be used as a raw media source worth 2x charged amethyst
+
+### Changed
+
+- Multi-Focus and Fidgets will now loop around when shift scrolling or using the keybinds
+- Sped up tooltip delay on iota wheels
 
 ### Fixed
 

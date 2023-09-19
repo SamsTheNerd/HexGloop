@@ -1,11 +1,13 @@
 package com.samsthenerd.hexgloop;
 
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Random;
 
 import com.mojang.datafixers.util.Pair;
 import com.samsthenerd.hexgloop.blockentities.BERConjuredRedstone;
 import com.samsthenerd.hexgloop.blockentities.BlockEntityGloopEnergizer;
+import com.samsthenerd.hexgloop.blockentities.BlockEntityPedestal;
 import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
@@ -15,34 +17,47 @@ import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 
+import at.petrak.hexcasting.api.addldata.ADIotaHolder;
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry;
 import at.petrak.hexcasting.api.item.IotaHolderItem;
 import at.petrak.hexcasting.api.misc.FrozenColorizer;
 import at.petrak.hexcasting.api.misc.MediaConstants;
+import at.petrak.hexcasting.api.spell.iota.PatternIota;
+import at.petrak.hexcasting.api.spell.math.HexDir;
+import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.api.utils.NBTHelper;
 import at.petrak.hexcasting.common.items.ItemFocus;
 import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.items.magic.ItemCreativeUnlocker;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
+import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.item.ItemPropertiesRegistry;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.UnclampedModelPredicateProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeableItem;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 
 public class HexGloopClient {
     public static Random random = new Random();
@@ -199,6 +214,37 @@ public class HexGloopClient {
 
     public static DecimalFormat DUST_FORMAT = new DecimalFormat("###,###.##");
 
+    private static void pedestalDisplay(List<Pair<ItemStack, Text>> lines,
+        BlockState state, BlockPos pos, PlayerEntity observer,
+        World world,
+        Direction hitFace){
+            
+        BlockEntityPedestal be = world.getBlockEntity(pos, HexGloopBEs.PEDESTAL_BE.get()).orElse(null);
+        if(be == null) return;
+        ItemStack stack = be.getStack(0);
+        if(stack.isEmpty()){
+            MutableText text = Text.literal("Empty");
+            Style stlye = Style.EMPTY.withColor(Formatting.GRAY).withItalic(true);
+            text.setStyle(stlye);
+            lines.add(new Pair<>(ItemStack.EMPTY, text));
+        } else {
+            lines.add(new Pair<>(stack, stack.getName()));
+            ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(stack);
+            if(iotaHolder == null) return;
+            NbtCompound nbt = iotaHolder.readIotaTag();
+            if(nbt == null) return;
+            if(HexIotaTypes.getTypeFromTag(nbt) != HexIotaTypes.PATTERN && state.getBlock() != HexGloopBlocks.MIRROR_PEDESTAL_BLOCK.get()){
+                return;
+            }
+            if(nbt != null){
+                Text iotaDesc = HexIotaTypes.getDisplay(iotaHolder.readIotaTag());
+                ItemStack slateIcon = new ItemStack(HexItems.SLATE);
+                HexItems.SLATE.writeDatum(slateIcon, new PatternIota(HexPattern.fromAngles("", HexDir.EAST)));
+                lines.add(new Pair<>(slateIcon, iotaDesc));
+            }
+        }
+    }
+
     private static void registerScryingDisplayers(){
         ScryingLensOverlayRegistry.addDisplayer(HexGloopBlocks.GLOOP_ENERGIZER_BLOCK.get(), 
         (lines, state, pos, observer, world, direction) -> {
@@ -215,5 +261,8 @@ public class HexGloopClient {
                 // lines.add(new Pair<>(energizer.getLatestResult(), Text.literal("Latest result")));
             }
         });
+
+        ScryingLensOverlayRegistry.addDisplayer(HexGloopBlocks.PEDESTAL_BLOCK.get(), HexGloopClient::pedestalDisplay);
+        ScryingLensOverlayRegistry.addDisplayer(HexGloopBlocks.MIRROR_PEDESTAL_BLOCK.get(), HexGloopClient::pedestalDisplay);
     }
 }

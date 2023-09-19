@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.samsthenerd.hexgloop.items.ItemGloopifact;
+
 import at.petrak.hexcasting.api.misc.FrozenColorizer;
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingContext.CastSource;
@@ -11,6 +13,7 @@ import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.mishaps.Mishap;
 import dev.architectury.platform.Platform;
 import kotlin.jvm.internal.Intrinsics;
+import net.minecraft.item.ItemStack;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
@@ -47,6 +50,10 @@ public class MishapChloeIsGonnaFindSoManyWaysToBreakThisHuh extends Mishap {
                 if(HexalWispWrapper.isWisp(ctx)){
                     return "wisp";
                 }
+            }
+            ItemStack castHandStack = ctx.getCaster().getStackInHand(ctx.getCastingHand());
+            if(castHandStack.getItem() instanceof ItemGloopifact gloopifactItem){
+                return "gloopifact";
             }
             return "packaged_hex";
         }

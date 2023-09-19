@@ -1,14 +1,27 @@
 package com.samsthenerd.hexgloop.blockentities;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import com.samsthenerd.hexgloop.blocks.BlockPedestal;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociAtHome;
+import com.samsthenerd.hexgloop.misc.HexGloopTags;
 import com.samsthenerd.hexgloop.misc.INoMoving;
 
+import at.petrak.hexcasting.api.addldata.ADIotaHolder;
+import at.petrak.hexcasting.api.spell.casting.CastingHarness;
+import at.petrak.hexcasting.api.spell.iota.Iota;
+import at.petrak.hexcasting.api.spell.iota.PatternIota;
+import at.petrak.hexcasting.api.spell.math.HexPattern;
+import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.Entity.RemovalReason;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -17,21 +30,35 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 public class BlockEntityPedestal extends BlockEntity implements Inventory {
     public static final String ITEM_DATA_TAG = "inv_storage";
     public static final String PERSISTENT_UUID_TAG = "persistent_uuid";
 
+    public static final double HEIGHT = 0.75;
+
     private ItemStack storedItem = ItemStack.EMPTY;
     // item entity on top of pedestal
     private ItemEntity itemEnt = null; 
     private UUID persistentUUID = null;
+    private boolean isMirror;
 
     public BlockEntityPedestal(BlockPos pos, BlockState state) {
         super(HexGloopBEs.PEDESTAL_BE.get(), pos, state);
+        isMirror = false;
+        if(state.getBlock() instanceof BlockPedestal){
+            isMirror = ((BlockPedestal)state.getBlock()).isMirror;
+        }
         if(getWorld() != null && !getWorld().isClient()){
             persistentUUID = getNewUUID();
             makeNewItemEntity();
@@ -50,20 +77,34 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         return newUUID;
     }
 
+    public Direction getNormal(){
+        return getCachedState().get(BlockPedestal.FACING);
+    }
+
     private void makeNewItemEntity(){
         if(getWorld() instanceof ServerWorld sWorld){
+            if(storedItem == null || storedItem.isEmpty()){
+                return;
+            }
             if(persistentUUID == null){
                 persistentUUID = getNewUUID();
             }
             // first need to deal with old one -- maybe
             if(itemEnt != null){
                 itemEnt.discard();
+                itemEnt = null;
             }
             Entity maybeItemEnt = sWorld.getEntity(persistentUUID);
             if(maybeItemEnt != null && !maybeItemEnt.isRemoved()){
                 maybeItemEnt.discard();
             }
-            itemEnt = new ItemEntity(sWorld, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, storedItem, 0, 0, 0);
+            Vec3i norm = getNormal().getVector();
+            double heightOffset = HEIGHT - 0.5 + 0.01;
+            itemEnt = new ItemEntity(sWorld, 
+                pos.getX() + 0.5 + (heightOffset+0.2f) * norm.getX(), // + 0.125 to put it far enough out
+                pos.getY() + 0.2 + (heightOffset * norm.getY()) + Math.abs(0.3 * norm.getY()) + (norm.getY() < 0 ? -0.7 : 0), // put it on the 'floor' when it's sideways so it's not floating too high
+                pos.getZ() + 0.5 + (heightOffset+0.2f) * norm.getZ(), 
+                storedItem, 0, 0, 0);
             itemEnt.setUuid(persistentUUID);
             itemEnt.setNoGravity(removed);
             itemEnt.noClip = true;
@@ -72,10 +113,96 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
             itemEnt.setInvulnerable(true);
             ((INoMoving)itemEnt).setNoMoving(true);
             sWorld.spawnEntity(itemEnt);
+            markDirty();
         }
     }
 
-    
+    public void onRemoved(){
+        if(itemEnt != null){
+            itemEnt.discard();
+        }
+        if(world instanceof ServerWorld sWorld){
+            Vec3i norm = getNormal().getVector();
+            double heightOffset = HEIGHT - 0.5 + 0.01;
+            // spawn a normal item entity, just as a drop
+            itemEnt = new ItemEntity(sWorld, 
+                pos.getX() + 0.5 + heightOffset * norm.getX(), 
+                pos.getY() + 0.5 + heightOffset * norm.getY(), 
+                pos.getZ() + 0.5 + heightOffset * norm.getZ(), 
+                storedItem, 0, 0, 0);
+            sWorld.spawnEntity(itemEnt);
+            markDirty();
+        }
+    }
+
+    private Set<PlayerEntity> interactedCheck = new HashSet<>();
+
+    public void interacted(PlayerEntity player){
+        interactedCheck.add(player);
+    }
+
+    public ActionResult use(PlayerEntity player, Hand hand, BlockHitResult hit){
+        // make sure it doesn't get the second hand when it shouldn't
+        if(interactedCheck.contains(player)) {
+            interactedCheck.remove(player);
+            return ActionResult.CONSUME;
+        }
+        boolean isClient = world.isClient();
+        String logLore = "[ " + (isClient ? "client" : "server") + " ] -  " + (hand == Hand.MAIN_HAND ? "main" : "off") + ": ";
+        ItemStack heldStack = player.getStackInHand(hand);
+        ItemStack otherStack = player.getStackInHand(hand == Hand.MAIN_HAND ? Hand.OFF_HAND : Hand.MAIN_HAND);
+        // HexGloop.logPrint("entered use on [ " + (isClient ? "client" : "server") + " ] with heldStack [ " + heldStack + " ] and otherStack [ " + otherStack + " ]");
+        if(storedItem==null || storedItem.isEmpty()){ // it's empty, so maybe put something in there
+            // HexGloop.logPrint(logLore + "stored item empty");
+            if(world.isClient){
+                // HexGloop.logPrint(logLore + "returning on client based on heldStack.isEmpty()");
+                return heldStack.isEmpty() ? ActionResult.PASS : ActionResult.SUCCESS;
+            }
+            if(heldStack.isEmpty()){
+                // HexGloop.logPrint(logLore + "heldstack empty");
+                return ActionResult.PASS;
+            } else {
+                setStack(0, heldStack.copy());
+                heldStack.decrement(heldStack.getCount());
+                // HexGloop.logPrint(logLore + "heldstack not empty");
+                return ActionResult.SUCCESS;
+            }
+        }
+        // not empty, maybe take something out - or add it
+        if(ItemStack.canCombine(storedItem, heldStack)){
+            // HexGloop.logPrint(logLore + "can combine with heldStack");
+            if(!world.isClient){
+                int amtToMove = Math.min(storedItem.getMaxCount() - storedItem.getCount(), heldStack.getCount());
+                storedItem.increment(amtToMove);
+                heldStack.decrement(amtToMove);
+                syncItemWithEntity(true);
+            }
+            return ActionResult.SUCCESS;
+        }
+        if(ItemStack.canCombine(storedItem, otherStack)){ // let it be handled by other hand ? 
+            // HexGloop.logPrint(logLore + "can combine with otherStack");
+            return ActionResult.PASS;
+        }
+        // can't combine, so pop it and then replace only if main hand ?
+        if(!world.isClient){
+            ItemStack returnedStack = removeStack(0);
+            if(hand == Hand.MAIN_HAND){
+                // HexGloop.logPrint(logLore + "putting main hand stack in pedestal");
+                setStack(0, heldStack.copy());
+                heldStack.decrement(heldStack.getCount());
+            }
+            if(!returnedStack.isEmpty()){
+                // HexGloop.logPrint(logLore + "returning stack to player");
+                if(player.getMainHandStack().isEmpty()){
+                    player.setStackInHand(Hand.MAIN_HAND, returnedStack);
+                } else {
+                    player.getInventory().offerOrDrop(returnedStack);
+                }
+            }
+        }
+        // HexGloop.logPrint(logLore + "returning success");
+        return ActionResult.SUCCESS;
+    }
 
     @Override
     public void readNbt(NbtCompound nbt) {
@@ -96,27 +223,99 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         }
     }
 
-
     public void syncItemWithEntity(boolean forceBlock){
         if(world.isClient()) return;
         if(storedItem == null || storedItem.isEmpty()){
+            // no stored item so kill our entity
             if(itemEnt != null){
                 itemEnt.discard();
                 itemEnt = null;
+                markDirty();
             }
             return;
         } else { // have an item here
             if(itemEnt == null || itemEnt.isRemoved()){ // no entity
-                makeNewItemEntity();
-            } else {
-                // let's just see how it does here tbh
+                // it's a mess but it just checks if the item entity is either discarded or killed and empty since some spells kill it when it's empty
+                if(itemEnt != null && 
+                    (itemEnt.getRemovalReason() == RemovalReason.DISCARDED || 
+                        (itemEnt.getRemovalReason() == RemovalReason.KILLED && 
+                        (itemEnt.getStack() == null || itemEnt.getStack().isEmpty()) 
+                    ))
+                && !forceBlock){
+                    storedItem = ItemStack.EMPTY;
+                    markDirty();
+                } else {
+                    makeNewItemEntity();
+                }
+            } else { // there is an entity and an item
+                if(storedItem != itemEnt.getStack()){
+                    if(forceBlock){
+                        itemEnt.setStack(storedItem);
+                    } else {
+                        storedItem = itemEnt.getStack();
+                        markDirty();
+                    }
+                }
             }
         }
     }
 
     public void tick(World world, BlockPos pos, BlockState state){
         if(world.isClient()) return;
+        interactedCheck.clear();
+        List<ItemEntity> hopperableItemEnts = getInputItemEntities();
+        hopperableItemEnts.sort((a, b) -> {
+            return (int) (pos.getSquaredDistanceFromCenter(a.getPos().x, a.getPos().y, a.getPos().z) - pos.getSquaredDistanceFromCenter(b.getPos().x, b.getPos().y, b.getPos().z));
+        });
+        for(ItemEntity iEnt : hopperableItemEnts){
+            ItemStack entStack = iEnt.getStack();
+            if(storedItem == null || storedItem.isEmpty()){
+                storedItem = entStack.copy();
+                entStack.decrement(entStack.getCount());
+                break;
+            }
+            if(ItemStack.canCombine(storedItem, entStack)){
+                int amtToMove = Math.min(storedItem.getMaxCount() - storedItem.getCount(), entStack.getCount());
+                storedItem.increment(amtToMove);
+                entStack.decrement(amtToMove);
+                break;
+            }
+        }
         syncItemWithEntity(false);
+    }
+
+    public List<ItemEntity> getInputItemEntities() {
+        // so we had this grab a bit above the pedestal before, but that sounds like a pain rotated, so this should be fine probably ?
+        Box box = new Box(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1);
+        return world.getEntitiesByClass(ItemEntity.class, box, (ent) -> !(ent.getUuid().equals(persistentUUID)) && EntityPredicates.VALID_ENTITY.test(ent));
+    }
+        
+    // tries to get a pattern based on the scroll or slate in the pedestal if there is one
+    @Nullable
+    public HexPattern getPattern(){
+        // make sure we're on the server and have a pattern holder
+        ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(storedItem); // so that we can get stuff like ducks or Pi
+        if(!(world instanceof ServerWorld sWorld)
+        || storedItem.isIn(HexGloopTags.NOT_PATTERN_PEDESTAL_PROVIDER)
+        || iotaHolder == null) return null; 
+        Iota iota = iotaHolder.readIota(sWorld);
+        if(iota instanceof PatternIota pIota){
+            return pIota.getPattern();
+        }
+        return null;
+    }
+
+    public void rawLociCall(CastingHarness harness){
+        // can do cool stuff i guess ?
+        if(!isMirror) return; // only do embedding stuff on the mirror
+        if(!(world instanceof ServerWorld sWorld)) return;
+        ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(storedItem);
+        if(iotaHolder != null){
+            Iota iota = iotaHolder.readIota(sWorld);
+            // want to either put it on the stack or embed it in parens
+            boolean success = ILociAtHome.addOrEmbedIota(harness, iota);
+            // i guess just skip if it fails ?
+        }
     }
 
     public int size(){
@@ -138,6 +337,7 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         if(slot == 0){
             storedItem = stack;
             syncItemWithEntity(true);
+            markDirty();
         }
     }
 
@@ -146,6 +346,7 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
             ItemStack temp = storedItem;
             storedItem = ItemStack.EMPTY;
             syncItemWithEntity(true);
+            markDirty();
             return temp;
         }
         return ItemStack.EMPTY;
@@ -155,6 +356,7 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         if(slot == 0){
             ItemStack newSplit = storedItem.split(amount);
             syncItemWithEntity(true);
+            markDirty();
             return newSplit;
         }
         return ItemStack.EMPTY;
@@ -167,6 +369,15 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
     public void clear(){
         storedItem = ItemStack.EMPTY;
         syncItemWithEntity(true);
+        markDirty();
+    }
+
+    @Override
+    public void markDirty() {
+        if (world instanceof ServerWorld sWorld) {
+            sWorld.getChunkManager().markForUpdate(pos);
+        }
+        super.markDirty();
     }
 
     @Override

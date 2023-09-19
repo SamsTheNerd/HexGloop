@@ -34,7 +34,13 @@
       "misc.MixinDontLetHexxyEatMySnacks",
       "mirroritems.MixinEveryInlineGetHeldItemCall",
       "mirroritems.MixinDirectlyOnGetHeldItem",
-      "mirroritems.MixinItemsNoMoving"
+      "mirroritems.MixinItemsNoMoving",
+      "mirroritems.MixinPhialToEnt",
+      "lociathome.MixinLociAtHome",
+      "lociathome.MixinExposeHarnessStuff",
+      "mishapprotection.MixinCatchyFrameEval",
+      "mishapprotection.MixinRedirectMishaps",
+      "mishapprotection.MixinStoreLastMishapContext"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

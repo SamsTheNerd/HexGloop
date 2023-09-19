@@ -1,7 +1,11 @@
 package com.samsthenerd.hexgloop.mixins.mirroritems;
 
+import java.util.List;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
@@ -19,5 +23,24 @@ public class MixinDirectlyOnGetHeldItem {
     public ItemStack getAlternateHandStack(ServerPlayerEntity player, Hand hand, Operation<ItemStack> original){
         ItemStack altStack = SyncedItemHandling.getAlternateHandStack(player, hand, (CastingContext)(Object)this);
         return altStack == null ? original.call(player, hand) : altStack;
+    }
+
+    // these are for the inventory/operative slot discoverer thingies
+    @Inject(method = {
+        "_init_$lambda$3(Lat/petrak/hexcasting/api/spell/casting/CastingContext;)Ljava/util/List;",
+        "_init_$lambda$4(Lat/petrak/hexcasting/api/spell/casting/CastingContext;)Ljava/util/List;"
+    },
+    at = @At("RETURN"), cancellable = true, remap = false)
+    private static void wrapMirrorStacksFromDiscoverer(CastingContext context, CallbackInfoReturnable<List<ItemStack>> cir){
+        List<ItemStack> stacks = cir.getReturnValue();
+        ItemStack altMain = SyncedItemHandling.getAlternateHandStack(context.getCaster(), Hand.MAIN_HAND, context);
+        ItemStack altOffStack = SyncedItemHandling.getAlternateHandStack(context.getCaster(), Hand.OFF_HAND, context);
+        if(altMain != null){
+            stacks.add(altMain);
+        }
+        if(altOffStack != null){
+            stacks.add(altOffStack);
+        }
+        cir.setReturnValue(stacks);
     }
 }

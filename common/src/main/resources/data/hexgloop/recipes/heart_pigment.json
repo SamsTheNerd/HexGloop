@@ -1,0 +1,171 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "hexgloop:gloop"
+        },
+        [
+            {
+                "item": "minecraft:lime_dye"
+            },
+            {
+                "item": "minecraft:green_dye"
+            },
+            {
+                "tag": "c:green_dye"
+            },
+            {
+                "tag": "c:green_dyes"
+            },
+            {
+                "tag": "forge:dyes/green"
+            },
+            {
+                "tag": "c:lime_dye"
+            },
+            {
+                "tag": "c:lime_dyes"
+            },
+            {
+                "tag": "forge:dyes/lime"
+            }
+        ],
+        [
+            {
+                "item": "minecraft:lime_dye"
+            },
+            {
+                "item": "minecraft:green_dye"
+            },
+            {
+                "tag": "c:green_dye"
+            },
+            {
+                "tag": "c:green_dyes"
+            },
+            {
+                "tag": "forge:dyes/green"
+            },
+            {
+                "tag": "c:lime_dye"
+            },
+            {
+                "tag": "c:lime_dyes"
+            },
+            {
+                "tag": "forge:dyes/lime"
+            }
+        ],
+        [
+            {
+                "item": "minecraft:lime_dye"
+            },
+            {
+                "item": "minecraft:green_dye"
+            },
+            {
+                "tag": "c:green_dye"
+            },
+            {
+                "tag": "c:green_dyes"
+            },
+            {
+                "tag": "forge:dyes/green"
+            },
+            {
+                "tag": "c:lime_dye"
+            },
+            {
+                "tag": "c:lime_dyes"
+            },
+            {
+                "tag": "forge:dyes/lime"
+            }
+        ],
+        [
+            {
+                "item": "minecraft:lime_dye"
+            },
+            {
+                "item": "minecraft:green_dye"
+            },
+            {
+                "tag": "c:green_dye"
+            },
+            {
+                "tag": "c:green_dyes"
+            },
+            {
+                "tag": "forge:dyes/green"
+            },
+            {
+                "tag": "c:lime_dye"
+            },
+            {
+                "tag": "c:lime_dyes"
+            },
+            {
+                "tag": "forge:dyes/lime"
+            }
+        ],
+        [
+            {
+                "item": "minecraft:pink_dye"
+            },
+            {
+                "tag": "c:pink_dye"
+            },
+            {
+                "tag": "c:pink_dyes"
+            },
+            {
+                "tag": "forge:dyes/pink"
+            }
+        ],
+        [
+            {
+                "item": "minecraft:pink_dye"
+            },
+            {
+                "tag": "c:pink_dye"
+            },
+            {
+                "tag": "c:pink_dyes"
+            },
+            {
+                "tag": "forge:dyes/pink"
+            }
+        ],
+        [
+            {
+                "item": "minecraft:pink_dye"
+            },
+            {
+                "tag": "c:pink_dye"
+            },
+            {
+                "tag": "c:pink_dyes"
+            },
+            {
+                "tag": "forge:dyes/pink"
+            }
+        ],
+        [
+            {
+                "item": "minecraft:pink_dye"
+            },
+            {
+                "tag": "c:pink_dye"
+            },
+            {
+                "tag": "c:pink_dyes"
+            },
+            {
+                "tag": "forge:dyes/pink"
+            }
+        ]
+    ],
+    "result": {
+        "item": "hexgloop:heart_pigment"
+    }
+}

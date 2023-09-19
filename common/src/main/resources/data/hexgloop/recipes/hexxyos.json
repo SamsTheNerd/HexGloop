@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "hexgloop:slate_bowl"
+        },
+        [
+            {
+                "tag": "c:milks"
+            },
+            {
+                "tag": "forge:milk"
+            },
+            {
+                "tag": "forge:milks"
+            },
+            {
+                "item": "minecraft:milk_bucket"
+            }
+        ],
+        {
+            "item": "hexgloop:hex_snack"
+        },
+        {
+            "item": "hexgloop:hex_snack"
+        },
+        {
+            "item": "hexgloop:hex_snack"
+        },
+        {
+            "item": "hexgloop:hex_snack"
+        },
+        {
+            "item": "hexgloop:hex_snack"
+        }
+    ],
+    "result": {
+        "item": "hexgloop:hexxyos"
+    }
+}
