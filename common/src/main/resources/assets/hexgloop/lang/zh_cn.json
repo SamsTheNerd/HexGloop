@@ -20,11 +20,14 @@
     "item.hexgloop.synchronous_gloop": "同步凝浆",
     "item.hexgloop.hand_mirror": "手镜",
     "item.hexgloop.hand_mirror.tooltip": "反射[%s]",
+    "item.hexgloop.hand_mirror.tooltip.not_activated": "上一反射[%s]",
 
     "item.hexgloop.copper_pen_fidget": "笔指记",
     "item.hexgloop.rainbow_amogus_fidget": "彩虹色船员按按乐指记",
 
     "block.hexgloop.gloop_energizer": "充能器",
+    "block.hexgloop.pedestal": "支座",
+    "block.hexgloop.mirror_pedestal": "嵌镜支座",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
     "key.hexgloop.casting_ring": "使用施法戒指",
@@ -74,6 +77,8 @@
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s本应在%s中一处施放，而实际施放于%s",
 
+    "hexgloop.mishap.catch_wrapper": "上一事故：%s",
+    "hexgloop.mishap.catch_wrapper.none": "此次施法还未产生事故",
     "hexcasting.mishap.cleared_truename": "%s试图使用%s的真名",
     "hexgloop.generic_circle_spell": "法术环",
 
@@ -81,6 +86,7 @@
     "hexgloop.source_type.circle": "法术环",
     "hexgloop.source_type.packaged_hex": "施法物品",
     "hexgloop.source_type.wisp": "咒灵",
+    "hexgloop.source_type.gloopifact": "凝浆造物",
 
 
     "hexgloop.gloopvancement.title": "凝浆十足",
