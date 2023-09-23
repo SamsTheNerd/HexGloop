@@ -1,0 +1,8 @@
+{
+    "parent": "hexgloop:block/short_block_template",
+    "textures": {
+        "side": "hexgloop:block/pedestal/mirror_side",
+        "top": "hexgloop:block/pedestal/mirror_top",
+        "bottom": "hexgloop:block/pedestal/slate"
+    }
+}

@@ -6,6 +6,10 @@ import java.util.function.Function;
 import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.casting.dimensions.OpIsInDimension;
+import com.samsthenerd.hexgloop.casting.gloopifact.OpReadGloopifact;
+import com.samsthenerd.hexgloop.casting.gloopifact.OpWriteGloopifact;
+import com.samsthenerd.hexgloop.casting.mishapprotection.OpEvalCatchMishap;
+import com.samsthenerd.hexgloop.casting.mishapprotection.OpRevealLastMishap;
 import com.samsthenerd.hexgloop.casting.orchard.OpReadOrchard;
 import com.samsthenerd.hexgloop.casting.redstone.OpConjureRedstone;
 import com.samsthenerd.hexgloop.casting.redstone.OpGetComparator;
@@ -55,6 +59,14 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wawaw", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "check_ambit"),
                 new OpCheckAmbit());
+
+            // catchy eval
+            PatternRegistry.mapPattern(HexPattern.fromAngles("dweaqqw", HexDir.SOUTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "catchy_eval"),
+                OpEvalCatchMishap.INSTANCE);
+            PatternRegistry.mapPattern(HexPattern.fromAngles("dweaqqqqa", HexDir.SOUTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "reveal_mishap"),
+                OpRevealLastMishap.INSTANCE);
             
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
@@ -71,6 +83,21 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
                 new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), 0));
+                
+            // gloopifact patterns
+            PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqqeqadaqw", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "gloopifact_read"),
+                new OpReadGloopifact(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("deeeeeqqadaqw", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "gloopifact_write"),
+                new OpWriteGloopifact(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwqadaqwwaqqqqq", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "gloopifact_check_read"),
+                new OpReadGloopifact(true));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwqadaqwwdeeeee", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "gloopifact_check_write"),
+                new OpWriteGloopifact(true));
+            
 
             // qwawqwadawqwqwqwqwqw <- simpler sign write with hexagon
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwedwewdweqawqwqwqwqwqw", HexDir.SOUTH_WEST),

@@ -19,7 +19,7 @@ public class HexGloopBEs {
     public static RegistrySupplier<BlockEntityType<BlockEntityPedestal>> PEDESTAL_BE
         = blockEntities.register(
             new Identifier(HexGloop.MOD_ID, "pedestal_tile"),
-            () -> BlockEntityType.Builder.create(BlockEntityPedestal::new, HexGloopBlocks.PEDESTAL_BLOCK.get()).build(null)
+            () -> BlockEntityType.Builder.create(BlockEntityPedestal::new, HexGloopBlocks.PEDESTAL_BLOCK.get(), HexGloopBlocks.MIRROR_PEDESTAL_BLOCK.get()).build(null)
         );
 
     public static RegistrySupplier<BlockEntityType<BlockEntityConjuredRedstone>> CONJURED_REDSTONE_BE 

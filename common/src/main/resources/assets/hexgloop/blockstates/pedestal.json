@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=up": { "model": "hexgloop:block/pedestal" },
+        "facing=down": { "model": "hexgloop:block/pedestal", "x": 180 },
+        "facing=north": { "model": "hexgloop:block/pedestal", "x": 90 },
+        "facing=east":  { "model": "hexgloop:block/pedestal", "x": 90, "y":  90 },
+        "facing=south": { "model": "hexgloop:block/pedestal", "x": 90, "y": 180 },
+        "facing=west":  { "model": "hexgloop:block/pedestal", "x": 90, "y": 270 }
+    }
+}

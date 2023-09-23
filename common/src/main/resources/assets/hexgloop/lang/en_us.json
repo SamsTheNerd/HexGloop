@@ -20,11 +20,14 @@
     "item.hexgloop.synchronous_gloop": "Synchronous Gloop",
     "item.hexgloop.hand_mirror": "Hand Mirror",
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
+    "item.hexgloop.hand_mirror.tooltip.not_activated": "Last Reflected [%s]",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",
 
     "block.hexgloop.gloop_energizer": "Energizer",
+    "block.hexgloop.pedestal": "Pedestal",
+    "block.hexgloop.mirror_pedestal": "Mirrored Pedestal",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",
@@ -73,7 +76,9 @@
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s expected to be cast from one of: %s, but was cast from %s",
-
+    
+    "hexgloop.mishap.catch_wrapper": "Last Mishap: %s",
+    "hexgloop.mishap.catch_wrapper.none": "This cast has yet to mishap",
     "hexcasting.mishap.cleared_truename": "%s tried to use %s's truename",
     "hexgloop.generic_circle_spell": "Spell Circle",
 
@@ -81,6 +86,7 @@
     "hexgloop.source_type.circle": "a Spell Circle",
     "hexgloop.source_type.packaged_hex": "a Casting Item",
     "hexgloop.source_type.wisp": "a Wisp",
+    "hexgloop.source_type.gloopifact": "a Gloopifact",
 
     
     "hexgloop.gloopvancement.title": "Glooptastic",

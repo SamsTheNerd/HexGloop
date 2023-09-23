@@ -16,11 +16,23 @@ public class SyncedItemHandling {
     // null if no alternate
     @Nullable
     public static ItemStack getAlternateHandStack(ServerPlayerEntity player, Hand hand, CastingContext context){
+        ItemEntity itemEnt = getAlternateEntity(player, hand, context);
+        if(itemEnt != null){
+            return itemEnt.getStack();
+        }
+        return null;
+    }
+
+    @Nullable
+    public static ItemEntity getAlternateEntity(ServerPlayerEntity player, Hand hand, CastingContext context){
         ItemStack originalStack = player.getStackInHand(hand);
         if(originalStack.getItem() instanceof ItemHandMirror mirrorItem){
             Iota iota = mirrorItem.readIota(originalStack, context.getWorld());
             if(iota instanceof EntityIota entIota && entIota.getEntity() instanceof ItemEntity itemEnt){
-                return itemEnt.getStack();
+                if(!context.isEntityInRange(itemEnt)){
+                    return null;
+                }
+                return itemEnt;
             }
         }
         return null;

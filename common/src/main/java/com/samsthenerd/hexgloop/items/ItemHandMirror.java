@@ -25,11 +25,13 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class ItemHandMirror extends Item implements IotaHolderItem {
 
     public static final Identifier MIRROR_ACTIVATED_PRED = new Identifier(HexGloop.MOD_ID, "is_mirror_activated");
+    public static final String MIRROR_ACTIVATED_TAG = "is_mirror_activated";
     public static final String ITEM_DISPLAY_TAG = "item_in_mirror_desc";
     public static final String ITEM_UUID_TAG = "item_in_mirror_uuid";
 
@@ -59,22 +61,23 @@ public class ItemHandMirror extends Item implements IotaHolderItem {
             stack.removeSubNbt(ItemFocus.TAG_DATA);
             stack.removeSubNbt(ITEM_DISPLAY_TAG);
             stack.removeSubNbt(ITEM_UUID_TAG);
+            stack.getOrCreateNbt().putBoolean(MIRROR_ACTIVATED_TAG, false);
         }
         if(iota instanceof EntityIota entityIota && entityIota.getEntity() instanceof ItemEntity itemEnt){
             NBTHelper.put(stack, ItemFocus.TAG_DATA, HexIotaTypes.serialize(iota));
             NBTHelper.putUUID(stack, ITEM_UUID_TAG, itemEnt.getUuid());
             if(itemEnt.getStack() != null){
                 NBTHelper.put(stack, ITEM_DISPLAY_TAG, itemEnt.getStack().writeNbt(new NbtCompound()));
+                stack.getNbt().putBoolean(MIRROR_ACTIVATED_TAG, true);
             } else {
-                stack.removeSubNbt(ITEM_DISPLAY_TAG);
+                stack.getOrCreateNbt().putBoolean(MIRROR_ACTIVATED_TAG, false);
             }
         }
     }
 
     public boolean isMirrorActivated(ItemStack stack){
-        ItemStack descStack = getMirroredItemStack(stack);
-        if(descStack != null && !descStack.isEmpty()){
-            return true;
+        if(stack.getNbt() != null && stack.getNbt().contains(MIRROR_ACTIVATED_TAG) && stack.getNbt().contains(ItemFocus.TAG_DATA)){
+            return stack.getNbt().getBoolean(MIRROR_ACTIVATED_TAG);
         }
         return false;
     }
@@ -84,6 +87,10 @@ public class ItemHandMirror extends Item implements IotaHolderItem {
             return ItemStack.fromNbt(stack.getNbt().getCompound(ITEM_DISPLAY_TAG));
         }
         return ItemStack.EMPTY;
+    }
+
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.SPYGLASS;
     }
 
     // to update the thingy
@@ -98,11 +105,13 @@ public class ItemHandMirror extends Item implements IotaHolderItem {
                 if(ent instanceof ItemEntity itemEnt){
                     if(itemEnt.getStack() != null){
                         NBTHelper.put(stack, ITEM_DISPLAY_TAG, itemEnt.getStack().writeNbt(new NbtCompound()));
+                        stack.getOrCreateNbt().putBoolean(MIRROR_ACTIVATED_TAG, true);
                     } else {
-                        stack.removeSubNbt(ITEM_DISPLAY_TAG);
+                        // possible that calling putBoolean every tick is bad,, but i figure it's better than doing a check every tick ?
+                        stack.getOrCreateNbt().putBoolean(MIRROR_ACTIVATED_TAG, false);
                     }
                 } else {
-                    stack.removeSubNbt(ITEM_DISPLAY_TAG);
+                    stack.getOrCreateNbt().putBoolean(MIRROR_ACTIVATED_TAG, false);
                 }
             }
         }
@@ -112,8 +121,14 @@ public class ItemHandMirror extends Item implements IotaHolderItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         ItemStack descStack = getMirroredItemStack(stack);
         if(descStack.isEmpty()) return;
+        boolean activated = isMirrorActivated(stack);
         MutableText itemDesc = descStack.getName().copy();
-        MutableText tipText = Text.translatable("item.hexgloop.hand_mirror.tooltip", itemDesc);
+        Style itemStyle = itemDesc.getStyle();
+        itemStyle = itemStyle.withItalic(false).withColor(Formatting.AQUA);
+        itemDesc.setStyle(itemStyle);
+        MutableText tipText = Text.translatable(
+                activated ? "item.hexgloop.hand_mirror.tooltip" : "item.hexgloop.hand_mirror.tooltip.not_activated", 
+                itemDesc);
         Style style = tipText.getStyle();
         style = style.withItalic(true).withColor(Formatting.GRAY);
         tipText.setStyle(style);

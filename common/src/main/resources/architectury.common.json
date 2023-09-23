@@ -4,6 +4,8 @@
       "net/minecraft/text/Style": ["com/samsthenerd/hexgloop/screens/PatternStyle"],
       "net/minecraft/server/network/ServerPlayerEntity": ["com/samsthenerd/hexgloop/casting/orchard/IOrchard"],
       "at/petrak/hexcasting/api/spell/iota/EntityIota": ["com/samsthenerd/hexgloop/casting/truenameclassaction/ILockedIota"],
-      "net/minecraft/entity/Entity": ["com/samsthenerd/hexgloop/misc/INoMoving"]
+      "net/minecraft/entity/Entity": ["com/samsthenerd/hexgloop/misc/INoMoving"],
+      "at/petrak/hexcasting/api/spell/casting/CastingContext": ["com/samsthenerd/hexgloop/casting/mishapprotection/IMishapStorage"],
+      "at/petrak/hexcasting/api/spell/casting/eval/FrameFinishEval": ["com/samsthenerd/hexgloop/casting/mishapprotection/ICatchyFrameEval"]
     }
   }

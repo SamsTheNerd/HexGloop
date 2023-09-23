@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GGG",
+        "GMG",
+        "GGG"
+    ],
+    "key": {
+        "G": [
+            {
+                "item": "minecraft:gold_nugget"
+            },
+            {
+                "tag": "forge:nuggets/gold"
+            },
+            {
+                "tag": "c:gold_nuggets"
+            }
+        ],
+        "M": {
+            "item": "hexcasting:amethyst_dust"
+        }
+    },
+    "result": {
+        "item": "hexgloop:casters_coin"
+    }
+}

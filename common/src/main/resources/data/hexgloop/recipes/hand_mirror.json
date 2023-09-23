@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SSS",
+        "SGS",
+        "YSS"
+    ],
+    "key": {
+        "S": {
+            "item": "hexcasting:slate"
+        },
+        "G": [{
+            "tag": "c:glass_panes"
+        },
+        {
+            "tag": "forge:glass_panes"
+        },
+        {
+            "item": "minecraft:glass_pane"
+        }],
+        "Y": {
+            "item": "hexgloop:synchronous_gloop"
+        }
+    },
+    "result": {
+        "item": "hexgloop:hand_mirror"
+    }
+}

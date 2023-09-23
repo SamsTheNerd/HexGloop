@@ -33,7 +33,7 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
         numSections = iotaProvider.perPage();
         onPage = (iotaProvider.currentSlot()-1) / iotaProvider.perPage();     
         oldScreen = _oldScreen;
-        this.tooltipTickDelay = 5;
+        this.tooltipTickDelay = 2;
     }
 
     public IotaWheelScreen(IotaProvider _iotaProvider){
