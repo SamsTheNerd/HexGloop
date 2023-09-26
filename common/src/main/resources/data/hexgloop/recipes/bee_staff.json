@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " HC",
+        " BH",
+        "H  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "B":{
+            "item": "minecraft:honey_block"
+        },
+        "H":{
+            "item": "minecraft:honeycomb"
+        }
+    },
+    "result": {
+        "item": "hexgloop:bee_staff"
+    }
+}

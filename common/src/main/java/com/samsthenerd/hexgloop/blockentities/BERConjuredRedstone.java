@@ -44,12 +44,16 @@ public class BERConjuredRedstone implements BlockEntityRenderer<BlockEntityConju
 
     }
 
+    private static final float minOpac = 0.25f;
+    private static final float maxOpac = 1f;
+
     public void render(BlockEntityConjuredRedstone be, float tickDelta, MatrixStack stack, VertexConsumerProvider provider, int light, int overlay){
         // VertexConsumer buffer = provider.getBuffer(RenderLayer.getTranslucent());
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder buffer = tessellator.getBuffer();
         buffer.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL);
         int power = be.getPower();
+        int transPower = (int)Math.floor((minOpac + ((maxOpac-minOpac)*power/15f)) * 255);
         FrozenColorizer colorizer = be.getColorizer();
         Identifier textureId = new Identifier(HexGloop.MOD_ID, "block/conjured_redstone");
         Sprite sprite = new SpriteIdentifier(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE, textureId).getSprite();
@@ -62,7 +66,7 @@ public class BERConjuredRedstone implements BlockEntityRenderer<BlockEntityConju
                 Vec3d worldVec = baseWorldVec.add(new Vec3d((nextVec.getX()+1)/2, (nextVec.getY()+1)/2, (nextVec.getZ()+1)/2));
                 int color = colorizer.getColor(time+tickDelta, worldVec);
                 buffer.vertex(stack.peek().getPositionMatrix(), (nextVec.getX()+1)/2, (nextVec.getY()+1)/2, (nextVec.getZ()+1)/2)
-                    .color((color >> 16) & 0xFF, (color >> 8) & 0xFF, color & 0xFF, ((power+16) * 8)-1)
+                    .color((color >> 16) & 0xFF, (color >> 8) & 0xFF, color & 0xFF, transPower)
                     // .texture((((i >> 1) & 1) ^ (i & 1)) == 0 ? sprite.getMinU() : sprite.getMaxU(), ((i >> 1) & 1) == 0 ? sprite.getMinV() : sprite.getMaxV())
                     .texture( ((i >> 1) & 1) == 0 ? sprite.getMinU() : sprite.getMaxU(), (((i >> 1) & 1) ^ (i & 1)) == 0 ? sprite.getMinV() : sprite.getMaxV())
                     .light(light).normal(stack.peek().getNormalMatrix(), normal.getX(), normal.getY(), normal.getZ())

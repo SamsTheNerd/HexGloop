@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " RC",
+        " RR",
+        "R  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "R":{
+            "item": "minecraft:carrot"
+        }
+    },
+    "result": {
+        "item": "hexgloop:carrot_staff"
+    }
+}

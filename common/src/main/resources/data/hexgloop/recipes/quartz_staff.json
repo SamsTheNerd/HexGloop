@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " SC",
+        " KS",
+        "B  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "B":{
+            "item": "minecraft:quartz"
+        },
+        "K":{
+            "item": "minecraft:quartz_block"
+        },
+        "S":{
+            "item": "minecraft:quartz_slab"
+        }
+    },
+    "result": {
+        "item": "hexgloop:quartz_staff"
+    }
+}

@@ -7,8 +7,10 @@ import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.casting.dimensions.OpIsInDimension;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpReadGloopifact;
+import com.samsthenerd.hexgloop.casting.gloopifact.OpSyncRavenmindGloopifact;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpWriteGloopifact;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpEvalCatchMishap;
+import com.samsthenerd.hexgloop.casting.mishapprotection.OpHahaFunnyAssertQEDGetItLikeTheMathProofLol;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpRevealLastMishap;
 import com.samsthenerd.hexgloop.casting.orchard.OpReadOrchard;
 import com.samsthenerd.hexgloop.casting.redstone.OpConjureRedstone;
@@ -67,6 +69,21 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("dweaqqqqa", HexDir.SOUTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "reveal_mishap"),
                 OpRevealLastMishap.INSTANCE);
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qed", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "assert"),
+                new OpHahaFunnyAssertQEDGetItLikeTheMathProofLol());
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qewdweeddw", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "gloopimind_upload"),
+                new OpSyncRavenmindGloopifact(true));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qedadewdde", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "gloopimind_download"),
+                new OpSyncRavenmindGloopifact(false));
+            
+
+            
+            
             
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();

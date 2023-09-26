@@ -38,9 +38,14 @@
       "mirroritems.MixinPhialToEnt",
       "lociathome.MixinLociAtHome",
       "lociathome.MixinExposeHarnessStuff",
+      "lociathome.MixinWeirdChestStatics",
+      "lociathome.MixinContextHelper",
+      "lociathome.MixinExposeChestInventory",
       "mishapprotection.MixinCatchyFrameEval",
       "mishapprotection.MixinRedirectMishaps",
-      "mishapprotection.MixinStoreLastMishapContext"
+      "mishapprotection.MixinStoreLastMishapContext",
+      "misc.MixinTrackCADHarnesses",
+      "misc.MixinActuallyTrackHarnesses"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
@@ -52,7 +57,10 @@
       "textpatterns.MixinTextDrawerPatSty",
       "textpatterns.MixinSetTessBuffer",
       "textpatterns.MixinPatTextWiden",
-      "booktweaks.MixinCopyPatternToScrolls"
+      "booktweaks.MixinCopyPatternToScrolls",
+      "misc.MixinClientAddFeatureRenderers",
+      "misc.MixinClientExposeAddFeature",
+      "orchard.MixinClientPlayerOrchardKeybind"
     ],
     "injectors": {
       "defaultRequire": 1

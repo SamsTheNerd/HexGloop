@@ -13,6 +13,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.common.items.ItemFocus;
+import at.petrak.hexcasting.common.items.ItemStaff;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -79,6 +80,8 @@ public class HexGloopItems {
             }
         });
 
+    public static final RegistrySupplier<Item> HEXXY_PLUSH = item("hexxy_plush", () -> new Item(defaultSettings().maxCount(1)));
+
     // fidgets -- todo: maybe move these out of here and into their own file
 
     public static final RegistrySupplier<ItemFidget> COPPER_PEN_FIDGET = item("copper_pen_fidget", 
@@ -121,6 +124,19 @@ public class HexGloopItems {
                 return isCurrent ? DARK_AMOGUS[index] : MID_AMOGUS[index];
             }
         }));
+
+    public static final RegistrySupplier<ItemStaff> BONE_STAFF = item("bone_staff",
+        () -> new ItemStaff(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemStaff> QUARTZ_STAFF = item("quartz_staff",
+        () -> new ItemStaff(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemStaff> CARROT_STAFF = item("carrot_staff",
+        () -> new ItemStaff(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemStaff> BEE_STAFF = item("bee_staff",
+        () -> new ItemStaff(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemStaff> ROD_STAFF = item("rod_staff",
+        () -> new ItemStaff(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<ItemStaff> LOVELY_STAFF = item("lovely_staff",
+        () -> new ItemStaff(defaultSettings().maxCount(1)));
     
 
     public static <T extends Item> RegistrySupplier<T> item(String name, Supplier<T> item) {

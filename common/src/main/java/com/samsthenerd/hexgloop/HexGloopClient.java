@@ -3,9 +3,11 @@ package com.samsthenerd.hexgloop;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 
 import com.mojang.datafixers.util.Pair;
 import com.samsthenerd.hexgloop.blockentities.BERConjuredRedstone;
+import com.samsthenerd.hexgloop.blockentities.BERHexChest;
 import com.samsthenerd.hexgloop.blockentities.BlockEntityGloopEnergizer;
 import com.samsthenerd.hexgloop.blockentities.BlockEntityPedestal;
 import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
@@ -32,6 +34,7 @@ import at.petrak.hexcasting.common.items.magic.ItemCreativeUnlocker;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
+import dev.architectury.event.events.client.ClientTextureStitchEvent;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
 import dev.architectury.registry.client.rendering.RenderTypeRegistry;
@@ -41,6 +44,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.UnclampedModelPredicateProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.Tessellator;
+import net.minecraft.client.render.TexturedRenderLayers;
+import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -66,6 +71,7 @@ public class HexGloopClient {
 
     public static void onInitializeClient() {
         HexGloop.logPrint("Initializing HexGloopClient");
+        addToTextureAtlas();
         registerModelPredicates();
         registerColorProviders();
         registerScryingDisplayers();
@@ -76,8 +82,18 @@ public class HexGloopClient {
         newTess = new Tessellator();
     }
 
+    private static void addToTextureAtlas(){
+        ClientTextureStitchEvent.PRE.register((SpriteAtlasTexture atlas, Consumer<Identifier> spriteAdder) -> {
+            if(atlas.getId().equals(TexturedRenderLayers.CHEST_ATLAS_TEXTURE)){
+                spriteAdder.accept(new Identifier(HexGloop.MOD_ID, "entity/chest/gloopy_slate_chest"));
+                spriteAdder.accept(new Identifier(HexGloop.MOD_ID, "entity/chest/slate_chest"));
+            }
+        });
+    }
+
     private static void registerRenderers(){
         BlockEntityRendererRegistry.register(HexGloopBEs.CONJURED_REDSTONE_BE.get(), BERConjuredRedstone::new);
+        BlockEntityRendererRegistry.register(HexGloopBEs.SLATE_CHEST_BE.get(), BERHexChest::new);
         RenderTypeRegistry.register(RenderLayer.getTranslucent(), HexGloopBlocks.CONJURED_REDSTONE_BLOCK.get());
     }
 

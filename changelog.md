@@ -10,12 +10,17 @@
 - Synchronous gloop
 - Hand Mirror - redirects spells that use your offhand to use an item entity stored by the mirror
 - Pedestals - gives a functional item entity based on the item stack in its inventory
+- Slate chests
 - Truename protection spell - void (almost) all references to your truename
 - Redstone related patterns
 - Dimension related patterns
 - Pattern to check if a position/entity is within ambit
 - Nop pattern
+- Catch pattern
+- Keybind to open hex notebook from casting grid [client side]
+- Right click hex notebook on placed scroll to copy the pattern from the current page onto the scroll.
 - Gloop can now be used as a raw media source worth 2x charged amethyst
+- Hexxy
 
 ### Changed
 

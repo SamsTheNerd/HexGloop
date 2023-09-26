@@ -38,6 +38,9 @@ public class HexGloopKeybinds {
     public static final KeyBinding HEX_SCROLL_DOWN = new KeyBinding("key.hexgloop.scroll_down",
         InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_BRACKET, "key.categories.hexgloop");
 
+    public static final KeyBinding OPEN_HEX_BOOK = new KeyBinding("key.hexgloop.open_hex_book",
+        InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_N, "key.categories.hexgloop");
+
     public static void registerKeybinds(){
         registerKeybind(IOTA_WHEEL_KEYBIND, (keyBinding, client) -> handleIotaWheelItems(keyBinding, client));
         registerKeybind(CASTING_RING_KEY_BINDING, CastingRingHelperClient::handleCastingRingKeypress);

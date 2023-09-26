@@ -19,6 +19,13 @@
     "item.hexgloop.gloopifact": "Gloopifact",
     "item.hexgloop.synchronous_gloop": "Synchronous Gloop",
     "item.hexgloop.hand_mirror": "Hand Mirror",
+    "item.hexgloop.lovely_staff": "Lovely Staff",
+    "item.hexgloop.quartz_staff": "Quartz Staff",
+    "item.hexgloop.carrot_staff": "Carrot Staff",
+    "item.hexgloop.bee_staff": "Bee Staff",
+    "item.hexgloop.rod_staff": "Amethyst On A Stick",
+    "item.hexgloop.bone_staff": "Bone Staff",
+    "item.hexgloop.hexxy_plush": "Hexxy Plush",
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "Last Reflected [%s]",
 
@@ -28,6 +35,8 @@
     "block.hexgloop.gloop_energizer": "Energizer",
     "block.hexgloop.pedestal": "Pedestal",
     "block.hexgloop.mirror_pedestal": "Mirrored Pedestal",
+    "block.hexgloop.slate_chest": "Slate Chest",
+    "block.hexgloop.gloopy_slate_chest": "Gloopy Slate Chest",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",
@@ -72,6 +81,7 @@
     "hexgloop.slotname.offhandring": "ring slot",
     "hexgloop.slotname.mainhandring": "ring slot",
     "hexcasting.mishap.bad_item.labely_item": "a labelable item",
+    "hexcasting.mishap.bad_item.gloopifact": "a gloopifact",
 
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
@@ -80,6 +90,8 @@
     "hexgloop.mishap.catch_wrapper": "Last Mishap: %s",
     "hexgloop.mishap.catch_wrapper.none": "This cast has yet to mishap",
     "hexcasting.mishap.cleared_truename": "%s tried to use %s's truename",
+    "hexcasting.mishap.assertion": "%s failed an assertion",
+    "hexcasting.mishap.assertion.labeled": "%s failed an assertion at %s",
     "hexgloop.generic_circle_spell": "Spell Circle",
 
     "hexgloop.source_type.staff": "a Staff",

@@ -1,7 +1,9 @@
 package com.samsthenerd.hexgloop.mixins.orchard;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
@@ -10,7 +12,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.samsthenerd.hexgloop.casting.orchard.IOrchard;
+import com.samsthenerd.hexgloop.casting.orchard.IOrchardKeybind;
 
+import at.petrak.hexcasting.api.spell.math.HexPattern;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtDouble;
 import net.minecraft.nbt.NbtElement;
@@ -18,8 +22,22 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 @Mixin(ServerPlayerEntity.class)
-public class MixinServerPlayerOrchard implements IOrchard {
+public class MixinServerPlayerOrchard implements IOrchard, IOrchardKeybind{
     protected List<Double> orchardList = List.of(0.0);
+    protected Set<String> activatedPatterns = new HashSet<String>();
+
+    public void setAssociation(HexPattern pattern, boolean isActivated){
+        if(pattern == null) return;
+        if(isActivated){
+            activatedPatterns.add(pattern.anglesSignature());
+        }else{
+            activatedPatterns.remove(pattern.anglesSignature());
+        }
+    }
+
+    public boolean getAssociation(HexPattern pattern){
+        return activatedPatterns.contains(pattern.anglesSignature());
+    }
 
     @Override
     @NotNull
