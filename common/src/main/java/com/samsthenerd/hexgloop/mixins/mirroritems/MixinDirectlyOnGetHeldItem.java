@@ -25,7 +25,7 @@ public class MixinDirectlyOnGetHeldItem {
         return altStack == null ? original.call(player, hand) : altStack;
     }
 
-    // these are for the inventory/operative slot discoverer thingies
+    // these are for the inventory/operative slot discoverer thingies - i don't think they work though
     @Inject(method = {
         "_init_$lambda$3(Lat/petrak/hexcasting/api/spell/casting/CastingContext;)Ljava/util/List;",
         "_init_$lambda$4(Lat/petrak/hexcasting/api/spell/casting/CastingContext;)Ljava/util/List;"

@@ -1,6 +1,12 @@
 {
     "replace": false,
     "values":[
-        "hexgloop:casting_ring"
+        "hexgloop:casting_ring",
+        "hexgloop:carrot_staff",
+        "hexgloop:bone_staff",
+        "hexgloop:bee_staff",
+        "hexgloop:lovely_staff",
+        "hexgloop:quartz_staff",
+        "hexgloop:rod_staff"
     ]
 }

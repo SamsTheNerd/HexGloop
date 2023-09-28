@@ -22,6 +22,12 @@ public class HexGloopBEs {
             () -> BlockEntityType.Builder.create(BlockEntityPedestal::new, HexGloopBlocks.PEDESTAL_BLOCK.get(), HexGloopBlocks.MIRROR_PEDESTAL_BLOCK.get()).build(null)
         );
 
+    public static RegistrySupplier<BlockEntityType<BlockEntitySlateChest>> SLATE_CHEST_BE
+        = blockEntities.register(
+            new Identifier(HexGloop.MOD_ID, "slate_chest_tile"),
+            () -> BlockEntityType.Builder.create(BlockEntitySlateChest::new, HexGloopBlocks.SLATE_CHEST_BLOCK.get(), HexGloopBlocks.GLOOPY_SLATE_CHEST_BLOCK.get()).build(null)
+        );
+
     public static RegistrySupplier<BlockEntityType<BlockEntityConjuredRedstone>> CONJURED_REDSTONE_BE 
         = blockEntities.register(new Identifier(HexGloop.MOD_ID, "conjured_redstone_tile"), 
         () -> BlockEntityType.Builder.create(BlockEntityConjuredRedstone::new, HexGloopBlocks.CONJURED_REDSTONE_BLOCK.get()).build(null));

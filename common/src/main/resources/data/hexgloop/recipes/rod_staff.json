@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "R ",
+        " C"
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "R":{
+            "item": "minecraft:fishing_rod"
+        }
+    },
+    "result": {
+        "item": "hexgloop:rod_staff"
+    }
+}

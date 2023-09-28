@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "SCS",
+        " G "
+    ],
+    "key": {
+        "S": {
+            "item": "hexcasting:slate"
+        },
+        "C": {
+            "item": "minecraft:chest"
+        },
+        "G": {
+            "item": "hexgloop:gloop"
+        }
+    },
+    "result": {
+        "item": "hexgloop:gloopy_slate_chest"
+    }
+}

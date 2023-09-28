@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SBH",
+        " BB",
+        "S S"
+    ],
+    "key": {
+        "H": {
+            "item": "hexgloop:heart_pigment"
+        },
+        "B":{
+            "item": "hexcasting:slate_block"
+        },
+        "S":{
+            "item": "hexcasting:slate"
+        }
+    },
+    "result": {
+        "item": "hexgloop:lovely_staff"
+    }
+}

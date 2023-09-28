@@ -3,6 +3,7 @@ package com.samsthenerd.hexgloop.blocks;
 import java.util.function.Supplier;
 
 import com.samsthenerd.hexgloop.HexGloop;
+import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 
 import dev.architectury.registry.registries.DeferredRegister;
@@ -27,6 +28,16 @@ public class HexGloopBlocks {
         () -> new BlockPedestal(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES), false));
     public static final RegistrySupplier<BlockPedestal> MIRROR_PEDESTAL_BLOCK = block("mirror_pedestal", 
         () -> new BlockPedestal(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES), true));
+
+    
+    public static final RegistrySupplier<BlockSlateChest> SLATE_CHEST_BLOCK = block("slate_chest", 
+        () -> new BlockSlateChest(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES), 
+        () -> HexGloopBEs.SLATE_CHEST_BE.get(),
+        false));
+    public static final RegistrySupplier<BlockSlateChest> GLOOPY_SLATE_CHEST_BLOCK = block("gloopy_slate_chest", 
+        () -> new BlockSlateChest(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES), 
+        () -> HexGloopBEs.SLATE_CHEST_BE.get(),
+        true));
 
     public static final RegistrySupplier<BlockConjuredRedstone> CONJURED_REDSTONE_BLOCK = block("conjured_redstone", 
         () -> new BlockConjuredRedstone(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).requiresTool().strength(1.5f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)),

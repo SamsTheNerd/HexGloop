@@ -1,7 +1,11 @@
 {
     "replace": false,
     "values": [
-        "hexgloop:gloop_energizer"
+        "hexgloop:gloop_energizer",
+        "hexgloop:pedestal",
+        "hexgloop:mirror_pedestal",
+        "hexgloop:slate_chest",
+        "hexgloop:gloopy_slate_chest"
     ]
   }
 

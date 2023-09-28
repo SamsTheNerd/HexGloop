@@ -1,0 +1,7 @@
+{
+    "parent": "hexgloop:block/chest_template",
+    "textures": {
+        "0": "hexgloop:entity/chest/gloopy_slate_chest",
+        "particle": "hexgloop:block/pedestal/slate"
+    }
+}

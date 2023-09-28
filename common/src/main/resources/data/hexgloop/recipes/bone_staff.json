@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " BC",
+        " KB",
+        "B  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "B":{
+            "item": "minecraft:bone"
+        },
+        "K":{
+            "item": "minecraft:bone_block"
+        }
+    },
+    "result": {
+        "item": "hexgloop:bone_staff"
+    }
+}
