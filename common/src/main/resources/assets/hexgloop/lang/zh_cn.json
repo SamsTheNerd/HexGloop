@@ -19,6 +19,13 @@
     "item.hexgloop.gloopifact": "凝浆造物",
     "item.hexgloop.synchronous_gloop": "同步凝浆",
     "item.hexgloop.hand_mirror": "手镜",
+    "item.hexgloop.lovely_staff": "爱心法杖",
+    "item.hexgloop.quartz_staff": "石英法杖",
+    "item.hexgloop.carrot_staff": "胡萝卜法杖",
+    "item.hexgloop.bee_staff": "蜜蜂法杖",
+    "item.hexgloop.rod_staff": "紫水晶钓竿",
+    "item.hexgloop.bone_staff": "骨头法杖",
+    "item.hexgloop.hexxy_plush": "Hexxy毛绒玩偶",
     "item.hexgloop.hand_mirror.tooltip": "反射[%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "上一反射[%s]",
 
@@ -28,6 +35,8 @@
     "block.hexgloop.gloop_energizer": "充能器",
     "block.hexgloop.pedestal": "支座",
     "block.hexgloop.mirror_pedestal": "嵌镜支座",
+    "block.hexgloop.slate_chest": "板岩箱子",
+    "block.hexgloop.gloopy_slate_chest": "凝浆板岩箱子",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
     "key.hexgloop.casting_ring": "使用施法戒指",
@@ -72,6 +81,7 @@
     "hexgloop.slotname.offhandring": "戒指槽",
     "hexgloop.slotname.mainhandring": "戒指槽",
     "hexcasting.mishap.bad_item.labely_item": "一个可标签物品",
+    "hexcasting.mishap.bad_item.gloopifact": "一个凝浆造物",
 
     "hexcasting.mishap.wrong_casting_source": "%s本应在%s处施放，而实际施放于%s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
@@ -80,6 +90,8 @@
     "hexgloop.mishap.catch_wrapper": "上一事故：%s",
     "hexgloop.mishap.catch_wrapper.none": "此次施法还未产生事故",
     "hexcasting.mishap.cleared_truename": "%s试图使用%s的真名",
+    "hexcasting.mishap.assertion": "%s的断言失败了",
+    "hexcasting.mishap.assertion.labeled": "%s在%s的断言失败了",
     "hexgloop.generic_circle_spell": "法术环",
 
     "hexgloop.source_type.staff": "法杖",
