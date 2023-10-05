@@ -7,6 +7,10 @@
         "hexgloop:bee_staff",
         "hexgloop:lovely_staff",
         "hexgloop:quartz_staff",
-        "hexgloop:rod_staff"
+        "hexgloop:rod_staff",
+        "hexgloop:ice_staff",
+        "hexgloop:blaze_staff",
+        "hexgloop:pumpkin_staff",
+        "hexgloop:wither_staff"
     ]
 }

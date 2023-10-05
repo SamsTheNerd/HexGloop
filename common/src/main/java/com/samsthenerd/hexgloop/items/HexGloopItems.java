@@ -28,7 +28,7 @@ import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
-public class HexGloopItems {
+public class HexGloopItems{
     public static DeferredRegister<Item> items = DeferredRegister.create(HexGloop.MOD_ID, Registry.ITEM_KEY);
 
     public static final RegistrySupplier<Item> GLOOP_ITEM = item("gloop", 
@@ -133,18 +133,13 @@ public class HexGloopItems {
             }
         }));
 
-    public static final RegistrySupplier<ItemStaff> BONE_STAFF = item("bone_staff",
-        () -> new ItemStaff(defaultSettings().maxCount(1)));
-    public static final RegistrySupplier<ItemStaff> QUARTZ_STAFF = item("quartz_staff",
-        () -> new ItemStaff(defaultSettings().maxCount(1)));
-    public static final RegistrySupplier<ItemStaff> CARROT_STAFF = item("carrot_staff",
-        () -> new ItemStaff(defaultSettings().maxCount(1)));
-    public static final RegistrySupplier<ItemStaff> BEE_STAFF = item("bee_staff",
-        () -> new ItemStaff(defaultSettings().maxCount(1)));
-    public static final RegistrySupplier<ItemStaff> ROD_STAFF = item("rod_staff",
-        () -> new ItemStaff(defaultSettings().maxCount(1)));
-    public static final RegistrySupplier<ItemStaff> LOVELY_STAFF = item("lovely_staff",
-        () -> new ItemStaff(defaultSettings().maxCount(1)));
+    public static final String[] NEW_STAFF_IDS = {"bone_staff", "quartz_staff", "carrot_staff", "bee_staff", "rod_staff",
+        "ice_staff", "blaze_staff", "wither_staff", "pumpkin_staff", "lovely_staff"};
+    static {
+        for(String id : NEW_STAFF_IDS){
+            item(id, () -> new ItemStaff(defaultSettings().maxCount(1)));
+        }
+    }
     
 
     public static <T extends Item> RegistrySupplier<T> item(String name, Supplier<T> item) {

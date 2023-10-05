@@ -18,6 +18,7 @@ import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.utils.ClientUtils;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry;
@@ -49,7 +50,6 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.DyeableItem;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -117,7 +117,7 @@ public class HexGloopClient {
 			if(tintIndex != 1) {
 				return 0xFFFFFF;
 			}
-			return ((DyeableItem) HexItems.STAFF_OAK).getColor(stack);
+			return ClientUtils.getStaffDyeColor(stack);
 		}, hexStaffs);
 
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
@@ -153,7 +153,7 @@ public class HexGloopClient {
         
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
             if(tintIndex == 1){
-                return HexItems.FOCUS.getColor(stack);
+                return ClientUtils.getIotaHolderColor(stack);
             }
             return 0xFF_FFFFFF;
         }, NEW_FOCII);

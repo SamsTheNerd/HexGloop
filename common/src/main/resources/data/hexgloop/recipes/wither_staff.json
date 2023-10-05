@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " WC",
+        " SW",
+        "S  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "S":{
+            "item": "minecraft:soul_soil"
+        },
+        "W":{
+            "item": "minecraft:wither_skeleton_skull"
+        }
+    },
+    "result": {
+        "item": "hexgloop:wither_staff"
+    }
+}

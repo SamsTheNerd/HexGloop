@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " PC",
+        " BP",
+        "P  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "B":{
+            "item": "minecraft:blue_ice"
+        },
+        "P":{
+            "item": "minecraft:packed_ice"
+        }
+    },
+    "result": {
+        "item": "hexgloop:ice_staff"
+    }
+}
