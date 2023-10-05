@@ -1,0 +1,27 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+      {
+        "model": "hexgloop:item/covered_spellbook",
+        "predicate": {
+          "hexcasting:overlay_layer": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/dyebook/filled",
+        "predicate": {
+          "hexcasting:overlay_layer": 0.5
+        }
+      },
+      {
+        "model": "hexgloop:item/dyebook/sealed",
+        "predicate": {
+          "hexcasting:overlay_layer": 1.0
+        }
+      }
+    ],
+    "textures": {
+      "layer0": "hexgloop:item/dyeablespellbook/dyebook_contents",
+      "layer1": "hexgloop:item/dyeablespellbook/dyebook_cover"
+    }
+  }

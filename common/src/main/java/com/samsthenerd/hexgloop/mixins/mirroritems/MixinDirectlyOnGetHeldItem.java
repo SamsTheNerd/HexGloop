@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.samsthenerd.hexgloop.casting.SyncedItemHandling;
+import com.samsthenerd.hexgloop.casting.mirror.SyncedItemHandling;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import net.minecraft.item.ItemStack;

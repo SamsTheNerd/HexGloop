@@ -5,7 +5,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.network.HexGloopNetwork;
 
 import at.petrak.hexcasting.common.entities.EntityWallScroll;
@@ -41,13 +40,13 @@ public class MixinCopyPatternToScrolls {
         if(player instanceof ServerPlayerEntity sPlayer){
             if(book.id.toString().equals("hexcasting:thehexbook")){
                 if(isLookingAtScroll(player)){
-                    HexGloop.logPrint("looking at scroll maybe ?");
+                    // HexGloop.logPrint("looking at scroll maybe ?");
                     PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
                     buf.writeBoolean(hand == Hand.MAIN_HAND);
                     NetworkManager.sendToPlayer(sPlayer, HexGloopNetwork.PROMPT_REPLACE_SCROLL_ID, buf);
                     cir.setReturnValue(new TypedActionResult<>(ActionResult.SUCCESS, stack));
                 } else {
-                    HexGloop.logPrint("not looking at scroll");
+                    // HexGloop.logPrint("not looking at scroll");
                 }
             }
         }

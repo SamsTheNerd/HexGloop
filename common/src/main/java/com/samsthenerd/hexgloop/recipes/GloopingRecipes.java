@@ -26,6 +26,11 @@ public class GloopingRecipes {
             new Pair<>(1, Items.AMETHYST_SHARD),
             new Pair<>(3, HexItems.CHARGED_AMETHYST)
             ), () -> HexGloopItems.GLOOP_ITEM.get().getDefaultStack(), 5));
+        RECIPES.add(new SimpleGloopingRecipe(() -> List.of(
+            new Pair<>(3, Items.SLIME_BALL),
+            new Pair<>(1, Items.ENDER_EYE),
+            new Pair<>(3, HexItems.CHARGED_AMETHYST)
+            ), () -> HexGloopItems.SYNCHRONOUS_GLOOP_ITEM.get().getDefaultStack(), 5));
         
         RECIPES.sort((a, b) -> a.getPriority() - b.getPriority());
     }

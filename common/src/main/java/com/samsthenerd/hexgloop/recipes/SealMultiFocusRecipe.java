@@ -34,6 +34,12 @@ public class SealMultiFocusRecipe extends SpecialCraftingRecipe{
 
         boolean foundOne = false;
         Item foundItem = null;
+        // check for dyeable spellbook first, it's not great but we're tacking it on here !
+        if(craftingInventory.count(HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get()) == 1){
+            if(foundOne) return false;
+            foundOne = true;
+            foundItem = HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get();
+        }
         for(int i = 0; i < HexGloop.FOCUS_ITEMS.size(); i++){
             if(craftingInventory.count(HexGloop.FOCUS_ITEMS.get(i).get()) == 1){
                 if(foundOne) return false;
@@ -48,6 +54,10 @@ public class SealMultiFocusRecipe extends SpecialCraftingRecipe{
             if(stack.getItem() == foundItem){
                 if(foundItem instanceof ItemMultiFocus){
                     if(!ItemSpellbook.isSealed(stack) && HexGloopItems.MULTI_FOCUS_ITEM.get().readIotaTag(stack) != null){
+                        return true;
+                    }
+                } else if(stack.getItem() == HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get()){
+                    if(!ItemSpellbook.isSealed(stack) && HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get().readIotaTag(stack) != null){
                         return true;
                     }
                 } else {
@@ -65,7 +75,7 @@ public class SealMultiFocusRecipe extends SpecialCraftingRecipe{
     public ItemStack craft(CraftingInventory craftingInventory) {
         for(int s = 0; s < craftingInventory.size(); s++){
             ItemStack stack = craftingInventory.getStack(s);
-            if(stack.getItem() instanceof ItemMultiFocus){
+            if(stack.getItem() instanceof ItemMultiFocus || stack.getItem() instanceof ItemSpellbook){
                 ItemStack returnStack = stack.copy();
                 ItemSpellbook.setSealed(returnStack, true);
                 return returnStack;

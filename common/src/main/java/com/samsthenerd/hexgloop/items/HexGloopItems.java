@@ -46,6 +46,14 @@ public class HexGloopItems {
     public static final RegistrySupplier<ItemGloopDye> GLOOP_DYE_ITEM = item("gloop_dye", 
         () -> new ItemGloopDye(defaultSettings().maxCount(1)));
 
+    public static final RegistrySupplier<ItemDyeableSpellbook> DYEABLE_SPELLBOOK_ITEM = item("covered_spellbook",
+        () -> new ItemDyeableSpellbook(defaultSettings().maxCount(1).fireproof()));
+    
+    // just so i can show a spellbook in rei/patchoulli without actually worrying about it being valid
+    public static final RegistrySupplier<Item> FAKE_SPELLBOOK_PLACEHOLDER = item("fake_spellbook_for_rei",
+        () -> new Item(new Item.Settings()));
+
+
     public static final RegistrySupplier<ItemFocus> FOCAL_PENDANT = item("focal_pendant",
         () -> new ItemFocus(defaultSettings().maxCount(1)));
     public static final RegistrySupplier<ItemFocus> FOCAL_RING = item("focal_ring",

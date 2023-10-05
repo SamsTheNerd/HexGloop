@@ -3,14 +3,19 @@
       "at/petrak/hexcasting/common/items/ItemStaff": ["net/minecraft/item/DyeableItem"],
       "net/minecraft/text/Style": ["com/samsthenerd/hexgloop/screens/PatternStyle"],
       "net/minecraft/client/network/ClientPlayerEntity": [ "com/samsthenerd/hexgloop/casting/orchard/IOrchardKeybind"],
+      "net/minecraft/entity/player/PlayerEntity": [ "com/samsthenerd/hexgloop/casting/mirror/IShallowMirrorBinder"],
       "net/minecraft/server/network/ServerPlayerEntity": [
         "com/samsthenerd/hexgloop/casting/orchard/IOrchard",
         "com/samsthenerd/hexgloop/casting/orchard/IOrchardKeybind",
-        "com/samsthenerd/hexgloop/casting/gloopifact/ICADHarnessStorage"
+        "com/samsthenerd/hexgloop/casting/gloopifact/ICADHarnessStorage",
+        "com/samsthenerd/hexgloop/casting/mirror/IMirrorBinder"
       ],
       "at/petrak/hexcasting/api/spell/iota/EntityIota": ["com/samsthenerd/hexgloop/casting/truenameclassaction/ILockedIota"],
       "net/minecraft/entity/Entity": ["com/samsthenerd/hexgloop/misc/INoMoving"],
-      "at/petrak/hexcasting/api/spell/casting/CastingContext": ["com/samsthenerd/hexgloop/casting/mishapprotection/IMishapStorage", "com/samsthenerd/hexgloop/casting/wehavelociathome/IContextHelper"],
+      "at/petrak/hexcasting/api/spell/casting/CastingContext": [
+        "com/samsthenerd/hexgloop/casting/mishapprotection/IMishapStorage", "com/samsthenerd/hexgloop/casting/wehavelociathome/IContextHelper",
+        "com/samsthenerd/hexgloop/casting/mirror/IMirrorBinder"
+      ],
       "at/petrak/hexcasting/api/spell/casting/eval/FrameFinishEval": ["com/samsthenerd/hexgloop/casting/mishapprotection/ICatchyFrameEval"]
     }
   }

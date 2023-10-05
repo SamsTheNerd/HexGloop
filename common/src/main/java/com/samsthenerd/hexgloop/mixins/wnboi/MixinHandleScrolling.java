@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.samsthenerd.hexgloop.casting.orchard.IOrchard;
+import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemFidget;
 import com.samsthenerd.hexgloop.items.ItemMultiFocus;
 
@@ -20,7 +21,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 
 @Mixin(MsgShiftScrollSyn.class)
-public class MixinHandleScrolling {
+public class MixinHandleScrolling{
     @Shadow
     protected boolean invertSpellbook;
     
@@ -34,6 +35,9 @@ public class MixinHandleScrolling {
             }
             if(stack.getItem() instanceof ItemFidget){
                 handleFidgetScroll(sender, hand, stack, delta);
+            }
+            if(stack.getItem() == HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get()){
+                ((MixinScrollbookInvoker)(Object)this).invokeHandleSpellbook(sender, hand, stack, delta);
             }
         }
 	}

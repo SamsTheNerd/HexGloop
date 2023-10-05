@@ -62,7 +62,7 @@ public class OpTrinketyReadIota implements ConstMediaAction {
         }
         Map<String, List<ItemStack>> trinketMap = HexGloop.TRINKETY_INSTANCE.getTrinkets(context.getCaster());
         for(String slotType : trinketMap.keySet()){
-            HexGloop.logPrint("slot: \""  + slotType + "\"");
+            // HexGloop.logPrint("slot: \""  + slotType + "\"");
         }
         ItemStack foundStack = null;
         String foundTrinket = null;
