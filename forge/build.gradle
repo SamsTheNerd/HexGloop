@@ -19,6 +19,7 @@ loom {
         // uncomment *and add the file* if we want forge-only mixins?
         // mixinConfig "ducky-periphs.mixins.json"
         mixinConfig "hexgloop-common.mixins.json"
+        mixinConfig "hexgloop-forge.mixins.json"
     }
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 }

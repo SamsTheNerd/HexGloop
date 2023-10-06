@@ -15,8 +15,9 @@ public class ItemDyeableSpellbook extends ItemSpellbook implements DyeableItem{
         return DyeableItem.super.getColor(stack);
     }
 
-    // gets the iota color
-    public int getIotaColor(ItemStack stack){
-        return super.getColor(stack);
-    }
+    // gets the iota color -- ok guess this doesn't work either. just hard crashes. just use the one in utils
+    // this will be staying as a monument to our failures though
+    // public int getIotaColor(ItemStack stack){
+    //     return super.getColor(stack);
+    // }
 }

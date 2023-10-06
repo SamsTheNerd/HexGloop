@@ -30,7 +30,8 @@
     ]
   },
   "mixins": [
-    "hexgloop-common.mixins.json"
+    "hexgloop-common.mixins.json",
+    "hexgloop-fabric.mixins.json"
   ],
 
   "depends": {

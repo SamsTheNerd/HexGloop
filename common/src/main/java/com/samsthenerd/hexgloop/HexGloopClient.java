@@ -18,7 +18,7 @@ import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
-import com.samsthenerd.hexgloop.utils.ClientUtils;
+import com.samsthenerd.hexgloop.utils.GloopUtils;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry;
@@ -50,6 +50,7 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.DyeableItem;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -114,10 +115,10 @@ public class HexGloopClient {
                 HexItems.STAFF_DARK_OAK, HexItems.STAFF_CRIMSON, HexItems.STAFF_WARPED};
 
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
-			if(tintIndex != 1) {
-				return 0xFFFFFF;
-			}
-			return ClientUtils.getStaffDyeColor(stack);
+			if(tintIndex == 1){
+                return ((DyeableItem)HexItems.STAFF_OAK).getColor(stack);
+            }
+            return 0xFFFFFF;
 		}, hexStaffs);
 
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
@@ -153,7 +154,7 @@ public class HexGloopClient {
         
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
             if(tintIndex == 1){
-                return ClientUtils.getIotaHolderColor(stack);
+                return GloopUtils.getIotaColor(stack);
             }
             return 0xFF_FFFFFF;
         }, NEW_FOCII);
@@ -163,7 +164,7 @@ public class HexGloopClient {
                 return HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get().getColor(stack);
             }
             if(tintIndex == 2){
-                return HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get().getIotaColor(stack);
+                return GloopUtils.getIotaColor(stack);
             }
             return 0xFF_FFFFFF;
         }, HexGloopItems.DYEABLE_SPELLBOOK_ITEM);
@@ -244,6 +245,7 @@ public class HexGloopClient {
         });
     }
 
+    
     public static DecimalFormat DUST_FORMAT = new DecimalFormat("###,###.##");
 
     private static void pedestalDisplay(List<Pair<ItemStack, Text>> lines,
