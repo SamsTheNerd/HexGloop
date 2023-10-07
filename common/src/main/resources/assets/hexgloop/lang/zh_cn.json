@@ -25,7 +25,12 @@
     "item.hexgloop.bee_staff": "蜜蜂法杖",
     "item.hexgloop.rod_staff": "紫水晶钓竿",
     "item.hexgloop.bone_staff": "骨头法杖",
+    "item.hexgloop.blaze_staff": "烈焰法杖",
+    "item.hexgloop.pumpkin_staff": "南瓜……法杖？",
+    "item.hexgloop.wither_staff": "凋灵法杖",
     "item.hexgloop.hexxy_plush": "Hexxy毛绒玩偶",
+    "item.hexgloop.covered_spellbook": "装面法术书",
+    "item.hexgloop.covered_spellbook.sealed": "密封装面法术书",
     "item.hexgloop.hand_mirror.tooltip": "反射[%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "上一反射[%s]",
 
