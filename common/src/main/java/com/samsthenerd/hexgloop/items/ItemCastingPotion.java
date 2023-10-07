@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
+import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -114,7 +115,16 @@ public class ItemCastingPotion extends ItemPackagedHex{
         if (playerEntity instanceof ServerPlayerEntity) {
             Criteria.CONSUME_ITEM.trigger((ServerPlayerEntity)playerEntity, stack);
         }
+
+        FrozenColorizer storedPigment = IXplatAbstractions.INSTANCE.getColorizer(playerEntity);
+        FrozenColorizer potionPigment = getColorizer(stack);
+        IXplatAbstractions.INSTANCE.setColorizer(playerEntity, potionPigment);
         super.use(world, playerEntity, user.getActiveHand());
+        FrozenColorizer currentPigment = IXplatAbstractions.INSTANCE.getColorizer(playerEntity);
+        // only set it back if it didn't change from the potion, so we don't break hexbound's recall pigment
+        if(currentPigment == potionPigment)
+            IXplatAbstractions.INSTANCE.setColorizer(playerEntity, storedPigment);
+
         if (playerEntity != null) {
             playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
             if (!playerEntity.getAbilities().creativeMode) {
