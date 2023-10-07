@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " PC",
+        " BP",
+        "B  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "B":{
+            "item": "minecraft:blaze_rod"
+        },
+        "P":{
+            "item": "minecraft:blaze_powder"
+        }
+    },
+    "result": {
+        "item": "hexgloop:blaze_staff"
+    }
+}

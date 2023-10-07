@@ -45,7 +45,15 @@
       "mishapprotection.MixinRedirectMishaps",
       "mishapprotection.MixinStoreLastMishapContext",
       "misc.MixinTrackCADHarnesses",
-      "misc.MixinActuallyTrackHarnesses"
+      "misc.MixinActuallyTrackHarnesses",
+      "wnboi.MixinScrollbookInvoker",
+      "mirroritems.MixinSwapItemsOnMobInteract",
+      "mirroritems.MixinPlayerMirrorStuff",
+      "mirroritems.MixinPassEnchants",
+      "mirroritems.MixinMaintainUsingCorrectItem",
+      "mirroritems.MixinRemoveFromPlayerInventory",
+      "mirroritems.MixinServerPlayerMirror",
+      "mirroritems.MixinMirrorContext"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
@@ -60,7 +68,11 @@
       "booktweaks.MixinCopyPatternToScrolls",
       "misc.MixinClientAddFeatureRenderers",
       "misc.MixinClientExposeAddFeature",
-      "orchard.MixinClientPlayerOrchardKeybind"
+      "orchard.MixinClientPlayerOrchardKeybind",
+      "mirroritems.MixinClientFPHandRender",
+      "mirroritems.MixinClientTPHandRender",
+      "mirroritems.MixinClientMakeHandFuzzy",
+      "mirroritems.MixinClientHotbarOverlays"
     ],
     "injectors": {
       "defaultRequire": 1

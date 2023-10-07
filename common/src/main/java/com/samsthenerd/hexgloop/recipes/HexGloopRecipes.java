@@ -17,9 +17,8 @@ public class HexGloopRecipes {
         register("crafting_seal_multi_focus", SealMultiFocusRecipe.SERIALIZER);
     public static RegistrySupplier <SpecialRecipeSerializer<GloopDyeRecipe>> GLOOP_DYE_RECIPE = 
         register("crafting_gloop_dye", GloopDyeRecipe.SERIALIZER);
-    // public static RegistrySupplier <RecipeSerializer<GloopDyeItemRecipe>> GLOOP_DYE_ITEM_RECIPE = 
-    //     register("crafting_gloop_dye_item", GloopDyeItemRecipe.SERIALIZER);
-
+    public static RegistrySupplier <SpecialRecipeSerializer<CoveredSpellbookRecipe>> MAKE_DYEBOOK_RECIPE = 
+        register("crafting_make_dyebook", CoveredSpellbookRecipe.SERIALIZER);
     
 
     public static void register(){

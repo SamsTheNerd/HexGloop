@@ -77,6 +77,10 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         return newUUID;
     }
 
+    public UUID getPersistentUUID(){
+        return persistentUUID;
+    }
+
     public Direction getNormal(){
         return getCachedState().get(BlockPedestal.FACING);
     }

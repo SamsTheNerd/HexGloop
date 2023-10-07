@@ -9,6 +9,7 @@ import com.samsthenerd.hexgloop.casting.dimensions.OpIsInDimension;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpReadGloopifact;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpSyncRavenmindGloopifact;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpWriteGloopifact;
+import com.samsthenerd.hexgloop.casting.mirror.OpBindMirror;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpEvalCatchMishap;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpHahaFunnyAssertQEDGetItLikeTheMathProofLol;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpRevealLastMishap;
@@ -81,9 +82,15 @@ public class HexGloopRegisterPatterns {
                 new Identifier(HexGloop.MOD_ID, "gloopimind_download"),
                 new OpSyncRavenmindGloopifact(false));
             
-
-            
-            
+            // bound mirror pedestal stuff:
+            // normal bind: deeeedwwdwdw, north east
+            PatternRegistry.mapPattern(HexPattern.fromAngles("deeeedwwdwdw", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "bind_mirror"),
+                new OpBindMirror(false));
+            // temp bind  : aqqqqawwawaw, north west
+            PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqawwawaw", HexDir.NORTH_WEST),
+                new Identifier(HexGloop.MOD_ID, "temp_bind_mirror"),
+                new OpBindMirror(true));
             
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
@@ -100,6 +107,9 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
                 new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), 0));
+
+            // craft sword: waqqqqqwwwaqwwwwaq
+            // craft shoe things: waqqqqqwwaqwdwqaw
                 
             // gloopifact patterns
             PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqqeqadaqw", HexDir.NORTH_EAST),

@@ -25,7 +25,13 @@
     "item.hexgloop.bee_staff": "Bee Staff",
     "item.hexgloop.rod_staff": "Amethyst On A Stick",
     "item.hexgloop.bone_staff": "Bone Staff",
+    "item.hexgloop.ice_staff": "Ice Staff",
+    "item.hexgloop.blaze_staff": "Blaze Staff",
+    "item.hexgloop.pumpkin_staff": "Pumpkin.. staff?",
+    "item.hexgloop.wither_staff": "Wither Staff",
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
+    "item.hexgloop.covered_spellbook": "Covered Spellbook",
+    "item.hexgloop.covered_spellbook.sealed": "Sealed Covered Spellbook",
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "Last Reflected [%s]",
 

@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " C",
+        "P "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "P":{
+            "item": "minecraft:carved_pumpkin"
+        }
+    },
+    "result": {
+        "item": "hexgloop:pumpkin_staff"
+    }
+}

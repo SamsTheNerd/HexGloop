@@ -18,6 +18,7 @@ import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.utils.GloopUtils;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
 import at.petrak.hexcasting.api.client.ScryingLensOverlayRegistry;
@@ -114,10 +115,10 @@ public class HexGloopClient {
                 HexItems.STAFF_DARK_OAK, HexItems.STAFF_CRIMSON, HexItems.STAFF_WARPED};
 
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
-			if(tintIndex != 1) {
-				return 0xFFFFFF;
-			}
-			return ((DyeableItem) HexItems.STAFF_OAK).getColor(stack);
+			if(tintIndex == 1){
+                return ((DyeableItem)HexItems.STAFF_OAK).getColor(stack);
+            }
+            return 0xFFFFFF;
 		}, hexStaffs);
 
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
@@ -153,10 +154,20 @@ public class HexGloopClient {
         
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
             if(tintIndex == 1){
-                return HexItems.FOCUS.getColor(stack);
+                return GloopUtils.getIotaColor(stack);
             }
             return 0xFF_FFFFFF;
         }, NEW_FOCII);
+
+        ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
+            if(tintIndex == 1){
+                return HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get().getColor(stack);
+            }
+            if(tintIndex == 2){
+                return GloopUtils.getIotaColor(stack);
+            }
+            return 0xFF_FFFFFF;
+        }, HexGloopItems.DYEABLE_SPELLBOOK_ITEM);
     }
 
     public static int tintsFromColorizer(FrozenColorizer colorizer, int tintIndex, int sections){
@@ -194,8 +205,13 @@ public class HexGloopClient {
         );
 
         UnclampedModelPredicateProvider focusModelProvider = (stack, level, holder, holderID) -> {
-            if (HexItems.FOCUS.readIotaTag(stack) == null && !NBTHelper.hasString(stack, IotaHolderItem.TAG_OVERRIDE_VISUALLY)) {
+            if(!(stack.getItem() instanceof IotaHolderItem iotaHolder)) return 0;
+            if (iotaHolder.readIotaTag(stack) == null && !NBTHelper.hasString(stack, IotaHolderItem.TAG_OVERRIDE_VISUALLY)) {
                 return 0;
+            }
+            // so it works for dyebook too
+            if(stack.getItem() instanceof ItemSpellbook && ItemSpellbook.isSealed(stack)){
+                return 1;
             }
             if (stack.getNbt() != null && stack.getNbt().contains(ItemFocus.TAG_SEALED) && stack.getNbt().getBoolean(ItemFocus.TAG_SEALED)) {
                 return 1;
@@ -205,6 +221,7 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.FOCAL_PENDANT.get(), ItemFocus.OVERLAY_PRED, focusModelProvider);
         ItemPropertiesRegistry.register(HexGloopItems.FOCAL_RING.get(), ItemFocus.OVERLAY_PRED, focusModelProvider);
+        ItemPropertiesRegistry.register(HexGloopItems.DYEABLE_SPELLBOOK_ITEM.get(), ItemFocus.OVERLAY_PRED, focusModelProvider);
 
         ItemPropertiesRegistry.register(HexGloopItems.CASTERS_COIN.get(), ItemCastersCoin.OVERLAY_PRED,
             (ItemStack itemStack, ClientWorld clientWorld, LivingEntity livingEntity, int i) -> {
@@ -228,6 +245,7 @@ public class HexGloopClient {
         });
     }
 
+    
     public static DecimalFormat DUST_FORMAT = new DecimalFormat("###,###.##");
 
     private static void pedestalDisplay(List<Pair<ItemStack, Text>> lines,
