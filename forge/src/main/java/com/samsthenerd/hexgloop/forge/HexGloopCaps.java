@@ -8,11 +8,8 @@ import org.jetbrains.annotations.NotNull;
 
 import com.samsthenerd.hexgloop.items.ItemSimpleMediaProvider;
 
-import at.petrak.hexcasting.api.addldata.ADMediaHolder;
-import at.petrak.hexcasting.api.mod.HexConfig;
 import at.petrak.hexcasting.forge.cap.ForgeCapabilityHandler;
 import at.petrak.hexcasting.forge.cap.HexCapabilities;
-import at.petrak.hexcasting.forge.cap.adimpl.CapStaticMediaHolder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Direction;
 import net.minecraftforge.common.capabilities.Capability;
@@ -26,7 +23,7 @@ public class HexGloopCaps {
         ItemStack itemStack = evt.getObject();
         if(itemStack.getItem() instanceof ItemSimpleMediaProvider simpleMediaItem){
             evt.addCapability(ForgeCapabilityHandler.MEDIA_STATIC_CAP, provide(itemStack, HexCapabilities.MEDIA, 
-                () -> new CapStaticMediaHolder(HexConfig.common()::dustMediaAmount, ADMediaHolder.AMETHYST_DUST_PRIORITY, itemStack))
+                () -> simpleMediaItem.getProvider(itemStack))
             );
         }
     }

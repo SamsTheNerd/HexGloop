@@ -53,7 +53,9 @@
       "mirroritems.MixinMaintainUsingCorrectItem",
       "mirroritems.MixinRemoveFromPlayerInventory",
       "mirroritems.MixinServerPlayerMirror",
-      "mirroritems.MixinMirrorContext"
+      "mirroritems.MixinMirrorContext",
+      "misc.MixinInterfaceEnchants",
+      "misc.MixinCatSit"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

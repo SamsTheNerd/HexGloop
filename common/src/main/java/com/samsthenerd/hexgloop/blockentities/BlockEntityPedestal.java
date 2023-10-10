@@ -99,16 +99,27 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
                 itemEnt = null;
             }
             Entity maybeItemEnt = sWorld.getEntity(persistentUUID);
-            if(maybeItemEnt != null && !maybeItemEnt.isRemoved()){
-                maybeItemEnt.discard();
-            }
             Vec3i norm = getNormal().getVector();
             double heightOffset = HEIGHT - 0.5 + 0.01;
-            itemEnt = new ItemEntity(sWorld, 
-                pos.getX() + 0.5 + (heightOffset+0.2f) * norm.getX(), // + 0.125 to put it far enough out
-                pos.getY() + 0.2 + (heightOffset * norm.getY()) + Math.abs(0.3 * norm.getY()) + (norm.getY() < 0 ? -0.7 : 0), // put it on the 'floor' when it's sideways so it's not floating too high
-                pos.getZ() + 0.5 + (heightOffset+0.2f) * norm.getZ(), 
-                storedItem, 0, 0, 0);
+            double xPos = pos.getX() + 0.5 + (heightOffset+0.2f) * norm.getX(); // + 0.125 to put it far enough out
+            double yPos = pos.getY() + 0.2 + (heightOffset * norm.getY()) + Math.abs(0.3 * norm.getY()) + (norm.getY() < 0 ? -0.7 : 0); // put it on the 'floor' when it's sideways so it's not floating too high
+            double zPos = pos.getZ() + 0.5 + (heightOffset+0.2f) * norm.getZ();
+            boolean needsToSpawn = false;
+            if(maybeItemEnt instanceof ItemEntity someItemEnt){
+                // if(someItemEnt.isRemoved()){
+                //     // see if we can restore it -- no clue if this will actually work
+                //     ((INoMoving)someItemEnt).callUnsetRemoval();
+                // }
+                // we have some item entity ? that seems to exist ?
+                itemEnt = someItemEnt;
+                itemEnt.setStack(storedItem);
+            } else {
+                needsToSpawn = true;
+                itemEnt = new ItemEntity(sWorld, 
+                    xPos, yPos, zPos, 
+                    storedItem, 0, 0, 0);
+            }
+            itemEnt.setPos(xPos, yPos, zPos);
             itemEnt.setUuid(persistentUUID);
             itemEnt.setNoGravity(removed);
             itemEnt.noClip = true;
@@ -116,7 +127,9 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
             itemEnt.setNeverDespawn();
             itemEnt.setInvulnerable(true);
             ((INoMoving)itemEnt).setNoMoving(true);
-            sWorld.spawnEntity(itemEnt);
+            if(needsToSpawn){
+                sWorld.spawnEntity(itemEnt);
+            }
             markDirty();
         }
     }
@@ -232,7 +245,9 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         if(storedItem == null || storedItem.isEmpty()){
             // no stored item so kill our entity
             if(itemEnt != null){
-                itemEnt.discard();
+                // actually maybe don't discard it ourselves, it should take care of itself ?
+                // itemEnt.discard();
+                itemEnt.setStack(storedItem); // empty it, it'll die on tick ?
                 itemEnt = null;
                 markDirty();
             }
@@ -291,7 +306,7 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
     public List<ItemEntity> getInputItemEntities() {
         // so we had this grab a bit above the pedestal before, but that sounds like a pain rotated, so this should be fine probably ?
         Box box = new Box(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1);
-        return world.getEntitiesByClass(ItemEntity.class, box, (ent) -> !(ent.getUuid().equals(persistentUUID)) && EntityPredicates.VALID_ENTITY.test(ent));
+        return world.getEntitiesByClass(ItemEntity.class, box, (ent) -> !(ent.getUuid().equals(persistentUUID)) && EntityPredicates.VALID_ENTITY.test(ent) && !((INoMoving)ent).getNoMoving());
     }
         
     // tries to get a pattern based on the scroll or slate in the pedestal if there is one

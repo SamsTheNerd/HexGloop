@@ -51,4 +51,8 @@ public class ItemGloopifact extends ItemPackagedHex implements IotaHolderItem {
             NBTHelper.put(stack, ItemFocus.TAG_DATA, HexIotaTypes.serialize(iota));
         }
     }
+
+    public int cooldown(){
+        return 0;
+    }
 }

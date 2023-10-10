@@ -107,8 +107,13 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
                 new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), 0));
+                
 
             // craft sword: waqqqqqwwwaqwwwwaq
+            PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/hex_blade"),
+                new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.SHARD_UNIT));
+
             // craft shoe things: waqqqqqwwaqwdwqaw
                 
             // gloopifact patterns

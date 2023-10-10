@@ -17,16 +17,12 @@ import at.petrak.hexcasting.common.items.ItemStaff;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
 
 public class HexGloopItems{
     public static DeferredRegister<Item> items = DeferredRegister.create(HexGloop.MOD_ID, Registry.ITEM_KEY);
@@ -71,24 +67,19 @@ public class HexGloopItems{
     public static final RegistrySupplier<Item> SLATE_BOWL = item("slate_bowl", 
         () -> new Item(defaultSettings()));
 
+    public static final int HEX_SNACK_MEDIA = MediaConstants.DUST_UNIT / 20;
+
     public static final RegistrySupplier<Item> HEX_SNACK = item("hex_snack",
-        () -> new ItemSimpleMediaProvider(defaultSettings().food((new FoodComponent.Builder()).hunger(2).saturationModifier(0.3f).snack().build()),
-            MediaConstants.DUST_UNIT / 64, 1));
+        () -> new ItemSimpleMediaProvider(defaultSettings().food((new FoodComponent.Builder()).hunger(2).saturationModifier(0.5f).snack().build()),
+            HEX_SNACK_MEDIA, 1));
 
     public static final RegistrySupplier<Item> HEXXY_OS = item("hexxyos",
-        () -> new Item(defaultSettings().food((new FoodComponent.Builder()).hunger(8).saturationModifier(0.8f).build())){
-            // yeah gross anonymous class but i'm not making a whole new class for one cereal method
-            @Override
-            public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-                ItemStack itemStack = super.finishUsing(stack, world, user);
-                if (user instanceof PlayerEntity && ((PlayerEntity)user).getAbilities().creativeMode) {
-                    return itemStack;
-                }
-                return new ItemStack(SLATE_BOWL.get());
-            }
-        });
+        () -> new ItemHexxyOs(defaultSettings().food((new FoodComponent.Builder()).hunger(8).saturationModifier(0.8f).build())));
 
     public static final RegistrySupplier<Item> HEXXY_PLUSH = item("hexxy_plush", () -> new Item(defaultSettings().maxCount(1)));
+
+    public static final RegistrySupplier<ItemHexSword> HEX_BLADE_ITEM = item("hex_blade", 
+        () -> new ItemHexSword(defaultSettings().maxCount(1).fireproof())); 
 
     // fidgets -- todo: maybe move these out of here and into their own file
 
