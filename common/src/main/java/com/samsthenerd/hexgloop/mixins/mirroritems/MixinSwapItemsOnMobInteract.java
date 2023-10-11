@@ -6,60 +6,44 @@ import org.spongepowered.asm.mixin.injection.At;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.samsthenerd.hexgloop.items.ItemAbstractPassThrough;
+import com.samsthenerd.hexgloop.items.ItemAbstractPassThrough.SimplePTUContext;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Pair;
 
 @Mixin(MobEntity.class)
 public class MixinSwapItemsOnMobInteract {
     @WrapOperation(method="interact(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;",
     at=@At(value="INVOKE", target="net/minecraft/entity/mob/MobEntity.interactWithItem (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;"))
     public ActionResult swapItemsOnInteractWithItem(MobEntity mob, PlayerEntity player, Hand hand, Operation<ActionResult> original){
-        return wrapInteract(mob, player, hand, original, true);
+        return wrapInteract(mob, player, hand, original);
     }
 
     @WrapOperation(method="interact(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;",
     at=@At(value="INVOKE", target="net/minecraft/entity/mob/MobEntity.interactMob (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;"))
     public ActionResult swapItemsOnInteractMob(MobEntity mob, PlayerEntity player, Hand hand, Operation<ActionResult> original){
-        return wrapInteract(mob, player, hand, original, true);
+        return wrapInteract(mob, player, hand, original);
     }
 
-    // @WrapOperation(method="interact(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;",
-    // at=@At(value="INVOKE", target="net/minecraft/entity/LivingEntity.interact (Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;"))
-    // public ActionResult swapItemsOnSuperInteract(LivingEntity livEnt, PlayerEntity player, Hand hand, Operation<ActionResult> original){
-    //     return wrapInteract(livEnt, player, hand, original, false);
-    // }
-
-
-
     // they're all the same signatures, don't think i can target multiple locations 
-    private static ActionResult wrapInteract(LivingEntity mob, PlayerEntity player, Hand hand, Operation<ActionResult> original, boolean isMob){
+    private static ActionResult wrapInteract(MobEntity mob, PlayerEntity player, Hand hand, Operation<ActionResult> original){
         ItemStack heldItem = player.getStackInHand(hand);
+        // keep this up here to just exit early if we need to -- although it seems like 
         if(!(heldItem.getItem() instanceof ItemAbstractPassThrough passThroughItem)){
-            if(isMob && mob instanceof MobEntity forSureMob){
-                return original.call(forSureMob, player, hand);
-            } else {
-                return original.call(mob, player, hand);
-            }
+            return original.call(mob, player, hand);
         }
-        ItemStack storedItem = passThroughItem.getStoredItem(heldItem, player, player.getWorld(), hand).copy();
-        player.setStackInHand(hand, storedItem);
-        ActionResult result;
-        if(isMob && mob instanceof MobEntity forSureMob){
-            result = original.call(forSureMob, player, hand);
-        } else {
-            result = original.call(mob, player, hand);
-        }
-        // HexGloop.logPrint("[" + (player.getWorld().isClient ? "client" : "server") + "]used item on entity, left with:\n\tstoredItem: " + storedItem.toString() + 
-        //         "\n\tcurrentHand: " + player.getStackInHand(hand).toString());
-        ItemStack newStackToStore = player.getStackInHand(hand);
-        if(newStackToStore != storedItem) newStackToStore = newStackToStore.copy(); // copy incase it's somehow getting cleared elsewhere or something ?
-        heldItem = passThroughItem.setStoredItem(heldItem, player, player.getWorld(), hand, newStackToStore);
-        player.setStackInHand(hand, heldItem);
-        return result;
+        SimplePTUContext<ActionResult> useContext = new SimplePTUContext<>(player.getWorld(), player, hand, passThroughItem, (ctx)->{
+            ActionResult result = original.call(mob, player, hand);
+            ItemStack newStackToStore = player.getStackInHand(hand);
+            if(newStackToStore != ctx.storedItemRef) newStackToStore = newStackToStore.copy(); // copy incase it's somehow getting cleared elsewhere or something ?
+            ctx.storedItemRef = newStackToStore;
+            return new Pair<>(result, ctx.storedItemRef);
+        });
+        ActionResult result = useContext.call();
+        return useContext.didSucceed ? result : original.call(mob, player, hand);
     }
 }
