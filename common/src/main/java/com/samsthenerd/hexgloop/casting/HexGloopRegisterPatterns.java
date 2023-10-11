@@ -91,6 +91,19 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqawwawaw", HexDir.NORTH_WEST),
                 new Identifier(HexGloop.MOD_ID, "temp_bind_mirror"),
                 new OpBindMirror(true));
+
+            // hotbar patterns
+            PatternRegistry.mapPattern(HexPattern.fromAngles("dwewdwe", HexDir.WEST), 
+                new Identifier(HexGloop.MOD_ID, "set_hotbar_slot"),
+                new OpHotbar(false, false));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qwawqwa", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "get_hotbar_slot"),
+                new OpHotbar(false, true));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qwawqwadawqwa", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "swap_hotbar_slot"),
+                new OpHotbar(true, false));
             
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
