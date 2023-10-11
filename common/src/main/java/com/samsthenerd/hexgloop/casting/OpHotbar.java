@@ -3,6 +3,10 @@ package com.samsthenerd.hexgloop.casting;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.samsthenerd.hexgloop.casting.mirror.IPlayerPTUContext;
+import com.samsthenerd.hexgloop.casting.mirror.MishapICanOnlyCodeSoMuchPlsDontDupe;
+import com.samsthenerd.hexgloop.items.ItemAbstractPassThrough.PassThroughUseContext;
+
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.spell.ConstMediaAction;
 import at.petrak.hexcasting.api.spell.OperationResult;
@@ -11,7 +15,10 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation;
 import at.petrak.hexcasting.api.spell.iota.DoubleIota;
 import at.petrak.hexcasting.api.spell.iota.Iota;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.UpdateSelectedSlotS2CPacket;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 
@@ -49,18 +56,31 @@ public class OpHotbar implements ConstMediaAction{
 
     @Override
     public List<Iota> execute(List<? extends Iota> args, CastingContext context){
+        ServerPlayerEntity player = context.getCaster();
+        PassThroughUseContext<?,?> ptuContext = ((IPlayerPTUContext)(Object)player).getPTUContext();
         if(isFlip){
-            ItemStack mainHand = context.getCaster().getMainHandStack();
-            ItemStack offHand = context.getCaster().getOffHandStack();
-            context.getCaster().setStackInHand(Hand.MAIN_HAND, offHand);
-            context.getCaster().setStackInHand(Hand.OFF_HAND, mainHand);
+            if(ptuContext != null){
+                // mishap for dupe reasons / stability reasons
+                MishapThrowerWrapper.throwMishap(new MishapICanOnlyCodeSoMuchPlsDontDupe());
+                return new ArrayList<>();
+            }
+            ItemStack mainHand = player.getMainHandStack();
+            ItemStack offHand = player.getOffHandStack();
+            player.setStackInHand(Hand.MAIN_HAND, offHand);
+            player.setStackInHand(Hand.OFF_HAND, mainHand);
+            if(ptuContext != null && ptuContext.ptSlot == player.getInventory().selectedSlot){
+                ptuContext.ptSlot = PlayerInventory.OFF_HAND_SLOT;
+            } else if(ptuContext != null && ptuContext.ptSlot == PlayerInventory.OFF_HAND_SLOT){
+                ptuContext.ptSlot = player.getInventory().selectedSlot;
+            }
         } else {
             if(isRead){
-                int selectedSlot = context.getCaster().getInventory().selectedSlot;
+                int selectedSlot = player.getInventory().selectedSlot;
                 return List.of(new DoubleIota(selectedSlot));
             } else {
-                Double newSlot = OperatorUtils.getDoubleBetween(args, 0, 0, 9, getArgc());
-                context.getCaster().getInventory().selectedSlot = newSlot.intValue();
+                Double newSlot = OperatorUtils.getDoubleBetween(args, 0, 0, 8, getArgc());
+                player.getInventory().selectedSlot = newSlot.intValue();
+                player.networkHandler.sendPacket(new UpdateSelectedSlotS2CPacket(player.getInventory().selectedSlot));
             }
         }
         return new ArrayList<>();

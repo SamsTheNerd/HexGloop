@@ -82,6 +82,7 @@ public class ItemHandMirror extends ItemAbstractPassThrough implements IotaHolde
     // returns the itemstack that should be in the player's hand after the use, just if you need to modify it or something
     public ItemStack setStoredItem(ItemStack stack, LivingEntity ent, World world, Hand hand, ItemStack storedItem){
         if(world instanceof ServerWorld sWorld && !(ent.getWorld().isClient())){
+            ItemStack tempStack = ent.getStackInHand(hand); 
             ent.setStackInHand(hand, stack);
             ItemEntity itemEnt = SyncedItemHandling.getAlternateEntity(ent, hand, (CastingContext)null);
             // HexGloop.logPrint("on server trying to set stored item");
@@ -89,6 +90,7 @@ public class ItemHandMirror extends ItemAbstractPassThrough implements IotaHolde
                 // HexGloop.logPrint("on server found item entity");
                 itemEnt.setStack(storedItem);
             }
+            ent.setStackInHand(hand, tempStack); // avoid modifying the hand here
         };
         return stack;
     }

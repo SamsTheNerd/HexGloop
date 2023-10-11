@@ -5,13 +5,18 @@ import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
+import com.samsthenerd.hexgloop.casting.mirror.IPlayerPTUContext;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.Items;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Pair;
@@ -55,6 +60,7 @@ public abstract class ItemAbstractPassThrough extends Item{
     // not super sure what happens with the itemstack in the result here ?
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        // HexGloop.logPrint("~entered use~");
         SimplePTUContext<TypedActionResult<ItemStack>> useContext = new SimplePTUContext<>(world, user, hand, this, (ctx)->{
             if(user.getItemCooldownManager().isCoolingDown(ctx.storedItemRef.getItem())){
                 // hopefully it no-ops fine ?
@@ -72,6 +78,7 @@ public abstract class ItemAbstractPassThrough extends Item{
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
+        // HexGloop.logPrint("~entered use on block~");
         // lol, a bit confusing with context vs ctx, oops
         SimplePTUContext<ActionResult> useContext = new SimplePTUContext<>(context.getWorld(), context.getPlayer(), context.getHand(), this, (ctx)->{
             // have to recreate it since the getter is protected on ItemUsageContext
@@ -79,8 +86,7 @@ public abstract class ItemAbstractPassThrough extends Item{
             // need a new one so it uses the storedItem stack
             ItemUsageContext newContext = new ItemUsageContext(context.getWorld(), context.getPlayer(), context.getHand(), ctx.storedItemRef, hitResult);
             ActionResult result = ctx.storedItemRef.useOnBlock(newContext);
-            ctx.storedItemRef = ctx.user.getStackInHand(ctx.hand); 
-            return new Pair<>(result, ctx.storedItemRef);
+            return new Pair<>(result, PTU_YIELD_CHECK_MARKER);
         });
         ActionResult result = useContext.call();
         return useContext.didSucceed ? result : super.useOnBlock(context);
@@ -88,10 +94,10 @@ public abstract class ItemAbstractPassThrough extends Item{
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand){
+        // HexGloop.logPrint("~entered use on entity~");
         SimplePTUContext<ActionResult> useContext = new SimplePTUContext<>(user.getWorld(), user, hand, this, (ctx)->{
             ActionResult result = ctx.storedItemRef.useOnEntity(user, entity, hand);
-            ctx.storedItemRef = ctx.user.getStackInHand(ctx.hand);
-            return new Pair<>(result, ctx.storedItemRef);
+            return new Pair<>(result, PTU_YIELD_CHECK_MARKER);
         });
         ActionResult result = useContext.call();
         return useContext.didSucceed ? result : super.useOnEntity(stack, user, entity, hand);
@@ -99,6 +105,7 @@ public abstract class ItemAbstractPassThrough extends Item{
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        // HexGloop.logPrint("~entered finish using~");
         Hand hand = user.getActiveHand();
         SimplePTUContext<ItemStack> useContext = new SimplePTUContext<>(world, user, hand, this, (ctx)->{
             ItemStack modifiedStoredStack = ctx.storedItemRef.getItem().finishUsing(ctx.storedItemRef, world, user);
@@ -110,20 +117,22 @@ public abstract class ItemAbstractPassThrough extends Item{
 
 	@Override
 	public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        // HexGloop.logPrint("~entered stopped using");
         Hand hand = user.getActiveHand();
         SimplePTUContext<Void> useContext = new SimplePTUContext<>(world, user, hand, this, (ctx)->{
             ctx.storedItemRef.getItem().onStoppedUsing(ctx.storedItemRef, world, user, remainingUseTicks);
-            return new Pair<>(null, user.getStackInHand(hand));
+            return new Pair<>(null, PTU_YIELD_CHECK_MARKER);
         });
         useContext.call();
 	}
 
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
+        // HexGloop.logPrint("~entered usage tick");
         Hand hand = user.getActiveHand();
         SimplePTUContext<Void> useContext = new SimplePTUContext<>(world, user, hand, this, (ctx)->{
             ctx.storedItemRef.getItem().usageTick(world, user, ctx.storedItemRef, remainingUseTicks);
-            return new Pair<>(null, user.getStackInHand(hand));
+            return new Pair<>(null, PTU_YIELD_CHECK_MARKER);
         });
         useContext.call();
 	}
@@ -196,7 +205,17 @@ public abstract class ItemAbstractPassThrough extends Item{
         return super.isUsedOnRelease(stack);
     }
 
-    
+    // hopefully works fine with deferred registry,,
+    // anyways, pass this as a result of the use function to indicate that the stored item should be retrieved from wherever the 
+    // pt item got off to. *usually* this will just be the hand,, but that's not guaranteed
+    public static final ItemStack PTU_YIELD_CHECK_MARKER = new ItemStack(Items.BRICK);
+    static {
+        PTU_YIELD_CHECK_MARKER.getOrCreateNbt().putBoolean("ptu_yield_check_marker", true);
+    }
+
+    public static boolean isMarker(ItemStack stack){
+        return stack.isItemEqual(PTU_YIELD_CHECK_MARKER) && stack.getNbt() != null && stack.getNbt().getBoolean("ptu_yield_check_marker");
+    }
 
     // an abstracting class for the pass through use functions.
     // perhaps unnecessarily complicated but should be worth it if I ever want to add/change any behaviors - which I probably will be doing soon,,
@@ -211,6 +230,7 @@ public abstract class ItemAbstractPassThrough extends Item{
         public ItemStack originalHandStackRef;
         public ItemStack storedItemRef; // mostly for our functions to use
         public boolean didSucceed = false;
+        public int ptSlot = -1; // since we have stuff that can swap the hotbar slot, this will make sure we put it back in the right spot
 
         // let A be vague since different use calls take very different things
         // returns a pair with the 
@@ -221,15 +241,41 @@ public abstract class ItemAbstractPassThrough extends Item{
             ItemStack handStack = user.getStackInHand(hand); // important since we'll need to restore it
             originalHandStackRef = handStack; // just so we have it
             ItemStack storedItem = passItem.getStoredItem(handStack, user, world, hand);
+            String sideString = world.isClient ? "[client] " : "[server] ";
             if(storedItem != null) storedItem = storedItem.copy();
             if(storedItem != null && !(storedItem.getItem() instanceof ItemAbstractPassThrough)){ // no loops!
-                // HexGloop.logPrint("finished using passed through item: " + storedItem.toString());
+                if(user instanceof ServerPlayerEntity sPlayer){
+                    ptSlot = hand == Hand.MAIN_HAND ? sPlayer.getInventory().selectedSlot : PlayerInventory.OFF_HAND_SLOT;
+                    ((IPlayerPTUContext)(Object)sPlayer).setPTUContext(this);
+                }
+                // HexGloop.logPrint(sideString + "swapping stored item into hand: " + storedItem.toString());
                 user.setStackInHand(hand, storedItem); // hopefully works fine sided ?
                 storedItemRef = storedItem; // so that it can be accessed neatly from the wrapper
                 Pair<R, ItemStack> result = useWrapper.apply(this, args);
                 storedItem = result.getRight();
+                // HexGloop.logPrint(sideString + "result is: " + storedItem.toString());
+                if(isMarker(storedItem)){
+                    storedItem = user.getStackInHand(hand); // for non-players
+                    // HexGloop.logPrint(sideString + "determined it is a marker, found item in hand: " + storedItem.toString());
+                    if(user instanceof ServerPlayerEntity sPlayer){
+                        PlayerInventory inv = sPlayer.getInventory();
+                        storedItem = inv.getStack(ptSlot);
+                        // HexGloop.logPrint(sideString + "used by player, found item in ptSlot[" + ptSlot + "]: " + storedItem.toString());
+                    }
+                }
+                // HexGloop.logPrint(sideString + "using stored item: " + storedItem.toString());
                 handStack = passItem.setStoredItem(handStack, user, world, hand, storedItem);
-                user.setStackInHand(hand, handStack);
+                // put the hand stack into wherever it got off to, or if it's not a player just assume it's still in the hand
+                // HexGloop.logPrint(sideString + "got handstack back: " + handStack.toString());
+                if(user instanceof ServerPlayerEntity sPlayer){
+                    PlayerInventory inv = sPlayer.getInventory();
+                    // HexGloop.logPrint(sideString + "putting handstack back into inventory at slot " + ptSlot + ": " + handStack.toString());
+                    inv.setStack(ptSlot, handStack);
+                    ((IPlayerPTUContext)(Object)sPlayer).clearPTUContext();
+                } else {
+                    // HexGloop.logPrint(sideString + "putting handstack back into hand: " + handStack.toString());
+                    user.setStackInHand(hand, handStack);
+                }
                 didSucceed = true;
                 return result.getLeft();
             }

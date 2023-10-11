@@ -94,6 +94,8 @@
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s expected to be cast from one of: %s, but was cast from %s",
+
+    "hexcasting.mishap.mirror_limits": "%s had no reflection",
     
     "hexgloop.mishap.catch_wrapper": "Last Mishap: %s",
     "hexgloop.mishap.catch_wrapper.none": "This cast has yet to mishap",
