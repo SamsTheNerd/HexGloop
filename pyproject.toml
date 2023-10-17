@@ -1,0 +1,117 @@
+[build-system]
+requires = ["hatchling", "hatch-gradle-version>=0.7.0"]
+build-backend = "hatchling.build"
+
+# project metadata
+
+[project]
+name = "hexdoc-hexgloop"
+description = "Python web book docgen and hexdoc plugin for HexGloop."
+readme = "doc/README.md"
+authors = [
+    { name="samsthenerd" },
+]
+keywords = ["hexdoc"]
+requires-python = ">=3.11"
+dynamic = ["version", "dependencies", "optional-dependencies"]
+
+[project.urls]
+Homepage = "https://samsthenerd.github.io/Hexgloop/"
+Source = "https://github.com/samsthenerd/Hexgloop/tree/main/doc"
+
+# Gradle version/deps
+
+[tool.hatch.version]
+scheme = "gradle"
+source = "gradle-properties"
+py-path = "doc/src/hexdoc_hexgloop/__version__.py"
+key = "mod_version"
+
+[tool.hatch.metadata.hooks.gradle-properties]
+dependencies = [ # this can include normal dependency strings too
+    { package="hexdoc", op="~=", py-version="1.0.dev", key="hexcastingVersion" },
+]
+
+[tool.hatch.metadata.hooks.gradle-properties.optional-dependencies]
+dev = [
+    "black==23.7.0",
+    "isort==5.12.0",
+]
+
+# directory inclusion
+
+[tool.hatch.build]
+only-include = [
+    "doc/src/hexdoc_hexgloop",
+    "gradle.properties",
+]
+artifacts = [
+    "/doc/src/hexdoc_hexgloop/_export/generated",
+    "/doc/src/hexdoc_hexgloop/__gradle_version__.py",
+]
+
+[tool.hatch.build.targets.wheel]
+sources = ["doc/src"]
+
+# hexdoc entry points
+
+[project.entry-points.hexdoc]
+hexgloop = "hexdoc_hexgloop._hooks:HexgloopPlugin"
+
+# linting
+
+[tool.pyright]
+pythonVersion = "3.11"
+pythonPlatform = "All"
+
+include = ["doc/src"]
+extraPaths = ["doc/src"]
+
+typeCheckingMode = "basic"
+
+strictDictionaryInference = true
+strictListInference = true
+strictSetInference = true
+
+reportAssertAlwaysTrue = "error"
+reportConstantRedefinition = "error"
+reportDeprecated = "error"
+reportDuplicateImport = "error"
+reportFunctionMemberAccess = "error"
+reportIncompatibleMethodOverride = "error"
+reportIncompleteStub = "error"
+reportInconsistentConstructor = "error"
+reportInvalidStringEscapeSequence = "error"
+reportInvalidStubStatement = "error"
+reportInvalidTypeVarUse = "error"
+reportMatchNotExhaustive = "error"
+reportMissingParameterType = "error"
+reportMissingTypeStubs = "error"
+reportOverlappingOverload = "error"
+reportSelfClsParameterName = "error"
+reportTypeCommentUsage = "error"
+reportUnknownParameterType = "error"
+reportUnnecessaryCast = "error"
+reportUnnecessaryContains = "error"
+reportUnsupportedDunderAll = "error"
+reportUntypedBaseClass = "error"
+reportUntypedClassDecorator = "error"
+reportUntypedFunctionDecorator = "error"
+reportUntypedNamedTuple = "error"
+reportWildcardImportFromLibrary = "error"
+
+reportMissingTypeArgument = "warning"
+reportPrivateUsage = "warning"
+reportUnknownArgumentType = "warning"
+reportUnknownLambdaType = "warning"
+reportUnknownMemberType = "warning"
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryIsInstance =  	"warning"
+reportUnusedClass = "warning"
+reportUnusedExpression = "warning"
+reportUnusedFunction = "warning"
+reportUnusedImport = "warning"
+reportUnusedVariable = "warning"
+
+reportUnknownVariableType = "none"
+reportIncompatibleVariableOverride = "none"

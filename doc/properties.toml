@@ -1,0 +1,52 @@
+modid = "hexgloop"
+book = "hexcasting:thehexbook"
+default_lang = "en_us"
+
+_export_root = "src/hexdoc_hexgloop/_export"
+resource_dirs = [  # top takes priority
+    { path="{^_export_root}/resources", reexport=false },
+    "{_common.src}/main/resources",
+    "{_common.src}/generated/resources",
+    "{_fabric.src}/main/resources",
+    "{_fabric.src}/generated/resources",
+    "{_forge.src}/main/resources",
+    "{_forge.src}/generated/resources",
+    { modid="hexcasting" },
+]
+export_dir = "{_export_root}/generated"
+
+# NOTE: "!Raw" means "don't apply variable interpolation to this value"
+_pattern_regex = { "!Raw"='make\(\s*"(?P<name>[a-zA-Z0-9_\/]+)",\s*(?:new )?(?:ActionRegistryEntry|OperationAction)\(\s*HexPattern\.fromAngles\(\s*"(?P<signature>[aqweds]+)",\s*HexDir.(?P<startdir>\w+)\)' }
+
+
+[[pattern_stubs]]
+path = "{^_common.package}/casting/HexGloopRegisterPatterns.java"
+regex = "{^_pattern_regex}"
+
+[template]
+static_dir = "static"
+packages = [
+    "hexdoc_hexgloop",
+    "hexdoc",
+]
+
+[template.args]
+mod_name = "HexGloop"
+author = "samsthenerd"
+icon_href = "icon.png"
+show_landing_text = false
+
+
+# platforms
+
+[_common]
+src = "../Common/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop"
+
+[_fabric]
+src = "../Fabric/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop/fabric"
+
+[_forge]
+src = "../Forge/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop/forge"
