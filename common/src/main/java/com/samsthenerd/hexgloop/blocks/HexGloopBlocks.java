@@ -40,8 +40,11 @@ public class HexGloopBlocks {
         true));
 
     public static final RegistrySupplier<BlockConjuredRedstone> CONJURED_REDSTONE_BLOCK = block("conjured_redstone", 
-        () -> new BlockConjuredRedstone(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).requiresTool().strength(1.5f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)),
+        () -> new BlockConjuredRedstone(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).strength(1.5f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)),
         new Item.Settings()); // don't put it in item group
+
+    public static final RegistrySupplier<BlockSentinelBed> SENTINEL_BED_BLOCK = block("sentinel_bed", 
+        () -> new BlockSentinelBed(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 6.0f).sounds(BlockSoundGroup.DEEPSLATE_TILES)));
 
     public static Block.Settings defaultSettings(){
         return Block.Settings.of(Material.STONE).hardness((float)1.3);

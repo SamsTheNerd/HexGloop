@@ -17,6 +17,7 @@ import com.samsthenerd.hexgloop.items.ItemCastersCoin;
 import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
+import com.samsthenerd.hexgloop.items.ItemHexSword;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.utils.GloopUtils;
 
@@ -242,6 +243,14 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.HAND_MIRROR_ITEM.get(), ItemHandMirror.MIRROR_ACTIVATED_PRED, (stack, level, holder, holderID) -> {
             return HexGloopItems.HAND_MIRROR_ITEM.get().isMirrorActivated(stack) ? 1 : 0;
+        });
+
+        ItemPropertiesRegistry.register(HexGloopItems.HEX_BLADE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, (stack, level, holder, holderID) -> {
+            if(!HexGloopItems.HEX_BLADE_ITEM.get().hasHex(stack)){
+                return 0;
+            } else {
+                return HexGloopItems.HEX_BLADE_ITEM.get().hasMediaToUse(stack) ? 1 : 0.5f;
+            }
         });
     }
 

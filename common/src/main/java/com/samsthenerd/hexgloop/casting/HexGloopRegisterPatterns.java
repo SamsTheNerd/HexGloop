@@ -91,6 +91,19 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqawwawaw", HexDir.NORTH_WEST),
                 new Identifier(HexGloop.MOD_ID, "temp_bind_mirror"),
                 new OpBindMirror(true));
+
+            // hotbar patterns
+            PatternRegistry.mapPattern(HexPattern.fromAngles("dwewdwe", HexDir.WEST), 
+                new Identifier(HexGloop.MOD_ID, "set_hotbar_slot"),
+                new OpHotbar(false, false));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qwawqwa", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "get_hotbar_slot"),
+                new OpHotbar(false, true));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qwawqwadawqwa", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "swap_hotbar_slot"),
+                new OpHotbar(true, false));
             
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
@@ -107,8 +120,13 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
                 new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), 0));
+                
 
             // craft sword: waqqqqqwwwaqwwwwaq
+            PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/hex_blade"),
+                new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.SHARD_UNIT));
+
             // craft shoe things: waqqqqqwwaqwdwqaw
                 
             // gloopifact patterns

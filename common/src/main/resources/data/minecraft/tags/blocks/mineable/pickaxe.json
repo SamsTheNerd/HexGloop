@@ -5,7 +5,8 @@
         "hexgloop:pedestal",
         "hexgloop:mirror_pedestal",
         "hexgloop:slate_chest",
-        "hexgloop:gloopy_slate_chest"
+        "hexgloop:gloopy_slate_chest",
+        "hexgloop:sentinel_bed"
     ]
   }
 

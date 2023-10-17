@@ -64,6 +64,22 @@ public class HUDOverlay {
     public float getMaxV(){
         return (float)(y + tHeight) / (float)textureSizes.get(textureId).getRight();
     }
+
+    public int getTWidth(){
+        return tWidth;
+    }
+
+    public int getTHeight(){
+        return tHeight;
+    }
+
+    public Identifier getTextureId(){
+        return textureId;
+    }
+
+    public Pair<Integer, Integer> getTextureSize(){
+        return textureSizes.get(textureId);
+    }
    
 
     public HUDOverlay(Identifier textureId, int x, int y, int tWidth, int tHeight){

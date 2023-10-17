@@ -113,7 +113,7 @@ public class BlockEntityConjuredRedstone extends HexBlockEntity{
     }
 
     public void setPower(int power) {
-        this.power = power;
+        this.power = Math.min(Math.max(power, 0), 15);
         this.sync();
     }
 }

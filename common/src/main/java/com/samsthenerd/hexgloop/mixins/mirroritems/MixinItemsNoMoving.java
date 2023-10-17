@@ -1,39 +1,31 @@
 package com.samsthenerd.hexgloop.mixins.mirroritems;
 
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.samsthenerd.hexgloop.misc.INoMoving;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 
 @Mixin(Entity.class)
 public class MixinItemsNoMoving implements INoMoving{
-    private static final TrackedData<Boolean> NO_MOVING = DataTracker.registerData(Entity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private boolean noMoving = false;
 
     @Shadow
     private Vec3d velocity;
 
-    @Shadow
-    @Final
-    protected DataTracker dataTracker;
-
     public void setNoMoving(boolean noMoving){
-        dataTracker.set(NO_MOVING, noMoving);
+        this.noMoving = noMoving;
     }
 
     public boolean getNoMoving(){
-        return dataTracker.get(NO_MOVING);
+        return this.noMoving;
     }
 
     @Inject(method="setVelocity(Lnet/minecraft/util/math/Vec3d;)V",
@@ -45,9 +37,29 @@ public class MixinItemsNoMoving implements INoMoving{
         }
     }
 
-    @Inject(method="<init>(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;)V",
-    at=@At("TAIL"))
-    public void addNoMovingTracker(EntityType<?> type, World world, CallbackInfo ci){
-        dataTracker.startTracking(NO_MOVING, false);
+    // just put it on a random call in the try block
+    @Inject(method="readNbt(Lnet/minecraft/nbt/NbtCompound;)V",
+    at=@At(value="INVOKE", target="net/minecraft/entity/Entity.setPos (DDD)V"))
+    public void readNoMoving(NbtCompound nbt, CallbackInfo ci){
+        if(nbt.contains("NoMoving")){
+            setNoMoving(nbt.getBoolean("NoMoving"));
+        }
+    }
+
+    @Inject(method="writeNbt(Lnet/minecraft/nbt/NbtCompound;)Lnet/minecraft/nbt/NbtCompound;",
+    at=@At("RETURN"), cancellable = true)
+    public void writeNoMoving(NbtCompound nbt, CallbackInfoReturnable<NbtCompound> cir){
+        if(getNoMoving()){
+            NbtCompound newNbt = cir.getReturnValue();
+            newNbt.putBoolean("NoMoving", true);
+            cir.setReturnValue(newNbt);
+        }
+    }
+
+    @Inject(method="canUsePortals()Z", at=@At("RETURN"), cancellable = true)
+    public void noTeleporting(CallbackInfoReturnable<Boolean> cir){
+        if(getNoMoving()){
+            cir.setReturnValue(false);
+        }
     }
 }

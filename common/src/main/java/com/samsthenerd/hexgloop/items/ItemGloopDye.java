@@ -31,11 +31,6 @@ public class ItemGloopDye extends ItemMediaHolder implements IotaHolderItem{
     }
 
     @Override
-    public ItemStack getDefaultStack(){
-        return ItemMediaHolder.withMedia(super.getDefaultStack(), 0, 64*MediaConstants.DUST_UNIT);
-    }
-
-    @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if(world.isClient) return;
         NbtCompound nbt = stack.getNbt();

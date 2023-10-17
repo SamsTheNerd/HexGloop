@@ -30,6 +30,7 @@
     "item.hexgloop.pumpkin_staff": "Pumpkin.. staff?",
     "item.hexgloop.wither_staff": "Wither Staff",
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
+    "item.hexgloop.hex_blade": "Hex Blade",
     "item.hexgloop.covered_spellbook": "Covered Spellbook",
     "item.hexgloop.covered_spellbook.sealed": "Sealed Covered Spellbook",
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
@@ -43,6 +44,7 @@
     "block.hexgloop.mirror_pedestal": "Mirrored Pedestal",
     "block.hexgloop.slate_chest": "Slate Chest",
     "block.hexgloop.gloopy_slate_chest": "Gloopy Slate Chest",
+    "block.hexgloop.sentinel_bed": "Sentinel Bed",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",
@@ -92,6 +94,8 @@
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s expected to be cast from one of: %s, but was cast from %s",
+
+    "hexcasting.mishap.mirror_limits": "%s had no reflection",
     
     "hexgloop.mishap.catch_wrapper": "Last Mishap: %s",
     "hexgloop.mishap.catch_wrapper.none": "This cast has yet to mishap",

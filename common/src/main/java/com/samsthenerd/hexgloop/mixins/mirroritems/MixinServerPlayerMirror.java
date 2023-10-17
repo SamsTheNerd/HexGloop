@@ -9,13 +9,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.samsthenerd.hexgloop.casting.mirror.BoundMirror;
 import com.samsthenerd.hexgloop.casting.mirror.IMirrorBinder;
+import com.samsthenerd.hexgloop.casting.mirror.IPlayerPTUContext;
+import com.samsthenerd.hexgloop.items.ItemAbstractPassThrough.PassThroughUseContext;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 @Mixin(ServerPlayerEntity.class)
-public abstract class MixinServerPlayerMirror extends Entity implements IMirrorBinder{
+public abstract class MixinServerPlayerMirror extends Entity implements IMirrorBinder, IPlayerPTUContext{
 
     private BoundMirror boundMirror;
 
@@ -61,4 +63,14 @@ public abstract class MixinServerPlayerMirror extends Entity implements IMirrorB
         }
     }
     
+    private PassThroughUseContext<?,?> ptuContext;
+
+    @Nullable
+    public PassThroughUseContext<?,?> getPTUContext(){
+        return this.ptuContext;
+    }
+
+    public void setPTUContext(@Nullable PassThroughUseContext<?,?> context){
+        this.ptuContext = context;
+    }
 }

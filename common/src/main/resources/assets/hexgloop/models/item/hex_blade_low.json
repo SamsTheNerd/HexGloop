@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/handheld",
+    "textures": {
+      "layer0": "hexgloop:item/hexblade_low"
+    }
+  }

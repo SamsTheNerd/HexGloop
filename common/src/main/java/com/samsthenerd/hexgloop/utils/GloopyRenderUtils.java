@@ -42,7 +42,7 @@ public class GloopyRenderUtils {
         MatrixStack matrixStack = RenderSystem.getModelViewStack();
         matrixStack.push();
         matrixStack.translate(x, y, 100.0f + MinecraftClient.getInstance().getItemRenderer().zOffset);
-        matrixStack.translate(size/2, size/2, 0.0);
+        matrixStack.translate(size/2.0, size/2.0, 0.0);
         matrixStack.scale(1.0f, -1.0f, 1.0f);
         matrixStack.scale(size, size, size);
         RenderSystem.applyModelViewMatrix();
