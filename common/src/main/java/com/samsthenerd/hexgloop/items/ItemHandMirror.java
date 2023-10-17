@@ -1,12 +1,14 @@
 package com.samsthenerd.hexgloop.items;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.casting.mirror.SyncedItemHandling;
+import com.samsthenerd.hexgloop.items.tooltips.MirrorTooltipData;
 import com.samsthenerd.hexgloop.misc.HexGloopTags;
 
 import at.petrak.hexcasting.api.item.IotaHolderItem;
@@ -17,11 +19,13 @@ import at.petrak.hexcasting.api.utils.NBTHelper;
 import at.petrak.hexcasting.common.items.ItemFocus;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.item.TooltipData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtDouble;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.MutableText;
@@ -191,5 +195,18 @@ public class ItemHandMirror extends ItemAbstractPassThrough implements IotaHolde
         style = style.withItalic(true).withColor(Formatting.GRAY);
         tipText.setStyle(style);
         tooltip.add(tipText);
+    }
+
+    @Override
+    public Optional<TooltipData> getTooltipData(ItemStack stack) {
+        ItemStack storedStack = getMirroredItemStack(stack).copy();
+        // don't show if there's nothing to show
+        if(storedStack.isEmpty()) return Optional.empty();
+        if(isMirrorActivated(stack)){ // have this be mostly shown
+                storedStack.setSubNbt(SyncedItemHandling.IS_REFLECTED_TAG, NbtDouble.of(1));
+            } else { // vs this be much more transparent
+                storedStack.setSubNbt(SyncedItemHandling.IS_REFLECTED_TAG, NbtDouble.of(2));
+            }
+        return Optional.of(new MirrorTooltipData(storedStack));
     }
 }
