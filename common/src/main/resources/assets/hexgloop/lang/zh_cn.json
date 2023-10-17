@@ -29,6 +29,7 @@
     "item.hexgloop.pumpkin_staff": "南瓜……法杖？",
     "item.hexgloop.wither_staff": "凋灵法杖",
     "item.hexgloop.hexxy_plush": "Hexxy毛绒玩偶",
+    "item.hexgloop.hex_blade": "咒术之剑",
     "item.hexgloop.covered_spellbook": "装面法术书",
     "item.hexgloop.covered_spellbook.sealed": "密封装面法术书",
     "item.hexgloop.hand_mirror.tooltip": "反射[%s]",
@@ -42,6 +43,7 @@
     "block.hexgloop.mirror_pedestal": "嵌镜支座",
     "block.hexgloop.slate_chest": "板岩箱子",
     "block.hexgloop.gloopy_slate_chest": "凝浆板岩箱子",
+    "block.hexgloop.sentinel_bed": "哨卫床",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
     "key.hexgloop.casting_ring": "使用施法戒指",
@@ -92,6 +94,8 @@
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s本应在%s中一处施放，而实际施放于%s",
 
+    "hexcasting.mishap.mirror_limits": "%s没有反射",
+    
     "hexgloop.mishap.catch_wrapper": "上一事故：%s",
     "hexgloop.mishap.catch_wrapper.none": "此次施法还未产生事故",
     "hexcasting.mishap.cleared_truename": "%s试图使用%s的真名",
