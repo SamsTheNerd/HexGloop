@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.casting.MishapThrowerWrapper;
 import com.samsthenerd.hexgloop.casting.mishapprotection.ICatchyFrameEval;
 import com.samsthenerd.hexgloop.casting.mishapprotection.IMishapStorage;
@@ -51,32 +50,22 @@ public class MixinRedirectMishaps {
         Mishap caughtMishap = null;
         CastResult result = null;
         try{
-            HexGloop.logPrint("trying to execute frame");
             // equivalent-ish to frame.evaluate
             result = original.call(frame, spCont, sWorld, harness);
             for(OperatorSideEffect sideEffect : result.getSideEffects()){
                 if(sideEffect instanceof OperatorSideEffect.DoMishap mishapEffect){
-                    HexGloop.logPrint("caught mishap side effect");
                     caughtMishap = mishapEffect.getMishap();
                     break;
                 }
             }
         } catch (Throwable e){
-            HexGloop.logPrint("caught error");
             if(e instanceof Mishap mishap){
-                HexGloop.logPrint("caught mishap");
                 caughtMishap = mishap;
             } else {
-                HexGloop.logPrint("caught non-mishap");
                 throw e; // i guess ? the original doesn't handle it so not my issue ?
             }
         }
         if(caughtMishap == null){
-            // no mishap, pass it through
-            HexGloop.logPrint("no mishap, returning result");
-            List<Iota> stack = harness.getStack();
-            stack.add(new BooleanIota(false));
-            harness.setStack(stack);
             return result;
         }
         // mishap, need to handle it
@@ -102,7 +91,6 @@ public class MixinRedirectMishaps {
         }
 
         if(done){ // found a catchy frame to back up to
-            HexGloop.logPrint("found catchy frame");
             List<Iota> stack = harness.getStack();
             stack.add(new BooleanIota(true));
             harness.setStack(stack);
@@ -114,7 +102,6 @@ public class MixinRedirectMishaps {
                 HexEvalSounds.NOTHING // could maybe try it with the mishap sound and see how it goes
             );
         } else { // no catchy frame to back up to
-            HexGloop.logPrint("no catchy frame, throwing mishap :(");
             MishapThrowerWrapper.throwMishap(caughtMishap);
             return null; // unreachable but kotlin is dumb
         }
