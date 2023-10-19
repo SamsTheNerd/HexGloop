@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HexGloop Book</title>
+    <link rel="icon" href="icon.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="The HexGloop Book, all in one place." />
+    <meta name="author" content="samsthenerd" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="HexGloop Book" />
+    <meta property="og:image" content="https://samsthenerd.github.io/HexGloop/v/1.19.2-0.0.4/icon.png" />
+    <meta property="og:url" content="https://samsthenerd.github.io/HexGloop/v/1.19.2-0.0.4" />
+    <meta property="og:description" content="The HexGloop Book, all in one place." />
+    <meta property="og:site_name" content="HexGloop" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://samsthenerd.github.io/HexGloop/v/1.19.2-0.0.4/index.css">
+    <noscript>
+      <style>
+        /* for accessibility */
+        .spoilered {
+          filter: none !important;
+        }
+      </style>
+    </noscript>
+    <script type="module">
+      "use strict";
+      import semver from 'https://cdn.jsdelivr.net/npm/semver@7.5.4/+esm';
+      const speeds = [0, 0.25, 0.5, 1, 2, 4];
+      const scrollThreshold = 100;
+      const rfaQueue = [];
+      const colorCache = new Map();
+      function getColorRGB(ctx, str) {
+        if (!colorCache.has(str)) {
+          ctx.fillStyle = str;
+          ctx.clearRect(0, 0, 1, 1);
+          ctx.fillRect(0, 0, 1, 1);
+          const imgData = ctx.getImageData(0, 0, 1, 1);
+          colorCache.set(str, imgData.data);
+        }
+        return colorCache.get(str);
+      }
+      function startAngle(str) {
+        switch (str) {
+          case "east":
+            return 0;
+          case "north_east":
+            return 1;
+          case "north_west":
+            return 2;
+          case "west":
+            return 3;
+          case "south_west":
+            return 4;
+          case "south_east":
+            return 5;
+          default:
+            return 0;
+        }
+      }
+      function offsetAngle(str) {
+        switch (str) {
+          case "w":
+            return 0;
+          case "q":
+            return 1;
+          case "a":
+            return 2;
+          case "s":
+            return 3;
+          case "d":
+            return 4;
+          case "e":
+            return 5;
+          default:
+            return -1;
+        }
+      }
+      function initializeElem(canvas) {
+        const str = canvas.dataset.string;
+        let angle = startAngle(canvas.dataset.start);
+        const perWorld = canvas.dataset.perWorld === "True";
+        // build geometry
+        const points = [[0, 0]];
+        let lastPoint = points[0];
+        let minPoint = lastPoint,
+          maxPoint = lastPoint;
+        for (const ch of "w" + str) {
+          const addAngle = offsetAngle(ch);
+          if (addAngle < 0) continue;
+          angle = (angle + addAngle) % 6;
+          const trueAngle = (Math.PI / 3) * angle;
+          const [lx, ly] = lastPoint;
+          const newPoint = [lx + Math.cos(trueAngle), ly - Math.sin(trueAngle)];
+          points.push(newPoint);
+          lastPoint = newPoint;
+          const [mix, miy] = minPoint;
+          minPoint = [Math.min(mix, newPoint[0]), Math.min(miy, newPoint[1])];
+          const [max, may] = maxPoint;
+          maxPoint = [Math.max(max, newPoint[0]), Math.max(may, newPoint[1])];
+        }
+        const size = Math.min(canvas.width, canvas.height) * 0.8;
+        const scale =
+          size /
+          Math.max(3, Math.max(maxPoint[1] - minPoint[1], maxPoint[0] - minPoint[0]));
+        const center = [
+          (minPoint[0] + maxPoint[0]) * 0.5,
+          (minPoint[1] + maxPoint[1]) * 0.5,
+        ];
+        const truePoints = points.map((p) => [
+          canvas.width * 0.5 + scale * (p[0] - center[0]),
+          canvas.height * 0.5 + scale * (p[1] - center[1]),
+        ]);
+        let uniqPoints = [];
+        l1: for (const point of truePoints) {
+          for (const pt of uniqPoints) {
+            if (
+              Math.abs(point[0] - pt[0]) < 0.00001 &&
+              Math.abs(point[1] - pt[1]) < 0.00001
+            ) {
+              continue l1;
+            }
+          }
+          uniqPoints.push(point);
+        }
+        // rendering code
+        const speed = 0.0025;
+        const context = canvas.getContext("2d");
+        const negaProgress = -3;
+        let progress = 0;
+        let scrollTimeout = 1e309;
+        let speedLevel = 3;
+        let speedIncrement = 0;
+        function speedScale() {
+          return speeds[speedLevel];
+        }
+        const style = getComputedStyle(canvas);
+        const getProp = (n) => style.getPropertyValue(n);
+        const tick = (dt) => {
+          scrollTimeout += dt;
+          if (canvas.offsetParent === null) return;
+          const strokeStyle = getProp("--path-color");
+          const strokeVisitedStyle = getProp("--visited-path-color");
+          const startDotStyle = getProp("--start-dot-color");
+          const dotStyle = getProp("--dot-color");
+          const movDotStyle = getProp("--moving-dot-color");
+          const strokeWidth = scale * +getProp("--line-scale");
+          const dotRadius = scale * +getProp("--dot-scale");
+          const movDotRadius = scale * +getProp("--moving-dot-scale");
+          const pauseScale = scale * +getProp("--pausetext-scale");
+          const bodyBg = scale * +getProp("--pausetext-scale");
+          const darkMode = +getProp("--dark-mode");
+          const bgColors = getColorRGB(
+            context,
+            getComputedStyle(document.body).backgroundColor
+          );
+          if (!perWorld) {
+            progress +=
+              speed * dt * (progress > 0 ? speedScale() : Math.sqrt(speedScale()));
+          }
+          if (progress >= truePoints.length - 1) {
+            progress = negaProgress;
+          }
+          let ix = Math.floor(progress),
+            frac = progress - ix,
+            core = null,
+            fadeColor = 0;
+          if (ix < 0) {
+            const rawFade = (2 * progress) / negaProgress - 1;
+            fadeColor = 1 - Math.abs(rawFade);
+            context.strokeStyle = rawFade > 0 ? strokeVisitedStyle : strokeStyle;
+            ix = rawFade > 0 ? truePoints.length - 2 : 0;
+            frac = +(rawFade > 0);
+          } else {
+            context.strokeStyle = strokeVisitedStyle;
+          }
+          const [lx, ly] = truePoints[ix];
+          const [rx, ry] = truePoints[ix + 1];
+          core = [lx + (rx - lx) * frac, ly + (ry - ly) * frac];
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.beginPath();
+          context.lineWidth = strokeWidth;
+          context.moveTo(truePoints[0][0], truePoints[0][1]);
+          for (let i = 1; i < ix + 1; i++) {
+            context.lineTo(truePoints[i][0], truePoints[i][1]);
+          }
+          context.lineTo(core[0], core[1]);
+          context.stroke();
+          context.beginPath();
+          context.strokeStyle = strokeStyle;
+          context.moveTo(core[0], core[1]);
+          for (let i = ix + 1; i < truePoints.length; i++) {
+            context.lineTo(truePoints[i][0], truePoints[i][1]);
+          }
+          context.stroke();
+          for (let i = 0; i < uniqPoints.length; i++) {
+            context.beginPath();
+            context.fillStyle = i == 0 && !perWorld ? startDotStyle : dotStyle;
+            const radius = i == 0 && !perWorld ? movDotRadius : dotRadius;
+            context.arc(uniqPoints[i][0], uniqPoints[i][1], radius, 0, 2 * Math.PI);
+            context.fill();
+          }
+          if (!perWorld) {
+            context.beginPath();
+            context.fillStyle = movDotStyle;
+            context.arc(core[0], core[1], movDotRadius, 0, 2 * Math.PI);
+            context.fill();
+          }
+          if (fadeColor) {
+            context.fillStyle = `rgba(${bgColors[0]}, ${bgColors[1]}, ${bgColors[2]}, ${fadeColor})`;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+          }
+          if (scrollTimeout <= 2000) {
+            context.fillStyle = `rgba(200, 200, 200, ${
+              (2000 - scrollTimeout) / 1000
+            })`;
+            context.font = `${pauseScale}px sans-serif`;
+            context.fillText(
+              // these variables are filled by Jinja
+              // slightly scuffed, but it works for now
+              speedScale() ? `${speedScale()}x` : "Paused",
+              0.2 * scale,
+              canvas.height - 0.2 * scale
+            );
+          }
+        };
+        rfaQueue.push(tick);
+        // scrolling input
+        if (!perWorld) {
+          canvas.addEventListener("wheel", (ev) => {
+            speedIncrement += ev.deltaY;
+            const oldSpeedLevel = speedLevel;
+            if (speedIncrement >= scrollThreshold) {
+              speedLevel--;
+            } else if (speedIncrement <= -scrollThreshold) {
+              speedLevel++;
+            }
+            if (oldSpeedLevel != speedLevel) {
+              speedIncrement = 0;
+              speedLevel = Math.max(0, Math.min(speeds.length - 1, speedLevel));
+              scrollTimeout = 0;
+            }
+            ev.preventDefault();
+          });
+        }
+      }
+      function hookLoad(elem) {
+        let init = false;
+        const canvases = elem.querySelectorAll("canvas");
+        elem.addEventListener("toggle", () => {
+          if (!init) {
+            canvases.forEach(initializeElem);
+            init = true;
+          }
+        });
+      }
+      function hookToggle(elem) {
+        const details = Array.from(
+          document.querySelectorAll("details." + elem.dataset.target)
+        );
+        elem.addEventListener("click", () => {
+          if (details.some((x) => x.open)) {
+            details.forEach((x) => (x.open = false));
+          } else {
+            details.forEach((x) => (x.open = true));
+          }
+        });
+      }
+      const params = new URLSearchParams(document.location.search);
+      function hookSpoiler(elem) {
+        if (params.get("nospoiler") !== null) {
+          elem.classList.add("unspoilered");
+        } else {
+          const thunk = (ev) => {
+            if (!elem.classList.contains("unspoilered")) {
+              ev.preventDefault();
+              ev.stopImmediatePropagation();
+              elem.classList.add("unspoilered");
+            }
+            elem.removeEventListener("click", thunk);
+          };
+          elem.addEventListener("click", thunk);
+          if (elem instanceof HTMLAnchorElement) {
+            const href = elem.getAttribute("href");
+            if (href.startsWith("#")) {
+              elem.addEventListener("click", () =>
+                document
+                  .getElementById(href.substring(1))
+                  .querySelector(".spoilered")
+                  .classList.add("unspoilered")
+              );
+            }
+          }
+        }
+      }
+      // these are filled by Jinja
+      const ROOT_URL = "https://samsthenerd.github.io/HexGloop";
+      const PAGE_URL = "https://samsthenerd.github.io/HexGloop/v/1.19.2-0.0.4";
+      const VERSION = "1.19.2-0.0.4";
+      const LANG = "en_us";
+      // Creates an element in the form `<li><a href=${href}>${text}</a></li>`
+      function dropdownItem(text, href) {
+        let a = document.createElement("a");
+        a.href = href;
+        a.textContent = text;
+        let li = document.createElement("li");
+        li.appendChild(a);
+        return li;
+      }
+      function versionDropdownItem(sitemap, version) {
+        const {defaultPath, langPaths} = sitemap[version];
+        // link to the current language if available, else link to the default language
+        let path;
+        if (langPaths.hasOwnProperty(LANG)) {
+          path = langPaths[LANG];
+        } else {
+          path = defaultPath;
+        }
+        return dropdownItem(version, ROOT_URL + path);
+      }
+      function versionDropdownItems(sitemap, versions) {
+        return versions.map((version) => (
+          versionDropdownItem(sitemap, version)
+        ));
+      }
+      function dropdownSeparator() {
+        let li = document.createElement("li");
+        li.className = "divider";
+        li.setAttribute("role", "separator");
+        return li;
+      }
+      // Like array.filter(predicate), but also returns the items which didn't match the filter.
+      function partition(array, predicate) {
+        let matched = [];
+        let unmatched = [];
+        array.forEach((value, index) => {
+          if (predicate(value, index, array)) {
+            matched.push(value);
+          } else {
+            unmatched.push(value);
+          }
+        });
+        return [matched, unmatched];
+      }
+      function sortSitemapVersions(sitemap) {
+        let [versions, branches] = partition(Object.keys(sitemap), (v) => semver.valid(v) != null);
+        // branches ascending, versions descending
+        // eg. ["dev", "main"], ["0.10.0", "0.9.0"]
+        branches.sort();
+        versions.sort(semver.rcompare);
+        return [branches, versions];
+      }
+      // Fills the version dropdown menus and the "old version" message.
+      function addDropdowns(sitemap) {
+        let [branches, versions] = sortSitemapVersions(sitemap);
+        // reveal the "old version" message if this page is a version number, but not the latest one
+        // this isn't a dropdown, but it's here since we have the data anyway
+        if (versions.slice(1).includes(VERSION)) {
+          document.getElementById("old-version-notice").classList.remove("hidden")
+        }
+        // versions
+        document.getElementById("version-dropdown").append(
+          ...versionDropdownItems(sitemap, branches),
+          dropdownSeparator(),
+          ...versionDropdownItems(sitemap, versions),
+        );
+        // languages for the current version
+        const langPaths = sitemap[VERSION].langPaths;
+        const langs = Object.keys(langPaths).sort();
+        document.getElementById("lang-dropdown").append(
+          ...langs.map((lang) => dropdownItem(lang, ROOT_URL + langPaths[lang])),
+        );
+        // return sitemap for chaining, i guess
+        return sitemap
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        // fetch the sitemap from the root and use it to generate the navbar
+        fetch(`${ROOT_URL}/meta/sitemap.json`)
+          .then(r => r.json())
+          .then(addDropdowns)
+          .catch(e => console.error(e))
+        document.querySelectorAll("details.spell-collapsible").forEach(hookLoad);
+        document.querySelectorAll("a.toggle-link").forEach(hookToggle);
+        document.querySelectorAll(".spoilered").forEach(hookSpoiler);
+        function tick(prevTime, time) {
+          const dt = time - prevTime;
+          for (const q of rfaQueue) {
+            q(dt);
+          }
+          requestAnimationFrame((t) => tick(time, t));
+        }
+        requestAnimationFrame((t) => tick(t, t));
+      });    </script>
+  </head>
+  <body>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <!-- toggle and name -->
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#navbar-collapse"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://samsthenerd.github.io/HexGloop">HexGloop Book</a>
+    </div>
+    <!-- content -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >1.19.2-0.0.4 <span class="caret"></span></a>
+          <ul class="dropdown-menu" id="version-dropdown"></ul>
+        </li>
+        <li class="dropdown">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >en_us <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-left" id="lang-dropdown"></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container" style="margin-top: 3em;">
+  <blockquote>
+    <h1><p>This is the online version of the HexGloop documentation.</p></h1>
+    <p><p>Embedded images and patterns are included, but not crafting recipes or items. There&#39;s an in-game book for those.</p></p>
+    <p><p><strong>Entries which are blurred are spoilers</strong>. Click to reveal them, but be aware that they may spoil endgame progression. Alternatively, click <a href='?nospoiler'>here</a> to get a version with all spoilers showing.</p></p>
+    <span id="old-version-notice" class="hidden">
+      <br />
+      <p><i>The past is a foreign country; they do things differently there.</i></p>
+    </span>
+  </blockquote>
+</div>
+<div class="container">
+<div id="table-of-contents"></div>
+<nav class="toc-container">
+  <h2 class="page-header">
+    Table of <span class="nobr">Contents<a
+      href="javascript:void(0)"
+      class="permalink toggle-link small"
+      data-target="toc-category"
+      title="Toggle all"
+    ><i class="bi bi-list-nested"></i></a><a
+    href="#table-of-contents"
+    class="permalink small toc-permalink"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></span>
+  </h2>
+    <details class="toc-category">
+      <summary><a href="#basics">Getting Started</a></summary>
+      <ul>
+          <li><a href="#basics/gloopytweaks">Glooptastic Changes</a></li>
+      </ul>
+    </details>
+    <details class="toc-category">
+      <summary><a href="#items">Items</a></summary>
+      <ul>
+          <li><a href="#items/casting_ring">Casting Ring</a></li>
+          <li><a href="#items/casting_potion">Casting Potion</a></li>
+          <li><a href="#items/fidgets">Fidgets</a></li>
+          <li><a href="#items/gloop">Gloop !</a></li>
+          <li><a href="#items/trinket_focus">Trinkety Foci</a></li>
+          <li><a href="#items/gloop_dye">Gloop Dye</a></li>
+          <li><a href="#items/multi_focus">Multi Focus</a></li>
+      </ul>
+    </details>
+    <details class="toc-category">
+      <summary><a href="#patterns">Patterns</a></summary>
+      <ul>
+          <li><a href="#patterns/labels">Labels</a></li>
+          <li><a href="#patterns/minds_orchard">Mind&#39;s Orchard</a></li>
+          <li><a href="#patterns/trinket_focus_patterns">Trinkety Foci Patterns</a></li>
+      </ul>
+    </details>
+    <details class="toc-category">
+      <summary><a href="#patterns/spells">Spells</a></summary>
+      <ul>
+          <li><a href="#patterns/spells/craft_potion">Craft Casting Potion</a></li>
+      </ul>
+    </details>
+</nav>
+  <main class="book-body">
+<section id="basics">
+    <h2 class="category-title page-header">Getting Started<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#basics"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h2>
+    <p>The practitioners of this art would cast their so-called <span style='color: #b38ef3'>Hexes</span> by drawing strange patterns in the air with a <a href='https://object-object.github.io/HexMod/v/0.10.3#items/staff'><span style='color: #b0b'>staff</span></a>-- or craft <a href='https://object-object.github.io/HexMod/v/0.10.3#items/hexcasting'><span style='color: #b0b'>powerful magical items</span></a> to do the casting for them. How might I do the same?</p>
+<div id="basics/gloopytweaks">
+    <h3 class="entry-title page-header">Glooptastic Changes<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#basics/gloopytweaks"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I have noticed some absolutely glooptastic changes in the world recently.</p><p>For one, it&#39;s much easier to visualize patterns. I can even hear something like &#34;\&lt;southeast,deaqq&gt;&#34; and visualize it perfectly as <s>&lt;southeast,deaqq&gt;</s>. Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.</p>
+<br />
+    <p>I&#39;ve also been finding it easier to flip through my notes. Pressing Open Iota Wheel allows me to visualize my spellbook, and I can flip through it quickly with <strong>Scroll Spellbook Down</strong> and <strong>Scroll Spellbook Up</strong>.</p><p>By far the strangest change is that my hexes <i>feel</i> different, almost like they&#39;re vibrating through my bones. Perhaps a sensitive enough scanner could pick up on this?</p>
+<br />
+    <p>I&#39;ve also discovered that I can apply dye to my staffs if I want to make them more colorful</p>
+<br />
+</div>
+</section>
+<section id="items">
+    <h2 class="category-title page-header">Items<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h2>
+    <p>I devote this section to the magical and mysterious items I might encounter in my studies.</p><p>It seems like many of these items have uses when held alongside my <a href='https://object-object.github.io/HexMod/v/0.10.3#items/staff'><span style='color: #b0b'>staff</span></a>. I suppose I will have to choose what goes in my other hand carefully.</p>
+<div id="items/casting_ring">
+    <h3 class="entry-title page-header">Casting Ring<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/casting_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I do love my staff, but occasionally I find myself needing a lighter casting instrument.</p><p>The casting ring, when equipped, let&#39;s me open up a staff free casting grid by pressing <strong>Use Casting Ring</strong>. I find my grid reduced without the reach of my staff, but still, this may be a worthwhile trade-off.</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Casting Ring</code>.
+  </blockquote>
+      <p>I&#39;ve noticed that my hexes prefer to use items in my offhand, perhaps this will be useful with both of my hands free?</p>
+<br />
+</div>
+<div id="items/casting_potion">
+    <h3 class="entry-title page-header">Casting Potion<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/casting_potion"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I&#39;ve found that brewing <a href='https://object-object.github.io/HexMod/v/0.10.3#items/amethyst@dust'>amethyst dust</a> (or any <a href='https://object-object.github.io/HexMod/v/0.10.3#items/pigments'>pigment</a>) into a thick potion will give me a potion that is able to channel media into casting hexes.</p><p>I can craft the potion using the <a href='#patterns/spells/craft_potion'>Craft Potion</a> spell.</p>
+<br />
+</div>
+<div id="items/fidgets">
+    <h3 class="entry-title page-header">Fidgets<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/fidgets"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I&#39;ve happened upon the most joyous of devices !</p><p>These devices, which I&#39;ve been calling fidgets, help me channel my thoughts into a form detectable in my hexes. I can interact with them in much the same way as I would with a spellbook, minus the iota storage of course. For accessing these thoughts, see the section on <a href='#patterns/minds_orchard'>Mind&#39;s Orchard</a></p>
+<br />
+  <div id="items/fidgets@pen">
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Pen Fidget</code>.
+  </blockquote>
+      <p>A simple device that only toggles between two states. It has a nice clicky noise though.</p>
+  </div>
+<br />
+  <div id="items/fidgets@amogus">
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Rainbow Amogus Pop It Fidget</code>.
+  </blockquote>
+      <p>At first I was suspicious of this item, but I have now ejected all of my concerns. This whimsical device makes the most delightful popping noises, and lets me channel my thoughts through 6 states.</p>
+  </div>
+<br />
+</div>
+<div id="items/gloop">
+    <h3 class="entry-title page-header">Gloop !<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/gloop"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>This is glooptastic ! My calculations suggest that under the right conditions, slime and media may form together into a highly reactive and adaptive material.</p><p>It&#39;ll require a way to energize the reactants and some mechanism to prompt the reaction. I&#39;ve drafted my schematics for such a device on the following page.</p>
+<br />
+    <p>My research suggests that 3 <span style='color: #b0b'>slime balls</span>, 3 <span style='color: #b0b'>charged amethyst</span>, and 1 <span style='color: #b0b'>amethyst shard</span> should react to form some gloop.</p><p>The adaptive nature of this gloop leads me to believe there may be other forms out there to be discovered...</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Energizer</code>.
+  </blockquote>
+      <p>This machine should be strong enough to channel the media through nearby water and into my reactants. I can use a device such as a hopper to feed media in. It should consume about 1 dust per second while active and draw 10 dust for a reaction.</p><p>Now I just need a way to trigger the reaction.. perhaps I can look to nature for guidance ?</p>
+<br />
+</div>
+<div id="items/trinket_focus">
+    <h3 class="entry-title page-header">Trinkety Foci<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/trinket_focus"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I have been overcome by a strong desire to accessorize. These trinkets act just like normal foci but I can wear them and use the <a href='#patterns/trinket_focus_patterns'>Trinkety Focus Patterns</a></p><p><i>[Gloopy Dev Note: you need trinkets on fabric or curios on forge to wear these. You can still use them as foci otherwise though]</i></p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Focal Pendant</code>.
+  </blockquote>
+      <p>A fashionable pendant, good for iotas you want to keep close to your heart.</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Focal Ring</code>.
+  </blockquote>
+      <p>A ring forged from the strongest nether metals. For the most important iotas.</p>
+<br />
+</div>
+<div id="items/gloop_dye">
+    <h3 class="entry-title page-header">Gloop Dye<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/gloop_dye"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I&#39;ve found that mixing my own dye colors is quite tedious and it would be nice to have something more precise.</p><p>With this gloop dye I should be able to pick any color I&#39;d like for using with items like leather armor or my staffs. I can pick the color by using <a href='https://object-object.github.io/HexMod/v/0.10.3#patterns/readwrite@hexcasting:write'>Scribe&#39;s Gambit</a> to write a vector holding rgb values between 0-255.</p><p>Using the dye will cost media, but I can recharge it like I would a trinket.</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Gloop Dye</code>.
+  </blockquote>
+      <p><i>so many colors!</i></p>
+<br />
+</div>
+<div id="items/multi_focus">
+    <h3 class="entry-title page-header">Multi Focus<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/multi_focus"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I can feel the gloop pulling at my mind, maybe I can pull back?</p><p>A gloop constructed multi focus should let me hold multiple iotas in a single item and access them quickly with <strong>Open Iota Wheel</strong>, sort of like a smaller spellbook. For more organizational techniques I should check my notes on <a href='#patterns/labels'>labels</a></p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Multi Focus</code>.
+  </blockquote>
+      <p><i>I can almost hear it purring..</i></p>
+<br />
+</div>
+</section>
+<section id="patterns">
+    <h2 class="category-title page-header">Patterns<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h2>
+    <p>A list of all the patterns I&#39;ve discovered, as well as what they do.</p>
+<div id="patterns/labels">
+    <h3 class="entry-title page-header">Labels<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns/labels"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>Although my current system lets me flip through my notes quickly, it would be nice to have a way to label them.</p><p>This system should let me label my pages using iotas. I&#39;ve recorded all the label types that I&#39;ve found on the following page</p>
+<br />
+    <p></p><p class='fake-li'>number/string</p><p class='fake-li'>patterns</p><p class='fake-li'>items (from an entity or relevant hexal iotas)</p><p class='fake-li'>entities</p><p class='fake-li'>null (to clear it)</p>
+<br />
+  <div id="patterns/labels@hexgloop:set_label">
+<h4 class="pattern-title">Dymo&#39;s Gambit (labely →)<a
+    href="#patterns/labels@hexgloop:set_label"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wwedwewdweqawqwqwqwqwqw"
+        data-start="south_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wwedwewdweqawqwqwqwqwqw</canvas>
+  </details>
+      <p>Assigns a label based on the given iota to the currently selected slot of a labelable item in my offhand.</p>
+  </div>
+<br />
+</div>
+<div id="patterns/minds_orchard">
+    <h3 class="entry-title page-header">Mind&#39;s Orchard<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns/minds_orchard"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I&#39;ve found that if I can hold a concrete enough idea in my mind then I can use these patterns to pick it into my hexes. Something like a <a href='#items/fidgets'>fidget</a> should help me channel my thoughts.</p><p>The value stored in my orchard will always be a list with atleast one number. I haven&#39;t yet found a way to store multiple numbers in this list though..</p>
+<br />
+  <div id="patterns/minds_orchard@hexgloop:read_orchard">
+<h4 class="pattern-title">Orchard&#39;s Reflection (→ num)<a
+    href="#patterns/minds_orchard@hexgloop:read_orchard"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="dqqqqq"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: dqqqqq</canvas>
+  </details>
+      <p>Picks a number from my mind&#39;s orchard representing the index of my thought.</p>
+  </div>
+<br />
+  <div id="patterns/minds_orchard@hexgloop:read_orchard_list">
+<h4 class="pattern-title">Orchard&#39;s Reflection II (→ list)<a
+    href="#patterns/minds_orchard@hexgloop:read_orchard_list"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="dqqqqqdeeeqdqeee"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: dqqqqqdeeeqdqeee</canvas>
+  </details>
+      <p>Picks values from my orchard as a list.</p>
+  </div>
+<br />
+</div>
+<div id="patterns/trinket_focus_patterns">
+    <h3 class="entry-title page-header">Trinkety Foci Patterns<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns/trinket_focus_patterns"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>These patterns are useful for interacting with <a href='#items/trinket_focus'>Trinkety Foci</a>. Generally they behave very similarly to the other reading and writing patterns.</p>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:read_pendant">
+<h4 class="pattern-title">Memento&#39;s Reflection (→ any)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:read_pendant"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="waaqqqqqe"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: waaqqqqqe</canvas>
+  </details>
+      <p>Copy the iota stored in a pendant I&#39;m wearing and add it to the stack</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:write_pendant">
+<h4 class="pattern-title">Memento&#39;s Gambit (any →)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:write_pendant"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wadeeeeeq"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wadeeeeeq</canvas>
+  </details>
+      <p>Remove the top iota from the stack, and save it into the pendant I&#39;m wearing</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:check_read_pendant">
+<h4 class="pattern-title">Cherishing Reflection (→ boolean)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:check_read_pendant"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="waaqqqqqee"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: waaqqqqqee</canvas>
+  </details>
+      <p>If the pendant I&#39;m wearing holds an iota I can read, returns True. Otherwise, returns False.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:check_write_pendant">
+<h4 class="pattern-title">Nostalgic Reflection (→ boolean)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:check_write_pendant"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wadeeeeeqe"
+        data-start="south_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wadeeeeeqe</canvas>
+  </details>
+      <p>If I could save an iota into the pendant I&#39;m wearing, returns True. Otherwise, returns False.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:read_ring">
+<h4 class="pattern-title">Anularis Reflection (→ any)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:read_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aqqqqqeawqwqwqwqwqw"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aqqqqqeawqwqwqwqwqw</canvas>
+  </details>
+      <p>Copy the iota stored in a ring I&#39;m wearing and add it to the stack. If I&#39;m wearing multiple rings this will prefer the one on the hand opposite the one I&#39;m casting with.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:write_ring">
+<h4 class="pattern-title">Anularis Gambit (any →)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:write_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="deeeeeqdwewewewewew"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: deeeeeqdwewewewewew</canvas>
+  </details>
+      <p>Remove the top iota from the stack, and save it into the ring I&#39;m wearing. If I&#39;m wearing multiple rings this will prefer the one on the hand opposite the one I&#39;m casting with.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:read_left_ring">
+<h4 class="pattern-title">Lover&#39;s Reflection (→ any)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:read_left_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aqqweeeeewqq"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aqqweeeeewqq</canvas>
+  </details>
+      <p>Copy the iota stored in a ring I&#39;m wearing and add it to the stack. If I&#39;m wearing multiple rings this will prefer the one on my off hand.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:write_left_ring">
+<h4 class="pattern-title">Lover&#39;s Gambit (any →)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:write_left_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="deewqqqqqwee"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: deewqqqqqwee</canvas>
+  </details>
+      <p>Remove the top iota from the stack, and save it into the ring I&#39;m wearing. If I&#39;m wearing multiple rings this will prefer the one on my off hand.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:read_right_ring">
+<h4 class="pattern-title">Rival&#39;s Reflection (→ any)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:read_right_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aqqqqqweeeee"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aqqqqqweeeee</canvas>
+  </details>
+      <p>Copy the iota stored in a ring I&#39;m wearing and add it to the stack. If I&#39;m wearing multiple rings this will prefer the one on my main hand.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:write_right_ring">
+<h4 class="pattern-title">Rival&#39;s Gambit (any →)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:write_right_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="deeeeewqqqqq"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: deeeeewqqqqq</canvas>
+  </details>
+      <p>Remove the top iota from the stack, and save it into the ring I&#39;m wearing. If I&#39;m wearing multiple rings this will prefer the one on my main hand.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:check_read_ring">
+<h4 class="pattern-title">Authenicator&#39;s Reflection (→ any)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:check_read_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aqqqqqeawqwqwqwqwqwe"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aqqqqqeawqwqwqwqwqwe</canvas>
+  </details>
+      <p>If a ring I&#39;m wearing holds an iota I can read, returns True. Otherwise, returns False.</p>
+  </div>
+<br />
+  <div id="patterns/trinket_focus_patterns@hexgloop:check_write_ring">
+<h4 class="pattern-title">Jeweler&#39;s Reflection (any →)<a
+    href="#patterns/trinket_focus_patterns@hexgloop:check_write_ring"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="deeeeeqdwewewewewewq"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: deeeeeqdwewewewewewq</canvas>
+  </details>
+      <p>If I could save an iota into a ring I&#39;m wearing, returns True. Otherwise, returns False.</p>
+  </div>
+<br />
+</div>
+</section>
+<section id="patterns/spells">
+    <h2 class="category-title page-header">Spells<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns/spells"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h2>
+    <p>Patterns and actions that perform a magical effect on the world.</p>
+<div id="patterns/spells/craft_potion">
+    <h3 class="entry-title page-header">Craft Casting Potion<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#patterns/spells/craft_potion"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+  <div id="patterns/spells/craft_potion@hexgloop:craft/potion">
+<h4 class="pattern-title">Craft Potion (entity, list of patterns →)<a
+    href="#patterns/spells/craft_potion@hexgloop:craft/potion"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wawwedewwqqq"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wawwedewwqqq</canvas>
+  </details>
+      <p>Crafts a <a href='#items/casting_potion'>Casting Potion</a>. Costs about 1 shard.</p>
+  </div>
+<br />
+</div>
+</section>
+  </main>
+</div>
+  </body>
+</html>
