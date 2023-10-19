@@ -1,5 +1,5 @@
 modid = "hexgloop"
-book = "hexcasting:thehexbook"
+book = "hexgloop:hexgloopbook"
 default_lang = "en_us"
 
 _export_root = "src/hexdoc_hexgloop/_export"
@@ -16,7 +16,7 @@ resource_dirs = [  # top takes priority
 export_dir = "{_export_root}/generated"
 
 # NOTE: "!Raw" means "don't apply variable interpolation to this value"
-_pattern_regex = { "!Raw"='make\(\s*"(?P<name>[a-zA-Z0-9_\/]+)",\s*(?:new )?(?:ActionRegistryEntry|OperationAction)\(\s*HexPattern\.fromAngles\(\s*"(?P<signature>[aqweds]+)",\s*HexDir.(?P<startdir>\w+)\)' }
+_pattern_regex = { "!Raw"='HexPattern\.fromAngles\("(?P<signature>[qweasd]+)", HexDir\.(?P<startdir>\w+)\),\s*new Identifier\(HexGloop.MOD_ID, "(?P<name>[^"]+)"\)[^;]+?(?:makeConstantOp|Op\w+|Widget\.\w+)(?:[^;]*(?P<is_per_world>true)\);)?' }
 
 
 [[pattern_stubs]]
@@ -40,13 +40,13 @@ show_landing_text = false
 # platforms
 
 [_common]
-src = "../Common/src"
+src = "../common/src"
 package = "{src}/main/java/com/samsthenerd/hexgloop"
 
 [_fabric]
-src = "../Fabric/src"
-package = "{src}/main/java/com/samsthenerd/hexgloop/fabric"
+src = "../fabric/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop/"
 
 [_forge]
-src = "../Forge/src"
+src = "../forge/src"
 package = "{src}/main/java/com/samsthenerd/hexgloop/forge"

@@ -2,7 +2,7 @@
     "name": "hexgloop.entry.casting_ring",
     "icon": "hexgloop:casting_ring",
     "category": "hexcasting:items",
-    "sortnum": 2.5,
+    "sortnum": 2,
     "advancement": "hexcasting:root",
     "pages": [
       {
