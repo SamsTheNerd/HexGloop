@@ -1,11 +1,14 @@
 from importlib.resources import Package
 
-from hexdoc.plugin import LoadResourceDirsImpl, ModVersionImpl, hookimpl
+import hexdoc_hexgloop
+from hexdoc.plugin import (HookReturn, LoadJinjaTemplatesImpl,
+                           LoadResourceDirsImpl, LoadTaggedUnionsImpl,
+                           ModVersionImpl, hookimpl)
 
 from .__gradle_version__ import GRADLE_VERSION
 
 
-class HexgloopPlugin(LoadResourceDirsImpl, ModVersionImpl):
+class HexgloopPlugin(LoadResourceDirsImpl, ModVersionImpl, LoadTaggedUnionsImpl, LoadJinjaTemplatesImpl):
     @staticmethod
     @hookimpl
     def hexdoc_mod_version() -> str:
@@ -19,3 +22,8 @@ class HexgloopPlugin(LoadResourceDirsImpl, ModVersionImpl):
         from ._export import generated, resources
 
         return [generated, resources]
+    
+    @staticmethod
+    @hookimpl
+    def hexdoc_load_jinja_templates() -> HookReturn[tuple[Package, str]]:
+        return hexdoc_hexgloop, "_templates"
