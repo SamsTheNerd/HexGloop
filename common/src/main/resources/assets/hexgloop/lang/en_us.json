@@ -31,6 +31,8 @@
     "item.hexgloop.wither_staff": "Wither Staff",
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
     "item.hexgloop.hex_blade": "Hex Blade",
+    "item.hexgloop.slate_loader": "Ritualist's Inscriber",
+    "item.hexgloop.slate_loader.written": "Ritualist's Inscriber [%s]",
     "item.hexgloop.covered_spellbook": "Covered Spellbook",
     "item.hexgloop.covered_spellbook.sealed": "Sealed Covered Spellbook",
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",

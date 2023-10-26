@@ -8,7 +8,6 @@ import javax.annotation.Nullable;
 import com.samsthenerd.hexgloop.casting.mirror.IPlayerPTUContext;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -153,7 +152,8 @@ public abstract class ItemAbstractPassThrough extends Item{
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         ItemStack storedItem = getStoredItem(stack, attacker, attacker.getWorld(), attacker.getActiveHand());
         if(storedItem != null){
-            storedItem.damage(2, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+            storedItem.getItem().postHit(storedItem, target, attacker);
+            // storedItem.damage(2, attacker, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         }
         return true;
     }
@@ -163,7 +163,8 @@ public abstract class ItemAbstractPassThrough extends Item{
         if (!world.isClient && state.getHardness(world, pos) != 0.0f) {
             ItemStack storedItem = getStoredItem(stack, miner, world, miner.getActiveHand());
             if(storedItem != null){
-                storedItem.damage(1, miner, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+                storedItem.getItem().postMine(storedItem, world, state, pos, miner);
+                // storedItem.damage(1, miner, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
             }
         }
         return true;
