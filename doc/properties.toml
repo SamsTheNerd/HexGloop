@@ -1,0 +1,52 @@
+modid = "hexgloop"
+book = "hexgloop:hexgloopbook"
+default_lang = "en_us"
+
+_export_root = "src/hexdoc_hexgloop/_export"
+resource_dirs = [  # top takes priority
+    { path="{^_export_root}/resources", reexport=false },
+    "{_common.src}/main/resources",
+    "{_common.src}/generated/resources",
+    "{_fabric.src}/main/resources",
+    "{_fabric.src}/generated/resources",
+    "{_forge.src}/main/resources",
+    "{_forge.src}/generated/resources",
+    { modid="hexcasting" },
+]
+export_dir = "{_export_root}/generated"
+
+# NOTE: "!Raw" means "don't apply variable interpolation to this value"
+_pattern_regex = { "!Raw"='HexPattern\.fromAngles\("(?P<signature>[qweasd]+)", HexDir\.(?P<startdir>\w+)\),\s*new Identifier\(HexGloop.MOD_ID, "(?P<name>[^"]+)"\)[^;]+?(?:makeConstantOp|Op\w+|Widget\.\w+)(?:[^;]*(?P<is_per_world>true)\);)?' }
+
+
+[[pattern_stubs]]
+path = "{^_common.package}/casting/HexGloopRegisterPatterns.java"
+regex = "{^_pattern_regex}"
+
+[template]
+static_dir = "static"
+include = [
+    "hexcasting",
+    "patchouli",
+]
+
+[template.args]
+mod_name = "HexGloop"
+author = "samsthenerd"
+icon_href = "icon.png"
+show_landing_text = false
+
+
+# platforms
+
+[_common]
+src = "../common/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop"
+
+[_fabric]
+src = "../fabric/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop/"
+
+[_forge]
+src = "../forge/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop/forge"

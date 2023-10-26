@@ -2,7 +2,7 @@
     "name": "hexgloop.entry.gloop_dye",
     "icon": "hexgloop:gloop_dye",
     "category": "hexcasting:items",
-    "sortnum": 9.5,
+    "sortnum": 10,
     "advancement": "hexcasting:root",
     "pages": [
       {
