@@ -121,7 +121,7 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
             }
             itemEnt.setPos(xPos, yPos, zPos);
             itemEnt.setUuid(persistentUUID);
-            itemEnt.setNoGravity(removed);
+            itemEnt.setNoGravity(true);
             itemEnt.noClip = true;
             itemEnt.setPickupDelayInfinite();
             itemEnt.setNeverDespawn();

@@ -34,6 +34,7 @@ import at.petrak.hexcasting.api.utils.NBTHelper;
 import at.petrak.hexcasting.common.items.ItemFocus;
 import at.petrak.hexcasting.common.items.ItemSpellbook;
 import at.petrak.hexcasting.common.items.magic.ItemCreativeUnlocker;
+import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
 import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
@@ -248,6 +249,10 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.SLATE_LOADER_ITEM.get(), ItemSlateLoader.ACTIVATED_PRED, (stack, level, holder, holderID) -> {
             return HexGloopItems.SLATE_LOADER_ITEM.get().hasPatterns(stack) ? 1 : 0;
+        });
+
+        ItemPropertiesRegistry.register(HexGloopItems.INVENTORTY_ITEM.get(), ItemPackagedHex.HAS_PATTERNS_PRED, (stack, level, holder, holderID) -> {
+            return HexGloopItems.INVENTORTY_ITEM.get().hasHex(stack) ? 1 : 0;
         });
 
         ItemPropertiesRegistry.register(HexGloopItems.HEX_BLADE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, (stack, level, holder, holderID) -> {

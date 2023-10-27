@@ -84,6 +84,9 @@ public class HexGloopItems{
     public static final RegistrySupplier<ItemSlateLoader> SLATE_LOADER_ITEM = item("slate_loader",
         () -> new ItemSlateLoader(defaultSettings().maxCount(1)));
 
+    public static final RegistrySupplier<ItemInventorty> INVENTORTY_ITEM = item("inventorty",
+        () -> new ItemInventorty(defaultSettings().maxCount(1)));
+
     // fidgets -- todo: maybe move these out of here and into their own file
 
     public static final RegistrySupplier<ItemFidget> COPPER_PEN_FIDGET = item("copper_pen_fidget", 

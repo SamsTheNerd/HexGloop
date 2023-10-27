@@ -11,10 +11,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
+import com.samsthenerd.hexgloop.casting.inventorty.InventortyUtils.KittyContext;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.IContextHelper;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import net.minecraft.block.BlockState;
+import net.minecraft.inventory.StackReference;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -44,5 +47,35 @@ public class MixinContextHelper implements IContextHelper{
             if(state.getBlock() == HexGloopBlocks.SENTINEL_BED_BLOCK.get())
                 cir.setReturnValue(true);
         }
+    }
+
+    private ItemStack kittyStack = null;
+
+    public void setKitty(ItemStack kitty){
+        kittyStack = kitty;
+    }
+
+    public ItemStack getKitty(){
+        return kittyStack;
+    }
+
+    private StackReference cursorRef = null;
+
+    public void setCursorRef(StackReference cursorRef){
+        this.cursorRef = cursorRef;
+    }
+
+    public StackReference getCursorRef(){
+        return cursorRef;
+    }
+
+    private KittyContext kittyContext = null;
+
+    public void setKittyContext(KittyContext kCtx){
+        kittyContext = kCtx;
+    }
+
+    public KittyContext getKittyContext(){
+        return kittyContext;
     }
 }
