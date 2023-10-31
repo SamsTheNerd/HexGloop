@@ -12,15 +12,9 @@
         "N": {
             "item": "minecraft:netherite_ingot"
         },
-        "G": [{
-            "tag": "c:glass_panes"
+        "G": {
+            "item": "hexgloop:hexxed_glass"
         },
-        {
-            "tag": "forge:glass_panes"
-        },
-        {
-            "item": "minecraft:glass_pane"
-        }],
         "Y": {
             "item": "hexgloop:synchronous_gloop"
         }

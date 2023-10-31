@@ -74,7 +74,7 @@ public class BlockEntityGloopEnergizer extends BlockEntity implements Inventory{
     public GloopingRecipe detectRecipe(){
         Box box = new Box(pos).expand((double) BlockGloopEnergizer.BOILER_RADIUS);
         List<Entity> potentialIngredients = world.getOtherEntities(null, box);
-        GloopingRecipe rec = GloopingRecipes.findRecipe(potentialIngredients);
+        GloopingRecipe rec = GloopingRecipes.findRecipe(potentialIngredients, world.getRecipeManager());
         latestResult = rec == null ? ItemStack.EMPTY : rec.getOutput();
         sync();
         return rec;
