@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import com.samsthenerd.hexgloop.HexGloop;
 
 import at.petrak.hexcasting.api.item.IotaHolderItem;
+import at.petrak.hexcasting.api.spell.SpellList;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.ListIota;
 import at.petrak.hexcasting.api.spell.iota.NullIota;
@@ -137,15 +138,8 @@ public class ItemSlateLoader extends ItemAbstractPassThrough implements IotaHold
         if(world instanceof ServerWorld sWorld && hasPatterns(stack)){
             Iota storedIota = HexIotaTypes.deserialize(readIotaTag(stack), sWorld);
             if(storedIota instanceof ListIota list){
-                List<Iota> newList = new ArrayList<>();
-                boolean notFirst = false;
-                for(Iota iota : list.getList()){
-                    if(notFirst){
-                        newList.add(iota);
-                    } else {
-                        notFirst = true;
-                    }
-                }
+                // yay alwinfy magic
+                SpellList newList = list.getList().getCdr();
                 writeDatum(stack, new ListIota(newList));
             }
         }

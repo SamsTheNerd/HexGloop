@@ -43,8 +43,14 @@ public class HexGloopBlocks {
         () -> new BlockConjuredRedstone(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).strength(1.5f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)),
         new Item.Settings()); // don't put it in item group
 
+    public static final RegistrySupplier<BlockAccelerator> ACCELERATOR_BLOCK = block("accelerator", 
+        () -> new BlockAccelerator(AbstractBlock.Settings.of(Material.METAL, MapColor.ORANGE).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.COPPER)));
+
     public static final RegistrySupplier<BlockSentinelBed> SENTINEL_BED_BLOCK = block("sentinel_bed", 
         () -> new BlockSentinelBed(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 6.0f).sounds(BlockSoundGroup.DEEPSLATE_TILES)));
+
+    public static final RegistrySupplier<Block> HEXXED_GLASS_BLOCK = block("hexxed_glass", 
+        () -> new BlockHexxedGlass(AbstractBlock.Settings.of(Material.GLASS, MapColor.TERRACOTTA_PURPLE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque()));
 
     public static Block.Settings defaultSettings(){
         return Block.Settings.of(Material.STONE).hardness((float)1.3);

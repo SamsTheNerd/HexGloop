@@ -48,6 +48,8 @@
     "block.hexgloop.slate_chest": "Slate Chest",
     "block.hexgloop.gloopy_slate_chest": "Gloopy Slate Chest",
     "block.hexgloop.sentinel_bed": "Sentinel Bed",
+    "block.hexgloop.accelerator": "Accelerator",
+    "block.hexgloop.hexxed_glass": "Hexxed Glass",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",

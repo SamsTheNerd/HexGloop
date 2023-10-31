@@ -63,7 +63,7 @@ public class TruenameLockState extends PersistentState{
         TruenameLockState serverState = persistentStateManager.getOrCreate(
                 TruenameLockState::createFromNbt,
                 TruenameLockState::new,
-                HexGloop.MOD_ID + ":truename_lock_state"); 
+                HexGloop.MOD_ID + "_truename_lock_state"); 
 
         serverState.markDirty(); // YOU MUST DO THIS!!!! Or data wont be saved correctly.
  

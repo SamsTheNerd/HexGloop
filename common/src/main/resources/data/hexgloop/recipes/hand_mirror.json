@@ -1,13 +1,16 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "SSS",
+        "SSN",
         "SGS",
         "YSS"
     ],
     "key": {
         "S": {
             "item": "hexcasting:slate"
+        },
+        "N": {
+            "item": "minecraft:netherite_ingot"
         },
         "G": [{
             "tag": "c:glass_panes"

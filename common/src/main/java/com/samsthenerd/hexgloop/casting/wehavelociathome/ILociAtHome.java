@@ -1,7 +1,11 @@
 package com.samsthenerd.hexgloop.casting.wehavelociathome;
 
+import java.util.List;
+import java.util.Set;
+
 import com.samsthenerd.hexgloop.mixins.lociathome.MixinExposeHarnessStuff;
 
+import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.casting.ResolvedPatternType;
 import at.petrak.hexcasting.api.spell.casting.eval.FunctionalData;
@@ -28,7 +32,6 @@ public interface ILociAtHome {
         return null;
     }
 
-
     // try not to break stuff + try to be aware of consideration-type stuff i guess
     public void rawLociCall(BlockPos pos, BlockState bs, World world, CastingHarness harness);
 
@@ -40,6 +43,16 @@ public interface ILociAtHome {
     // make this true if you override betterGetPattern
     default public boolean hasBetterGetPattern(){
         return false;
+    }
+
+    default public BlockPos forceNextPos(BlockPos currentPos, BlockState currentState, World world, 
+        List<BlockPos> trackedBlocks, Set<BlockPos> knownBlocks){
+        return null;
+    }
+
+    default public double modifyTickDelay(int blocksAgo, double currentModifier, int originalSpeed, 
+        int similarBlockCount, List<BlockPos> trackedBlocks, World world, BlockEntityAbstractImpetus impetus){
+        return 1;
     }
 
     public static boolean addOrEmbedIota(CastingHarness harness, Iota iota){

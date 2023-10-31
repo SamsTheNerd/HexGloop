@@ -1,0 +1,8 @@
+{
+    "parent": "hexgloop:block/short_block_template",
+    "textures": {
+        "side": "hexgloop:block/accelerator/accelerator_side",
+        "top": "hexgloop:block/accelerator/accelerator_top",
+        "bottom": "hexgloop:block/pedestal/slate"
+    }
+}
