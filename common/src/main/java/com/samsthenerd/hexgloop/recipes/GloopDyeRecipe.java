@@ -82,6 +82,7 @@ public class GloopDyeRecipe extends SpecialCraftingRecipe{
             return ItemStack.EMPTY;
         }
         ((DyeableItem) itemStack.getItem()).setColor(itemStack, ItemGloopDye.getDyeColor(gloopDyeStack));
+        itemStack.setCount(1);
         return itemStack;
     }
 

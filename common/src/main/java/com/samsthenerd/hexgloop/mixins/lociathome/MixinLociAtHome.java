@@ -25,6 +25,8 @@ import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociAtHome;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociHandler;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.LociRegistration;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.LociUtils;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IIotaProviderLocus;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.ILocusModule;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IRedirectLocus;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.ISpeedLocus;
@@ -32,6 +34,8 @@ import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.ISpeedLocus;
 import at.petrak.hexcasting.api.block.circle.BlockCircleComponent;
 import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
+import at.petrak.hexcasting.api.spell.iota.Iota;
+import at.petrak.hexcasting.api.spell.iota.PatternIota;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -91,15 +95,15 @@ public class MixinLociAtHome implements ILociHandler{
         if(probablyBlockPos instanceof BlockPos pos){
             World world = ((BlockEntityAbstractImpetus)(Object)this).getWorld();
             BlockState state = world.getBlockState(pos);
-            ILociAtHome lociBlock = LociRegistration.getLocus(state, pos, world);
-            if(lociBlock != null){
+            ILociAtHome locusBlock = LociRegistration.getLocus(state, pos, world);
+            if(locusBlock != null){
                 for(Class<? extends ILocusModule> module : ILociHandler.MODULE_TYPES){
-                    if(!module.isInstance(lociBlock)) continue; // verify that it has this module
+                    if(!module.isInstance(locusBlock)) continue; // verify that it has this module
                     // track it !
                     if(!trackedModuleBlocks.containsKey(module)){
                         trackedModuleBlocks.put(module, new ArrayList<>());
                     }
-                    trackedModuleBlocks.get(module).add(new Pair<BlockPos, ILocusModule>(pos, module.cast(lociBlock)));
+                    trackedModuleBlocks.get(module).add(new Pair<BlockPos, ILocusModule>(pos, module.cast(locusBlock)));
                 }
             }
         }
@@ -111,18 +115,24 @@ public class MixinLociAtHome implements ILociHandler{
     private HexPattern bigFakeGloopyLociWrap(BlockCircleComponent block, BlockPos pos, BlockState bs, World world, Operation<HexPattern> original, 
         @Local(ordinal=0) CastingHarness harness, @Local(ordinal = 0) LocalRef<BlockPos> erroredPos){
         if(shouldExit) return null; // unideal but it'll just skip every new slate
-        ILociAtHome lociBlock = LociRegistration.getLocus(bs, pos, world);
-        if(lociBlock != null){
+        ILociAtHome locusBlock = LociRegistration.getLocus(bs, pos, world);
+        if(locusBlock != null){
             castedBlocks.add(pos);
-            lociBlock.rawLociCall(pos, bs, world, harness);
-            if(lociBlock.shouldStopCircle()){
+            locusBlock.rawLociCall(pos, bs, world, harness);
+            if(locusBlock.shouldStopCircle()){
                 shouldExit = true;
-                ((BlockEntityAbstractImpetus)(Object)this).setLastMishap(lociBlock.getStopCircleError());
+                ((BlockEntityAbstractImpetus)(Object)this).setLastMishap(locusBlock.getStopCircleError());
                 erroredPos.set(pos);
                 return null;
             }
-            if(lociBlock.hasBetterGetPattern()){
-                return lociBlock.betterGetPattern(pos, bs, world, harness);
+            if(locusBlock instanceof IIotaProviderLocus iotaLocus){
+                Iota providedIota = iotaLocus.provideIota(pos, bs, world, harness);
+                if(providedIota instanceof PatternIota pIota){
+                    return pIota.getPattern();
+                } else if(providedIota != null){
+                    // embed it
+                    LociUtils.addOrEmbedIota(harness, providedIota);
+                }
             }
         }
         return original.call(block, pos, bs, world);

@@ -16,7 +16,6 @@ import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.ISpeedLocus;
 import at.petrak.hexcasting.api.block.circle.BlockCircleComponent;
 import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus;
 import at.petrak.hexcasting.api.misc.MediaConstants;
-import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
@@ -110,10 +109,6 @@ public class BlockAccelerator extends BlockCircleComponent implements ILociAtHom
         return null;
     }
 
-    public void rawLociCall(BlockPos pos, BlockState bs, World world, CastingHarness harness){
-        // don't actually need to do anything
-    }
-
     public Direction normalDir(BlockPos pos, BlockState bs, World world, int recursionLeft){
         return bs.get(FACING);
     }
@@ -142,8 +137,9 @@ public class BlockAccelerator extends BlockCircleComponent implements ILociAtHom
             //     "\n\texiting with speed: " + currentSpeed + speedIncrease + "x" + 
             //     "\n\tcost: " + costDust + " + " + costShard + " = " + cost + " media");
             
-            if(!LociUtils.withdrawCircleMedia(impetus, (int)Math.min(cost, LociUtils.getCircleMedia(impetus)))){
-                // just let it go, no good way to track if it had enough
+            if(LociUtils.withdrawCircleMedia(impetus, (int)Math.min(cost, LociUtils.getCircleMedia(impetus)), true, false) > 0){
+                // didn't fully withdraw - put a delay in as punishment
+                return ISpeedLocus.modifierForTarget(0.5, currentModifier);
             }
             return -1; // instant activate the next block
         }

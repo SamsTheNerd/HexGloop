@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IIotaProviderLocus;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IItemProviderLocus;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.ILocusModule;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IMediaProviderLocus;
@@ -21,7 +22,8 @@ public interface ILociHandler {
         IItemProviderLocus.class,
         IRedirectLocus.class,
         IMediaProviderLocus.class,
-        ISpeedLocus.class
+        ISpeedLocus.class,
+        IIotaProviderLocus.class
     ));
 
     // just to cast easily

@@ -8,12 +8,10 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.blocks.BlockPedestal;
-import com.samsthenerd.hexgloop.casting.wehavelociathome.LociUtils;
 import com.samsthenerd.hexgloop.misc.HexGloopTags;
 import com.samsthenerd.hexgloop.misc.INoMoving;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
-import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.PatternIota;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -324,19 +322,16 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         return null;
     }
 
-    public void rawLociCall(CastingHarness harness){
-        // can do cool stuff i guess ?
-        if(!isMirror) return; // only do embedding stuff on the mirror
-        if(!(world instanceof ServerWorld sWorld)) return;
+    public Iota getIota(){
+        if(!isMirror) return null; // only do embedding stuff on the mirror
+        if(!(world instanceof ServerWorld sWorld)) return null;
         ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(storedItem);
         if(iotaHolder != null){
-            Iota iota = iotaHolder.readIota(sWorld);
-            // want to either put it on the stack or embed it in parens
-            boolean success = LociUtils.addOrEmbedIota(harness, iota);
-            // i guess just skip if it fails ?
+            return iotaHolder.readIota(sWorld);
         }
+        return null;
     }
-
+    
     public int size(){
         return 1;
     }

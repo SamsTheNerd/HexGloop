@@ -18,7 +18,6 @@ import com.samsthenerd.hexgloop.mixins.lociathome.MixinWeirdChestStatics;
 
 import at.petrak.hexcasting.api.block.circle.BlockCircleComponent;
 import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus;
-import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
 import net.minecraft.block.Block;
@@ -117,9 +116,6 @@ public class BlockSlateChest extends BlockCircleComponent implements Waterloggab
             return chest.getInvStackListPublic();
         }
         return DefaultedList.ofSize(0);
-    }
-
-    public void rawLociCall(BlockPos pos, BlockState bs, World world, CastingHarness harness){
     }
 
     public boolean onSyncedBlockEvent(BlockState state, World world, BlockPos pos, int type, int data) {
