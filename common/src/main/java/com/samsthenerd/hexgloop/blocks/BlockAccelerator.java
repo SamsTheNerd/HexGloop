@@ -10,9 +10,12 @@ import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.blockentities.BlockEntityPedestal;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociAtHome;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.LociUtils;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.ISpeedLocus;
 
 import at.petrak.hexcasting.api.block.circle.BlockCircleComponent;
 import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus;
+import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import net.minecraft.block.Block;
@@ -30,7 +33,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class BlockAccelerator extends BlockCircleComponent implements ILociAtHome{
+public class BlockAccelerator extends BlockCircleComponent implements ILociAtHome, ISpeedLocus{
     public static final DirectionProperty FACING = Properties.FACING;
 
     public BlockAccelerator(Settings settings) {
@@ -120,8 +123,30 @@ public class BlockAccelerator extends BlockCircleComponent implements ILociAtHom
     }
 
     // accelerate !
+    @Override
     public double modifyTickDelay(int blocksAgo, double currentModifier, int originalSpeed, 
         int similarBlockCount, List<BlockPos> trackedBlocks, World world, BlockEntityAbstractImpetus impetus){
-        return 0.5; // can adjust this
+        
+        if(blocksAgo > 10) return 1;
+        double currentSpeed = 1 / currentModifier;
+        double speedIncrease = Math.max((10 - blocksAgo) * 0.2, 0);
+        if(blocksAgo == 0){
+            // handle cost - 1 dust * newSpeed-1 + 1 shard for every whole 100% over 3x
+            double costDust = MediaConstants.DUST_UNIT * (currentSpeed + speedIncrease - 1);
+            double costShard = Math.floor(currentSpeed + speedIncrease - 3) * MediaConstants.SHARD_UNIT;
+            double cost = costDust + costShard; // every 100% over 3x costs a shard
+
+            // HexGloop.logPrint("entered accelerator #" + similarBlockCount + " with: " +
+            //     "\n\tentering speed of " + currentSpeed + "x" +
+            //     "\n\tincrease of " + speedIncrease + "x" + 
+            //     "\n\texiting with speed: " + currentSpeed + speedIncrease + "x" + 
+            //     "\n\tcost: " + costDust + " + " + costShard + " = " + cost + " media");
+            
+            if(!LociUtils.withdrawCircleMedia(impetus, (int)Math.min(cost, LociUtils.getCircleMedia(impetus)))){
+                // just let it go, no good way to track if it had enough
+            }
+            return -1; // instant activate the next block
+        }
+        return ISpeedLocus.modifierForTarget(speedIncrease+currentSpeed, currentModifier);
     }
 }

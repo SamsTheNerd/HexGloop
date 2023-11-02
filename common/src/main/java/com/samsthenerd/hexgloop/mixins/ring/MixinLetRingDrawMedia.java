@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.samsthenerd.hexgloop.HexGloop;
-import com.samsthenerd.hexgloop.casting.wehavelociathome.IContextHelper;
+import com.samsthenerd.hexgloop.casting.IContextHelper;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingContext.CastSource;

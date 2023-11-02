@@ -8,7 +8,7 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.blocks.BlockPedestal;
-import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociAtHome;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.LociUtils;
 import com.samsthenerd.hexgloop.misc.HexGloopTags;
 import com.samsthenerd.hexgloop.misc.INoMoving;
 
@@ -332,7 +332,7 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         if(iotaHolder != null){
             Iota iota = iotaHolder.readIota(sWorld);
             // want to either put it on the stack or embed it in parens
-            boolean success = ILociAtHome.addOrEmbedIota(harness, iota);
+            boolean success = LociUtils.addOrEmbedIota(harness, iota);
             // i guess just skip if it fails ?
         }
     }

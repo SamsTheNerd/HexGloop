@@ -10,12 +10,14 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.blockentities.BlockEntitySlateChest;
-import com.samsthenerd.hexgloop.casting.wehavelociathome.IContextHelper;
+import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociAtHome;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociHandler;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IItemProviderLocus;
 import com.samsthenerd.hexgloop.mixins.lociathome.MixinWeirdChestStatics;
 
 import at.petrak.hexcasting.api.block.circle.BlockCircleComponent;
-import at.petrak.hexcasting.api.spell.casting.CastingContext;
+import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
@@ -64,6 +66,7 @@ import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -76,7 +79,7 @@ import net.minecraft.world.WorldAccess;
 
 // can't extend ChestBlock since we want it to be a circle component
 // so much of this is just yoinked from ChestBlock
-public class BlockSlateChest extends BlockCircleComponent implements Waterloggable, BlockEntityProvider, ILociAtHome {
+public class BlockSlateChest extends BlockCircleComponent implements Waterloggable, BlockEntityProvider, ILociAtHome, IItemProviderLocus {
     public static final DirectionProperty FACING;
     public static final EnumProperty<ChestType> CHEST_TYPE;
     public static final BooleanProperty WATERLOGGED;
@@ -106,11 +109,17 @@ public class BlockSlateChest extends BlockCircleComponent implements Waterloggab
         return gloopy;
     }
 
+    public DefaultedList<ItemStack> getProvidedItems(BlockPos pos, World world, BlockEntityAbstractImpetus impetus){
+        ILociHandler lociHandler = ILociHandler.get(impetus);
+        if(!isGloopy() || lociHandler == null || !lociHandler.getCastedBlocks().contains(pos)) return DefaultedList.ofSize(0);
+        BlockEntitySlateChest chest = world.getBlockEntity(pos, HexGloopBEs.SLATE_CHEST_BE.get()).orElse(null);
+        if(chest != null){
+            return chest.getInvStackListPublic();
+        }
+        return DefaultedList.ofSize(0);
+    }
+
     public void rawLociCall(BlockPos pos, BlockState bs, World world, CastingHarness harness){
-        if(!isGloopy()) return;
-        CastingContext ctx = harness.getCtx();
-        if(ctx == null) return;
-        ((IContextHelper)(Object)ctx).addChestRef(pos);
     }
 
     public boolean onSyncedBlockEvent(BlockState state, World world, BlockPos pos, int type, int data) {

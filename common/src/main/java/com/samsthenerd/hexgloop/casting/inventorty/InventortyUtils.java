@@ -9,9 +9,9 @@ import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
+import com.samsthenerd.hexgloop.casting.IContextHelper;
 import com.samsthenerd.hexgloop.casting.MishapThrowerWrapper;
 import com.samsthenerd.hexgloop.casting.truenameclassaction.MishapChloeIsGonnaFindSoManyWaysToBreakThisHuh;
-import com.samsthenerd.hexgloop.casting.wehavelociathome.IContextHelper;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.iota.DoubleIota;

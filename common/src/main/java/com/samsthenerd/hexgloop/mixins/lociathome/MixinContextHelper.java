@@ -1,8 +1,5 @@
 package com.samsthenerd.hexgloop.mixins.lociathome;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -11,8 +8,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
+import com.samsthenerd.hexgloop.casting.IContextHelper;
 import com.samsthenerd.hexgloop.casting.inventorty.InventortyUtils.KittyContext;
-import com.samsthenerd.hexgloop.casting.wehavelociathome.IContextHelper;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import net.minecraft.block.BlockState;
@@ -24,16 +21,6 @@ import net.minecraft.util.math.Vec3d;
 
 @Mixin(CastingContext.class)
 public class MixinContextHelper implements IContextHelper{
-    private List<BlockPos> chestRefs = new ArrayList<BlockPos>();
-
-    public List<BlockPos> getChestRefs(){
-        return new ArrayList<BlockPos>(chestRefs);
-    }
-
-    public void addChestRef(BlockPos pos){
-        chestRefs.add(pos);
-    }
-
     @Shadow
     @Final
     private ServerPlayerEntity caster;

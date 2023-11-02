@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.samsthenerd.hexgloop.HexGloop;
+import com.samsthenerd.hexgloop.casting.IContextHelper;
 import com.samsthenerd.hexgloop.casting.inventorty.InventortyUtils.KittyContext;
-import com.samsthenerd.hexgloop.casting.wehavelociathome.IContextHelper;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;

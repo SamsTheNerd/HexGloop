@@ -42,6 +42,7 @@ public class HexGloopRegisterPatterns {
         HexGloopItems.FOCAL_RING.listen(event -> registerTrinketyFociiPatterns());
         HexGloopBlocks.CONJURED_REDSTONE_BLOCK.listen(event -> registerRedstonePatterns());
         maybeRegisterHexal();
+        maybeRegisterMoreIotas();
         // non item dependent stuff: 
         try{
             // orchard patterns
@@ -74,7 +75,7 @@ public class HexGloopRegisterPatterns {
                 OpEvalCatchMishap.INSTANCE);
             PatternRegistry.mapPattern(HexPattern.fromAngles("dweaqqqqa", HexDir.SOUTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "reveal_mishap"),
-                OpRevealLastMishap.INSTANCE);
+                new OpRevealLastMishap(true));
 
             PatternRegistry.mapPattern(HexPattern.fromAngles("qed", HexDir.NORTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "assert"),
@@ -280,6 +281,19 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("qwaeawqaqded", HexDir.NORTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "torty_get_type"),
                 new OpGetTypeInSlot());
+            
+        } catch (PatternRegistry.RegisterPatternException exn) {
+            exn.printStackTrace();
+        }
+    }
+
+    private static void maybeRegisterMoreIotas(){
+        if(!Platform.isModLoaded("moreiotas")) return;
+        try {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("dweaqqqqd", HexDir.SOUTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "reveal_mishap"),
+                new OpRevealLastMishap(true));
+            
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }

@@ -1,18 +1,11 @@
-package com.samsthenerd.hexgloop.casting.wehavelociathome;
-
-import java.util.List;
+package com.samsthenerd.hexgloop.casting;
 
 import com.samsthenerd.hexgloop.casting.inventorty.InventortyUtils.KittyContext;
 
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 
 public interface IContextHelper {
-    public List<BlockPos> getChestRefs();
-
-    public void addChestRef(BlockPos pos);
-
     // stuff for kitty casting:
 
     public default boolean isKitty(){

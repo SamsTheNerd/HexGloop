@@ -3,15 +3,16 @@ package com.samsthenerd.hexgloop.casting;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.samsthenerd.hexgloop.blockentities.BlockEntitySlateChest;
-import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.casting.mirror.SyncedItemHandling;
-import com.samsthenerd.hexgloop.casting.wehavelociathome.IContextHelper;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociHandler;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IItemProviderLocus;
 
 import at.petrak.hexcasting.api.addldata.ADMediaHolder;
+import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus;
 import at.petrak.hexcasting.api.misc.DiscoveryHandlers;
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
+import at.petrak.hexcasting.api.spell.casting.SpellCircleContext;
 import at.petrak.hexcasting.common.items.ItemLens;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,21 +20,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Pair;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class HexGloopDiscoverers {
     public static void init(){
         DiscoveryHandlers.addItemSlotDiscoverer((ctx)->{
-            return getChestStacks(ctx);
-        });
-        DiscoveryHandlers.addMediaHolderDiscoverer((harness)->{
-            CastingContext ctx = harness.getCtx();
-            List<ADMediaHolder> holders = new ArrayList<ADMediaHolder>();
-            for(ItemStack item : getChestStacks(ctx)){
-                ADMediaHolder holder = IXplatAbstractions.INSTANCE.findMediaHolder(item);
-                if(holder != null) holders.add(holder);
-            }
-            return holders;
+            return getItemLoci(ctx);
         });
 
         DiscoveryHandlers.addLensPredicate(HexGloopDiscoverers::hasReflectedLens);
@@ -41,16 +35,21 @@ public class HexGloopDiscoverers {
         DiscoveryHandlers.addGridScaleModifier(HexGloopDiscoverers::getReflectedGridScaleModifier);
     }
 
-    public static List<ItemStack> getChestStacks(CastingContext ctx){
+    public static List<ItemStack> getItemLoci(CastingContext ctx){
         List<ItemStack> items = new ArrayList<ItemStack>();
-        if(((Object)ctx) instanceof IContextHelper ctxHelper){
-            List<BlockPos> chestRefs = ctxHelper.getChestRefs();
-            for(BlockPos pos : chestRefs){
-                BlockEntitySlateChest slateChest = ctx.getWorld().getBlockEntity(pos, HexGloopBEs.SLATE_CHEST_BE.get()).orElse(null);
-                if(slateChest == null) continue;
-                for(ItemStack item : slateChest.getInvStackListPublic()){
-                    if(item.isEmpty()) continue;
-                    items.add(item);
+        SpellCircleContext circleCtx = ctx.getSpellCircle();
+        if(circleCtx != null){
+            BlockPos pos = circleCtx.getImpetusPos();
+            World world = ctx.getWorld();
+            if(world.getBlockEntity(pos) instanceof BlockEntityAbstractImpetus impetus){
+                ILociHandler lociHandler = ILociHandler.get(impetus);
+                if(lociHandler == null) return items;
+                for(Pair<BlockPos, IItemProviderLocus> itemProviderPair : lociHandler.getTrackedModuleBlocks(IItemProviderLocus.class)){
+                    DefaultedList<ItemStack> newItems = itemProviderPair.getRight().getProvidedItems(itemProviderPair.getLeft(), world, impetus);
+                    for(ItemStack item : newItems){
+                        if(item.isEmpty()) continue;
+                        items.add(item);
+                    }
                 }
             }
         }

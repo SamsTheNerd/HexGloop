@@ -1,0 +1,40 @@
+{
+    "display": {
+      "icon": {
+        "item": "hexgloop:synchronous_gloop"
+      },
+      "title": {
+        "translate": "hexgloop.syncvancement.title",
+        "color": "#8df2cf",
+        "bold": true
+      },
+      "description": {
+        "translate": "hexgloop.syncvancement.desc",
+        "color": "#8df2cf",
+        "italic": true
+      },
+      "frame": "task",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": false
+    },
+    "parent": "hexcasting:root",
+    "criteria": {
+      "has_sync_gloop": {
+        "trigger": "minecraft:inventory_changed",
+        "conditions": {
+          "items": [
+            {
+              "items": ["hexgloop:synchronous_gloop"]
+            }
+          ]
+        }
+      }
+    },
+    "requirements": [
+        [
+          "has_sync_gloop"
+        ]
+      ]
+  }
+  

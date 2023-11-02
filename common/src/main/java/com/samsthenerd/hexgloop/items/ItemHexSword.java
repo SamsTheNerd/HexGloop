@@ -1,6 +1,13 @@
 package com.samsthenerd.hexgloop.items;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import at.petrak.hexcasting.api.misc.MediaConstants;
+import at.petrak.hexcasting.api.spell.casting.CastingContext;
+import at.petrak.hexcasting.api.spell.casting.CastingHarness;
+import at.petrak.hexcasting.api.spell.iota.EntityIota;
+import at.petrak.hexcasting.api.spell.iota.Iota;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
@@ -9,7 +16,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.stat.Stats;
 import net.minecraft.tag.BlockTags;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -39,6 +50,19 @@ public class ItemHexSword extends ItemHexTool implements IExtendedEnchantable.IW
             // hm, might be neat if it scaled to do more damage for more media, but idk if that should be based on max media size or just the amount ?
             float enchantmentDamage = EnchantmentHelper.getAttackDamage(stack, target.getGroup());
             target.damage(DamageSource.MAGIC, 8.0F + enchantmentDamage);
+            if(!(target.getWorld() instanceof ServerWorld sWorld)) return false;
+            List<Iota> instrs = getHex(stack, sWorld);
+            if (instrs == null) {
+                return false;
+            }
+            if(!(attacker instanceof ServerPlayerEntity sPlayer)) return false;
+            var ctx = new CastingContext(sPlayer, attacker.getStackInHand(Hand.MAIN_HAND) == stack ? Hand.MAIN_HAND : Hand.OFF_HAND, CastingContext.CastSource.PACKAGED_HEX);
+            var harness = new CastingHarness(ctx);
+            harness.setStack(new ArrayList<Iota>(List.of(new EntityIota(target))));
+            
+            var info = harness.executeIotas(instrs, sWorld);
+
+            sPlayer.incrementStat(Stats.USED.getOrCreateStat(this));
             return true;
         }
         return false;

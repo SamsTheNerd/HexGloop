@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.samsthenerd.hexgloop.casting.wehavelociathome.IContextHelper;
+import com.samsthenerd.hexgloop.casting.IContextHelper;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer;
