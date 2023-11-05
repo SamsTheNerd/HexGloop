@@ -56,7 +56,8 @@
       "mirroritems.MixinMirrorContext",
       "misc.MixinInterfaceEnchants",
       "misc.MixinCatSit",
-      "misc.MixinRaycastIgnore"
+      "misc.MixinRaycastIgnore",
+      "truenameclassactionmixins.MixinPlsAgreeToTheTruenameEULA"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

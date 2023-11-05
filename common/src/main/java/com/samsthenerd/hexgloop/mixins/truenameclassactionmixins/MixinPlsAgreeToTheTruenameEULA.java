@@ -9,6 +9,7 @@ import com.samsthenerd.hexgloop.misc.worldData.AgreeTruenameEULAState;
 
 import at.petrak.hexcasting.api.spell.iota.EntityIota;
 import at.petrak.hexcasting.api.spell.iota.Iota;
+import at.petrak.hexcasting.api.spell.mishaps.MishapOthersName;
 import at.petrak.hexcasting.common.casting.operators.rw.OpWrite;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -18,7 +19,7 @@ import net.minecraft.text.Text;
 public class MixinPlsAgreeToTheTruenameEULA {
     @WrapOperation(method="execute(Ljava/util/List;Lat/petrak/hexcasting/api/spell/casting/CastingContext;)Lkotlin/Triple;",
     at=@At(value="INVOKE", target="at/petrak/hexcasting/api/spell/mishaps/MishapOthersName$Companion.getTrueNameFromDatum (Lat/petrak/hexcasting/api/spell/iota/Iota;Lnet/minecraft/entity/player/PlayerEntity;)Lnet/minecraft/entity/player/PlayerEntity;"))
-    public PlayerEntity wrapTruenameCheckerForEULA(Iota iota, PlayerEntity thisPlayer, Operation<PlayerEntity> original){
+    public PlayerEntity wrapTruenameCheckerForEULA(MishapOthersName.Companion staticCompanion, Iota iota, PlayerEntity thisPlayer, Operation<PlayerEntity> original){
         // probably want to add a check for if the player has agreed already or not
         if(iota instanceof EntityIota entIota){
             if(entIota.getEntity() == thisPlayer && thisPlayer instanceof ServerPlayerEntity sPlayer){
@@ -30,6 +31,6 @@ public class MixinPlsAgreeToTheTruenameEULA {
                 }
             }
         }
-        return original.call(iota, thisPlayer);
+        return original.call(staticCompanion, iota, thisPlayer);
     }
 }

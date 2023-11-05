@@ -90,10 +90,10 @@ public class ItemInventorty extends ItemPackagedHex{
 
     // mostly yoinked from ItemPackagedHex#use
     public void kittyCast(ItemStack tortyStack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference stackRef, boolean tortyInHand){
-        HexGloop.logPrint("in kittyCast");
-        HexGloop.logPrint("isClient: " + player.getWorld().isClient() + " isServer: " + (player.getWorld() instanceof ServerWorld));
+        // HexGloop.logPrint("in kittyCast");
+        // HexGloop.logPrint("isClient: " + player.getWorld().isClient() + " isServer: " + (player.getWorld() instanceof ServerWorld));
         if(!(player.getWorld() instanceof ServerWorld sWorld)) return;
-        HexGloop.logPrint("on server");
+        // HexGloop.logPrint("on server");
 
         List<Iota> instrs = getHex(tortyStack, sWorld);
         if (instrs == null) {
@@ -107,7 +107,7 @@ public class ItemInventorty extends ItemPackagedHex{
         for(Slot slotToTrack : player.currentScreenHandler.slots){
             kCtx.addSlot(slotToTrack);
         }
-        HexGloop.logPrint("added a total of " + kCtx.getInventoryCount() + " inventories with: ");
+        // HexGloop.logPrint("added a total of " + kCtx.getInventoryCount() + " inventories with: ");
         for(int i = 0; i < kCtx.getInventoryCount(); i++){
             HexGloop.logPrint("\t" + (kCtx.getInventory(i) instanceof Nameable nameableInv ? nameableInv.getName() : kCtx.getInventory(i) + ": " + kCtx.getSlots(i).size() + " slots"));
         }

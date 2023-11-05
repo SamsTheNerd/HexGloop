@@ -2,6 +2,7 @@ package com.samsthenerd.hexgloop.casting.inventorty;
 
 import java.util.List;
 
+import com.samsthenerd.hexgloop.casting.inventorty.InventortyUtils.AutoGrabbable;
 import com.samsthenerd.hexgloop.casting.inventorty.InventortyUtils.GrabbableStack;
 
 import at.petrak.hexcasting.api.spell.ConstMediaAction;
@@ -49,9 +50,12 @@ public class OpStackTransfer implements ConstMediaAction{
     public List<Iota> execute(List<? extends Iota> args, CastingContext context){
         InventortyUtils.assertKittyCasting(context);
         GrabbableStack fromGrabbable = InventortyUtils.getStackFromGrabbable(args.get(0), context, 0, getArgc());
+        if(fromGrabbable == null || fromGrabbable instanceof AutoGrabbable){
+            return List.of(new DoubleIota(0)); // failing silently is bad ! but oh well - fix later
+        }
         ItemStack fromStack = fromGrabbable.getStack();
         int transferCount = Math.min(OperatorUtils.getInt(args, 2, getArgc()), fromStack.getCount());
-        int amtLeft = transferCount;
+        int amtLeft = fromStack.getCount();
         ItemEntity maybeNewEnt = null;
         if(args.get(1) instanceof NullIota){
             // want to make a new item entity
@@ -66,6 +70,16 @@ public class OpStackTransfer implements ConstMediaAction{
             // HexGloop.logPrint("In OpStackTransfer:\n\ttoGrabbable: " + toGrabbable.getStack() + "\n\tfromGrabbable: " + fromGrabbable.getStack() +
             //     "\n\tcanTake: " + fromGrabbable.canTake(context.getCaster()) +
             //     "\n\tcanInsert: " + toGrabbable.canInsert(fromGrabbable.getStack())); 
+            // let it find the slot it can go into
+            if(toGrabbable == null){
+                return List.of(new DoubleIota(amtLeft));
+            }
+            if(toGrabbable instanceof AutoGrabbable toAutoFill){
+                if(!toAutoFill.findSlot(fromStack, context)){
+                    // couldn't find a slot so return nothing happened
+                    return List.of(new DoubleIota(amtLeft));
+                }
+            }
             transferCount = Math.min(transferCount, 
                 toGrabbable.getMaxCount() - (toGrabbable.getStack().isEmpty() ? 0 : toGrabbable.getStack().getCount()) 
             );
@@ -86,6 +100,3 @@ public class OpStackTransfer implements ConstMediaAction{
     }
     
 }
-
-
-

@@ -21,6 +21,14 @@
 - Right click hex notebook on placed scroll to copy the pattern from the current page onto the scroll.
 - Gloop can now be used as a raw media source worth 2x charged amethyst
 - Hexxy
+- Sentinel Bed - always have ambit on this block
+- Inventorty - a helpful companion for inventory management
+- Accelerator - make circles go faster !!
+- Locus system ( with hooks open for other addons if they'd like to add their own )
+- Hexxed Glass - block raycasts pass through it
+- Ritualist's Inscriber - takes a list and places slates with the next pattern on the list
+- Dyeable Spellbook Covers
+- More staffs
 
 ### Changed
 
@@ -32,6 +40,7 @@
 - Casting ring letting non-staff casting draw media from your inventory
 - Gloop dye uncraftable on forge
 - Text Patterns easily overridden by other mods (like ftbranks)
+- Gloop dye doesn't dupe stackable items anymore
 
 ## 0.0.4
 

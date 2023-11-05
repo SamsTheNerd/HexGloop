@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -18,19 +19,35 @@ import at.petrak.hexcasting.api.spell.iota.DoubleIota;
 import at.petrak.hexcasting.api.spell.iota.EntityIota;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.mishaps.MishapInvalidIota;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.inventory.CraftingResultInventory;
+import net.minecraft.inventory.EnderChestInventory;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Nameable;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.village.MerchantInventory;
 
 public class InventortyUtils {
-    public static void assertKittyCasting(CastingContext ctx){
+    public static KittyContext assertKittyCasting(CastingContext ctx){
         if(!((IContextHelper)(Object)ctx).isKitty()){
             MishapThrowerWrapper.throwMishap(new MishapChloeIsGonnaFindSoManyWaysToBreakThisHuh(List.of("inventorty")));
+            return null;
         }
+        return ((IContextHelper)(Object)ctx).getKittyContext();
     }
 
     public static final int CURSOR_REF_SLOT = -2;
@@ -38,6 +55,7 @@ public class InventortyUtils {
     // idx and argc just so we can throw proper mishaps
     @Nullable
     public static GrabbableStack getStackFromGrabbable(Iota grabbable, CastingContext ctx, int idx, int argc){
+        KittyContext kCtx = ((IContextHelper)(Object)ctx).getKittyContext();
         if(grabbable instanceof DoubleIota dIota){
             int grabSlot = (int)Math.floor(dIota.getDouble());
             if(grabSlot == CURSOR_REF_SLOT){
@@ -45,7 +63,19 @@ public class InventortyUtils {
                 if(cursorRef != null)
                     return new GrabbableGeneric(cursorRef::get, cursorRef::set);
             }
-            Slot slot = ((IContextHelper)(Object)ctx).getKittyContext().getSlot(grabSlot);
+            if(grabSlot < 0 && -grabSlot % 1000 == 0){ // want to get an auto fill slot
+                int inventoryIndex = (-grabSlot / 1000)-1;
+                if(inventoryIndex >= kCtx.getInventoryCount()){
+                    // mishap can't find slot here ?
+                    return null;
+                }
+                return new AutoGrabbable(inventoryIndex);
+            }
+            Slot slot = kCtx.getSlot(grabSlot);
+            if(slot == null){
+                // mishap bad slot here too
+                return null;
+            }
             return new GrabbableSlot(slot);
         }
         if(grabbable instanceof EntityIota eIota){
@@ -106,10 +136,10 @@ public class InventortyUtils {
         public Slot getSlot(int fullIndex){
             int invIndex = fullIndex / 1000;
             int slotIndex = fullIndex % 1000;
-            if(invIndex >= getInventoryCount())
+            if(invIndex >= getInventoryCount() || invIndex < 0)
                 return null;
             List<Slot> theseSlots = getSlots(invIndex);
-            if(slotIndex >= theseSlots.size())
+            if(slotIndex >= theseSlots.size() || slotIndex < 0)
                 return null;
             return theseSlots.get(slotIndex);
         }
@@ -223,9 +253,120 @@ public class InventortyUtils {
             return getter.get().getMaxCount();
         }
     }
+
     public static class GrabbableEnt extends GrabbableGeneric{
         public GrabbableEnt(ItemEntity ent){
             super(ent::getStack, ent::setStack);
         }
+    }
+
+    public static class AutoGrabbable extends GrabbableSlot{
+        int inventoryIndex;
+        
+        // for the inventory you want to auto fill into, 0 would be player inventory, 1 would be next largest, and so on
+        public AutoGrabbable(int inventoryIndex){
+            super((Slot)null);
+            this.inventoryIndex = inventoryIndex;
+        }
+
+        // call this to set the slot to something actually useable
+        // return whether or not it actually found a valid slot
+        public boolean findSlot(ItemStack stackWith, CastingContext ctx){
+            KittyContext kCtx = ((IContextHelper)(Object)ctx).getKittyContext();
+            Slot lastSlot = null;
+            for(Slot maybeSlot : kCtx.getSlots(inventoryIndex)){
+                if(maybeSlot.canInsert(stackWith) 
+                && (maybeSlot.getStack().isEmpty() || (ItemStack.canCombine(maybeSlot.getStack(), stackWith)
+                && maybeSlot.getStack().getCount() < Math.min(maybeSlot.getMaxItemCount(), maybeSlot.getStack().getMaxCount())))){
+                    this.slot = maybeSlot;
+                    return true;
+                }
+                lastSlot = maybeSlot;
+            }
+            this.slot = lastSlot; // return *something* and it just won't transfer any
+            return false;
+        }
+    }
+
+
+    // give translation keys for the names of the inventories
+    public static final Map<Class<? extends Inventory>, String> inventoryNames = Map.of(
+        EnderChestInventory.class, "container.enderchest",
+        SimpleInventory.class, "hexgloop.container.simple",
+        CraftingResultInventory.class, "hexgloop.container.result",
+        CraftingInventory.class, "container.crafting",
+        MerchantInventory.class, "merchant.trades"
+    );
+
+    // some inventory types are just too generic
+    public static final Set<Class<? extends Inventory>> needsMoreDetail = Set.of(
+        SimpleInventory.class,
+        CraftingResultInventory.class
+    );
+
+    public static String getInventoryName(Inventory inv, KittyContext kCtx){
+        // easy if it has a name
+        if(inv instanceof Nameable nameableInv){
+            return nameableInv.getName().getString();
+        }
+        // seems to really only be for like minecarts ?
+        if(inv instanceof NamedScreenHandlerFactory nameableInv){
+            return nameableInv.getDisplayName().getString();
+        }
+
+        Class<?> invClass = inv.getClass();
+        if(invClass.isAnonymousClass()){
+            invClass = invClass.getSuperclass();
+        }
+        if(inventoryNames.containsKey(invClass)){
+            // not sure how well this will work but oh well
+            String genericName = Text.translatable(inventoryNames.get(invClass)).getString();
+            if(needsMoreDetail.contains(invClass)){
+                // try to get more detail
+                ScreenHandler handler = kCtx.playerInv.player.currentScreenHandler;
+                Identifier handlerID = null;
+                try {
+                    handlerID = Registry.SCREEN_HANDLER.getId(handler.getType());
+                } catch(Exception e){} // ignore it, it's fine
+                if(handlerID != null){
+                    // try to get the name of the screen handler -- who knows if it'll actually translate ! should work fine for vanilla handlers atleast
+                    String handlerTransKey = getHandlerTranslationKey(handlerID);
+                    if(handlerTransKey == null){
+                        return genericName;
+                    }
+                    return Text.translatable(handlerTransKey).getString() + ": " + genericName;
+                }
+            }
+            return genericName;
+        }
+
+        // backup case - use the class name.
+        // won't work for obfuscated classes, but we should have those handled already hopefully
+        // might not be the best for modded inventories, but decent enough
+        return invClass.getSimpleName();
+    }
+
+    public static final Map<Identifier, String> hardToMapIDs = Map.of(
+        new Identifier("enchantment"), "block.minecraft.enchanting_table"
+    );
+
+    public static String getHandlerTranslationKey(Identifier handlerID){
+        if(hardToMapIDs.containsKey(handlerID)){
+            return hardToMapIDs.get(handlerID);
+        }
+        Block maybeBlock = Registry.BLOCK.get(handlerID);
+        if(maybeBlock != null && maybeBlock != Blocks.AIR){
+            return maybeBlock.getTranslationKey();
+        }
+        // for things like crafting_table or smithing_table - really only 2 vanilla cases but who knows, maybe catch some modded ones?
+        Block maybeTableBlock = Registry.BLOCK.get(new Identifier(handlerID.getNamespace(), handlerID.getPath() + "_table"));
+        if(maybeTableBlock != null && maybeTableBlock != Blocks.AIR){
+            return maybeTableBlock.getTranslationKey();
+        }
+        EntityType<?> maybeEnt = EntityType.get(handlerID.toString()).orElse(null);
+        if(maybeEnt != null){
+            return maybeEnt.getTranslationKey();
+        }
+        return null;
     }
 }

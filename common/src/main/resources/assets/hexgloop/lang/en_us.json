@@ -96,11 +96,12 @@
     "hexcasting.mishap.bad_item.labely_item": "a labelable item",
     "hexcasting.mishap.bad_item.gloopifact": "a gloopifact",
 
+    "hexcasting.mishap.mirror_limits": "%s had no reflection",
+
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s expected to be cast from one of: %s, but was cast from %s",
-
-    "hexcasting.mishap.mirror_limits": "%s had no reflection",
+    
     
     "hexgloop.mishap.catch_wrapper": "Last Mishap: %s",
     "hexgloop.mishap.catch_wrapper.none": "This cast has yet to mishap",
@@ -114,7 +115,12 @@
     "hexgloop.source_type.packaged_hex": "a Casting Item",
     "hexgloop.source_type.wisp": "a Wisp",
     "hexgloop.source_type.gloopifact": "a Gloopifact",
+    "hexgloop.source_type.inventorty": "an Inventorty",
 
+    "hexgloop.container.simple": "Simple",
+    "hexgloop.container.result": "Result",
+    
+    "hexgloop.truename_eula": "I appear to have imbued this object with my truename. I shudder to think what would happen if this fell into malicious hands. It may be comforting for me to review my notes on Truename Protection Spells",
     
     "hexgloop.gloopvancement.title": "Glooptastic",
     "hexgloop.gloopvancement.desc": "Get your hands gloopy",

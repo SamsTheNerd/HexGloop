@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 // there's gonna be a few things in here
 // 1) wrapping canHarvest
 // 2) storing data for rendering the mirror stack
-@Mixin(PlayerEntity.class)
+@Mixin(value = PlayerEntity.class, priority = 1000000)
 public abstract class MixinPlayerMirrorStuff extends Entity implements IShallowMirrorBinder{
     @WrapOperation(method="canHarvest(Lnet/minecraft/block/BlockState;)Z",
     at=@At(value="INVOKE", target="net/minecraft/item/ItemStack.isSuitableFor (Lnet/minecraft/block/BlockState;)Z"))

@@ -62,6 +62,8 @@ public class MixinParsePatternFormatting {
                     return operation.call(style, visitor, index, c);
                 }
                 // HexGloop.logPrint("has pattern: " + pattern.toString());
+                
+                // it's ok to use a single '!' here since it's only for actual rendering
                 visitor.accept(startishIndex, ((PatternStyle)style).withPattern(pattern), '!');
                 jref.set(startishIndex + matcher.end()-1);
                 return (startishIndex + matcher.end()-1) < text.length(); // if there's more or not

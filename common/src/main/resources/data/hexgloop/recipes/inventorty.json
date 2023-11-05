@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "M M",
+        "ECE",
+        "MAM"
+    ],
+    "key": {
+        "M": {
+            "item": "phantom_membrane"
+        },
+        "E": {
+            "item": "ender_eye"
+        },
+        "C": {
+            "item": "chest"
+        },
+        "A": {
+            "item": "hexcasting:charged_amethyst"
+        }
+    },
+    "result": {
+        "item": "hexgloop:inventorty"
+    }
+}
