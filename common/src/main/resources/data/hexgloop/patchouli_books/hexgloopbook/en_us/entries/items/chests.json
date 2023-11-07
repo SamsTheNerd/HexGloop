@@ -1,0 +1,19 @@
+{
+    "name": "block.hexgloop.slate_chest",
+    "icon": "hexgloop:slate_chest",
+    "category": "hexcasting:items",
+    "sortnum": 8,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:slate_chest",
+        "text": "hexgloop.page.chests.normal"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:gloopy_slate_chest",
+        "text": "hexgloop.page.chests.gloopy"
+      }
+    ]
+  }

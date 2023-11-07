@@ -1,0 +1,17 @@
+{
+    "name": "item.hexgloop.covered_spellbook",
+    "icon": "hexgloop:covered_spellbook{display:{color:69eb96}}",
+    "category": "hexcasting:items",
+    "sortnum": 4,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.dyebook"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:dummy_cover"
+      }
+    ]
+}

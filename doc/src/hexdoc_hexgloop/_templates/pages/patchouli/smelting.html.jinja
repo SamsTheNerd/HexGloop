@@ -1,0 +1,10 @@
+{% extends "pages/patchouli/text.html.jinja" %}
+{% include "common/macros.html.jinja" %}
+
+{% block inner_body %}
+  {# {{ macros.recipe_block([page.recipe],
+    "",
+    _("hexdoc.pages.patchouli.crafting.description"),
+    _("hexdoc.pages.patchouli.crafting.separator"),) }} #}
+  {{ super() }}
+{% endblock inner_body %}

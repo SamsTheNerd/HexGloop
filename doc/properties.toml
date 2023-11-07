@@ -28,6 +28,7 @@ static_dir = "static"
 include = [
     "hexcasting",
     "patchouli",
+    "hexgloop"
 ]
 
 [template.args]

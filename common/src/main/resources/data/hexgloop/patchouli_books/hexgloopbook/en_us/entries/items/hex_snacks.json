@@ -1,0 +1,33 @@
+{
+    "name": "hexgloop.entry.hex_snacks",
+    "icon": "hexgloop:hex_snack",
+    "category": "hexcasting:items",
+    "sortnum": 7,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.hex_snacks.intro"
+      },
+      {
+        "type": "patchouli:spotlight",
+        "item": "hexgloop:hex_snack",
+        "text": "hexgloop.page.hex_snacks.gummy",
+        "link_recipe": true
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:conjure_tasty_treat",
+        "anchor": "hexgloop:conjure_tasty_treat",
+        "input": "vec",
+        "output": "entity",
+        "text": "hexgloop.page.hex_snacks.conjure_gummy"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:hexxyos",
+        "anchor":"hexxyos",
+        "text": "hexgloop.page.hex_snacks.hexxyos"
+      }
+    ]
+}

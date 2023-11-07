@@ -214,7 +214,7 @@ public class HexGloopRegisterPatterns {
                 new OpGetComparator(true));
 
             PatternRegistry.mapPattern(HexPattern.fromAngles("qqadd", HexDir.NORTH_EAST),
-                new Identifier(HexGloop.MOD_ID, "conjured_redstone"),
+                new Identifier(HexGloop.MOD_ID, "conjure_redstone"),
                 new OpConjureRedstone());
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();

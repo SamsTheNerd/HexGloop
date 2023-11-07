@@ -1,0 +1,15 @@
+{
+    "name": "hexgloop.entry.addons",
+    "icon": "hexgloop:hexxy_plush",
+    "category": "hexcasting:interop",
+    "sortnum": 15,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:link",
+        "url": "https://addons.hexxy.media",
+        "link_text": "hexgloop.page.addons.link",
+        "text": "hexgloop.page.addons"
+      }
+    ]
+  }

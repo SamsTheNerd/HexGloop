@@ -17,6 +17,10 @@
       {
         "type": "patchouli:text",
         "text": "hexgloop.page.gloopytweaks.2"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopytweaks.3"
       }
     ]
   }
