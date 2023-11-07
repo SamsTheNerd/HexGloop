@@ -44,7 +44,7 @@ concurrency:
 
 jobs:
   hexdoc:
-    uses: object-Object/hexdoc/.github/workflows/hexdoc.yml@94d74992559628f
+    uses: object-Object/hexdoc/.github/workflows/hexdoc.yml@v0.11.1.1.0.dev19
     permissions: 
       contents: write
       pages: read
