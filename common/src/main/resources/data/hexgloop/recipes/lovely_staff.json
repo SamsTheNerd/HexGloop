@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         "SBH",
-        " BB",
+        " CB",
         "S S"
     ],
     "key": {
@@ -14,6 +14,9 @@
         },
         "S":{
             "item": "hexcasting:slate"
+        },
+        "C":{
+            "item": "hexcasting:charged_amethyst"
         }
     },
     "result": {

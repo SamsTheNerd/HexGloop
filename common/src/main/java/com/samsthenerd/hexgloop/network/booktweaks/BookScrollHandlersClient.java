@@ -41,6 +41,7 @@ public class BookScrollHandlersClient {
         Hand hand = buf.readBoolean() ? Hand.MAIN_HAND : Hand.OFF_HAND;
         ItemStack stack = player.getStackInHand(hand);
         Book book = ItemModBook.getBook(stack);
+        if(book == null) return;
         GuiBook currentGui = book.getContents().getCurrentGui();
         if(currentGui instanceof GuiBookEntry guiEntry){
             BookEntry entry = guiEntry.getEntry();

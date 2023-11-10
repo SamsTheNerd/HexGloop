@@ -49,7 +49,7 @@ public class MixinCatchyFrameEval implements ICatchyFrameEval {
 
     // add false to the stack
     @WrapOperation(method="evaluate(Lat/petrak/hexcasting/api/spell/casting/eval/SpellContinuation;Lnet/minecraft/server/world/ServerWorld;Lat/petrak/hexcasting/api/spell/casting/CastingHarness;)Lat/petrak/hexcasting/api/spell/casting/CastingHarness$CastResult;",
-    at=@At(value="INVOKE", target="kotlin/collections/CollectionsKt.toList (Ljava/lang/Iterable;)Ljava/util/List;"), remap=false)
+    at=@At(value="INVOKE", target="kotlin/collections/CollectionsKt.toList (Ljava/lang/Iterable;)Ljava/util/List;"))
     public List<Object> addFalseToStack(Iterable<Object> originalStack, Operation<List<Object>> original){
         List<Object> newStack = original.call(originalStack);
         if(isCatchy()){

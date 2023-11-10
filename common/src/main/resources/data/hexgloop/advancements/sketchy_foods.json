@@ -1,0 +1,35 @@
+{
+    "display": {
+      "icon": {
+        "item": "hexgloop:hex_snack"
+      },
+      "title": {
+        "translate": "hexgloop.sketchy_foods.title"
+      },
+      "description": {
+        "translate": "hexgloop.sketchy_foods.desc",
+        "italic": true
+      },
+      "frame": "task",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": false
+    },
+    "parent": "hexcasting:root",
+    "criteria": {
+      "eating_sketchy_food": {
+        "trigger": "minecraft:consume_item",
+        "conditions": {
+          "item": {
+              "tag": "hexgloop:mindful_foods"
+            }
+        }
+      }
+    },
+    "requirements": [
+        [
+          "eating_sketchy_food"
+        ]
+      ]
+  }
+  

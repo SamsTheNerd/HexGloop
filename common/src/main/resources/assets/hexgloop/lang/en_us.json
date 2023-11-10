@@ -150,6 +150,8 @@
     "hexgloop.gloopvancement.desc": "Get your hands gloopy",
     "hexgloop.syncvancement.title": "Gloopy action at a distance",
     "hexgloop.syncvancement.desc": "Synchronize your gloop",
+    "hexgloop.sketchy_foods.title": "The snack that evals back",
+    "hexgloop.sketchy_foods.desc": "Eat a hexxed snack, they're probably vegan?",
     
 
     "hexgloop.entry.gloopytweaks": "Glooptastic Changes",
@@ -263,6 +265,10 @@
 
     "hexgloop.page.chests.normal": "A slate strengthened chest. It has slightly more storage space than a normal chest.",
     "hexgloop.page.chests.gloopy": "A slate and gloop strengthened chest. It has the storage space of two regular chests.$(br2)I wonder if it may have more uses yet to be discovered?",
+
+    "hexgloop.page.sentinel_bed": "A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.",
+
+    "hexgloop.page.reflection.0": "A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.",
 
 
     "hexgloop.entry.addons": "Addons",

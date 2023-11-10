@@ -52,7 +52,7 @@ public class CoveredSpellbookRecipe extends SpecialCraftingRecipe{
             int slotx = i % craftingInventory.getWidth();
             int sloty = i / craftingInventory.getWidth();
             boolean closeToBook = Math.abs(slotx - bookx) <= 1 && Math.abs(sloty - booky) <= 1; // if it's adjacent/diagonal
-            if(slotx == bookx && sloty == booky-1){
+            if(slotx == bookx && sloty == booky+1){
                 if(craftingInventory.getStack(i).getItem() != Items.NETHERITE_INGOT){
                     return false;
                 }

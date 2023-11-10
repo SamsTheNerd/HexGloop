@@ -1,7 +1,6 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "   ",
         "S S",
         " S "
     ],
@@ -11,6 +10,7 @@
         }
     },
     "result": {
-        "item": "hexgloop:slate_bowl"
+        "item": "hexgloop:slate_bowl",
+        "count": 4
     }
 }

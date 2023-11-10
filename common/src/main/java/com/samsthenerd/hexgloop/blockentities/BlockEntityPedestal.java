@@ -284,7 +284,11 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         hopperableItemEnts.sort((a, b) -> {
             return (int) (pos.getSquaredDistanceFromCenter(a.getPos().x, a.getPos().y, a.getPos().z) - pos.getSquaredDistanceFromCenter(b.getPos().x, b.getPos().y, b.getPos().z));
         });
+        // sync entity to here first
+        syncItemWithEntity(false);
+        boolean wasItemUpdated = false;
         for(ItemEntity iEnt : hopperableItemEnts){
+            wasItemUpdated = true;
             ItemStack entStack = iEnt.getStack();
             if(storedItem == null || storedItem.isEmpty()){
                 storedItem = entStack.copy();
@@ -298,7 +302,8 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
                 break;
             }
         }
-        syncItemWithEntity(false);
+        // force this update if needed
+        if(wasItemUpdated) syncItemWithEntity(true);
     }
 
     public List<ItemEntity> getInputItemEntities() {

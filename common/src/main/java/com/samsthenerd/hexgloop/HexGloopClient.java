@@ -20,6 +20,7 @@ import com.samsthenerd.hexgloop.items.ItemHandMirror;
 import com.samsthenerd.hexgloop.items.ItemHexSword;
 import com.samsthenerd.hexgloop.items.ItemSlateLoader;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.network.HexGloopNetwork;
 import com.samsthenerd.hexgloop.utils.GloopUtils;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
@@ -76,6 +77,7 @@ public class HexGloopClient {
     public static void onInitializeClient() {
         HexGloop.logPrint("Initializing HexGloopClient");
         addToTextureAtlas();
+        HexGloopNetwork.registerClientSideOnly();
         registerModelPredicates();
         registerColorProviders();
         registerScryingDisplayers();

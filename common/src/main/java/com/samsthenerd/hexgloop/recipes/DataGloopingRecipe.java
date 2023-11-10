@@ -197,8 +197,8 @@ public class DataGloopingRecipe implements Recipe<Inventory>, GloopingRecipe{
         public void write(PacketByteBuf buf, DataGloopingRecipe recipe) {
             buf.writeVarInt(recipe.ingredients.size());
             for(Pair<Ingredient, Integer> ingredient : recipe.ingredients){
-                ingredient.getLeft().write(buf);
                 buf.writeVarInt(ingredient.getRight());
+                ingredient.getLeft().write(buf);
             }
             buf.writeItemStack(recipe.result);
             buf.writeVarInt(recipe.mediaCost);
