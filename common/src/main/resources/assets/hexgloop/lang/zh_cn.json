@@ -25,11 +25,15 @@
     "item.hexgloop.bee_staff": "蜜蜂法杖",
     "item.hexgloop.rod_staff": "紫水晶钓竿",
     "item.hexgloop.bone_staff": "骨头法杖",
+    "item.hexgloop.ice_staff": "寒冰法杖",
     "item.hexgloop.blaze_staff": "烈焰法杖",
     "item.hexgloop.pumpkin_staff": "南瓜……法杖？",
     "item.hexgloop.wither_staff": "凋灵法杖",
     "item.hexgloop.hexxy_plush": "Hexxy毛绒玩偶",
     "item.hexgloop.hex_blade": "咒术之剑",
+    "item.hexgloop.slate_loader": "仪式专家的雕刻器",
+    "item.hexgloop.inventorty": "物品栏猫咪",
+    "item.hexgloop.slate_loader.written": "仪式专家的雕刻器[%s]",
     "item.hexgloop.covered_spellbook": "装面法术书",
     "item.hexgloop.covered_spellbook.sealed": "密封装面法术书",
     "item.hexgloop.hand_mirror.tooltip": "反射[%s]",
@@ -44,11 +48,14 @@
     "block.hexgloop.slate_chest": "板岩箱子",
     "block.hexgloop.gloopy_slate_chest": "凝浆板岩箱子",
     "block.hexgloop.sentinel_bed": "哨卫床",
+    "block.hexgloop.accelerator": "加速器",
+    "block.hexgloop.hexxed_glass": "咒术玻璃",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
     "key.hexgloop.casting_ring": "使用施法戒指",
     "key.hexgloop.scroll_down": "向下滚动法术书",
     "key.hexgloop.scroll_up": "向上滚动法术书",
+    "key.hexgloop.open_hex_book": "打开咒术笔记",
     "key.categories.hexgloop": "咒法凝浆",
 
     "hexgloop.tooltip.multi_focus.page": "所选槽位 %d/%d",
@@ -80,6 +87,29 @@
     "hexcasting.spell.hexgloop:check_read_ring": "验证师之精思",
     "hexcasting.spell.hexgloop:check_write_ring": "珠宝匠之精思",
 
+    "hexcasting.spell.hexgloop:read_comparator": "Etho之纯化",
+    "hexcasting.spell.hexgloop:read_redstone": "Seth之纯化",
+    "hexcasting.spell.hexgloop:conjure_redstone": "召唤红石方块",
+
+    "hexcasting.spell.hexgloop:clear_truename": "更新真名",
+    "hexcasting.spell.hexgloop:truename_agree_eula": "认可真名",
+
+    "hexcasting.spell.hexgloop:in_overworld": "大地之精思",
+    "hexcasting.spell.hexgloop:in_nether": "永焰之精思",
+    "hexcasting.spell.hexgloop:opnop_useless": "埃吉娅之策略",
+    "hexcasting.spell.hexgloop:check_ambit": "金丝雀之纯化",
+    "hexcasting.spell.hexgloop:catchy_eval": "雅典娜之策略",
+    "hexcasting.spell.hexgloop:reveal_mishap": "雅典娜之揭示",
+    "hexcasting.spell.hexgloop:stringify_mishap": "雅典娜之精思",
+    "hexcasting.spell.hexgloop:assert": "欧拉之纯化",
+    
+    "hexcasting.spell.hexgloop:get_hotbar_slot": "帮手之精思",
+    "hexcasting.spell.hexgloop:set_hotbar_slot": "帮手之策略",
+    "hexcasting.spell.hexgloop:swap_hotbar_slot": "换手",
+
+    "hexcasting.spell.hexgloop:conjure_tasty_treat": "召唤美味点心",
+
+
     "hexcasting.mishap.bad_item.slot": "%1$s需要在%3$s中有%2$s，而实际为%4$dx %5$s",
     "hexcasting.mishap.no_item.slot": "%1$s需要在%3$s中有%2$s，而实际无对应物品",
     "hexcasting.mishap.bad_offhand_item.caster_bound": "一个绑定至咒术师的物品",
@@ -90,12 +120,13 @@
     "hexcasting.mishap.bad_item.labely_item": "一个可标签物品",
     "hexcasting.mishap.bad_item.gloopifact": "一个凝浆造物",
 
+    "hexcasting.mishap.mirror_limits": "%s没有反射",
+
     "hexcasting.mishap.wrong_casting_source": "%s本应在%s处施放，而实际施放于%s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s本应在%s中一处施放，而实际施放于%s",
 
-    "hexcasting.mishap.mirror_limits": "%s没有反射",
-    
+
     "hexgloop.mishap.catch_wrapper": "上一事故：%s",
     "hexgloop.mishap.catch_wrapper.none": "此次施法还未产生事故",
     "hexcasting.mishap.cleared_truename": "%s试图使用%s的真名",
@@ -108,16 +139,26 @@
     "hexgloop.source_type.packaged_hex": "施法物品",
     "hexgloop.source_type.wisp": "咒灵",
     "hexgloop.source_type.gloopifact": "凝浆造物",
+    "hexgloop.source_type.inventorty": "物品栏猫咪",
 
+    "hexgloop.container.simple": "简单",
+    "hexgloop.container.result": "产物",
+    
+    "hexgloop.truename_eula": "我似乎已将我的真名注入这一物件。光是想到这件物品落入恶人手中会发生什么就令我震悚。回顾我在真名保护法术上留的笔记也许能稍作缓解。",
 
     "hexgloop.gloopvancement.title": "凝浆十足",
     "hexgloop.gloopvancement.desc": "往手上沾满凝浆",
+    "hexgloop.syncvancement.title": "远距的凝浆操作",
+    "hexgloop.syncvancement.desc": "将凝浆同步起来",
+    "hexgloop.sketchy_foods.title": "反向运行的小食",
+    "hexgloop.sketchy_foods.desc": "吃一个咒术小食，大概是纯素的？",
 
 
     "hexgloop.entry.gloopytweaks": "“凝浆”至极的变化",
     "hexgloop.page.gloopytweaks.0": "我最近发现世界上出现了某些“凝浆”极了的变化。$(br2)例如，可视化图案变得更简单了。我甚至只需听见类似“\\<southeast,deaqq>”的东西就能将其完美可视化为$(m)$(0)<southeast,deaqq>$()。此外，我还能将鼠标悬停其上以获得更为清晰的视图，还可点击它们以复制。",
     "hexgloop.page.gloopytweaks.1": "我还发现翻笔记变得更顺畅了。按下$(k:key.hexgloop.open_iota_wheel)就能可视化法术书，并通过$(l)$(k:key.hexgloop.scroll_down)$()和$(l)$(k:key.hexgloop.scroll_up)$()快速翻页。$(br2)到目前为止最奇怪的变化则是咒术的$(o)感觉$()不同了，甚至有种它们顺着我的骨头振动的感受。也许足够敏感的扫描器能发现其中区别？",
-    "hexgloop.page.gloopytweaks.2": "我还发现如果想让法杖更多姿多彩，可以对法杖使用染料。",
+    "hexgloop.page.gloopytweaks.2": "我还注意到最近施法时对照笔记更轻松了，按下$(k:key.hexgloop.open_hex_book)就能让咒术笔记飞到面前，并打开上次翻到的那页。$(br2)而书自身似乎……更平易友好了。打开到带有图案的一页并与悬挂的卷轴相碰，它就会将图案复制到卷轴上。甚至还会根据我用哪一只手持书决定复制哪一个图案。",
+    "hexgloop.page.gloopytweaks.3": "我还发现如果想让法杖更多姿多彩，可以为法杖覆上染料。",
 
     "hexgloop.entry.casting_ring": "施法戒指",
     "hexgloop.page.casting_ring.0": "我确实很喜欢我的法杖，但偶尔也会想要一种更轻便的施法器具。$(br2)而在佩戴上施法戒指后，我就能通过按$(l)$(k:key.hexgloop.casting_ring)$()直接打开咒术网格而不需法杖辅助。同时因为没有法杖，咒术网格的间距增大了，不过也能算值得。",
@@ -139,7 +180,8 @@
     "hexgloop.entry.gloop": "凝浆！",
     "hexgloop.page.gloop.0": "这真是“凝浆”极了！计算表明在适合条件下，黏液和媒质会形成一种反应性和适应性极高的材料。$(br2)反应的启动需要给反应物充能和某些机制的帮助。我在下页记录了我对这种装置的设计草稿。",
     "hexgloop.page.gloop.1": "我的研究表明，3 个$(item)黏液球$()、3 个$(item)充能紫水晶$()，以及 1 个$(item)紫水晶碎片$()能反应产生紫晶凝浆。$(br2)从这种凝浆本身的适应性看来，应当还存在几种其他形态仍待发现……",
-    "hexgloop.page.gloop.energizer": "这个机器应当足够强力，能将媒质引导入周围的水中而进一步导入反应物中。可用漏斗一类的装置送入媒质。其启动时应常态每秒消耗 1 个紫水晶粉，而反应一次则需消耗 10 个紫水晶粉。$(br2)只需要再有触发反应的方式就可以了……也行可以请求自然的指导？",
+    "hexgloop.page.gloop.2": "我最近发现了一种新形态的凝浆，称作“同步凝浆”，它似乎能间隔极远的距离相互反应。它可在充能器中用 3 个$(item)黏液球$()、3 个$(item)充能紫水晶$()，以及 1 个$(item)末影珍珠$()制成。",
+    "hexgloop.page.gloop.energizer": "这个机器应当足够强力，能将媒质引导入周围的水中而进一步导入反应物中。可用漏斗一类的装置送入媒质。其启动时应常态每秒消耗 1 个紫水晶粉，而反应一次则需消耗 10 个紫水晶粉。$(br2)只需要再有触发反应的方式就可以了……也许可以请求自然给予灵光一“闪”？",
 
     "hexgloop.entry.multi_focus": "多重核心",
     "hexgloop.page.multi_focus.0": "我能感受到紫晶凝浆对我意识的拉扯，也许我能拉扯回来？$(br2)由紫晶凝浆制成的多重核心能在单个物品中存有多个 iota，并可通过$(l)$(k:key.hexgloop.open_iota_wheel)$()快速取用，比较像一本小型法术书。更多组织整理的技巧参见有关$(l:hexgloop:patterns/labels)标签$(/l)的笔记。",
@@ -177,6 +219,60 @@
     "hexgloop.page.trinket_focus_patterns.check_write_ring": "如果能将 iota 写入我所佩戴的戒指，返回 True。否则返回 False。",
 
     "hexgloop.entry.craft_potion": "合成施法药水",
-    "hexgloop.page.craft_potion.0": "合成一瓶$(l:hexgloop:items/casting_potion)施法药水$(/l)。消耗大约 1 个紫水晶碎片。"
+    "hexgloop.page.craft_potion.0": "合成一瓶$(l:hexgloop:items/casting_potion)施法药水$(/l)。消耗大约 1 个紫水晶碎片。",
+
+
+    "hexgloop.entry.redstone": "红石",
+    "hexgloop.page.redstone.0": "返回所给位置处方块红石信号的强度。",
+    "hexgloop.page.redstone.1": "返回比较器从所给位置处方块读出的信号强度。",
+    "hexgloop.page.redstone.2": "在所给位置处以所给信号强度召唤类似红石的方块。信号强度需在 0 到 15 之间。消耗 1 个紫水晶粉。",
+
+
+    "hexgloop.entry.truename_protection": "真名保护",
+    "hexgloop.page.truename_protection.0": "我已知道我的真名能给予他人找到我的能力，但我的研究表明，还有方式通过我的真名以我的身份施法。$(br2)这相当令人不安，但我已经找到了抵御这种效果的方法，详细内容记述于后页。",
+    "hexgloop.page.truename_protection.1": "此法术能更新我的真名，并清除掉所有存储设备中对我真名的引用。",
+    "hexgloop.page.truename_protection.2": "最近我在写下我的真名时总是惴惴不安。此法术似乎能将这种不安一扫而空。要是想回到原本小心谨慎的状态，可以再次施放此法术。",
+
+    "hexgloop.entry.gloopmisc": "凝浆杂项",
+    "hexgloop.page.gloopmisc.0": "检测咒术是否在主世界施放。",
+    "hexgloop.page.gloopmisc.1": "检测咒术是否在下界施放。",
+    "hexgloop.page.gloopmisc.2": "检测所给实体或位置向量是否在我影响范围内。",
+    "hexgloop.page.gloopmisc.3": "断言所给布尔值为 True，否则产生事故。事故可用图案标记，若有对应标签则将其压入栈顶。",
+    "hexgloop.page.gloopmisc.4": "什么都不会做。",
+    "hexgloop.page.gloopmisc.5": "以类似$(l:hexcasting:patterns/meta#hexcasting:eval)赫尔墨斯之策略$(/l)的方式运行栈中图案。产生事故时不会停止，而是会继续施放。返回此次施法是否造成事故。",
+    "hexgloop.page.gloopmisc.6": "揭示上一事故。用法杖直接施放时可能会表现得很奇怪。",
+    "hexgloop.page.gloopmisc.7": "返回记述上一事故的字符串。$(br2)$(l)需安装 Moreiotas$(/l)",
+
+    "hexgloop.entry.hotbar": "快捷栏操纵",
+    "hexgloop.page.hotbar.0": "返回当前选中槽位的索引。",
+    "hexgloop.page.hotbar.1": "选中以所给数为索引的槽位。",
+    "hexgloop.page.hotbar.2": "交换左右手手持的物品。",
+
+    "hexgloop.entry.more_staffs": "凝浆法杖",
+    "hexgloop.page.more_staffs.0": "我绘制了一些新法杖的设计图。这些法杖形态各异，但功能完全一致。",
+
+    "hexgloop.page.inscriber": "手动铺设石板很费工夫。因此我捆出了这件工具以减少麻烦。可以向其写入图案列表并放入石板（直接放很多个也可以），此时使用此物品就会放置一块石板，并附上列表中下一个图案。",
+
+    "hexgloop.page.hexxed_glass": "紫水晶粉块可以说是带有魔法的沙子。至少烧炼它就和烧炼沙子一样。奇怪的是，我的射线追踪会穿过这种方块。",
+
+    "hexgloop.page.dyebook": "我一直都想给我的法术书加上一点色彩。给它们装上书皮就可以为其染色了。用于装订的下界合金则能使其防火。$(br2)装面的过程不会影响到书页中记载的法术。我倒是还没找到去掉这层书皮的好方法……",
+
+    "hexgloop.entry.hex_snacks": "咒术小食",
+    "hexgloop.page.hex_snacks.intro": "研究咒法学的劳累总是能勾起我的食欲，好在我找到了些点心和小食！",
+    "hexgloop.page.hex_snacks.gummy": "思维软糖是一种不错的小食，适合忙中闲暇食用。它带有极少量的媒质，或许不算是什么优秀的缀品补剂。",
+    "hexgloop.page.hex_snacks.conjure_gummy": "在所给位置召唤一块思维软糖。返回代表该物品实体的 iota。消耗 1 个紫水晶粉。",
+    "hexgloop.page.hex_snacks.hexxyos": "一顿充盈意识的早餐的一部分。",
+
+    "hexgloop.page.chests.normal": "用石板加固的箱子。存储空间比普通箱子略大。",
+    "hexgloop.page.chests.gloopy": "用石板和凝浆加固的箱子。存储空间是普通箱子的两倍。$(br2)不知道是否还有其他用途静待发现？",
+
+    "hexgloop.page.sentinel_bed": "适合我哨卫的舒适的床，哨卫似乎总是会想回到床上。貌似猫也觉得这张床很舒服。",
+
+    "hexgloop.page.reflection.0": "适合我哨卫的舒适的床，哨卫似乎总是会想回到床上。貌似猫也觉得这张床很舒服。",
+
+
+    "hexgloop.entry.addons": "附属",
+    "hexgloop.page.addons": "我曾听过许多有关其他咒法学派的故事。这个链接应当能前往所有这些故事的辑录，外部工具、数据包等也在其列。",
+    "hexgloop.page.addons.link": "附属列表"
 
 }
