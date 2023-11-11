@@ -9,6 +9,10 @@ import com.samsthenerd.hexgloop.casting.dimensions.OpIsInDimension;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpReadGloopifact;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpSyncRavenmindGloopifact;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpWriteGloopifact;
+import com.samsthenerd.hexgloop.casting.inventorty.OpGetInventoryLore;
+import com.samsthenerd.hexgloop.casting.inventorty.OpGetTypeInSlot;
+import com.samsthenerd.hexgloop.casting.inventorty.OpSlotCount;
+import com.samsthenerd.hexgloop.casting.inventorty.OpStackTransfer;
 import com.samsthenerd.hexgloop.casting.mirror.OpBindMirror;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpEvalCatchMishap;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpHahaFunnyAssertQEDGetItLikeTheMathProofLol;
@@ -18,6 +22,7 @@ import com.samsthenerd.hexgloop.casting.redstone.OpConjureRedstone;
 import com.samsthenerd.hexgloop.casting.redstone.OpGetComparator;
 import com.samsthenerd.hexgloop.casting.trinketyfocii.OpTrinketyReadIota;
 import com.samsthenerd.hexgloop.casting.trinketyfocii.OpTrinketyWriteIota;
+import com.samsthenerd.hexgloop.casting.truenameclassaction.OpAgreeTruenameEULA;
 import com.samsthenerd.hexgloop.casting.truenameclassaction.OpGetCoinBinder;
 import com.samsthenerd.hexgloop.casting.truenameclassaction.OpRefreshTruename;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
@@ -28,6 +33,7 @@ import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.common.casting.operators.spells.OpMakePackagedSpell;
+import dev.architectury.platform.Platform;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
@@ -37,6 +43,8 @@ public class HexGloopRegisterPatterns {
         HexGloopItems.CASTING_POTION_ITEM.listen(event -> registerItemDependentPatterns());
         HexGloopItems.FOCAL_RING.listen(event -> registerTrinketyFociiPatterns());
         HexGloopBlocks.CONJURED_REDSTONE_BLOCK.listen(event -> registerRedstonePatterns());
+        maybeRegisterHexal();
+        maybeRegisterMoreIotas();
         // non item dependent stuff: 
         try{
             // orchard patterns
@@ -69,7 +77,7 @@ public class HexGloopRegisterPatterns {
                 OpEvalCatchMishap.INSTANCE);
             PatternRegistry.mapPattern(HexPattern.fromAngles("dweaqqqqa", HexDir.SOUTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "reveal_mishap"),
-                OpRevealLastMishap.INSTANCE);
+                new OpRevealLastMishap(true));
 
             PatternRegistry.mapPattern(HexPattern.fromAngles("qed", HexDir.NORTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "assert"),
@@ -105,6 +113,21 @@ public class HexGloopRegisterPatterns {
                 new Identifier(HexGloop.MOD_ID, "swap_hotbar_slot"),
                 new OpHotbar(true, false));
             
+            // inventorty patterns
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wawqwaqewdwwdade", HexDir.SOUTH_WEST),
+                new Identifier(HexGloop.MOD_ID, "torty_transfer"),
+                new OpStackTransfer());
+            PatternRegistry.mapPattern(HexPattern.fromAngles("awewdqdwewaaw", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "torty_count"),
+                new OpSlotCount(true));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("ewdqdwewaqae", HexDir.NORTH_WEST),
+                new Identifier(HexGloop.MOD_ID, "torty_max_count"),
+                new OpSlotCount(false));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qaeaqeaq", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "torty_inv_sizes"),
+                new OpGetInventoryLore(true));
+
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }
@@ -120,8 +143,11 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
                 new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), 0));
-                
 
+            PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwqawqedeqwaq", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/inventorty"),
+                new OpMakePackagedSpell<>(HexGloopItems.INVENTORTY_ITEM.get(), 0));
+                
             // craft sword: waqqqqqwwwaqwwwwaq
             PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/hex_blade"),
@@ -167,6 +193,11 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("qaqqwawqwqwqwqwqwead", HexDir.NORTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "cooler_compare_item_bound_caster"),
                 new OpGetCoinBinder(true, true));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("awwqaq", HexDir.SOUTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "truename_agree_eula"),
+                new OpAgreeTruenameEULA());
+
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }
@@ -183,7 +214,7 @@ public class HexGloopRegisterPatterns {
                 new OpGetComparator(true));
 
             PatternRegistry.mapPattern(HexPattern.fromAngles("qqadd", HexDir.NORTH_EAST),
-                new Identifier(HexGloop.MOD_ID, "conjured_redstone"),
+                new Identifier(HexGloop.MOD_ID, "conjure_redstone"),
                 new OpConjureRedstone());
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
@@ -248,6 +279,34 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwwdwwwdwqqaqwedeewawwwawww", HexDir.SOUTH_WEST),
                 new Identifier(HexGloop.MOD_ID, "clear_truename"),
                 new OpRefreshTruename());
+        } catch (PatternRegistry.RegisterPatternException exn) {
+            exn.printStackTrace();
+        }
+    }
+
+    private static void maybeRegisterHexal(){
+        if(!Platform.isModLoaded("hexal")) return;
+        try {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qwaeawqaqded", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "torty_get_type"),
+                new OpGetTypeInSlot());
+            
+        } catch (PatternRegistry.RegisterPatternException exn) {
+            exn.printStackTrace();
+        }
+    }
+
+    private static void maybeRegisterMoreIotas(){
+        if(!Platform.isModLoaded("moreiotas")) return;
+        try {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("dweaqqqqd", HexDir.SOUTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "stringify_mishap"),
+                new OpRevealLastMishap(false));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("waeaeaeawa", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "torty_inv_names"),
+                new OpGetInventoryLore(false));
+            
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }

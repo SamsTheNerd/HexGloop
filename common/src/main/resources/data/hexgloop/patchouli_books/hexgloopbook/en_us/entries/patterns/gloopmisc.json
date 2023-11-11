@@ -1,0 +1,73 @@
+{
+    "name": "hexgloop.entry.gloopmisc",
+    "category": "hexcasting:patterns",
+    "icon": "minecraft:heart_pigment",
+    "sortnum": 4,
+    "advancement": "hexcasting:root",
+    "pages": [
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:in_overworld",
+            "anchor": "hexgloop:in_overworld",
+            "input": "",
+            "output": "boolean",
+            "text": "hexgloop.page.gloopmisc.0"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:in_nether",
+            "anchor": "hexgloop:in_nether",
+            "input": "",
+            "output": "boolean",
+            "text": "hexgloop.page.gloopmisc.1"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:check_ambit",
+            "anchor": "hexgloop:check_ambit",
+            "input": "vec | entity",
+            "output": "boolean",
+            "text": "hexgloop.page.gloopmisc.2"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:assert",
+            "anchor": "hexgloop:assert",
+            "input": "boolean, ?any",
+            "output": "",
+            "text": "hexgloop.page.gloopmisc.3"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:opnop_useless",
+            "anchor": "hexgloop:opnop_useless",
+            "input": "",
+            "output": "",
+            "text": "hexgloop.page.gloopmisc.4"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:catchy_eval",
+            "anchor": "hexgloop:catchy_eval",
+            "input": "[pattern] | pattern",
+            "output": "many, boolean",
+            "text": "hexgloop.page.gloopmisc.5"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:reveal_mishap",
+            "anchor": "hexgloop:reveal_mishap",
+            "input": "",
+            "output": "",
+            "text": "hexgloop.page.gloopmisc.6"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:stringify_mishap",
+            "anchor": "hexgloop:stringify_mishap",
+            "input": "",
+            "output": "string",
+            "text": "hexgloop.page.gloopmisc.7"
+        }
+    ]
+}

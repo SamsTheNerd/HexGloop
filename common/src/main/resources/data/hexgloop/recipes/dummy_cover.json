@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "LLL",
+        "LBL",
+        "LNL"
+    ],
+    "key": {
+        "B": {
+            "item": "hexgloop:fake_spellbook_for_rei"
+        },
+        "L": [
+            {
+                "tag": "forge:leather"
+            },
+            {
+                "tag": "c:leather"
+            },
+            {
+                "item": "minecraft:leather"
+            }
+        ],
+        "N": {
+            "item": "minecraft:netherite_ingot"
+        }
+    },
+    "result": {
+        "item": "hexgloop:covered_spellbook"
+    }
+}

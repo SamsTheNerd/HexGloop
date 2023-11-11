@@ -1,0 +1,17 @@
+{
+    "name": "block.hexgloop.hexxed_glass",
+    "icon": "hexgloop:hexxed_glass",
+    "category": "hexcasting:items",
+    "sortnum": 7,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.hexxed_glass"
+      },
+      {
+        "type": "patchouli:smelting",
+        "recipe": "hexgloop:hexxed_glass"
+      }
+    ]
+}

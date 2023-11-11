@@ -1,7 +1,7 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "SSS",
+        "SSN",
         "SGS",
         "YSS"
     ],
@@ -9,15 +9,12 @@
         "S": {
             "item": "hexcasting:slate"
         },
-        "G": [{
-            "tag": "c:glass_panes"
+        "N": {
+            "item": "minecraft:netherite_ingot"
         },
-        {
-            "tag": "forge:glass_panes"
+        "G": {
+            "item": "hexgloop:hexxed_glass"
         },
-        {
-            "item": "minecraft:glass_pane"
-        }],
         "Y": {
             "item": "hexgloop:synchronous_gloop"
         }

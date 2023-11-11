@@ -1,0 +1,33 @@
+{
+    "name": "hexgloop.entry.hotbar",
+    "category": "hexcasting:patterns",
+    "icon": "minecraft:chest",
+    "sortnum": 7,
+    "advancement": "hexcasting:root",
+    "pages": [
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:get_hotbar_slot",
+            "anchor": "hexgloop:get_hotbar_slot",
+            "input": "",
+            "output": "num",
+            "text": "hexgloop.page.hotbar.0"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:set_hotbar_slot",
+            "anchor": "hexgloop:set_hotbar_slot",
+            "input": "num",
+            "output": "",
+            "text": "hexgloop.page.hotbar.1"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:swap_hotbar_slot",
+            "anchor": "hexgloop:swap_hotbar_slot",
+            "input": "",
+            "output": "",
+            "text": "hexgloop.page.hotbar.2"
+        }
+    ]
+}

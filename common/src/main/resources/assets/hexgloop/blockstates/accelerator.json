@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "facing=up,energized=false": { "model": "hexgloop:block/accelerator" },
+        "facing=down,energized=false": { "model": "hexgloop:block/accelerator", "x": 180 },
+        "facing=north,energized=false": { "model": "hexgloop:block/accelerator", "x": 90 },
+        "facing=east,energized=false":  { "model": "hexgloop:block/accelerator", "x": 90, "y":  90 },
+        "facing=south,energized=false": { "model": "hexgloop:block/accelerator", "x": 90, "y": 180 },
+        "facing=west,energized=false":  { "model": "hexgloop:block/accelerator", "x": 90, "y": 270 },
+
+        "facing=up,energized=true": { "model": "hexgloop:block/accelerator_energized" },
+        "facing=down,energized=true": { "model": "hexgloop:block/accelerator_energized", "x": 180 },
+        "facing=north,energized=true": { "model": "hexgloop:block/accelerator_energized", "x": 90 },
+        "facing=east,energized=true":  { "model": "hexgloop:block/accelerator_energized", "x": 90, "y":  90 },
+        "facing=south,energized=true": { "model": "hexgloop:block/accelerator_energized", "x": 90, "y": 180 },
+        "facing=west,energized=true":  { "model": "hexgloop:block/accelerator_energized", "x": 90, "y": 270 }
+    }
+}

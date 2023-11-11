@@ -1,0 +1,22 @@
+{
+    "type": "hexgloop:data_glooping",
+    "ingredients": [
+        {
+            "ingredient": {
+                "item": "hexcasting:charged_amethyst"
+            },
+            "count": 3
+        },
+        {
+            "ingredient": {
+                "item": "minecraft:slime_ball"
+            },
+            "count": 3
+        },
+        {
+            "item": "minecraft:amethyst_shard"
+        }
+    ],
+    "result": "hexgloop:gloop",
+    "priority": 5
+}

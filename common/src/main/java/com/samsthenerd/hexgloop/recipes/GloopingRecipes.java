@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-import com.samsthenerd.hexgloop.items.HexGloopItems;
+import com.samsthenerd.hexgloop.HexGloop;
 
-import at.petrak.hexcasting.common.lib.HexItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.recipe.RecipeManager;
 import net.minecraft.util.Pair;
 
 // there shouldn't be too many of these? prob more convenient than using mc recipe system? 
@@ -21,22 +20,32 @@ public class GloopingRecipes {
 
     // register recipes here - sort it by priority if you add them anywhere else
     public static void init(){
-        RECIPES.add(new SimpleGloopingRecipe(() -> List.of(
-            new Pair<>(3, Items.SLIME_BALL),
-            new Pair<>(1, Items.AMETHYST_SHARD),
-            new Pair<>(3, HexItems.CHARGED_AMETHYST)
-            ), () -> HexGloopItems.GLOOP_ITEM.get().getDefaultStack(), 5));
-        RECIPES.add(new SimpleGloopingRecipe(() -> List.of(
-            new Pair<>(3, Items.SLIME_BALL),
-            new Pair<>(1, Items.ENDER_EYE),
-            new Pair<>(3, HexItems.CHARGED_AMETHYST)
-            ), () -> HexGloopItems.SYNCHRONOUS_GLOOP_ITEM.get().getDefaultStack(), 5));
+        // RECIPES.add(new SimpleGloopingRecipe(() -> List.of(
+        //     new Pair<>(3, Items.SLIME_BALL),
+        //     new Pair<>(1, Items.AMETHYST_SHARD),
+        //     new Pair<>(3, HexItems.CHARGED_AMETHYST)
+        //     ), () -> HexGloopItems.GLOOP_ITEM.get().getDefaultStack(), 5));
+        // RECIPES.add(new SimpleGloopingRecipe(() -> List.of(
+        //     new Pair<>(3, Items.SLIME_BALL),
+        //     new Pair<>(1, Items.ENDER_EYE),
+        //     new Pair<>(3, HexItems.CHARGED_AMETHYST)
+        //     ), () -> HexGloopItems.SYNCHRONOUS_GLOOP_ITEM.get().getDefaultStack(), 5));
         
         RECIPES.sort((a, b) -> a.getPriority() - b.getPriority());
     }
 
-    public static GloopingRecipe findRecipe(List<Entity> inputs){
-        for(GloopingRecipe recipe : RECIPES){
+    public static GloopingRecipe findRecipe(List<Entity> inputs, RecipeManager recipeManager){
+        // almost certainly not efficient for large amounts of recipes, but there won't be many and idc enough to learn how to have it react to data
+        List<GloopingRecipe> allRecipes = new ArrayList<>(recipeManager.listAllOfType(DataGloopingRecipe.Type.INSTANCE));
+        allRecipes.addAll(RECIPES);
+        allRecipes.sort((a, b) -> a.getPriority() - b.getPriority());
+        HexGloop.logPrint("found " + allRecipes.size() + " recipes");
+        for(GloopingRecipe recipe : allRecipes){
+            if(recipe instanceof DataGloopingRecipe dRecipe){
+                HexGloop.logPrint("checking data recipe: " + dRecipe);
+            } else {
+                HexGloop.logPrint("checking hardcoded recipe with output: " + recipe.getOutput());
+            }
             if(recipe.matches(inputs)){
                 return recipe;
             }

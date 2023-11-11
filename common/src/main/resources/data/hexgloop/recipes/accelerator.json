@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "CCC",
+        "IGI",
+        "SAS"
+    ],
+    "key": {
+        "S": {
+            "item": "hexcasting:slate_block"
+        },
+        "A": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "I": {
+            "item": "minecraft:copper_ingot"
+        },
+        "C": {
+            "item": "minecraft:copper_block"
+        },
+        "G": {
+            "item": "glowstone"
+        }
+    },
+    "result": {
+        "item": "hexgloop:accelerator"
+    }
+}

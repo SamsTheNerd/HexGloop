@@ -1,0 +1,17 @@
+{
+    "name": "item.hexgloop.slate_loader",
+    "icon": "hexgloop:slate_loader",
+    "category": "hexcasting:items",
+    "sortnum": 10,
+    "advancement": "hexcasting:enlightenment",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.inscriber"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:slate_loader"
+      }
+    ]
+}

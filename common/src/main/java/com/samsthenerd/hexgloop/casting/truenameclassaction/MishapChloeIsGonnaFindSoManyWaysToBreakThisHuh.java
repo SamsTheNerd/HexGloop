@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.samsthenerd.hexgloop.casting.IContextHelper;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 
 import at.petrak.hexcasting.api.misc.FrozenColorizer;
@@ -41,6 +42,9 @@ public class MishapChloeIsGonnaFindSoManyWaysToBreakThisHuh extends Mishap {
 
     public static String sourceFromCtx(CastingContext ctx){
         CastSource source = ctx.getSource();
+        if(((IContextHelper)(Object)ctx).isKitty()){
+            return "inventorty";
+        }
         if(source == CastSource.STAFF){
             return "staff";
         } else if(source == CastSource.SPELL_CIRCLE){

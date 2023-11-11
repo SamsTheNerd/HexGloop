@@ -10,9 +10,11 @@ import javax.annotation.Nullable;
 import com.samsthenerd.hexgloop.blockentities.BlockEntityPedestal;
 import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociAtHome;
+import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IIotaProviderLocus;
 
 import at.petrak.hexcasting.api.block.circle.BlockCircleComponent;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
+import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
@@ -40,7 +42,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class BlockPedestal extends BlockCircleComponent implements BlockEntityProvider, ILociAtHome{
+public class BlockPedestal extends BlockCircleComponent implements BlockEntityProvider, ILociAtHome, IIotaProviderLocus{
     public final boolean isMirror;
     public static final DirectionProperty FACING = Properties.FACING;
 
@@ -177,10 +179,10 @@ public class BlockPedestal extends BlockCircleComponent implements BlockEntityPr
         return null;
     }
 
-    // for cool advanced stuff
-    public void rawLociCall(BlockPos pos, BlockState bs, World world, CastingHarness harness){
+    public Iota provideIota(BlockPos pos, BlockState bs, World world, CastingHarness harness){
         BlockEntityPedestal be = world.getBlockEntity(pos, HexGloopBEs.PEDESTAL_BE.get()).orElse(null);
-        if(be != null) be.rawLociCall(harness);
+        if(be != null && isMirror) return be.getIota();
+        return null;
     }
 
     public Direction normalDir(BlockPos pos, BlockState bs, World world, int recursionLeft){

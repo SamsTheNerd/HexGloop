@@ -1,4 +1,5 @@
 {
+    "replace": false,
     "values": [
         "hexcasting:amethyst_dust",
         "hexcasting:dye_colorizer_white",

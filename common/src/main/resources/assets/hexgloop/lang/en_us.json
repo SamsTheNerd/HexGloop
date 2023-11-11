@@ -31,6 +31,9 @@
     "item.hexgloop.wither_staff": "Wither Staff",
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
     "item.hexgloop.hex_blade": "Hex Blade",
+    "item.hexgloop.slate_loader": "Ritualist's Inscriber",
+    "item.hexgloop.inventorty": "Inventorty",
+    "item.hexgloop.slate_loader.written": "Ritualist's Inscriber [%s]",
     "item.hexgloop.covered_spellbook": "Covered Spellbook",
     "item.hexgloop.covered_spellbook.sealed": "Sealed Covered Spellbook",
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
@@ -45,11 +48,14 @@
     "block.hexgloop.slate_chest": "Slate Chest",
     "block.hexgloop.gloopy_slate_chest": "Gloopy Slate Chest",
     "block.hexgloop.sentinel_bed": "Sentinel Bed",
+    "block.hexgloop.accelerator": "Accelerator",
+    "block.hexgloop.hexxed_glass": "Hexxed Glass",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",
     "key.hexgloop.scroll_down": "Scroll Spellbook Down",
     "key.hexgloop.scroll_up": "Scroll Spellbook Up",
+    "key.hexgloop.open_hex_book": "Open Hex Book",
     "key.categories.hexgloop": "Hex Gloop",
 
     "hexgloop.tooltip.multi_focus.page": "Selected Slot %d/%d",
@@ -80,6 +86,29 @@
 
     "hexcasting.spell.hexgloop:check_read_ring": "Authenicator's Reflection",
     "hexcasting.spell.hexgloop:check_write_ring": "Jeweler's Reflection",
+    
+    "hexcasting.spell.hexgloop:read_comparator": "Etho's Purification",
+    "hexcasting.spell.hexgloop:read_redstone": "Seth's Purification",
+    "hexcasting.spell.hexgloop:conjure_redstone": "Conjure Redstone Block",
+
+    "hexcasting.spell.hexgloop:clear_truename": "Renew Truename",
+    "hexcasting.spell.hexgloop:truename_agree_eula": "Acknowledge Truename",
+
+    "hexcasting.spell.hexgloop:in_overworld": "Terra Reflection",
+    "hexcasting.spell.hexgloop:in_nether": "Everflame Reflection",
+    "hexcasting.spell.hexgloop:opnop_useless": "Aergia's Gambit",
+    "hexcasting.spell.hexgloop:check_ambit": "Canary's Purification",
+    "hexcasting.spell.hexgloop:catchy_eval": "Athena's Gambit",
+    "hexcasting.spell.hexgloop:reveal_mishap": "Athena's Revelation",
+    "hexcasting.spell.hexgloop:stringify_mishap": "Athena's Reflection",
+    "hexcasting.spell.hexgloop:assert": "Euler's Purification",
+    
+    "hexcasting.spell.hexgloop:get_hotbar_slot": "Handy Reflection",
+    "hexcasting.spell.hexgloop:set_hotbar_slot": "Handy Gambit",
+    "hexcasting.spell.hexgloop:swap_hotbar_slot": "Handoff",
+
+    "hexcasting.spell.hexgloop:conjure_tasty_treat": "Conjure Tasty Treat",
+
 
     "hexcasting.mishap.bad_item.slot": "%s needs %s in the %s but got %dx %s",
     "hexcasting.mishap.no_item.slot": "%s needs %s in the %s but got nothing",
@@ -91,11 +120,12 @@
     "hexcasting.mishap.bad_item.labely_item": "a labelable item",
     "hexcasting.mishap.bad_item.gloopifact": "a gloopifact",
 
+    "hexcasting.mishap.mirror_limits": "%s had no reflection",
+
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s expected to be cast from one of: %s, but was cast from %s",
-
-    "hexcasting.mishap.mirror_limits": "%s had no reflection",
+    
     
     "hexgloop.mishap.catch_wrapper": "Last Mishap: %s",
     "hexgloop.mishap.catch_wrapper.none": "This cast has yet to mishap",
@@ -109,16 +139,26 @@
     "hexgloop.source_type.packaged_hex": "a Casting Item",
     "hexgloop.source_type.wisp": "a Wisp",
     "hexgloop.source_type.gloopifact": "a Gloopifact",
+    "hexgloop.source_type.inventorty": "an Inventorty",
 
+    "hexgloop.container.simple": "Simple",
+    "hexgloop.container.result": "Result",
+    
+    "hexgloop.truename_eula": "I appear to have imbued this object with my truename. I shudder to think what would happen if this fell into malicious hands. It may be comforting for me to review my notes on Truename Protection Spells",
     
     "hexgloop.gloopvancement.title": "Glooptastic",
     "hexgloop.gloopvancement.desc": "Get your hands gloopy",
+    "hexgloop.syncvancement.title": "Gloopy action at a distance",
+    "hexgloop.syncvancement.desc": "Synchronize your gloop",
+    "hexgloop.sketchy_foods.title": "The snack that evals back",
+    "hexgloop.sketchy_foods.desc": "Eat a hexxed snack, they're probably vegan?",
     
 
     "hexgloop.entry.gloopytweaks": "Glooptastic Changes",
     "hexgloop.page.gloopytweaks.0": "I have noticed some absolutely glooptastic changes in the world recently.$(br2)For one, it's much easier to visualize patterns. I can even hear something like \"\\<southeast,deaqq>\" and visualize it perfectly as $(m)$(0)<southeast,deaqq>$(). Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.",
     "hexgloop.page.gloopytweaks.1": "I've also been finding it easier to flip through my notes. Pressing $(k:key.hexgloop.open_iota_wheel) allows me to visualize my spellbook, and I can flip through it quickly with $(l)$(k:key.hexgloop.scroll_down)$() and $(l)$(k:key.hexgloop.scroll_up)$().$(br2)By far the strangest change is that my hexes $(o)feel$() different, almost like they're vibrating through my bones. Perhaps a sensitive enough scanner could pick up on this?",
-    "hexgloop.page.gloopytweaks.2": "I've also discovered that I can apply dye to my staffs if I want to make them more colorful",
+    "hexgloop.page.gloopytweaks.2": "I've noticed that it's recently become easier to reference these notes while casting, pressing $(k:key.hexgloop.open_hex_book) causes my book to fly open right to the page I left it.$(br2)The book also seems,, friendlier. When I'm on a page with a pattern and touch it to a hanging scroll, it copies the pattern onto the scroll. It even seems to get the page based on which hand I'm holding it in.",
+    "hexgloop.page.gloopytweaks.3": "I've also discovered that I can apply dye to my staffs if I want to make them more colorful.",
 
     "hexgloop.entry.casting_ring": "Casting Ring",
     "hexgloop.page.casting_ring.0": "I do love my staff, but occasionally I find myself needing a lighter casting instrument.$(br2)The casting ring, when equipped, let's me open up a staff free casting grid by pressing $(l)$(k:key.hexgloop.casting_ring)$(). I find my grid reduced without the reach of my staff, but still, this may be a worthwhile trade-off.",
@@ -140,7 +180,8 @@
     "hexgloop.entry.gloop": "Gloop !",
     "hexgloop.page.gloop.0": "This is glooptastic ! My calculations suggest that under the right conditions, slime and media may form together into a highly reactive and adaptive material.$(br2)It'll require a way to energize the reactants and some mechanism to prompt the reaction. I've drafted my schematics for such a device on the following page.",
     "hexgloop.page.gloop.1": "My research suggests that 3 $(item)slime balls$(), 3 $(item)charged amethyst$(), and 1 $(item)amethyst shard$() should react to form some gloop.$(br2)The adaptive nature of this gloop leads me to believe there may be other forms out there to be discovered...",
-    "hexgloop.page.gloop.energizer": "This machine should be strong enough to channel the media through nearby water and into my reactants. I can use a device such as a hopper to feed media in. It should consume about 1 dust per second while active and draw 10 dust for a reaction.$(br2)Now I just need a way to trigger the reaction.. perhaps I can look to nature for guidance ?",
+    "hexgloop.page.gloop.2": "I've recently discovered a new form of gloop, I've been calling is synchronous gloop, and it seems to be able to react across great distances. It can be made in an energizer with 3 $(item)slime balls$(), 3 $(item)charged amethyst$(), and 1 $(item)ender pearl$().",
+    "hexgloop.page.gloop.energizer": "This machine should be strong enough to channel the media through nearby water and into my reactants. I can use a device such as a hopper to feed media in. It should consume about 1 dust per second while active and draw 10 dust for a reaction.$(br2)Now I just need a way to trigger the reaction.. perhaps I can look up to nature for a strike of inspiration ?",
 
     "hexgloop.entry.multi_focus": "Multi Focus",
     "hexgloop.page.multi_focus.0": "I can feel the gloop pulling at my mind, maybe I can pull back?$(br2)A gloop constructed multi focus should let me hold multiple iotas in a single item and access them quickly with $(l)$(k:key.hexgloop.open_iota_wheel)$(), sort of like a smaller spellbook. For more organizational techniques I should check my notes on $(l:hexgloop:patterns/labels)labels$(/l)",
@@ -178,6 +219,60 @@
     "hexgloop.page.trinket_focus_patterns.check_write_ring": "If I could save an iota into a ring I'm wearing, returns True. Otherwise, returns False.",
 
     "hexgloop.entry.craft_potion": "Craft Casting Potion",
-    "hexgloop.page.craft_potion.0": "Crafts a $(l:hexgloop:items/casting_potion)Casting Potion$(/l). Costs about 1 shard."
+    "hexgloop.page.craft_potion.0": "Crafts a $(l:hexgloop:items/casting_potion)Casting Potion$(/l). Costs about 1 shard.",
+
+
+    "hexgloop.entry.redstone": "Redstone",
+    "hexgloop.page.redstone.0": "Gets the redstone signal strength of the block of at the given position",
+    "hexgloop.page.redstone.1": "Reads the value of the block at the given position as a comparator would",
+    "hexgloop.page.redstone.2": "Conjures a redstone-like block at the given position and with the given signal strength. The strength is bound between 0 and 15. This costs 1 dust.",
+
+
+    "hexgloop.entry.truename_protection": "Truename Protection",
+    "hexgloop.page.truename_protection.0": "I've known that my truename can give others access to me, but my research suggests that there's a way for them to use it to cast as me as well.$(br2)Although this is worrying, I've found a way to protect myself from its effects, I've documented this on the following pages.",
+    "hexgloop.page.truename_protection.1": "This spell lets me renew my truename, effectively clearing any stored references to it.",
+    "hexgloop.page.truename_protection.2": "Recently I've felt worries whenever I write my truename. This spell seems to silence those worries. I can always cast it again if I'd like to be more cautious.",
+
+    "hexgloop.entry.gloopmisc": "Misc Gloop",
+    "hexgloop.page.gloopmisc.0": "Returns whether or not the hex is being cast in the overworld",
+    "hexgloop.page.gloopmisc.1": "Returns whether or not the hex is being cast in the nether",
+    "hexgloop.page.gloopmisc.2": "Returns whether or not the given entity or position is in ambit",
+    "hexgloop.page.gloopmisc.3": "Asserts that the boolean is true and mishaps if not. The mishap is labeled with whatever pattern, if any, comes before it on the stack",
+    "hexgloop.page.gloopmisc.4": "Does absolutely nothing.",
+    "hexgloop.page.gloopmisc.5": "Casts the pattern or patterns on the stack similarly to $(l:hexcasting:patterns/meta#hexcasting:eval)Hermes' Gambit$(/l). If its cast mishaps it will continue on instead of stopping the hex. Returns whether or not the cast mishap",
+    "hexgloop.page.gloopmisc.6": "Reveals the last mishap. This may behave strangely when cast directly from my staff",
+    "hexgloop.page.gloopmisc.7": "Returns a string with information on the last mishap.$(br2)$(l)requires moreiotas$(/l)",
+
+    "hexgloop.entry.hotbar": "Hotbar Manipulation",
+    "hexgloop.page.hotbar.0": "Returns the index of the currently selected slot",
+    "hexgloop.page.hotbar.1": "Selects the slot indexed by the given number",
+    "hexgloop.page.hotbar.2": "Swaps my held items between my hands",
+
+    "hexgloop.entry.more_staffs": "Gloopy Staffs",
+    "hexgloop.page.more_staffs.0": "I've drawn out some designs for new staffs. These certainly have a different style about them, but they function just the same",
+
+    "hexgloop.page.inscriber": "Placing slates by hand has become so tedious. I've rigged together this contraption to improve the process. I can write a list of patterns to it and fill it with slates, as I would a bundle, and then using it will place a slate with the next pattern in the list.",
+
+    "hexgloop.page.hexxed_glass": "A block of amethyst dust is basically magic sand right ? Well it smelts like it atleast. Strangely, my raycasts seem to pass right through it.",
+
+    "hexgloop.page.dyebook": "I've been thinking my spellbooks could use a splash of color. Fashioning a cover for them allows me to dye them. The netherite used in the binding makes it fire proof as well.$(br2)Applying the cover doesn't disturb any of the spells written on its pages. I haven't found a good way to remove the cover yet though..",
+
+    "hexgloop.entry.hex_snacks": "Hex Snacks",
+    "hexgloop.page.hex_snacks.intro": "Hexxing can really work up an appetite, luckily I found some snacks !",
+    "hexgloop.page.hex_snacks.gummy": "The Thought Gummy makes for a nice little snack on the go. It has a trace amount of media, but probably isn't the best trinket filler.",
+    "hexgloop.page.hex_snacks.conjure_gummy": "Conjures a thought gummy at the given position. Returns a reference to the item entity. Costs 1 dust.",
+    "hexgloop.page.hex_snacks.hexxyos": "Part of a mindful breakfast",
+
+    "hexgloop.page.chests.normal": "A slate strengthened chest. It has slightly more storage space than a normal chest.",
+    "hexgloop.page.chests.gloopy": "A slate and gloop strengthened chest. It has the storage space of two regular chests.$(br2)I wonder if it may have more uses yet to be discovered?",
+
+    "hexgloop.page.sentinel_bed": "A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.",
+
+    "hexgloop.page.reflection.0": "A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.",
+
+
+    "hexgloop.entry.addons": "Addons",
+    "hexgloop.page.addons": "I've heard tales of a number of additional hex disciplines. This link seems like a good reference for a list of all of them, as well as external tools, datapacks, and more",
+    "hexgloop.page.addons.link": "Addons List"
 
 }

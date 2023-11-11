@@ -61,6 +61,9 @@ public class HexGloopNetwork {
         });
 
         NetworkManager.registerReceiver(NetworkManager.Side.C2S, CHANGE_WALL_SCROLL_ID, BookScrollHandlers::handleReplaceScroll);
+    }
+
+    public static void registerClientSideOnly(){
         NetworkManager.registerReceiver(NetworkManager.Side.S2C, CLOSE_HEX_BOOK_ID, BookScrollHandlersClient::handleCloseClientBook);
         NetworkManager.registerReceiver(NetworkManager.Side.S2C, PROMPT_REPLACE_SCROLL_ID, BookScrollHandlersClient::handleReplaceScrollPrompt);
     }

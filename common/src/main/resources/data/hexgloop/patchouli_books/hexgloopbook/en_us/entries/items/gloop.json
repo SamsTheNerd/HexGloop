@@ -10,13 +10,17 @@
         "text": "hexgloop.page.gloop.0"
       },
       {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:gloop_energizer",
+        "text": "hexgloop.page.gloop.energizer"
+      },
+      {
         "type": "patchouli:text",
         "text": "hexgloop.page.gloop.1"
       },
       {
-        "type": "patchouli:crafting",
-        "recipe": "hexgloop:gloop_energizer",
-        "text": "hexgloop.page.gloop.energizer"
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloop.2"
       }
     ]
 }

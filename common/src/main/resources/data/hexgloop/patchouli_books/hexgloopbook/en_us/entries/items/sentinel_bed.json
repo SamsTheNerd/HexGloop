@@ -1,0 +1,14 @@
+{
+    "name": "block.hexgloop.sentinel_bed",
+    "icon": "hexgloop:sentinel_bed",
+    "category": "hexcasting:items",
+    "sortnum": 8,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:sentinel_bed",
+        "text": "hexgloop.page.sentinel_bed"
+      }
+    ]
+  }

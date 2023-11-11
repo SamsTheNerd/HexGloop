@@ -1,0 +1,29 @@
+{
+    "name": "hexgloop.entry.truename_protection",
+    "category": "hexcasting:patterns/spells",
+    "icon": "minecraft:totem_of_undying",
+    "sortnum": 2,
+    "advancement": "hexcasting:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "hexgloop.page.truename_protection.0"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:clear_truename",
+            "anchor": "hexgloop:clear_truename",
+            "input": "",
+            "output": "",
+            "text": "hexgloop.page.truename_protection.1"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "hexgloop:truename_agree_eula",
+            "anchor": "hexgloop:truename_agree_eula",
+            "input": "",
+            "output": "",
+            "text": "hexgloop.page.truename_protection.2"
+        }
+    ]
+}

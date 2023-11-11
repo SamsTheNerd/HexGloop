@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SFS",
+        "CDC",
+        "SSS"
+    ],
+    "key": {
+        "S": {
+            "item": "hexcasting:slate"
+        },
+        "D": {
+            "item": "minecraft:dispenser"
+        },
+        "F": {
+            "item": "hexcasting:focus"
+        },
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        }
+    },
+    "result": {
+        "item": "hexgloop:slate_loader"
+    }
+}

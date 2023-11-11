@@ -68,7 +68,7 @@ public class AgreeTruenameEULAState extends PersistentState{
         AgreeTruenameEULAState serverState = persistentStateManager.getOrCreate(
                 AgreeTruenameEULAState::createFromNbt,
                 AgreeTruenameEULAState::new,
-                HexGloop.MOD_ID + ":truename_eula_state"); 
+                HexGloop.MOD_ID + "_truename_eula_state"); 
 
         serverState.markDirty(); // YOU MUST DO THIS!!!! Or data wont be saved correctly.
  

@@ -1,5 +1,7 @@
 package com.samsthenerd.hexgloop.items;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import at.petrak.hexcasting.api.item.IotaHolderItem;
@@ -8,8 +10,11 @@ import at.petrak.hexcasting.api.utils.NBTHelper;
 import at.petrak.hexcasting.common.items.ItemFocus;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.text.Text;
+import net.minecraft.world.World;
 
 public class ItemGloopifact extends ItemPackagedHex implements IotaHolderItem {
     public ItemGloopifact(Settings settings){
@@ -50,6 +55,12 @@ public class ItemGloopifact extends ItemPackagedHex implements IotaHolderItem {
         } else {
             NBTHelper.put(stack, ItemFocus.TAG_DATA, HexIotaTypes.serialize(iota));
         }
+    }
+    
+    @Override
+    public void appendTooltip(ItemStack pStack, @Nullable World pLevel, List<Text> pTooltipComponents,
+                                TooltipContext pIsAdvanced) {
+        IotaHolderItem.appendHoverText(this, pStack, pTooltipComponents, pIsAdvanced);
     }
 
     public int cooldown(){

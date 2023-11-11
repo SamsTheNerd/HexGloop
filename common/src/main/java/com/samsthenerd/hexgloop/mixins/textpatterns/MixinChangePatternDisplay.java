@@ -20,9 +20,13 @@ public abstract class MixinChangePatternDisplay {
     @Inject(method = "display(Lnet/minecraft/nbt/NbtElement;)Lnet/minecraft/text/Text;", at = @At("HEAD"), cancellable = true)
     public void makePatternIotaVisual(NbtElement tag, CallbackInfoReturnable<Text> cir) {
         HexPattern pattern = PatternIota.deserialize(tag).getPattern();
-        MutableText patternTextStyled = Text.literal("<").setStyle(((PatternStyle) Style.EMPTY.withBold(true).withStrikethrough(true).withColor(Formatting.WHITE)).withPattern(pattern));
-        String hiddenString = pattern.getStartDir().toString().replace("_", "").toLowerCase() + "," + pattern.anglesSignature() + ">";
+        Style patternStyle = ((PatternStyle) Style.EMPTY.withBold(true).withStrikethrough(true).withColor(Formatting.WHITE)).withPattern(pattern);
+        Text originalText = PatternIota.display(pattern); // get the original text so we can keep the string the same
+        String originalString = originalText.getString();
+        MutableText patternTextStyled = Text.literal(originalString.substring(0, 1)).setStyle(patternStyle);
+        String hiddenString = originalString.substring(1);
         patternTextStyled.append(Text.literal(hiddenString).setStyle(Style.EMPTY.withHidden(true)));
+
         cir.setReturnValue(patternTextStyled);
     }
 }

@@ -9,15 +9,9 @@
         "S": {
             "item": "hexgloop:synchronous_gloop"
         },
-        "G": [{
-            "tag": "c:glass_panes"
+        "G": {
+            "item": "hexgloop:hexxed_glass"
         },
-        {
-            "tag": "forge:glass_panes"
-        },
-        {
-            "item": "minecraft:glass_pane"
-        }],
         "B": {
             "item": "hexcasting:slate_block"
         },
