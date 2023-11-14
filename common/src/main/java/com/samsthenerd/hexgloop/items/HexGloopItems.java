@@ -67,7 +67,7 @@ public class HexGloopItems{
     public static final RegistrySupplier<Item> SLATE_BOWL = item("slate_bowl", 
         () -> new Item(defaultSettings()));
 
-    public static final int HEX_SNACK_MEDIA = MediaConstants.DUST_UNIT / 20;
+    public static final int HEX_SNACK_MEDIA = MediaConstants.DUST_UNIT / 2;
 
     public static final RegistrySupplier<Item> HEX_SNACK = item("hex_snack",
         () -> new ItemSimpleMediaProvider(defaultSettings().food((new FoodComponent.Builder()).hunger(2).saturationModifier(0.5f).snack().build()),

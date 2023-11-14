@@ -33,7 +33,7 @@ public class MixinSorryChloeNoWispNonsense {
             if(server == null) return;
             UUID lockUUID = TruenameLockState.getServerState(server).getLockUUID(player.getUuid());
             if (lockUUID == null) return;
-            if (lockUUID != keyUuid) {
+            if (!lockUUID.equals(keyUuid)) {
                 cir.setReturnValue(null);
             }
         }

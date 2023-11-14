@@ -110,6 +110,15 @@
     "hexcasting.spell.hexgloop:conjure_tasty_treat": "Conjure Tasty Treat",
 
 
+    "hexcasting.spell.hexgloop:bind_mirror": "Bind Mirror",
+    "hexcasting.spell.hexgloop:temp_bind_mirror": "Temp Bind Mirror",
+    
+    "hexcasting.spell.hexgloop:compare_item_bound_caster": "Notary's Purification",
+    "hexcasting.spell.hexgloop:cooler_compare_item_bound_caster": "Notary's Distillation",
+    "hexcasting.spell.hexgloop:get_item_bound_caster": "Merchant's Reflection",
+    "hexcasting.spell.hexgloop:cooler_get_item_bound_caster": "Merchant's Purification",
+
+
     "hexcasting.mishap.bad_item.slot": "%s needs %s in the %s but got %dx %s",
     "hexcasting.mishap.no_item.slot": "%s needs %s in the %s but got nothing",
     "hexcasting.mishap.bad_offhand_item.caster_bound": "an item bound by a hexcaster",
@@ -268,7 +277,13 @@
 
     "hexgloop.page.sentinel_bed": "A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.",
 
-    "hexgloop.page.reflection.0": "A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.",
+    "hexgloop.entry.reflection": "Reflections",
+    "hexgloop.page.reflection.0": "These mirrors, made from hexxed glass and synchronous gloop, seem to allow my hexes to act on items in the mirror's reflection as if they were in my other hand. Using a scrying lens shows the reflected item in my hand.",
+    "hexgloop.page.reflection.1": "This allows me to bind myself to a Mirrored Pedestal so that its held item is reflected into my empty hand.",
+    "hexgloop.page.reflection.2": "Similar to Bind Mirror but only lasting for the single instant of my cast.",
+
+
+    "hexgloop.page.casters_coin.0": "",
 
 
     "hexgloop.entry.addons": "Addons",

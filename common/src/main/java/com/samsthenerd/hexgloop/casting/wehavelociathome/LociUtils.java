@@ -68,7 +68,7 @@ public class LociUtils {
             return true;
         }
         kotlin.Pair<FunctionalData, ResolvedPatternType> result = ((MixinExposeHarnessStuff)(Object)harness).invokehandleParentheses(iota);
-        if(result.getSecond().getSuccess()){
+        if(result != null && result.getSecond() != null && result.getSecond().getSuccess()){
             harness.applyFunctionalData(result.getFirst());
             return true;
         }

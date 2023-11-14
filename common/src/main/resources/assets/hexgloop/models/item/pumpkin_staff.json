@@ -1,6 +1,20 @@
 {
     "parent": "minecraft:item/handheld_rod",
+    "overrides": [
+      {
+        "model": "hexgloop:item/pumpkin_staff",
+        "predicate": {
+          "hexgloop:is_casting": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/pumpkin_staff_casting",
+        "predicate": {
+          "hexgloop:is_casting": 1
+        }
+      }
+    ],
     "textures": {
-        "layer0": "hexgloop:item/morestaffs/pumpkin_staff"
+        "layer0": "hexgloop:item/morestaffs/pumpkin_staff_empty"
     }
-}
+  }

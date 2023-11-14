@@ -41,7 +41,7 @@ public class MixinClearImpetus implements ISetImpetusKey {
                 if(world == null) return;
                 UUID lockUuid = TruenameLockState.getServerState(world.getServer()).getLockUUID(player.getUuid());
                 if(lockUuid == null) return;
-                if(lockUuid != keyUuid){
+                if(!lockUuid.equals(keyUuid)){
                     // cancel the cast
                     impetus.setLastMishap((new MishapClearedTruename(player)).makeError(Text.translatable("hexgloop.generic_circle_spell"), player));
                     ci.cancel();

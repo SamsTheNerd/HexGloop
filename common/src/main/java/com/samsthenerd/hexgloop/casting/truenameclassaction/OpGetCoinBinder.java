@@ -79,7 +79,7 @@ public class OpGetCoinBinder implements ConstMediaAction {
                 MishapThrowerWrapper.throwMishap(new MishapBadOffhandItem(maybeCoinStack, result.getSecond(), Text.translatable("hexcasting.mishap.bad_offhand_item.caster_bound")));
             }
         } else {
-            ItemEntity ent = OperatorUtils.getItemEntity(args, 1, getArgc());
+            ItemEntity ent = OperatorUtils.getItemEntity(args, checkEquals ? 1 : 0, getArgc());
             maybeCoinStack = ent.getStack();
             if(maybeCoinStack.getItem() != HexGloopItems.CASTERS_COIN.get()){
                 MishapThrowerWrapper.throwMishap(new MishapBadItem(ent, Text.translatable("hexcasting.mishap.bad_offhand_item.caster_bound")));

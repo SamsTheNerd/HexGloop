@@ -27,6 +27,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.CraftingResultInventory;
+import net.minecraft.inventory.DoubleInventory;
 import net.minecraft.inventory.EnderChestInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
@@ -295,7 +296,8 @@ public class InventortyUtils {
         SimpleInventory.class, "hexgloop.container.simple",
         CraftingResultInventory.class, "hexgloop.container.result",
         CraftingInventory.class, "container.crafting",
-        MerchantInventory.class, "merchant.trades"
+        MerchantInventory.class, "merchant.trades",
+        DoubleInventory.class, "container.chestDouble" // not ideal but i don't feel like writing an accesor into DoubleInventory rn
     );
 
     // some inventory types are just too generic

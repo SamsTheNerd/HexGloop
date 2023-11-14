@@ -13,6 +13,7 @@ import com.samsthenerd.hexgloop.casting.mirror.IPlayerPTUContext;
 import com.samsthenerd.hexgloop.items.ItemAbstractPassThrough.PassThroughUseContext;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 
@@ -46,6 +47,8 @@ public abstract class MixinServerPlayerMirror extends Entity implements IMirrorB
     public void updateTrackedStack(){
         if(this.boundMirror != null){
             this.dataTracker.set(HELD_STACK, this.boundMirror.getItemStack(getServer()));
+        } else {
+            this.dataTracker.set(HELD_STACK, ItemStack.EMPTY);
         }
     }
 

@@ -27,7 +27,7 @@ public class MixinBindCaster {
     private ADIotaHolder bindCoinToCaster(IXplatAbstractions abstractionInstance, ItemStack stack, Operation<ADIotaHolder> original, @NotNull List<? extends Iota> args, @NotNull CastingContext ctx){
         ADIotaHolder holder = original.call(abstractionInstance, stack);
         HexGloop.logPrint("in MixinBindCaster");
-        if(stack.getItem() instanceof ItemCastersCoin readOnlyItem){
+        if(stack.getItem() instanceof ItemCastersCoin readOnlyItem && !stack.isEmpty()){
             // the rest is absolutely none of my business.
             // there shouldn't be anything wrong with a blank coin having a caster in it ? just check that it's not blank before doing anything with it
             HexGloop.logPrint("stack is a coin");

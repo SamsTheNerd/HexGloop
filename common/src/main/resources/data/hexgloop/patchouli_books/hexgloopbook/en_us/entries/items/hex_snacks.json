@@ -20,7 +20,7 @@
         "op_id": "hexgloop:conjure_tasty_treat",
         "anchor": "hexgloop:conjure_tasty_treat",
         "input": "vec",
-        "output": "entity",
+        "output": "",
         "text": "hexgloop.page.hex_snacks.conjure_gummy"
       },
       {

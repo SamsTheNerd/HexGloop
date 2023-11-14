@@ -28,7 +28,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 
 public class BlockConjuredRedstone extends BlockConjured{
 
@@ -100,17 +99,18 @@ public class BlockConjuredRedstone extends BlockConjured{
         return new BlockEntityConjuredRedstone(pPos, pState);
     }
 
-    public static void setColor(WorldAccess pLevel, BlockPos pPos, FrozenColorizer colorizer) {
-        BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+    public static void setColor(World world, BlockPos pPos, FrozenColorizer colorizer) {
+        BlockEntity blockentity = world.getBlockEntity(pPos);
         if (blockentity instanceof BlockEntityConjuredRedstone tile) {
             tile.setColorizer(colorizer);
         }
     }
 
-    public static void setPower(WorldAccess pLevel, BlockPos pPos, int power) {
-        BlockEntity blockentity = pLevel.getBlockEntity(pPos);
+    public static void setPower(World world, BlockPos pPos, int power) {
+        BlockEntity blockentity = world.getBlockEntity(pPos);
         if (blockentity instanceof BlockEntityConjuredRedstone tile) {
             tile.setPower(power);
+            world.updateNeighborsAlways(pPos, world.getBlockState(pPos).getBlock());
         }
     }
 
