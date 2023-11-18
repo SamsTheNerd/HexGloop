@@ -32,7 +32,7 @@ public class MixinCoolerBindCaster {
         if(cir.getReturnValue() == null) return; // gonna add this just in case it tries to call here from a mishap?
         if(ent instanceof ItemEntity itemEnt){
             ItemStack stack = itemEnt.getStack();
-            if(stack.getItem() instanceof ItemCastersCoin readOnlyItem){
+            if(stack.getItem() instanceof ItemCastersCoin readOnlyItem && !stack.isEmpty()){
                 // the rest is absolutely none of my business.
                 // there shouldn't be anything wrong with a blank coin having a caster in it ? just check that it's not blank before doing anything with it
                 PlayerEntity caster = ctx.getCaster();

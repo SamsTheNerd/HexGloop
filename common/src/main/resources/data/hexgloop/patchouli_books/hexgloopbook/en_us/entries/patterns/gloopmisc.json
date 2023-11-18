@@ -1,7 +1,7 @@
 {
     "name": "hexgloop.entry.gloopmisc",
     "category": "hexcasting:patterns",
-    "icon": "minecraft:heart_pigment",
+    "icon": "hexgloop:heart_pigment",
     "sortnum": 4,
     "advancement": "hexcasting:root",
     "pages": [
@@ -67,7 +67,8 @@
             "anchor": "hexgloop:stringify_mishap",
             "input": "",
             "output": "string",
-            "text": "hexgloop.page.gloopmisc.7"
+            "text": "hexgloop.page.gloopmisc.7",
+            "flag": "mod:moreiotas"
         }
     ]
 }

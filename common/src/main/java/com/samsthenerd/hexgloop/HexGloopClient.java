@@ -54,7 +54,6 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.DyeableItem;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -114,17 +113,6 @@ public class HexGloopClient {
             }
             return 0xFFFFFF; //white
 		}, HexGloopItems.MULTI_FOCUS_ITEM.get());
-
-        ItemConvertible[] hexStaffs = {HexItems.STAFF_OAK, HexItems.STAFF_SPRUCE, 
-                HexItems.STAFF_BIRCH, HexItems.STAFF_JUNGLE, HexItems.STAFF_ACACIA, 
-                HexItems.STAFF_DARK_OAK, HexItems.STAFF_CRIMSON, HexItems.STAFF_WARPED};
-
-        ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
-			if(tintIndex == 1){
-                return ((DyeableItem)HexItems.STAFF_OAK).getColor(stack);
-            }
-            return 0xFFFFFF;
-		}, hexStaffs);
 
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
             FrozenColorizer colorizer = HexGloopItems.CASTING_POTION_ITEM.get().getColorizer(stack);

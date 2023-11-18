@@ -33,7 +33,7 @@ public class MixinAttachImpetusKey {
         cancellable = true)
     public void AttachImpetusKey(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, CallbackInfoReturnable<ActionResult> cir){
         ItemStack usedStack = player.getStackInHand(hand);
-        // while we're here, might as well block coins from being used to.
+        // while we're here, might as well block coins from being used too.
         if(usedStack.getItem() instanceof ItemCastersCoin){
             cir.setReturnValue(ActionResult.PASS);
             return;

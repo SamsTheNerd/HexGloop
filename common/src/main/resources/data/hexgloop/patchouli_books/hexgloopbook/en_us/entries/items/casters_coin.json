@@ -1,0 +1,52 @@
+{
+    "name": "item.hexgloop.casters_coin",
+    "icon": "hexgloop:casters_coin",
+    "category": "hexcasting:items",
+    "sortnum": 3,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.casters_coin.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:casters_coin",
+        "text": "hexgloop.page.casters_coin.1"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:compare_item_bound_caster",
+        "anchor": "hexgloop:compare_item_bound_caster",
+        "input": "entity",
+        "output": "boolean",
+        "text": "hexgloop.page.casters_coin.2"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:cooler_compare_item_bound_caster",
+        "anchor": "hexgloop:cooler_compare_item_bound_caster",
+        "input": "entity, entity",
+        "output": "boolean",
+        "text": "hexgloop.page.casters_coin.3"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:get_item_bound_caster",
+        "anchor": "hexgloop:get_item_bound_caster",
+        "input": "",
+        "output": "string",
+        "text": "hexgloop.page.casters_coin.4",
+        "flag": "mod:moreiotas"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:cooler_get_item_bound_caster",
+        "anchor": "hexgloop:cooler_get_item_bound_caster",
+        "input": "entity",
+        "output": "string",
+        "text": "hexgloop.page.casters_coin.5",
+        "flag": "mod:moreiotas"
+      }
+    ]
+  }

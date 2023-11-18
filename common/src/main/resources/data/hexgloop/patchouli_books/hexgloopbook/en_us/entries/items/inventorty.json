@@ -1,0 +1,80 @@
+{
+    "name": "item.hexgloop.inventorty",
+    "icon": "hexgloop:inventorty",
+    "category": "hexcasting:items",
+    "sortnum": 11,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.inventorty.0"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.inventorty.1"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:inventorty",
+        "text": "hexgloop.page.inventorty.2"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:craft/inventorty",
+        "anchor": "hexgloop:craft/inventorty",
+        "input": "entity, [pattern]",
+        "output": "",
+        "text": "hexgloop.page.inventorty.3"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:torty_transfer",
+        "anchor": "hexgloop:torty_transfer",
+        "input": "slot, slot | null, num",
+        "output": "num, entity?",
+        "text": "hexgloop.page.inventorty.4"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:torty_count",
+        "anchor": "hexgloop:torty_count",
+        "input": "slot",
+        "output": "num",
+        "text": "hexgloop.page.inventorty.5"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:torty_max_count",
+        "anchor": "hexgloop:torty_max_count",
+        "input": "slot",
+        "output": "num",
+        "text": "hexgloop.page.inventorty.6"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:torty_get_type",
+        "anchor": "hexgloop:torty_get_type",
+        "input": "slot",
+        "output": "itemtype",
+        "text": "hexgloop.page.inventorty.7",
+        "flag": "mod:hexal"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:torty_inv_sizes",
+        "anchor": "hexgloop:torty_inv_sizes",
+        "input": "",
+        "output": "[num]",
+        "text": "hexgloop.page.inventorty.8"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:torty_inv_names",
+        "anchor": "hexgloop:torty_inv_names",
+        "input": "",
+        "output": "[string]",
+        "text": "hexgloop.page.inventorty.9",
+        "flag": "mod:moreiotas"
+      }
+    ]
+}

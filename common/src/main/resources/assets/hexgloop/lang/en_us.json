@@ -110,6 +110,31 @@
     "hexcasting.spell.hexgloop:conjure_tasty_treat": "Conjure Tasty Treat",
 
 
+    "hexcasting.spell.hexgloop:bind_mirror": "Bind Mirror",
+    "hexcasting.spell.hexgloop:temp_bind_mirror": "Temp Bind Mirror",
+    
+    "hexcasting.spell.hexgloop:compare_item_bound_caster": "Notary's Purification",
+    "hexcasting.spell.hexgloop:cooler_compare_item_bound_caster": "Notary's Distillation",
+    "hexcasting.spell.hexgloop:get_item_bound_caster": "Merchant's Reflection",
+    "hexcasting.spell.hexgloop:cooler_get_item_bound_caster": "Merchant's Purification",
+
+    "hexcasting.spell.hexgloop:gloopimind_upload": "Gloopimind Upload",
+    "hexcasting.spell.hexgloop:gloopimind_download": "Gloopimind Download",
+    "hexcasting.spell.hexgloop:craft/gloopifact": "Craft Gloopifact",
+    "hexcasting.spell.hexgloop:gloopifact_read": "Gloopcaster's Reflection",
+    "hexcasting.spell.hexgloop:gloopifact_write": "Gloopcaster's Gambit",
+    "hexcasting.spell.hexgloop:gloopifact_check_read": "Gloopitor's Reflection",
+    "hexcasting.spell.hexgloop:gloopifact_check_write": "Gloopessor's Distillation",
+
+    "hexcasting.spell.hexgloop:craft/inventorty": "Teach Inventorty",
+    "hexcasting.spell.hexgloop:torty_transfer": "Torty Transfer",
+    "hexcasting.spell.hexgloop:torty_count": "Torty's Purification",
+    "hexcasting.spell.hexgloop:torty_max_count": "Torty's Max Purification",
+    "hexcasting.spell.hexgloop:torty_get_type": "Curiosity's Purification",
+    "hexcasting.spell.hexgloop:torty_inv_sizes": "Torty's Reflection",
+    "hexcasting.spell.hexgloop:torty_inv_names": "Torty's Reflection II",
+
+
     "hexcasting.mishap.bad_item.slot": "%s needs %s in the %s but got %dx %s",
     "hexcasting.mishap.no_item.slot": "%s needs %s in the %s but got nothing",
     "hexcasting.mishap.bad_offhand_item.caster_bound": "an item bound by a hexcaster",
@@ -241,7 +266,7 @@
     "hexgloop.page.gloopmisc.4": "Does absolutely nothing.",
     "hexgloop.page.gloopmisc.5": "Casts the pattern or patterns on the stack similarly to $(l:hexcasting:patterns/meta#hexcasting:eval)Hermes' Gambit$(/l). If its cast mishaps it will continue on instead of stopping the hex. Returns whether or not the cast mishap",
     "hexgloop.page.gloopmisc.6": "Reveals the last mishap. This may behave strangely when cast directly from my staff",
-    "hexgloop.page.gloopmisc.7": "Returns a string with information on the last mishap.$(br2)$(l)requires moreiotas$(/l)",
+    "hexgloop.page.gloopmisc.7": "Returns a string with information on the last mishap.",
 
     "hexgloop.entry.hotbar": "Hotbar Manipulation",
     "hexgloop.page.hotbar.0": "Returns the index of the currently selected slot",
@@ -268,8 +293,57 @@
 
     "hexgloop.page.sentinel_bed": "A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.",
 
-    "hexgloop.page.reflection.0": "A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.",
+    "hexgloop.entry.reflection": "Reflections",
+    "hexgloop.page.reflection.0": "These mirrors, made from hexxed glass and synchronous gloop, seem to allow my hexes to act on items in the mirror's reflection as if they were in my other hand. Using a scrying lens shows the reflected item in my hand.",
+    "hexgloop.page.reflection.1": "This allows me to bind myself to a Mirrored Pedestal so that its held item is reflected into my empty hand.",
+    "hexgloop.page.reflection.2": "Similar to Bind Mirror but only lasting for the single instant of my cast.",
 
+
+    "hexgloop.page.casters_coin.0": "With my truename being so valuable, it'd be nice to have a safer way to barter against it. These coins should do the trick. I can write to it like a focus but it can only be read in once per coin. I've documented a few patterns here that can be used to check who wrote the coin.",
+    "hexgloop.page.casters_coin.1": "",
+    "hexgloop.page.casters_coin.2": "Takes a player entity and returns whether or not they wrote the coin in my other hand.",
+    "hexgloop.page.casters_coin.3": "Takes a player entity from the top of the stack and an item entity and returns whether or not the player wrote the coin in the item entity.",
+    "hexgloop.page.casters_coin.4": "Returns the name of whoever wrote the coin in my other hand.",
+    "hexgloop.page.casters_coin.5": "Returns the name of whoever wrote the coin in the given item entity.",
+
+
+    "hexgloop.page.gloopifact.0": "Gloop seems to be good at holding and manipulating iotas, so perhaps it'd work well as a part of a casting device.$(br2)The gloopifact is very similar to an artifact, just,, much gloopier. Its netherite bindings appear to make it fire resistant, no more losing my tools to nether mishaps.",
+    "hexgloop.page.gloopifact.1": "The focus at its core remains accessible for normal use, though my hexes will still prefer any iota source in my other hand. I've documented a set of patterns, very similar to other iota manipulation patterns, that instead target its internal focus.$(br2)I've also found that its ravenmind is much more malleable and documented patterns that allow it to communicate with my staffcasting ravenmind.$(br2)Except for crafting, these patterns only work when cast by a gloopifact",
+    "hexgloop.page.gloopifact.craft": "",
+    "hexgloop.page.gloopifact.3": "Costs about 16 $(l:items/amethyst)$(item)Charged Amethyst/$",
+    "hexgloop.page.gloopifact.4": "Uploads my gloopifact's ravenmind to my staff",
+    "hexgloop.page.gloopifact.5": "Downloads my staff's ravenmind to my gloopifact",
+    "hexgloop.page.gloopifact.6": "Reads the iota from the gloopifact's internal focus",
+    "hexgloop.page.gloopifact.7": "Writes an iota to the gloopifact's internal focus",
+    "hexgloop.page.gloopifact.8": "Returns whether or not the internal focus can be read",
+    "hexgloop.page.gloopifact.9": "Returns whether or not the given iota can be written to the internal focus.",
+
+    "hexgloop.page.hand_mirror.0": "A hexxed hand mirror, it will $(l:hexgloop:patterns/spells/reflection)reflect$(/l) any item entity written to it. Using a pedestal to hold my item may be convenient. $(br2)Unlike other reflections, which can only be touched by my hexes, the reflections from the hand mirror have a physicality to them that lets me use them as if they were really in my hand.",
+    "hexgloop.page.hand_mirror.craft": "",
+    
+    "hexgloop.page.pedestal.0": "I always seem to lose track of my dropped items.$(br2)The pedestal can hold a single item stack in place for me. This item stack is locked in place but my hexes can still interact with it as if it were dropped on the ground. It appears to pick up items dropped on it and respond how I would expect to devices such as hoppers.$(br2)I sense these pedestals may have more magic about them..",
+    "hexgloop.page.pedestal.1": "Solid",
+    "hexgloop.page.pedestal.2": "The mirrored panels inlayed in the pedestal allow me to bind myself to it and see its $(l:hexgloop:patterns/spells/reflection)reflection$(/l)",
+
+    "hexgloop.page.inventorty.0": "I have found the cutest little kitten ! It seems to quite like sitting in my pockets, playing with items. Perhaps I can teach it to do so in a more helpful manner ?$(br2)I've taught it to cast ! I can give it a list of patterns to cast when pet in my inventory, a similar motion to using a bundle strangely enough. The stack of these casts will start with some additional information, first a boolean for if I'm holding the inventorty and then a number indicating the inventory slot it's in or looking at.",
+    "hexgloop.page.inventorty.1": "There are a number of patterns that can only be cast from an inventorty, many of them refer to a 'slot' type. This isn't an actual iota type but a shorthand for iotas that refer to a slot the inventorty can access:$(li)Non-negative numbers reference a specific slot in the open screen by their index. Slots in a separate inventory, such as a chest, are marked by their index + the inventory index * 1000.$(li)Item Entities near the caster.$(li)-2 for the inventory cursor slot$(li)-1000*(inventory index + 1) for the first available destination slot in that inventory.",
+    "hexgloop.page.inventorty.2": "Meow",
+    "hexgloop.page.inventorty.3": "Costs about 4 $(item)Charged Amethyst$()",
+    "hexgloop.page.inventorty.4": "Transfers up to the given number of items from the first slot to the second slot. It returns the number of items left in the input slot. If the second slot is null it drops the items on the caster and pushes a reference of it to the stack.",
+    "hexgloop.page.inventorty.5": "Returns how many items are in the given slot.",
+    "hexgloop.page.inventorty.6": "Returns how many items can fit in the given slot.",
+    "hexgloop.page.inventorty.7": "Returns the type of the item in the given slot",
+    "hexgloop.page.inventorty.8": "Returns a list containing the sizes of every inventory the inventorty can see, sorted based on the inventory index.",
+    "hexgloop.page.inventorty.9": "Returns a list containing the names of every inventory the inventorty can see, sorted based on the inventory index.",
+
+    "hexgloop.entry.loci": "Loci",
+    "hexgloop.page.loci.intro": "So far I've only constructed spell circles with slates, impeti, and directrices, but some of the blocks I've recently discovered seem to also have interesting uses in circles. I've adopted the term Loci to categorize them. On the following pages I've described the capabilities of some loci that I had previously discovered.",
+    "hexgloop.page.loci.slate_chest": "When the media wave flows through the chest it grants the circle access to the chest's inventory, as if it were the casters own. Good for large blockwork projects perhaps.",
+    "hexgloop.page.loci.pedestal": "When the media wave flows through a pedestal that holds an item containing a pattern, such as a scroll, it will add that pattern to the circle to be cast.",
+    "hexgloop.page.loci.mirror_pedestal": "This behaves similarly to its non-mirrored counterpart, however it will also try to embed any non pattern iotas. This embedding follows the same rules as embedding an iota in a pattern list.",
+
+    "hexgloop.page.accelerator.0": "Circles are by far my slowest means of casting, I believe this block should accelerate them. When the media wave hits an accelerator it boosts its speed by 200% of the original, with the boost fading by 20% each block. A single accelerator's boost will draw 2 amethyst dust from the impetus, though this cost will greatly increase as boosts are stacked. Spacing out the accelerators may help.",
+    "hexgloop.page.accelerator.1": "Speedy !",
 
     "hexgloop.entry.addons": "Addons",
     "hexgloop.page.addons": "I've heard tales of a number of additional hex disciplines. This link seems like a good reference for a list of all of them, as well as external tools, datapacks, and more",

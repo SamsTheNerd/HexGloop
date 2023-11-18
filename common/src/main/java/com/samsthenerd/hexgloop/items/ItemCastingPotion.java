@@ -118,11 +118,12 @@ public class ItemCastingPotion extends ItemPackagedHex{
 
         FrozenColorizer storedPigment = IXplatAbstractions.INSTANCE.getColorizer(playerEntity);
         FrozenColorizer potionPigment = getColorizer(stack);
+        if(potionPigment == null) potionPigment = storedPigment;
         IXplatAbstractions.INSTANCE.setColorizer(playerEntity, potionPigment);
         super.use(world, playerEntity, user.getActiveHand());
         FrozenColorizer currentPigment = IXplatAbstractions.INSTANCE.getColorizer(playerEntity);
         // only set it back if it didn't change from the potion, so we don't break hexbound's recall pigment
-        if(currentPigment == potionPigment)
+        if(currentPigment.equals(potionPigment) || currentPigment == potionPigment) // idk for sure if .equals is implemented properly and idc enough to check
             IXplatAbstractions.INSTANCE.setColorizer(playerEntity, storedPigment);
 
         if (playerEntity != null) {

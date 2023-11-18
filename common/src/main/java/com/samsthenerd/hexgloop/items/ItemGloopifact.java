@@ -32,7 +32,7 @@ public class ItemGloopifact extends ItemPackagedHex implements IotaHolderItem {
 
     @Override
     public void clearHex(ItemStack stack) {
-        if(readIotaTag(stack) != null){ // hopefully protect against clearing the hex before clearing the iota
+        if(readIotaTag(stack) == null){ // hopefully protect against clearing the hex before clearing the iota
             super.clearHex(stack);
         }
     }

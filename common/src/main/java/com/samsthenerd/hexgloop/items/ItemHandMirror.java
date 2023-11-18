@@ -163,6 +163,7 @@ public class ItemHandMirror extends ItemAbstractPassThrough implements IotaHolde
             if(nbt.containsUuid(ITEM_UUID_TAG)){
                 UUID uuid = nbt.getUuid(ITEM_UUID_TAG);
                 ServerWorld itemWorld = sWorld.getServer().getWorld(getMirroredItemDimension(stack));
+                if(itemWorld == null) itemWorld = sWorld;
                 Entity ent = itemWorld.getEntity(uuid);
                 if(ent instanceof ItemEntity itemEnt){
                     if(itemEnt.getStack() != null){

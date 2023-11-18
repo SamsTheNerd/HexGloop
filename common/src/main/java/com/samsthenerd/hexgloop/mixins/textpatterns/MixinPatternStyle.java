@@ -184,11 +184,13 @@ public class MixinPatternStyle implements PatternStyle{
 			if (!json.has("hexPatternStyle")) {
 				return;
 			}
+            Boolean hiddenFromJson = JsonHelper.hasBoolean(json, PATTERN_HIDDEN_KEY) ? JsonHelper.getBoolean(json, PATTERN_HIDDEN_KEY) : false;
+            
             JsonObject patternObj = JsonHelper.getObject(json, PATTERN_KEY);
             
             String startDirString = JsonHelper.hasString(patternObj, PATTERN_START_DIR_KEY) ? JsonHelper.getString(patternObj, PATTERN_START_DIR_KEY) : null;
             String angleSigString = JsonHelper.hasString(patternObj, PATTERN_ANGLE_SIG_KEY) ? JsonHelper.getString(patternObj, PATTERN_ANGLE_SIG_KEY) : null;
-            Boolean hiddenFromJson = JsonHelper.hasBoolean(patternObj, PATTERN_HIDDEN_KEY) ? JsonHelper.getBoolean(patternObj, PATTERN_HIDDEN_KEY) : false;
+
             if(startDirString == null || angleSigString == null) return;
 
             HexDir startDir = HexDir.fromString(startDirString);
