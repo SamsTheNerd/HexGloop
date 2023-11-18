@@ -483,6 +483,7 @@
       <summary><a href="#items">Items</a></summary>
       <ul>
           <li><a href="#items/casting_ring">Casting Ring</a></li>
+          <li><a href="#items/casters_coin">Caster&#39;s Coin</a></li>
           <li><a href="#items/dyebook">Covered Spellbook</a></li>
           <li><a href="#items/more_staffs">Gloopy Staffs</a></li>
           <li><a href="#items/hex_snacks">Hex Snacks</a></li>
@@ -494,8 +495,19 @@
           <li><a href="#items/gloop">Gloop !</a></li>
           <li><a href="#items/trinket_focus">Trinkety Foci</a></li>
           <li><a href="#items/gloop_dye">Gloop Dye</a></li>
+          <li><a href="#items/gloopifact">Gloopifact</a></li>
+          <li><a href="#items/hand_mirror">Hand Mirror</a></li>
           <li><a href="#items/multi_focus">Multi Focus</a></li>
           <li><a href="#items/ritualist_inscriber" class="spoilered">Ritualist&#39;s Inscriber</a></li>
+          <li><a href="#items/inventorty">Inventorty</a></li>
+          <li><a href="#items/pedestals">Pedestal</a></li>
+      </ul>
+    </details>
+    <details class="toc-category">
+      <summary><a href="#greatwork" class="spoilered">The Great Work</a></summary>
+      <ul>
+          <li><a href="#greatwork/loci" class="spoilered">Loci</a></li>
+          <li><a href="#greatwork/accelerator" class="spoilered">Accelerator</a></li>
       </ul>
     </details>
     <details class="toc-category">
@@ -520,7 +532,7 @@
       <ul>
           <li><a href="#patterns/spells/truename_protection">Truename Protection</a></li>
           <li><a href="#patterns/spells/craft_potion">Craft Casting Potion</a></li>
-          <li><a href="#patterns/spells/reflection">hexgloop.entry.reflection</a></li>
+          <li><a href="#patterns/spells/reflection">Reflections</a></li>
       </ul>
     </details>
 </nav>
@@ -583,6 +595,104 @@
     Depicted in the book: The crafting recipe for the <code>Casting Ring</code>.
   </blockquote>
       <p>I&#39;ve noticed that my hexes prefer to use items in my offhand, perhaps this will be useful with both of my hands free?</p>
+<br />
+</div>
+<div id="items/casters_coin">
+    <h3 class="entry-title page-header">Caster&#39;s Coin<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/casters_coin"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>With my truename being so valuable, it&#39;d be nice to have a safer way to barter against it. These coins should do the trick. I can write to it like a focus but it can only be read in once per coin. I&#39;ve documented a few patterns here that can be used to check who wrote the coin.</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Caster&#39;s Coin</code>.
+  </blockquote>
+      <p></p>
+<br />
+  <div id="items/casters_coin@hexgloop:compare_item_bound_caster">
+<h4 class="pattern-title">Notary&#39;s Purification (entity → boolean)<a
+    href="#items/casters_coin@hexgloop:compare_item_bound_caster"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qaqqaqqqqqead"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qaqqaqqqqqead</canvas>
+  </details>
+      <p>Takes a player entity and returns whether or not they wrote the coin in my other hand.</p>
+  </div>
+<br />
+  <div id="items/casters_coin@hexgloop:cooler_compare_item_bound_caster">
+<h4 class="pattern-title">Notary&#39;s Distillation (entity, entity → boolean)<a
+    href="#items/casters_coin@hexgloop:cooler_compare_item_bound_caster"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qaqqwawqwqwqwqwqwead"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qaqqwawqwqwqwqwqwead</canvas>
+  </details>
+      <p>Takes a player entity from the top of the stack and an item entity and returns whether or not the player wrote the coin in the item entity.</p>
+  </div>
+<br />
+  <div id="items/casters_coin@hexgloop:get_item_bound_caster">
+<h4 class="pattern-title">Merchant&#39;s Reflection (→ string)<a
+    href="#items/casters_coin@hexgloop:get_item_bound_caster"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qaqqaqqqqq"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qaqqaqqqqq</canvas>
+  </details>
+      <p>Returns the name of whoever wrote the coin in my other hand.</p>
+  </div>
+<br />
+  <div id="items/casters_coin@hexgloop:cooler_get_item_bound_caster">
+<h4 class="pattern-title">Merchant&#39;s Purification (entity → string)<a
+    href="#items/casters_coin@hexgloop:cooler_get_item_bound_caster"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qaqqwawqwqwqwqwqw"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qaqqwawqwqwqwqwqw</canvas>
+  </details>
+      <p>Returns the name of whoever wrote the coin in the given item entity.</p>
+  </div>
 <br />
 </div>
 <div id="items/dyebook">
@@ -651,7 +761,7 @@
       <p>The Thought Gummy makes for a nice little snack on the go. It has a trace amount of media, but probably isn&#39;t the best trinket filler.</p>
 <br />
   <div id="items/hex_snacks@hexgloop:conjure_tasty_treat">
-<h4 class="pattern-title">Conjure Tasty Treat (vec → entity)<a
+<h4 class="pattern-title">Conjure Tasty Treat (vec →)<a
     href="#items/hex_snacks@hexgloop:conjure_tasty_treat"
     class="permalink small"
     title="Permalink"
@@ -832,6 +942,184 @@
       <p><i>so many colors!</i></p>
 <br />
 </div>
+<div id="items/gloopifact">
+    <h3 class="entry-title page-header">Gloopifact<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/gloopifact"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>Gloop seems to be good at holding and manipulating iotas, so perhaps it&#39;d work well as a part of a casting device.</p><p>The gloopifact is very similar to an artifact, just,, much gloopier. Its netherite bindings appear to make it fire resistant, no more losing my tools to nether mishaps.</p>
+<br />
+    <p>The focus at its core remains accessible for normal use, though my hexes will still prefer any iota source in my other hand. I&#39;ve documented a set of patterns, very similar to other iota manipulation patterns, that instead target its internal focus.</p><p>I&#39;ve also found that its ravenmind is much more malleable and documented patterns that allow it to communicate with my staffcasting ravenmind.</p><p>Except for crafting, these patterns only work when cast by a gloopifact</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Gloopifact</code>.
+  </blockquote>
+      <p></p>
+<br />
+  <div id="items/gloopifact@hexgloop:craft/gloopifact">
+<h4 class="pattern-title">Craft Gloopifact (entity, [pattern] →)<a
+    href="#items/gloopifact@hexgloop:craft/gloopifact"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wwaadaqwaweqqwaweewawqwwwwadeeeeeqww"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wwaadaqwaweqqwaweewawqwwwwadeeeeeqww</canvas>
+  </details>
+      <p>Costs about 16 <a href='https://object-object.github.io/HexMod/v/0.10.3#items/amethyst'><span style='color: #b0b'>Charged Amethyst</span></a></p>
+  </div>
+<br />
+  <div id="items/gloopifact@hexgloop:gloopimind_upload">
+<h4 class="pattern-title">Gloopimind Upload<a
+    href="#items/gloopifact@hexgloop:gloopimind_upload"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qewdweeddw"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qewdweeddw</canvas>
+  </details>
+      <p>Uploads my gloopifact&#39;s ravenmind to my staff</p>
+  </div>
+<br />
+  <div id="items/gloopifact@hexgloop:gloopimind_download">
+<h4 class="pattern-title">Gloopimind Download<a
+    href="#items/gloopifact@hexgloop:gloopimind_download"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qedadewdde"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qedadewdde</canvas>
+  </details>
+      <p>Downloads my staff&#39;s ravenmind to my gloopifact</p>
+  </div>
+<br />
+  <div id="items/gloopifact@hexgloop:gloopifact_read">
+<h4 class="pattern-title">Gloopcaster&#39;s Reflection (→ any)<a
+    href="#items/gloopifact@hexgloop:gloopifact_read"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aqqqqqeqadaqw"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aqqqqqeqadaqw</canvas>
+  </details>
+      <p>Reads the iota from the gloopifact&#39;s internal focus</p>
+  </div>
+<br />
+  <div id="items/gloopifact@hexgloop:gloopifact_write">
+<h4 class="pattern-title">Gloopcaster&#39;s Gambit (any →)<a
+    href="#items/gloopifact@hexgloop:gloopifact_write"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="deeeeeqqadaqw"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: deeeeeqqadaqw</canvas>
+  </details>
+      <p>Writes an iota to the gloopifact&#39;s internal focus</p>
+  </div>
+<br />
+  <div id="items/gloopifact@hexgloop:gloopifact_check_read">
+<h4 class="pattern-title">Gloopitor&#39;s Reflection (→ boolean)<a
+    href="#items/gloopifact@hexgloop:gloopifact_check_read"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wwqadaqwwaqqqqq"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wwqadaqwwaqqqqq</canvas>
+  </details>
+      <p>Returns whether or not the internal focus can be read</p>
+  </div>
+<br />
+  <div id="items/gloopifact@hexgloop:gloopifact_check_write">
+<h4 class="pattern-title">Gloopessor&#39;s Distillation (any → any, boolean)<a
+    href="#items/gloopifact@hexgloop:gloopifact_check_write"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wwqadaqwwdeeeee"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wwqadaqwwdeeeee</canvas>
+  </details>
+      <p>Returns whether or not the given iota can be written to the internal focus.</p>
+  </div>
+<br />
+</div>
+<div id="items/hand_mirror">
+    <h3 class="entry-title page-header">Hand Mirror<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/hand_mirror"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>A hexxed hand mirror, it will <a href='#patterns/spells/reflection'>reflect</a> any item entity written to it. Using a pedestal to hold my item may be convenient. </p><p>Unlike other reflections, which can only be touched by my hexes, the reflections from the hand mirror have a physicality to them that lets me use them as if they were really in my hand.</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Hand Mirror</code>.
+  </blockquote>
+      <p></p>
+<br />
+</div>
 <div id="items/multi_focus">
     <h3 class="entry-title page-header">Multi Focus<a
     href="#table-of-contents"
@@ -866,6 +1154,253 @@
   <blockquote class="crafting-info">
     Depicted in the book: The crafting recipe for the <code>Ritualist&#39;s Inscriber</code>.
   </blockquote>
+<br />
+    </div>
+</div>
+<div id="items/inventorty">
+    <h3 class="entry-title page-header">Inventorty<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/inventorty"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I have found the cutest little kitten ! It seems to quite like sitting in my pockets, playing with items. Perhaps I can teach it to do so in a more helpful manner ?</p><p>I&#39;ve taught it to cast ! I can give it a list of patterns to cast when pet in my inventory, a similar motion to using a bundle strangely enough. The stack of these casts will start with some additional information, first a boolean for if I&#39;m holding the inventorty and then a number indicating the inventory slot it&#39;s in or looking at.</p>
+<br />
+    <p>There are a number of patterns that can only be cast from an inventorty, many of them refer to a &#39;slot&#39; type. This isn&#39;t an actual iota type but a shorthand for iotas that refer to a slot the inventorty can access:</p><p class='fake-li'>Non-negative numbers reference a specific slot in the open screen by their index. Slots in a separate inventory, such as a chest, are marked by their index + the inventory index * 1000.</p><p class='fake-li'>Item Entities near the caster.</p><p class='fake-li'>-2 for the inventory cursor slot</p><p class='fake-li'>-1000*(inventory index + 1) for the first available destination slot in that inventory.</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Inventorty</code>.
+  </blockquote>
+      <p>Meow</p>
+<br />
+  <div id="items/inventorty@hexgloop:craft/inventorty">
+<h4 class="pattern-title">Teach Inventorty (entity, [pattern] →)<a
+    href="#items/inventorty@hexgloop:craft/inventorty"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="waqqqqqwqawqedeqwaq"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: waqqqqqwqawqedeqwaq</canvas>
+  </details>
+      <p>Costs about 4 <span style='color: #b0b'>Charged Amethyst</span></p>
+  </div>
+<br />
+  <div id="items/inventorty@hexgloop:torty_transfer">
+<h4 class="pattern-title">Torty Transfer (slot, slot | null, num → num, entity?)<a
+    href="#items/inventorty@hexgloop:torty_transfer"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wawqwaqewdwwdade"
+        data-start="south_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wawqwaqewdwwdade</canvas>
+  </details>
+      <p>Transfers up to the given number of items from the first slot to the second slot. It returns the number of items left in the input slot. If the second slot is null it drops the items on the caster and pushes a reference of it to the stack.</p>
+  </div>
+<br />
+  <div id="items/inventorty@hexgloop:torty_count">
+<h4 class="pattern-title">Torty&#39;s Purification (slot → num)<a
+    href="#items/inventorty@hexgloop:torty_count"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="awewdqdwewaaw"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: awewdqdwewaaw</canvas>
+  </details>
+      <p>Returns how many items are in the given slot.</p>
+  </div>
+<br />
+  <div id="items/inventorty@hexgloop:torty_max_count">
+<h4 class="pattern-title">Torty&#39;s Max Purification (slot → num)<a
+    href="#items/inventorty@hexgloop:torty_max_count"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="ewdqdwewaqae"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: ewdqdwewaqae</canvas>
+  </details>
+      <p>Returns how many items can fit in the given slot.</p>
+  </div>
+<br />
+  <div id="items/inventorty@hexgloop:torty_get_type">
+<h4 class="pattern-title">Curiosity&#39;s Purification (slot → itemtype)<a
+    href="#items/inventorty@hexgloop:torty_get_type"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qwaeawqaqded"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qwaeawqaqded</canvas>
+  </details>
+      <p>Returns the type of the item in the given slot</p>
+  </div>
+<br />
+  <div id="items/inventorty@hexgloop:torty_inv_sizes">
+<h4 class="pattern-title">Torty&#39;s Reflection (→ [num])<a
+    href="#items/inventorty@hexgloop:torty_inv_sizes"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qaeaqeaq"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qaeaqeaq</canvas>
+  </details>
+      <p>Returns a list containing the sizes of every inventory the inventorty can see, sorted based on the inventory index.</p>
+  </div>
+<br />
+  <div id="items/inventorty@hexgloop:torty_inv_names">
+<h4 class="pattern-title">Torty&#39;s Reflection II (→ [string])<a
+    href="#items/inventorty@hexgloop:torty_inv_names"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="spell-collapsible">
+    <summary class="collapse-spell"></summary>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="waeaeaeawa"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: waeaeaeawa</canvas>
+  </details>
+      <p>Returns a list containing the names of every inventory the inventorty can see, sorted based on the inventory index.</p>
+  </div>
+<br />
+</div>
+<div id="items/pedestals">
+    <h3 class="entry-title page-header">Pedestal<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#items/pedestals"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I always seem to lose track of my dropped items.</p><p>The pedestal can hold a single item stack in place for me. This item stack is locked in place but my hexes can still interact with it as if it were dropped on the ground. It appears to pick up items dropped on it and respond how I would expect to devices such as hoppers.</p><p>I sense these pedestals may have more magic about them..</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Pedestal</code>.
+  </blockquote>
+      <p>Solid</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Mirrored Pedestal</code>.
+  </blockquote>
+      <p>The mirrored panels inlayed in the pedestal allow me to bind myself to it and see its <a href='#patterns/spells/reflection'>reflection</a></p>
+<br />
+</div>
+</section>
+<section id="greatwork">
+    <div class="spoilered">
+      <h2 class="category-title page-header">The Great Work<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#greatwork"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h2>
+    <p>I have seen... so much. I have... experienced... annihilation and deconstruction and reconstruction. I have seen the atoms of the world screaming as they were inverted and subverted and demoted to energy. I have seen I have seen I have s<span class='obfuscated'>get stick bugged lmao</span></p>
+    </div>
+<div id="greatwork/loci">
+    <div class="spoilered">
+      <h3 class="entry-title page-header">Loci<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#greatwork/loci"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>So far I&#39;ve only constructed spell circles with slates, impeti, and directrices, but some of the blocks I&#39;ve recently discovered seem to also have interesting uses in circles. I&#39;ve adopted the term Loci to categorize them. On the following pages I&#39;ve described the capabilities of some loci that I had previously discovered.</p>
+<br />
+  <div id="greatwork/loci@gloopy_slate_chest">
+  <h4 class="spotlight-title page-header">Gloopy Slate Chest</h4>
+      <p>When the media wave flows through the chest it grants the circle access to the chest&#39;s inventory, as if it were the casters own. Good for large blockwork projects perhaps.</p>
+  </div>
+<br />
+  <div id="greatwork/loci@pedestal">
+  <h4 class="spotlight-title page-header">Pedestal</h4>
+      <p>When the media wave flows through a pedestal that holds an item containing a pattern, such as a scroll, it will add that pattern to the circle to be cast.</p>
+  </div>
+<br />
+  <div id="greatwork/loci@mirror_pedestal">
+  <h4 class="spotlight-title page-header">Mirrored Pedestal</h4>
+      <p>This behaves similarly to its non-mirrored counterpart, however it will also try to embed any non pattern iotas. This embedding follows the same rules as embedding an iota in a pattern list.</p>
+  </div>
+<br />
+    </div>
+</div>
+<div id="greatwork/accelerator">
+    <div class="spoilered">
+      <h3 class="entry-title page-header">Accelerator<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#greatwork/accelerator"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>Circles are by far my slowest means of casting, I believe this block should accelerate them. When the media wave hits an accelerator it boosts its speed by 200% of the original, with the boost fading by 20% each block. A single accelerator&#39;s boost will draw 2 amethyst dust from the impetus, though this cost will greatly increase as boosts are stacked. Spacing out the accelerators may help.</p>
+<br />
+  <blockquote class="crafting-info">
+    Depicted in the book: The crafting recipe for the <code>Accelerator</code>.
+  </blockquote>
+      <p>Speedy !</p>
 <br />
     </div>
 </div>
@@ -1076,7 +1611,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: dweaqqqqd</canvas>
   </details>
-      <p>Returns a string with information on the last mishap.</p><p><strong>requires moreiotas</strong></p>
+      <p>Returns a string with information on the last mishap.</p>
   </div>
 <br />
 </div>
@@ -1639,7 +2174,7 @@
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
   <div id="patterns/spells/craft_potion@hexgloop:craft/potion">
-<h4 class="pattern-title">Craft Potion (entity, list of patterns →)<a
+<h4 class="pattern-title">Craft Potion (entity, [pattern] →)<a
     href="#patterns/spells/craft_potion@hexgloop:craft/potion"
     class="permalink small"
     title="Permalink"
@@ -1660,7 +2195,7 @@
 <br />
 </div>
 <div id="patterns/spells/reflection">
-    <h3 class="entry-title page-header">hexgloop.entry.reflection<a
+    <h3 class="entry-title page-header">Reflections<a
     href="#table-of-contents"
     class="permalink small"
     title="Jump to top"
@@ -1669,10 +2204,10 @@
     class="permalink small"
     title="Permalink"
   ><i class="bi bi-link-45deg"></i></a></h3>
-    <p>A comfy bed for my sentinel, it always seems eager to return to it. Cats seem to find it cozy as well.</p>
+    <p>These mirrors, made from hexxed glass and synchronous gloop, seem to allow my hexes to act on items in the mirror&#39;s reflection as if they were in my other hand. Using a scrying lens shows the reflected item in my hand.</p>
 <br />
   <div id="patterns/spells/reflection@hexgloop:bind_mirror">
-<h4 class="pattern-title">hexcasting.spell.hexgloop:bind_mirror (vec →)<a
+<h4 class="pattern-title">Bind Mirror (vec | null →)<a
     href="#patterns/spells/reflection@hexgloop:bind_mirror"
     class="permalink small"
     title="Permalink"
@@ -1688,11 +2223,11 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: deeeedwwdwdw</canvas>
   </details>
-      <p>hexgloop.page.reflection.1</p>
+      <p>This allows me to bind myself to a Mirrored Pedestal so that its held item is reflected into my empty hand.</p>
   </div>
 <br />
   <div id="patterns/spells/reflection@hexgloop:temp_bind_mirror">
-<h4 class="pattern-title">hexcasting.spell.hexgloop:temp_bind_mirror (vec →)<a
+<h4 class="pattern-title">Temp Bind Mirror (vec | null →)<a
     href="#patterns/spells/reflection@hexgloop:temp_bind_mirror"
     class="permalink small"
     title="Permalink"
@@ -1708,7 +2243,7 @@
         data-per-world="False"
       >Your browser does not support visualizing patterns. Pattern code: aqqqqawwawaw</canvas>
   </details>
-      <p>hexgloop.page.reflection.2</p>
+      <p>Similar to Bind Mirror but only lasting for the single instant of my cast.</p>
   </div>
 <br />
 </div>
