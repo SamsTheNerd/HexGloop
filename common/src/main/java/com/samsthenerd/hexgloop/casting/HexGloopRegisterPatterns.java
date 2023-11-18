@@ -1,6 +1,9 @@
 package com.samsthenerd.hexgloop.casting;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Function;
 
 import com.samsthenerd.hexgloop.HexGloop;
@@ -34,13 +37,16 @@ import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.common.casting.operators.spells.OpMakePackagedSpell;
 import dev.architectury.platform.Platform;
+import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.item.Item;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 public class HexGloopRegisterPatterns {
+
     public static void registerPatterns(){
-        HexGloopItems.CASTING_POTION_ITEM.listen(event -> registerItemDependentPatterns());
+        registerItemDependentPatterns();
         HexGloopItems.FOCAL_RING.listen(event -> registerTrinketyFociiPatterns());
         HexGloopBlocks.CONJURED_REDSTONE_BLOCK.listen(event -> registerRedstonePatterns());
         maybeRegisterHexal();
@@ -128,33 +134,6 @@ public class HexGloopRegisterPatterns {
                 new Identifier(HexGloop.MOD_ID, "torty_inv_sizes"),
                 new OpGetInventoryLore(true));
 
-        } catch (PatternRegistry.RegisterPatternException exn) {
-            exn.printStackTrace();
-        }
-    }
-
-    private static void registerItemDependentPatterns(){
-        try{
-            PatternRegistry.mapPattern(HexPattern.fromAngles("wawwedewwqqq", HexDir.EAST), 
-                new Identifier(HexGloop.MOD_ID, "craft/potion"),
-                new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.SHARD_UNIT));
-
-            // wwaadaqwaweqwqwawewewawqwwwwwadeeeeeqww
-            PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
-                new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
-                new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 16));
-
-            PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwqawqedeqwaq", HexDir.EAST),
-                new Identifier(HexGloop.MOD_ID, "craft/inventorty"),
-                new OpMakePackagedSpell<>(HexGloopItems.INVENTORTY_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
-                
-            // craft sword: waqqqqqwwwaqwwwwaq
-            PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),
-                new Identifier(HexGloop.MOD_ID, "craft/hex_blade"),
-                new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.SHARD_UNIT));
-
-            // craft shoe things: waqqqqqwwaqwdwqaw
-                
             // gloopifact patterns
             PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqqeqadaqw", HexDir.NORTH_EAST),
                 new Identifier(HexGloop.MOD_ID, "gloopifact_read"),
@@ -200,6 +179,48 @@ public class HexGloopRegisterPatterns {
 
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
+        }
+    }
+
+    private static Map<RegistrySupplier<? extends Item>, UncheckedPatternRegister> itemDependentPatternRegisterers = new HashMap<>();
+
+    static {
+        itemDependentPatternRegisterers.put(HexGloopItems.CASTING_POTION_ITEM, () -> {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wawwedewwqqq", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "craft/potion"),
+                new OpMakePackagedSpell<>(HexGloopItems.CASTING_POTION_ITEM.get(), MediaConstants.SHARD_UNIT));
+        });
+
+        itemDependentPatternRegisterers.put(HexGloopItems.GLOOPIFACT_ITEM, () -> {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
+                new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 16));
+        });
+
+        itemDependentPatternRegisterers.put(HexGloopItems.INVENTORTY_ITEM, () -> {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwqawqedeqwaq", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/inventorty"),
+                new OpMakePackagedSpell<>(HexGloopItems.INVENTORTY_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
+        });
+
+        itemDependentPatternRegisterers.put(HexGloopItems.HEX_BLADE_ITEM, () -> {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/hex_blade"),
+                new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.SHARD_UNIT));
+        });
+
+        // craft shoe things: waqqqqqwwaqwdwqaw        
+    }
+
+    private static void registerItemDependentPatterns(){
+        for(Entry<RegistrySupplier<? extends Item>, UncheckedPatternRegister> entry : itemDependentPatternRegisterers.entrySet()){
+            entry.getKey().listen(item -> {
+                try{
+                    entry.getValue().register();
+                } catch (PatternRegistry.RegisterPatternException exn) {
+                    exn.printStackTrace();
+                }
+            });
         }
     }
 
@@ -310,5 +331,10 @@ public class HexGloopRegisterPatterns {
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }
+    }
+
+    @FunctionalInterface
+    public static interface UncheckedPatternRegister{
+        public void register() throws PatternRegistry.RegisterPatternException;
     }
 }

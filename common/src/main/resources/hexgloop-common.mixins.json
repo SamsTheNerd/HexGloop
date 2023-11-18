@@ -57,6 +57,7 @@
       "misc.MixinInterfaceEnchants",
       "misc.MixinCatSit",
       "misc.MixinRaycastIgnore",
+      "misc.MixinHexInterop",
       "truenameclassactionmixins.MixinPlsAgreeToTheTruenameEULA"
     ],
     "client": [

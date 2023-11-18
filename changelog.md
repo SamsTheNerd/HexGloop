@@ -34,6 +34,7 @@
 
 - Multi-Focus and Fidgets will now loop around when shift scrolling or using the keybinds
 - Sped up tooltip delay on iota wheels
+- Casting Potion casts with its brewed pigment
 
 ### Fixed
 
