@@ -1,0 +1,31 @@
+{
+    "name": "hexgloop.entry.loci",
+    "icon": "hexgloop:mirror_pedestal",
+    "category": "hexcasting:greatwork",
+    "sortnum": 4,
+    "advancement": "hexcasting:enlightenment",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.loci.intro"
+      },
+      {
+        "type": "patchouli:spotlight",
+        "item": "hexgloop:gloopy_slate_chest",
+        "text": "hexgloop.page.loci.slate_chest",
+        "anchor":"gloopy_slate_chest"
+      },
+      {
+        "type": "patchouli:spotlight",
+        "item": "hexgloop:pedestal",
+        "text": "hexgloop.page.loci.pedestal",
+        "anchor":"pedestal"
+      },
+      {
+        "type": "patchouli:spotlight",
+        "item": "hexgloop:mirror_pedestal",
+        "text": "hexgloop.page.loci.mirror_pedestal",
+        "anchor":"mirror_pedestal"
+      }
+    ]
+  }

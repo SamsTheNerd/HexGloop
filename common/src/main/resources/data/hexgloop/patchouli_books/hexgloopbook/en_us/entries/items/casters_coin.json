@@ -36,7 +36,8 @@
         "anchor": "hexgloop:get_item_bound_caster",
         "input": "",
         "output": "string",
-        "text": "hexgloop.page.casters_coin.4"
+        "text": "hexgloop.page.casters_coin.4",
+        "flag": "mod:moreiotas"
       },
       {
         "type": "hexcasting:pattern",
@@ -44,7 +45,8 @@
         "anchor": "hexgloop:cooler_get_item_bound_caster",
         "input": "entity",
         "output": "string",
-        "text": "hexgloop.page.casters_coin.5"
+        "text": "hexgloop.page.casters_coin.5",
+        "flag": "mod:moreiotas"
       }
     ]
   }

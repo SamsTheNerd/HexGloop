@@ -142,11 +142,11 @@ public class HexGloopRegisterPatterns {
             // wwaadaqwaweqwqwawewewawqwwwwwadeeeeeqww
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaadaqwaweqqwaweewawqwwwwadeeeeeqww", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/gloopifact"),
-                new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), 0));
+                new OpMakePackagedSpell<>(HexGloopItems.GLOOPIFACT_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 16));
 
             PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwqawqedeqwaq", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/inventorty"),
-                new OpMakePackagedSpell<>(HexGloopItems.INVENTORTY_ITEM.get(), 0));
+                new OpMakePackagedSpell<>(HexGloopItems.INVENTORTY_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
                 
             // craft sword: waqqqqqwwwaqwwwwaq
             PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),

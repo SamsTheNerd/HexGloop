@@ -1,0 +1,78 @@
+{
+    "name": "item.hexgloop.gloopifact",
+    "icon": "hexgloop:gloopifact",
+    "category": "hexcasting:items",
+    "sortnum": 10,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopifact.0"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopifact.1"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:gloopifact",
+        "text": "hexgloop.page.gloopifact.craft"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:craft/gloopifact",
+        "anchor": "hexgloop:craft/gloopifact",
+        "input": "entity, [pattern]",
+        "output": "",
+        "text": "hexgloop.page.gloopifact.3"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:gloopimind_upload",
+        "anchor": "hexgloop:gloopimind_upload",
+        "input": "",
+        "output": "",
+        "text": "hexgloop.page.gloopifact.4"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:gloopimind_download",
+        "anchor": "hexgloop:gloopimind_download",
+        "input": "",
+        "output": "",
+        "text": "hexgloop.page.gloopifact.5"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:gloopifact_read",
+        "anchor": "hexgloop:gloopifact_read",
+        "input": "",
+        "output": "any",
+        "text": "hexgloop.page.gloopifact.6"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:gloopifact_write",
+        "anchor": "hexgloop:gloopifact_write",
+        "input": "any",
+        "output": "",
+        "text": "hexgloop.page.gloopifact.7"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:gloopifact_check_read",
+        "anchor": "hexgloop:gloopifact_check_read",
+        "input": "",
+        "output": "boolean",
+        "text": "hexgloop.page.gloopifact.8"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:gloopifact_check_write",
+        "anchor": "hexgloop:gloopifact_check_write",
+        "input": "any",
+        "output": "any, boolean",
+        "text": "hexgloop.page.gloopifact.9"
+      }
+    ]
+}
