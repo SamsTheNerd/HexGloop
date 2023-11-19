@@ -93,10 +93,20 @@ public class MixinLociAtHome implements ILociHandler{
     @WrapOperation(method="stepCircle()V", at=@At(value="INVOKE", target="java/util/List.add (Ljava/lang/Object;)Z"), remap=false)
     private boolean trackNewBlock(List probablyTrackedBlocks, Object probablyBlockPos, Operation<Boolean> original){
         if(probablyBlockPos instanceof BlockPos pos){
-            World world = ((BlockEntityAbstractImpetus)(Object)this).getWorld();
+            BlockEntityAbstractImpetus impetus = ((BlockEntityAbstractImpetus)(Object)this);
+            World world = impetus.getWorld();
             BlockState state = world.getBlockState(pos);
             ILociAtHome locusBlock = LociRegistration.getLocus(state, pos, world);
             if(locusBlock != null){
+                // enter new one
+                locusBlock.waveEnter(pos, state, world, impetus);
+                // exit old one
+                BlockPos lastBlock = trackedBlocks.get(trackedBlocks.size()-1);
+                BlockState lastState = world.getBlockState(lastBlock);
+                ILociAtHome lastLocus = LociRegistration.getLocus(lastState, lastBlock, world);
+                if(lastLocus != null){
+                    lastLocus.waveExit(lastBlock, lastState, world, impetus);
+                }
                 for(Class<? extends ILocusModule> module : ILociHandler.MODULE_TYPES){
                     if(!module.isInstance(locusBlock)) continue; // verify that it has this module
                     // track it !
@@ -138,11 +148,21 @@ public class MixinLociAtHome implements ILociHandler{
         return original.call(block, pos, bs, world);
     }
 
-    @Inject(method = "stopCasting()V", at=@At("RETURN"), remap=false)
+    @Inject(method = "stopCasting()V", at=@At("HEAD"), remap=false)
     private void resetShouldExit(CallbackInfo ci){
         shouldExit = false;
         castedBlocks = new HashSet<BlockPos>();
         trackedModuleBlocks = new HashMap<>();
+        // tell them the circle stopped
+        BlockEntityAbstractImpetus impetus = (BlockEntityAbstractImpetus)(Object)this;
+        for(BlockPos pos : knownBlocks){
+            World world = impetus.getWorld();
+            BlockState state = world.getBlockState(pos);
+            ILociAtHome locus = LociRegistration.getLocus(state, pos, world);
+            if(locus != null){
+                locus.circleStopped(pos, state, world, impetus);
+            }
+        }
     }    
 
     // specific module hooks:

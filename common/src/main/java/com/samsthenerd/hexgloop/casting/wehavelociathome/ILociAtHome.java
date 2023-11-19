@@ -1,5 +1,6 @@
 package com.samsthenerd.hexgloop.casting.wehavelociathome;
 
+import at.petrak.hexcasting.api.block.circle.BlockEntityAbstractImpetus;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import net.minecraft.block.BlockState;
 import net.minecraft.text.Text;
@@ -21,7 +22,12 @@ public interface ILociAtHome {
     }
 
     // try not to break stuff + try to be aware of consideration-type stuff i guess
-    default public void rawLociCall(BlockPos pos, BlockState bs, World world, CastingHarness harness){
-        
-    }
+    default public void rawLociCall(BlockPos pos, BlockState bs, World world, CastingHarness harness){}
+
+    default public void waveEnter(BlockPos pos, BlockState bs, World world, BlockEntityAbstractImpetus impetus){}
+
+    default public void waveExit(BlockPos pos, BlockState bs, World world, BlockEntityAbstractImpetus impetus){}
+
+    // called when the circle stops, either early or on time.
+    default public void circleStopped(BlockPos pos, BlockState bs, World world, BlockEntityAbstractImpetus impetus){}
 }
