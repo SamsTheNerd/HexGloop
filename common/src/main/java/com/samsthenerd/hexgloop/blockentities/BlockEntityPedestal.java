@@ -59,6 +59,7 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         }
         if(getWorld() != null && !getWorld().isClient()){
             persistentUUID = getNewUUID();
+            markDirty();
             makeNewItemEntity();
         }
     }

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1
+
+### Fixed
+
+- Torty's Max Purification not taking max stack size into account
+- Torty transfer accepting negative counts
+- Clientside crashing from pedestal not having a persistent uuid
+- Inventorty item entity reach range far too small, bumped radius from 1 block to 4 block
+
 ## 0.1.0
 
 ### Added
