@@ -6,6 +6,7 @@ import java.util.List;
 import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.casting.IContextHelper;
 import com.samsthenerd.hexgloop.casting.inventorty.InventortyUtils.KittyContext;
+import com.samsthenerd.hexgloop.mixins.misc.MixinExposeCursorStackRef;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
@@ -58,10 +59,6 @@ public class ItemInventorty extends ItemPackagedHex{
     // inventorty is in the slot
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
-        HexGloop.logPrint("onClicked: " + stack + 
-            "\n\tCoolingDown: " + player.getItemCooldownManager().isCoolingDown(this) +
-            "\n\tClickType: " + clickType.toString() +
-            "\n\tHasHex: " + hasHex(stack));
         if(player.getItemCooldownManager().isCoolingDown(this)|| clickType != ClickType.RIGHT || !hasHex(stack)){
             return false;
         }
@@ -74,15 +71,14 @@ public class ItemInventorty extends ItemPackagedHex{
     // inventorty is in the hand
     @Override
     public boolean onStackClicked(ItemStack stack, Slot slot, ClickType clickType, PlayerEntity player) {
-        HexGloop.logPrint("onStackClicked: " + stack + 
-            "\n\tCoolingDown: " + player.getItemCooldownManager().isCoolingDown(this) +
-            "\n\tClickType: " + clickType.toString() +
-            "\n\tHasHex: " + hasHex(stack));
         if(player.getItemCooldownManager().isCoolingDown(this) || clickType != ClickType.RIGHT || !hasHex(stack)){
             return false;
         }
-
-        kittyCast(stack, slot.getStack(), slot, clickType, player, null, true);
+        StackReference maybeCursorStackRef = null;
+        if(player.currentScreenHandler instanceof MixinExposeCursorStackRef cursorHandler){
+            maybeCursorStackRef = cursorHandler.invokeGetCursorStackReference();
+        }
+        kittyCast(stack, slot.getStack(), slot, clickType, player, maybeCursorStackRef, true);
         return true;
     }
 

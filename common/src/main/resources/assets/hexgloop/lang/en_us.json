@@ -65,6 +65,9 @@
     "hexgloop.tooltip.fidget.page": "Selected Slot %d/%d",
     "hexgloop.tooltip.fidget.page_with_name": "Selected Slot %d/%d (\"%s\")",
 
+    "hexgloop.tooltip.media_worth": "Worth %s",
+    "hexgloop.tooltip.media_worth_each": "%s per item",
+
     "hexcasting.spell.hexgloop:craft/potion": "Craft Potion",
     "hexcasting.spell.hexgloop:set_label": "Dymo's Gambit",
     "hexcasting.spell.hexgloop:read_orchard": "Orchard's Reflection",

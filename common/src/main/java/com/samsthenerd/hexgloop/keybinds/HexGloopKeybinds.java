@@ -46,6 +46,7 @@ public class HexGloopKeybinds {
         registerKeybind(CASTING_RING_KEY_BINDING, CastingRingHelperClient::handleCastingRingKeypress);
         registerKeybind(HEX_SCROLL_UP, (keyBinding, client) -> handleScrollKey(keyBinding, client, true));
         registerKeybind(HEX_SCROLL_DOWN, (keyBinding, client) -> handleScrollKey(keyBinding, client, false));
+        registerKeybind(OPEN_HEX_BOOK, (keyBinding, client)->{}); // don't want to actually *do* anything, but do want to have it registered
     }
 
     // do it architectury instead of relying on wnboi since forge load order is mean

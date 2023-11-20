@@ -58,7 +58,10 @@
       "misc.MixinCatSit",
       "misc.MixinRaycastIgnore",
       "misc.MixinHexInterop",
-      "truenameclassactionmixins.MixinPlsAgreeToTheTruenameEULA"
+      "truenameclassactionmixins.MixinPlsAgreeToTheTruenameEULA",
+      "booktweaks.MixinCopyPatternToScrolls",
+      "misc.MixinExposeCursorStackRef",
+      "misc.MixinShowMediaWorth"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
@@ -70,7 +73,6 @@
       "textpatterns.MixinTextDrawerPatSty",
       "textpatterns.MixinSetTessBuffer",
       "textpatterns.MixinPatTextWiden",
-      "booktweaks.MixinCopyPatternToScrolls",
       "misc.MixinClientAddFeatureRenderers",
       "misc.MixinClientExposeAddFeature",
       "orchard.MixinClientPlayerOrchardKeybind",
