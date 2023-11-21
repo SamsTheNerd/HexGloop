@@ -1,10 +1,9 @@
 modid = "hexgloop"
-book = "hexgloop:hexgloopbook"
+book = "hexcasting:thehexbook"
 default_lang = "en_us"
 
-_export_root = "src/hexdoc_hexgloop/_export"
 resource_dirs = [  # top takes priority
-    { path="{^_export_root}/resources", reexport=false },
+    "resources",
     "{_common.src}/main/resources",
     "{_common.src}/generated/resources",
     "{_fabric.src}/main/resources",
@@ -12,31 +11,37 @@ resource_dirs = [  # top takes priority
     "{_forge.src}/main/resources",
     "{_forge.src}/generated/resources",
     { modid="hexcasting" },
+    { modid="hexdoc" },
 ]
-export_dir = "{_export_root}/generated"
+export_dir = "doc/src/hexdoc_hexgloop/_export/generated"
 
+[extra.hexcasting]
+# regexes for parsing pattern registry files - try running copier update and picking a different regex if your patterns aren't loading
 # NOTE: "!Raw" means "don't apply variable interpolation to this value"
-_pattern_regex = { "!Raw"='HexPattern\.fromAngles\("(?P<signature>[qweasd]+)", HexDir\.(?P<startdir>\w+)\),\s*new Identifier\(HexGloop.MOD_ID, "(?P<name>[^"]+)"\)[^;]+?(?:makeConstantOp|Op\w+|Widget\.\w+)(?:[^;]*(?P<is_per_world>true)\);)?' }
+_pattern_regex =  { "!Raw"='HexPattern\.fromAngles\("(?P<signature>[qweasd]+)", HexDir\.(?P<startdir>\w+)\),\s*new Identifier\(HexGloop.MOD_ID, "(?P<name>[^"]+)"\)[^;]+?(?:makeConstantOp|Op\w+|Widget\.\w+)(?:[^;]*(?P<is_per_world>true)\);)?' }
 
-
-[[pattern_stubs]]
-path = "{^_common.package}/casting/HexGloopRegisterPatterns.java"
+[[extra.hexcasting.pattern_stubs]]
+path = "{^^^_common.package}/casting/HexGloopRegisterPatterns.java"
 regex = "{^_pattern_regex}"
 
+[minecraft_assets]
+# https://github.com/PrismarineJS/minecraft-assets/tree/83e2169afbbce40990d69fc53e5962e4a793d467/data/1.19.1
+ref = "83e2169afbbce40990d69fc53e5962e4a793d467"
+version = "1.19.1"
+
 [template]
-static_dir = "static"
+icon = "icon.png"
 include = [
+    "hexgloop",
     "hexcasting",
     "patchouli",
-    "hexgloop"
+    "hexdoc",
 ]
 
 [template.args]
-mod_name = "HexGloop"
+mod_name = "Hex Gloop"
 author = "samsthenerd"
-icon_href = "icon.png"
 show_landing_text = false
-
 
 # platforms
 

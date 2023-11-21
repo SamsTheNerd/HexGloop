@@ -1,14 +1,25 @@
 from importlib.resources import Package
 
+from hexdoc.plugin import (
+    HookReturn,
+    LoadJinjaTemplatesImpl,
+    LoadResourceDirsImpl,
+    ModVersionImpl,
+    MinecraftVersionImpl,
+    hookimpl,
+)
+
 import hexdoc_hexgloop
-from hexdoc.plugin import (HookReturn, LoadJinjaTemplatesImpl,
-                           LoadResourceDirsImpl, LoadTaggedUnionsImpl,
-                           ModVersionImpl, hookimpl)
 
-from .__gradle_version__ import GRADLE_VERSION
+from .__gradle_version__ import GRADLE_VERSION, MINECRAFT_VERSION
 
 
-class HexgloopPlugin(LoadResourceDirsImpl, ModVersionImpl, LoadTaggedUnionsImpl, LoadJinjaTemplatesImpl):
+class HexgloopPlugin(
+    LoadJinjaTemplatesImpl,
+    LoadResourceDirsImpl,
+    ModVersionImpl,
+    MinecraftVersionImpl,
+):
     @staticmethod
     @hookimpl
     def hexdoc_mod_version() -> str:
@@ -16,12 +27,17 @@ class HexgloopPlugin(LoadResourceDirsImpl, ModVersionImpl, LoadTaggedUnionsImpl,
 
     @staticmethod
     @hookimpl
-    def hexdoc_load_resource_dirs() -> Package | list[Package]:
+    def hexdoc_minecraft_version() -> str:
+        return MINECRAFT_VERSION
+
+    @staticmethod
+    @hookimpl
+    def hexdoc_load_resource_dirs() -> HookReturn[Package]:
         # This needs to be a lazy import because they may not exist when this file is
         # first loaded, eg. when generating the contents of generated.
-        from ._export import generated, resources
+        from ._export import generated
 
-        return [generated, resources]
+        return generated
     
     @staticmethod
     @hookimpl

@@ -1,0 +1,25 @@
+# Changes here will be overwritten by Copier. NEVER EDIT MANUALLY
+# See: https://copier.readthedocs.io/en/stable/configuring/#the-copier-answersyml-file
+_commit: v0.0.1
+_src_path: gh:object-Object/hexdoc-hexcasting-template
+author: samsthenerd
+book_id: hexcasting:thehexbook
+github_repo: HexGloop
+gradle_mod_version_key: mod_version
+hexdoc_mod_plugin_classname: HexgloopModPlugin
+hexdoc_plugin_classname: HexgloopPlugin
+java_lang:
+    ext: java
+    src: java
+java_package: com/samsthenerd/hexgloop
+main_branch: main
+mod_display_name: Hex Gloop
+modid: hexgloop
+multiloader: true
+package_export_root: doc/src/hexdoc_hexgloop/_export
+package_name: hexdoc-hexgloop
+package_slug: hexdoc_hexgloop
+package_src: doc/src/hexdoc_hexgloop
+pages_url: https://hexgloop.hexxy.media
+pattern_regex: make\(\s*"(?P<name>[a-zA-Z0-9_\/]+)",\s*(?:new )?(?:ActionRegistryEntry|OperationAction)\(\s*HexPattern\.fromAngles\(\s*"(?P<signature>[aqweds]+)",\s*HexDir.(?P<startdir>\w+)\)
+pattern_registry: casting/HexgloopRegisterPatterns.java
