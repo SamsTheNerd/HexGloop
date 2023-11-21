@@ -1,0 +1,51 @@
+modid = "hexgloop"
+book = "hexcasting:thehexbook"
+default_lang = "en_us"
+main_branch = "main"
+
+resource_dirs = [  # top takes priority
+    "resources",
+    "{_common.src}/main/resources",
+    "{_fabric.src}/main/resources",
+    "{_forge.src}/main/resources",
+    { modid="hexcasting" },
+    { modid="minecraft" },
+    { modid="hexdoc" },
+]
+export_dir = "src/hexdoc_hexgloop/_export/generated"
+
+[template]
+icon = "icon.png"
+include = [
+    "hexgloop",
+    "hexcasting",
+    "hexdoc",
+]
+
+[template.args]
+mod_name = "Hex Gloop"
+author = "samsthenerd"
+show_landing_text = false
+
+[extra.hexcasting]
+# regexes for parsing pattern registry files - try running copier update and picking a different regex if your patterns aren't loading
+# NOTE: "!Raw" means "don't apply variable interpolation to this value"
+_pattern_regex = { "!Raw"='HexPattern\.fromAngles\("(?P<signature>[qweasd]+)", HexDir\.(?P<startdir>\w+)\),\s*new Identifier\(HexGloop.MOD_ID, "(?P<name>[^"]+)"\)[^;]+?(?:makeConstantOp|Op\w+|Widget\.\w+)(?:[^;]*(?P<is_per_world>true)\);)?' }
+
+[[extra.hexcasting.pattern_stubs]]
+path = "{^^^_common.package}/casting/HexGloopRegisterPatterns.java"
+regex = "{^_pattern_regex}"
+
+# platforms
+
+[_common]
+src = "../common/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop"
+
+[_fabric]
+src = "../fabric/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop/"
+
+[_forge]
+src = "../forge/src"
+package = "{src}/main/java/com/samsthenerd/hexgloop/forge"
