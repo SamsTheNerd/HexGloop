@@ -1,7 +1,7 @@
 modid = "hexgloop"
-book = "hexcasting:thehexbook"
+book = "hexgloop:hexgloopbook"
 default_lang = "en_us"
-main_branch = "main"
+default_branch = "main"
 
 resource_dirs = [  # top takes priority
     "resources",
@@ -15,7 +15,7 @@ resource_dirs = [  # top takes priority
 export_dir = "src/hexdoc_hexgloop/_export/generated"
 
 [template]
-icon = "icon.png"
+icon = "gloopyicon.png"
 include = [
     "hexgloop",
     "hexcasting",
@@ -35,6 +35,11 @@ _pattern_regex = { "!Raw"='HexPattern\.fromAngles\("(?P<signature>[qweasd]+)", H
 [[extra.hexcasting.pattern_stubs]]
 path = "{^^^_common.package}/casting/HexGloopRegisterPatterns.java"
 regex = "{^_pattern_regex}"
+
+[textures]
+missing = [
+    "hexgloop:fake_spellbook_for_rei",
+]
 
 # platforms
 
