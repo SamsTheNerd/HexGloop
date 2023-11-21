@@ -22,7 +22,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity.RemovalReason;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
@@ -39,7 +39,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class BlockEntityPedestal extends BlockEntity implements Inventory {
+// switching it to sided so that it can be used by modded chutes and whatnot hopefully ?
+public class BlockEntityPedestal extends BlockEntity implements SidedInventory {
     public static final String ITEM_DATA_TAG = "inv_storage";
     public static final String PERSISTENT_UUID_TAG = "persistent_uuid";
 
@@ -390,6 +391,18 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         storedItem = ItemStack.EMPTY;
         syncItemWithEntity(true);
         markDirty();
+    }
+
+    public int[] getAvailableSlots(Direction side){
+        return new int[]{0};
+    }
+
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir){
+        return isValid(slot, stack);
+    }
+
+    public boolean canExtract(int slot, ItemStack stack, Direction dir){
+        return true; 
     }
 
     @Override
