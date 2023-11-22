@@ -80,7 +80,7 @@ public class InventortyUtils {
             return new GrabbableSlot(slot);
         }
         if(grabbable instanceof EntityIota eIota){
-            if(eIota.getEntity() instanceof ItemEntity itemEnt && eIota.getEntity().distanceTo(ctx.getCaster()) < 1.0f){
+            if(eIota.getEntity() instanceof ItemEntity itemEnt && eIota.getEntity().distanceTo(ctx.getCaster()) < 4.0f){
                 return new GrabbableEnt(itemEnt);
             }
         }

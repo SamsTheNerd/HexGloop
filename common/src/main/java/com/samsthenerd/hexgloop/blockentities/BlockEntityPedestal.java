@@ -39,7 +39,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class BlockEntityPedestal extends BlockEntity implements Inventory {
+// switching it to sided so that it can be used by modded chutes and whatnot hopefully ?
+public class BlockEntityPedestal extends BlockEntity implements Inventory, IReallyHateForgeWhyWouldAnInventoryInterfaceNotBeAnInterfaceThatsWhatAnInterfaceIsFor {
     public static final String ITEM_DATA_TAG = "inv_storage";
     public static final String PERSISTENT_UUID_TAG = "persistent_uuid";
 
@@ -59,6 +60,7 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory {
         }
         if(getWorld() != null && !getWorld().isClient()){
             persistentUUID = getNewUUID();
+            markDirty();
             makeNewItemEntity();
         }
     }

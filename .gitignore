@@ -1,6 +1,5 @@
 .DS_Store
-.vscode/
-**/.vscode/
+.vscode/launch.json
 /TexturePSDs/
 run/
 build/
@@ -13,7 +12,11 @@ modrinth_token.txt
 curseforge_token.txt
 todo.md
 
-## stuff from docgen ?
+# hexdoc
+_site/
+_checkout/
+__gradle_version__.py
+.hexdoc*/
 
 # eclipse
 bin
@@ -43,12 +46,6 @@ forge*changelog.txt
 
 Session.vim
 plot/
-
-# hexdoc
-doc/**/_export/generated/
-_site/
-_checkout/
-__gradle_version__.py
 
 # Python
 

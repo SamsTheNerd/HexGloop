@@ -25,7 +25,7 @@ public abstract class MixinChangePatternDisplay {
         String originalString = originalText.getString();
         MutableText patternTextStyled = Text.literal(originalString.substring(0, 1)).setStyle(patternStyle);
         String hiddenString = originalString.substring(1);
-        patternTextStyled.append(Text.literal(hiddenString).setStyle(Style.EMPTY.withHidden(true)));
+        patternTextStyled.append(Text.literal(hiddenString).setStyle(patternStyle.withHidden(true)));
 
         cir.setReturnValue(patternTextStyled);
     }

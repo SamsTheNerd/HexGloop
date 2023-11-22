@@ -17,6 +17,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.samsthenerd.hexgloop.screens.PatternStyle;
 
 import at.petrak.hexcasting.api.PatternRegistry;
@@ -175,14 +176,14 @@ public class MixinPatternStyle implements PatternStyle{
 
 	@Mixin(Style.Serializer.class)
 	public static class MixinPatternStyleSerializer {
-		@Inject(method = "deserialize", at = @At("RETURN"))
-		private void HexPatStyDeserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext, CallbackInfoReturnable<Style> cir) {
-			if (!jsonElement.isJsonObject() || cir.getReturnValue() == null) {
-				return;
+		@ModifyReturnValue(method = "deserialize", at = @At("RETURN"))
+		private Style HexPatStyDeserialize(Style initialStyle, JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
+			if (!jsonElement.isJsonObject() || initialStyle == null) {
+				return initialStyle;
 			}
 			JsonObject json = jsonElement.getAsJsonObject();
 			if (!json.has("hexPatternStyle")) {
-				return;
+				return initialStyle;
 			}
             Boolean hiddenFromJson = JsonHelper.hasBoolean(json, PATTERN_HIDDEN_KEY) ? JsonHelper.getBoolean(json, PATTERN_HIDDEN_KEY) : false;
             
@@ -191,20 +192,18 @@ public class MixinPatternStyle implements PatternStyle{
             String startDirString = JsonHelper.hasString(patternObj, PATTERN_START_DIR_KEY) ? JsonHelper.getString(patternObj, PATTERN_START_DIR_KEY) : null;
             String angleSigString = JsonHelper.hasString(patternObj, PATTERN_ANGLE_SIG_KEY) ? JsonHelper.getString(patternObj, PATTERN_ANGLE_SIG_KEY) : null;
 
-            if(startDirString == null || angleSigString == null) return;
+            if(startDirString == null || angleSigString == null) return initialStyle;
 
             HexDir startDir = HexDir.fromString(startDirString);
             HexPattern pattern = HexPattern.fromAngles(angleSigString, startDir);
-            ((PatternStyle) cir.getReturnValue()).setPattern(pattern).setHidden(hiddenFromJson);
+            return initialStyle.withPattern(pattern).setHidden(hiddenFromJson);
 		}
 
-		@Inject(method = "serialize", at = @At("RETURN"))
-		private void HexPatStySerialize(Style style, Type type, JsonSerializationContext jsonSerializationContext, CallbackInfoReturnable<JsonElement> cir) {
-			JsonElement jsonElement = cir.getReturnValue();
-
+		@ModifyReturnValue(method = "serialize", at = @At("RETURN"))
+		private JsonElement HexPatStySerialize(JsonElement jsonElement, Style style, Type type, JsonSerializationContext jsonSerializationContext) {
 			PatternStyle pStyle = (PatternStyle) style;
 			if (jsonElement == null || !jsonElement.isJsonObject() || pStyle.getPattern() == null) {
-				return;
+				return jsonElement;
 			}
 			JsonObject json = jsonElement.getAsJsonObject();
             json.add(PATTERN_HIDDEN_KEY, new JsonPrimitive(pStyle.isHidden()));
@@ -212,6 +211,7 @@ public class MixinPatternStyle implements PatternStyle{
             patternObj.addProperty(PATTERN_START_DIR_KEY, pStyle.getPattern().getStartDir().toString());
             patternObj.addProperty(PATTERN_ANGLE_SIG_KEY, pStyle.getPattern().anglesSignature());
 			json.add(PATTERN_KEY, patternObj);
+            return json;
 		}
 	}
 

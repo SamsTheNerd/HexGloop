@@ -1,12 +1,15 @@
 [build-system]
-requires = ["hatchling", "hatch-gradle-version>=0.7.0"]
+requires = [
+    "hatchling",
+    "hatch-gradle-version>=0.8.0",
+]
 build-backend = "hatchling.build"
 
 # project metadata
 
 [project]
 name = "hexdoc-hexgloop"
-description = "Python web book docgen and hexdoc plugin for HexGloop."
+description = "Python web book docgen and hexdoc plugin for Hex Gloop."
 readme = "doc/README.md"
 authors = [
     { name="samsthenerd" },
@@ -16,8 +19,8 @@ requires-python = ">=3.11"
 dynamic = ["version", "dependencies", "optional-dependencies"]
 
 [project.urls]
-Homepage = "https://samsthenerd.github.io/Hexgloop/"
-Source = "https://github.com/samsthenerd/Hexgloop/tree/main/doc"
+Homepage = "https://hexgloop.hexxy.media"
+Source = "https://github.com/samsthenerd/HexGloop"
 
 # Gradle version/deps
 
@@ -28,14 +31,13 @@ py-path = "doc/src/hexdoc_hexgloop/__version__.py"
 key = "mod_version"
 
 [tool.hatch.metadata.hooks.gradle-properties]
-dependencies = [ # this can include normal dependency strings too
-    { package="hexdoc", op="~=", py-version="1.0.dev19", key="hexcastingVersion" },
+dependencies = [
+    { package="hexdoc-hexcasting", op="~=", py-version="1.0.dev20", key="hexcastingVersion" },
 ]
 
 [tool.hatch.metadata.hooks.gradle-properties.optional-dependencies]
 dev = [
-    "black==23.7.0",
-    "isort==5.12.0",
+    "ruff~=0.1.4",
 ]
 
 # directory inclusion
@@ -79,6 +81,7 @@ reportDeprecated = "error"
 reportDuplicateImport = "error"
 reportFunctionMemberAccess = "error"
 reportIncompatibleMethodOverride = "error"
+reportIncompatibleVariableOverride = "error"
 reportIncompleteStub = "error"
 reportInconsistentConstructor = "error"
 reportInvalidStringEscapeSequence = "error"
@@ -105,13 +108,11 @@ reportPrivateUsage = "warning"
 reportUnknownArgumentType = "warning"
 reportUnknownLambdaType = "warning"
 reportUnknownMemberType = "warning"
+reportUnknownVariableType = "warning"
 reportUnnecessaryComparison = "warning"
-reportUnnecessaryIsInstance =  	"warning"
+reportUnnecessaryIsInstance = "warning"
 reportUnusedClass = "warning"
 reportUnusedExpression = "warning"
 reportUnusedFunction = "warning"
 reportUnusedImport = "warning"
 reportUnusedVariable = "warning"
-
-reportUnknownVariableType = "none"
-reportIncompatibleVariableOverride = "none"

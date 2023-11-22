@@ -46,7 +46,10 @@ public class OpSlotCount implements ConstMediaAction{
     public List<Iota> execute(List<? extends Iota> args, CastingContext context){
         InventortyUtils.assertKittyCasting(context);
         GrabbableStack grabStack = InventortyUtils.getStackFromGrabbable(args.get(0), context, 0, getArgc());
-        return List.of(new DoubleIota(getActual ? grabStack.getStack().getCount() : grabStack.getMaxCount()));
+        int maxCount = grabStack.getMaxCount();
+        if(grabStack.getStack() != null && !grabStack.getStack().isEmpty())
+            maxCount = Math.min(maxCount, grabStack.getStack().getMaxCount());
+        return List.of(new DoubleIota(getActual ? grabStack.getStack().getCount() : maxCount));
     }
 
     @Override

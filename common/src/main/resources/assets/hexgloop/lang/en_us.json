@@ -65,6 +65,9 @@
     "hexgloop.tooltip.fidget.page": "Selected Slot %d/%d",
     "hexgloop.tooltip.fidget.page_with_name": "Selected Slot %d/%d (\"%s\")",
 
+    "hexgloop.tooltip.media_worth": "Worth %s",
+    "hexgloop.tooltip.media_worth_each": "%s per item",
+
     "hexcasting.spell.hexgloop:craft/potion": "Craft Potion",
     "hexcasting.spell.hexgloop:set_label": "Dymo's Gambit",
     "hexcasting.spell.hexgloop:read_orchard": "Orchard's Reflection",
@@ -327,7 +330,7 @@
 
     "hexgloop.page.inventorty.0": "I have found the cutest little kitten ! It seems to quite like sitting in my pockets, playing with items. Perhaps I can teach it to do so in a more helpful manner ?$(br2)I've taught it to cast ! I can give it a list of patterns to cast when pet in my inventory, a similar motion to using a bundle strangely enough. The stack of these casts will start with some additional information, first a boolean for if I'm holding the inventorty and then a number indicating the inventory slot it's in or looking at.",
     "hexgloop.page.inventorty.1": "There are a number of patterns that can only be cast from an inventorty, many of them refer to a 'slot' type. This isn't an actual iota type but a shorthand for iotas that refer to a slot the inventorty can access:$(li)Non-negative numbers reference a specific slot in the open screen by their index. Slots in a separate inventory, such as a chest, are marked by their index + the inventory index * 1000.$(li)Item Entities near the caster.$(li)-2 for the inventory cursor slot$(li)-1000*(inventory index + 1) for the first available destination slot in that inventory.",
-    "hexgloop.page.inventorty.2": "Meow",
+    "hexgloop.page.inventorty.2": "$(o)The great power of Creativity can make the cat quite sleepy.$()",
     "hexgloop.page.inventorty.3": "Costs about 4 $(item)Charged Amethyst$()",
     "hexgloop.page.inventorty.4": "Transfers up to the given number of items from the first slot to the second slot. It returns the number of items left in the input slot. If the second slot is null it drops the items on the caster and pushes a reference of it to the stack.",
     "hexgloop.page.inventorty.5": "Returns how many items are in the given slot.",

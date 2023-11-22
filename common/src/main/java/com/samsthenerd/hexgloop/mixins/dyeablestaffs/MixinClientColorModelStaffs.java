@@ -31,7 +31,7 @@ public class MixinClientColorModelStaffs {
         
         ItemPropertiesRegistry.register(staff, new Identifier("hexgloop:is_casting"), 
             (ItemStack itemStack, ClientWorld clientWorld, LivingEntity livingEntity, int i) -> {
-            if(MinecraftClient.getInstance().currentScreen instanceof GuiSpellcasting && livingEntity.isHolding(itemStack::equals)){
+            if(MinecraftClient.getInstance().currentScreen instanceof GuiSpellcasting && livingEntity != null && livingEntity.isHolding(itemStack::equals)){
                 return 1.0F;
             }
             return 0.0F;

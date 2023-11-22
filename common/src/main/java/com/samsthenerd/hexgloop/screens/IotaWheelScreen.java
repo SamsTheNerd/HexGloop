@@ -5,14 +5,11 @@ import java.util.List;
 
 import org.lwjgl.glfw.GLFW;
 
-import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
-import com.samsthenerd.hexgloop.misc.SpellbookScreenInterface;
 import com.samsthenerd.hexgloop.misc.wnboi.IotaProvider;
 import com.samsthenerd.wnboi.screen.AbstractContextWheelScreen;
 import com.samsthenerd.wnboi.screen.SpokeRenderer;
 
-import at.petrak.hexcasting.common.lib.HexItems;
 import at.petrak.hexcasting.common.lib.hex.HexIotaTypes;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
@@ -24,6 +21,8 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
 
     public int onPage;
     private Screen oldScreen;
+
+    public static IotaWheelScreen CURRENT = null;
 
     public IotaWheelScreen(IotaProvider _iotaProvider, Screen _oldScreen){
         super(Text.of("Iota Selection Wheel"), _iotaProvider.perPage());
@@ -91,8 +90,7 @@ public class IotaWheelScreen extends AbstractContextWheelScreen{
     @Override
     public void close(){
         this.client.setScreen(oldScreen);
-        HexGloopItems.MULTI_FOCUS_ITEM.get().screen = null;
-        ((SpellbookScreenInterface) HexItems.SPELLBOOK).clearScreen();
+        CURRENT = null;
     }
 
     @Override

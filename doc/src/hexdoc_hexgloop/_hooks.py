@@ -1,29 +1,57 @@
 from importlib.resources import Package
+from typing_extensions import override
+
+from hexdoc.plugin import (
+    HookReturn,
+    ModPlugin,
+    ModPluginImpl,
+    ModPluginWithBook,
+    hookimpl,
+)
 
 import hexdoc_hexgloop
-from hexdoc.plugin import (HookReturn, LoadJinjaTemplatesImpl,
-                           LoadResourceDirsImpl, LoadTaggedUnionsImpl,
-                           ModVersionImpl, hookimpl)
 
-from .__gradle_version__ import GRADLE_VERSION
+from .__gradle_version__ import FULL_VERSION, GRADLE_VERSION
+from .__version__ import PY_VERSION
 
 
-class HexgloopPlugin(LoadResourceDirsImpl, ModVersionImpl, LoadTaggedUnionsImpl, LoadJinjaTemplatesImpl):
+class HexgloopPlugin(ModPluginImpl):
     @staticmethod
     @hookimpl
-    def hexdoc_mod_version() -> str:
+    def hexdoc_mod_plugin(branch: str) -> ModPlugin:
+        return HexgloopModPlugin(branch=branch)
+
+
+class HexgloopModPlugin(ModPluginWithBook):
+    @property
+    @override
+    def modid(self) -> str:
+        return "hexgloop"
+
+    @property
+    @override
+    def full_version(self) -> str:
+        return FULL_VERSION
+
+    @property
+    @override
+    def mod_version(self) -> str:
         return GRADLE_VERSION
 
-    @staticmethod
-    @hookimpl
-    def hexdoc_load_resource_dirs() -> Package | list[Package]:
-        # This needs to be a lazy import because they may not exist when this file is
-        # first loaded, eg. when generating the contents of generated.
-        from ._export import generated, resources
+    @property
+    @override
+    def plugin_version(self) -> str:
+        return PY_VERSION
 
-        return [generated, resources]
+    @override
+    def resource_dirs(self) -> HookReturn[Package]:
+        # lazy import because generated may not exist when this file is loaded
+        # eg. when generating the contents of generated
+        # so we only want to import it if we actually need it
+        from ._export import generated
+
+        return generated
     
-    @staticmethod
-    @hookimpl
-    def hexdoc_load_jinja_templates() -> HookReturn[tuple[Package, str]]:
+    @override
+    def jinja_template_root(self) -> tuple[Package, str]:
         return hexdoc_hexgloop, "_templates"

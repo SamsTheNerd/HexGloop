@@ -54,7 +54,8 @@ public class OpStackTransfer implements ConstMediaAction{
             return List.of(new DoubleIota(0)); // failing silently is bad ! but oh well - fix later
         }
         ItemStack fromStack = fromGrabbable.getStack();
-        int transferCount = Math.min(OperatorUtils.getInt(args, 2, getArgc()), fromStack.getCount());
+        int inputCount = Math.max(OperatorUtils.getInt(args, 2, getArgc()), 0);
+        int transferCount = Math.min(inputCount, fromStack.getCount());
         int amtLeft = fromStack.getCount();
         ItemEntity maybeNewEnt = null;
         if(args.get(1) instanceof NullIota){

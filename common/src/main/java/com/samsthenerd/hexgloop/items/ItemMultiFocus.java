@@ -39,9 +39,6 @@ import net.minecraft.world.World;
 public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem, LabelyItem{
     public final static int MAX_FOCI_SLOTS = 6;
 
-    @Environment(EnvType.CLIENT)
-    public IotaWheelScreen screen;
-
     ItemStack multifocus = null;
 
     @Override
@@ -60,14 +57,14 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
         Pair<ItemStack, Boolean> handItemResult = getHandItem();
         multifocus = handItemResult.getLeft();
         Screen oldScreen = MinecraftClient.getInstance().currentScreen;
-        if(screen == null){
+        if(IotaWheelScreen.CURRENT == null || !(IotaWheelScreen.CURRENT.iotaProvider instanceof MultiFocusIotaProvider)){
             // HexGloop.logPrint("multifocus is" + (multifocus == null ? "null" : multifocus.getName().toString()));
-            screen = new IotaWheelScreen(new MultiFocusIotaProvider(multifocus), oldScreen);
+            IotaWheelScreen.CURRENT = new IotaWheelScreen(new MultiFocusIotaProvider(multifocus), oldScreen);
         }
-        ((MultiFocusIotaProvider) screen.iotaProvider).updateItemStack(multifocus);
-        ((MultiFocusIotaProvider) screen.iotaProvider).mainHand = handItemResult.getRight();
-        screen.onPage = (screen.iotaProvider.currentSlot()-1) / screen.iotaProvider.perPage();
-        return screen;
+        ((MultiFocusIotaProvider) IotaWheelScreen.CURRENT.iotaProvider).updateItemStack(multifocus);
+        ((MultiFocusIotaProvider) IotaWheelScreen.CURRENT.iotaProvider).mainHand = handItemResult.getRight();
+        IotaWheelScreen.CURRENT.onPage = (IotaWheelScreen.CURRENT.iotaProvider.currentSlot()-1) / IotaWheelScreen.CURRENT.iotaProvider.perPage();
+        return IotaWheelScreen.CURRENT;
     }
 
     @Environment(EnvType.CLIENT)

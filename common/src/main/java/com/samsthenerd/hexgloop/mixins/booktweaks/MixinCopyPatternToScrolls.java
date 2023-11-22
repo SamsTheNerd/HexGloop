@@ -31,6 +31,7 @@ public class MixinCopyPatternToScrolls {
     @Inject(method="use(Lnet/minecraft/world/World;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/TypedActionResult;",
     at=@At("HEAD"), cancellable = true)
     public void handleClickOnScroll(World world, PlayerEntity player, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> cir){
+        // HexGloop.logPrint("clicked with book");
         ItemStack stack = player.getStackInHand(hand);
 		Book book = ItemModBook.getBook(stack);
         if(book == null){

@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.1.1
+
+### Added
+
+- tooltips showing how much dust raw media sources are worth (can search "worth dust" in REI/probably EMI to find all media sources)
+
+### Fixed
+
+- Torty's Max Purification not taking max stack size into account
+- Torty transfer accepting negative counts
+- Clientside crashing from pedestal not having a persistent uuid
+- Inventorty item entity reach range far too small, bumped radius from 1 block to 4 block
+- Inventorty -2 cursor stack when in hand wasn't working.
+- Copying patterns from book to scroll not working on server
+- Open hex notebook while casting keybind not showing up in keybind menu
+- Mirror tooltips crashing on forge
+- covered spellbook wheel would bring up wrong screen when closed
+- place block not respecting mirror 
+- patterns repeating on servers
+- modded pipes/create not working with pedestal inventory on forge
+
+### Changed
+
+- Casting gloopifact patterns from other sources now gives a better mishap
+
 ## 0.1.0
 
 ### Added

@@ -1,6 +1,6 @@
 # hexdoc-hexgloop
 
-Python web book docgen and [hexdoc](https://pypi.org/project/hexdoc) plugin for HexGloop.
+Python web book docgen and [hexdoc](https://pypi.org/project/hexdoc) plugin for Hex Gloop.
 
 ## Version scheme
 
@@ -16,10 +16,11 @@ For example:
 ## Setup
 
 ```sh
-python -m venv venv
+python3.11 -m venv venv
 
-.\venv\Scripts\activate  # Windows
-source venv/bin/activate # anything other than Windows
+.\venv\Scripts\activate   # Windows
+. venv/bin/activate.fish  # fish
+source venv/bin/activate  # everything else
 
 # run from the repo root, not doc/
 pip install -e .[dev]
@@ -27,21 +28,29 @@ pip install -e .[dev]
 
 ## Usage
 
-For local testing, create a file called `.env` following this template:
+For local testing, create a file called `.env` in the repo root following this template:
 ```sh
-GITHUB_REPOSITORY=samsthenerd/Hexgloop
+GITHUB_REPOSITORY=samsthenerd/HexGloop
 GITHUB_SHA=main
-GITHUB_PAGES_URL=https://samsthenerd.github.io/Hexgloop/
+GITHUB_PAGES_URL=https://hexgloop.hexxy.media
 ```
 
-Then run these commands to generate the book:
+Useful commands:
 ```sh
-# run from the repo root, not doc/
-hexdoc render doc/properties.toml _site/src/docs
-hexdoc merge --src _site/src/docs --dst _site/dst/docs
-```
+# show help
+hexdoc -h
 
-Or, run this command to render the book and start a local web server:
-```sh
-hexdoc serve doc/properties.toml --src _site/src/docs --dst _site/dst/docs
+# render and serve the web book in watch mode
+nodemon --config doc/nodemon.json
+
+# render and serve the web book
+hexdoc serve
+
+# export, render, and merge the web book
+hexdoc export
+hexdoc render
+hexdoc merge
+
+# start the Python interpreter with some extra local variables
+hexdoc repl
 ```

@@ -2,6 +2,7 @@ package com.samsthenerd.hexgloop.mixins.mirroritems;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -49,7 +50,9 @@ public class MixinItemsNoMoving implements INoMoving{
             }
             for(BlockPos pos : nearbyBlocks){
                 BlockEntityPedestal pedestalBE = world.getBlockEntity(pos, HexGloopBEs.PEDESTAL_BE.get()).orElse(null);
-                if(pedestalBE != null && pedestalBE.getPersistentUUID().equals(thisEnt.getUuid())){
+                if(pedestalBE == null) continue;
+                UUID persistentUuid = pedestalBE.getPersistentUUID();
+                if(persistentUuid != null && persistentUuid.equals(thisEnt.getUuid())){
                     return true;
                 }
             }

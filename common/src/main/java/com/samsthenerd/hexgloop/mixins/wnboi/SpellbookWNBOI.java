@@ -26,13 +26,9 @@ public class SpellbookWNBOI implements KeyboundItem, SpellbookScreenInterface{
         return HexGloopKeybinds.IOTA_WHEEL_KEYBIND;
     }
 
-
-    @Environment(EnvType.CLIENT)
-    public IotaWheelScreen screen = null;
-
     @Override
     public void clearScreen(){
-        screen = null;
+        IotaWheelScreen.CURRENT = null;
     }
 
     ItemStack spellbook = null;
@@ -43,13 +39,14 @@ public class SpellbookWNBOI implements KeyboundItem, SpellbookScreenInterface{
         Pair<ItemStack, Boolean> spellbookResult = getSpellbook();
         spellbook = spellbookResult.getLeft();
         Screen oldScreen = MinecraftClient.getInstance().currentScreen;
-        if(screen == null){
-            screen = new IotaWheelScreen(new SpellbookIotaProvider(spellbook), oldScreen);
+        if(IotaWheelScreen.CURRENT == null || !(IotaWheelScreen.CURRENT.iotaProvider instanceof SpellbookIotaProvider)){
+            IotaWheelScreen.CURRENT = new IotaWheelScreen(new SpellbookIotaProvider(spellbook), oldScreen);
         }
-        ((SpellbookIotaProvider) screen.iotaProvider).updateItemStack(spellbook);
-        ((SpellbookIotaProvider) screen.iotaProvider).mainHand = spellbookResult.getRight();
-        screen.onPage = (screen.iotaProvider.currentSlot()-1) / screen.iotaProvider.perPage();
-        return screen;
+        ((SpellbookIotaProvider) IotaWheelScreen.CURRENT.iotaProvider).updateItemStack(spellbook);
+        ((SpellbookIotaProvider) IotaWheelScreen.CURRENT.iotaProvider).mainHand = spellbookResult.getRight();
+        IotaWheelScreen.CURRENT.onPage = (IotaWheelScreen.CURRENT.iotaProvider.currentSlot()-1) / IotaWheelScreen.CURRENT.iotaProvider.perPage();
+        
+        return IotaWheelScreen.CURRENT;
     }
 
     @Environment(EnvType.CLIENT)
