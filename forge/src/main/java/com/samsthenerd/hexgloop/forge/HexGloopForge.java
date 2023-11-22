@@ -8,6 +8,7 @@ import com.samsthenerd.hexgloop.misc.TrinketyImplFake;
 
 import dev.architectury.platform.Platform;
 import dev.architectury.platform.forge.EventBuses;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,6 +40,7 @@ public class HexGloopForge {
         }
 
         MinecraftForge.EVENT_BUS.addGenericListener(ItemStack.class, HexGloopCaps::attachItemCaps);
+        MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, HexGloopCaps::attachBlockEntityCaps);
 
         HexGloop.onInitialize();
     }

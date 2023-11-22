@@ -16,6 +16,10 @@
 - Copying patterns from book to scroll not working on server
 - Open hex notebook while casting keybind not showing up in keybind menu
 - Mirror tooltips crashing on forge
+- covered spellbook wheel would bring up wrong screen when closed
+- place block not respecting mirror 
+- patterns repeating on servers
+- modded pipes/create not working with pedestal inventory on forge
 
 ### Changed
 

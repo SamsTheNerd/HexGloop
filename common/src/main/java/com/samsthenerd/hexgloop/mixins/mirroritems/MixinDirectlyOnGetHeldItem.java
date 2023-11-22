@@ -36,10 +36,10 @@ public class MixinDirectlyOnGetHeldItem {
         ItemStack altMain = SyncedItemHandling.getAlternateHandStack(context.getCaster(), Hand.MAIN_HAND, context);
         ItemStack altOffStack = SyncedItemHandling.getAlternateHandStack(context.getCaster(), Hand.OFF_HAND, context);
         if(altMain != null){
-            stacks.add(altMain);
+            stacks.add(0, altMain);
         }
         if(altOffStack != null){
-            stacks.add(altOffStack);
+            stacks.add(0, altOffStack);
         }
         cir.setReturnValue(stacks);
     }
