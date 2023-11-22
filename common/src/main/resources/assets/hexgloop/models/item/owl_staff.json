@@ -1,0 +1,20 @@
+{
+    "parent": "minecraft:item/handheld_rod",
+    "overrides": [
+      {
+        "model": "hexgloop:item/owl_staff",
+        "predicate": {
+          "hexgloop:is_casting": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/owl_staff_casting",
+        "predicate": {
+          "hexgloop:is_casting": 1
+        }
+      }
+    ],
+    "textures": {
+        "layer0": "hexgloop:item/morestaffs/owl"
+    }
+  }

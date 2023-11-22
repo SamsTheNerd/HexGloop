@@ -14,6 +14,7 @@ import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemCastersCoin;
+import com.samsthenerd.hexgloop.items.ItemEssenceStone;
 import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
@@ -161,6 +162,16 @@ public class HexGloopClient {
             }
             return 0xFF_FFFFFF;
         }, HexGloopItems.DYEABLE_SPELLBOOK_ITEM);
+
+        ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
+            if(tintIndex == 1){
+                return HexGloopItems.ESSENCE_STONE_ITEM.get().getColors(stack).getLeft();
+            }
+            if(tintIndex == 2){
+                return HexGloopItems.ESSENCE_STONE_ITEM.get().getColors(stack).getRight();
+            }
+            return 0xFF_FFFFFF;
+        }, HexGloopItems.ESSENCE_STONE_ITEM);
     }
 
     public static int tintsFromColorizer(FrozenColorizer colorizer, int tintIndex, int sections){
@@ -243,6 +254,10 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.INVENTORTY_ITEM.get(), ItemPackagedHex.HAS_PATTERNS_PRED, (stack, level, holder, holderID) -> {
             return HexGloopItems.INVENTORTY_ITEM.get().hasHex(stack) ? 1 : 0;
+        });
+
+        ItemPropertiesRegistry.register(HexGloopItems.ESSENCE_STONE_ITEM.get(), ItemEssenceStone.ESSENCE_PREDICATE, (stack, level, holder, holderID) -> {
+            return HexGloopItems.ESSENCE_STONE_ITEM.get().hasEssence(stack) ? 1 : 0;
         });
 
         ItemPropertiesRegistry.register(HexGloopItems.HEX_BLADE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, (stack, level, holder, holderID) -> {
