@@ -131,7 +131,7 @@ function doCycleTexturesForever() {
   cycleTimeoutID = setTimeout(doCycleTexturesForever, 2000);
 }
 // these are filled by Jinja
-const BOOK_URL = "https://samsthenerd.github.io/HexGloop";
+const BOOK_URL = "https://hexgloop.hexxy.media";
 const VERSION = "0.1.1";
 const LANG = "zh_cn";
 // Creates an element in the form `<li><a href=${href}>${text}</a></li>`
