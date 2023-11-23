@@ -1,0 +1,8 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "hexgloop:item/essence_stone/shard_zfriendly",
+      "layer1": "hexgloop:item/essence_stone/lower_band",
+      "layer2": "hexgloop:item/essence_stone/upper_band"
+    }
+  }

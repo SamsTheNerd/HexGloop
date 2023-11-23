@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "hexgloop:item/script/base",
+      "layer1": "hexgloop:item/script/overlay"
+    }
+  }

@@ -29,6 +29,10 @@
     "item.hexgloop.blaze_staff": "Blaze Staff",
     "item.hexgloop.pumpkin_staff": "Pumpkin.. staff?",
     "item.hexgloop.wither_staff": "Wither Staff",
+    "item.hexgloop.ghost_staff": "Ghost Staff",
+    "item.hexgloop.owl_staff": "Owl Staff",
+    "item.hexgloop.celestial_staff": "Celestial Staff",
+    "item.hexgloop.longinus_staff": "Staff Of Longinus",
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
     "item.hexgloop.hex_blade": "Hex Blade",
     "item.hexgloop.slate_loader": "Ritualist's Inscriber",
@@ -38,6 +42,10 @@
     "item.hexgloop.covered_spellbook.sealed": "Sealed Covered Spellbook",
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "Last Reflected [%s]",
+
+    "item.hexgloop.essence_stone": "Essence Stone",
+    "item.hexgloop.script": "Script",
+    "item.hexgloop.coping_saw": "Coping Saw",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",

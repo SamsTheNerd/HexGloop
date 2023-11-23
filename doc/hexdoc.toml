@@ -39,6 +39,7 @@ regex = "{^_pattern_regex}"
 [textures]
 missing = [
     "hexgloop:fake_spellbook_for_rei",
+    "minecraft:chest"
 ]
 
 # platforms

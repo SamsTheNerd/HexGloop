@@ -18,6 +18,11 @@ architectury {
 loom {
     // mixin.defaultRefmapName = "hexcasting.mixins.refmap.json"
     accessWidenerPath = project(":common").loom.accessWidenerPath
+    runs {
+        client {
+            programArgs(["--username", "samsthenerd", "--uuid", "6f07899c-2b26-4221-8033-1f53f7a0e111"])
+        }
+    }
 }
 
 configurations.all {

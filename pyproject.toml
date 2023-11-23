@@ -1,7 +1,7 @@
 [build-system]
 requires = [
     "hatchling",
-    "hatch-gradle-version>=0.8.0",
+    "hatch-gradle-version>=0.9.4",
 ]
 build-backend = "hatchling.build"
 
@@ -29,6 +29,7 @@ scheme = "gradle"
 source = "gradle-properties"
 py-path = "doc/src/hexdoc_hexgloop/__version__.py"
 key = "mod_version"
+gradle-version-regex = '.+?-(\d+\.\d+\.\d+)'
 
 [tool.hatch.metadata.hooks.gradle-properties]
 dependencies = [

@@ -61,7 +61,8 @@
       "truenameclassactionmixins.MixinPlsAgreeToTheTruenameEULA",
       "booktweaks.MixinCopyPatternToScrolls",
       "misc.MixinExposeCursorStackRef",
-      "misc.MixinShowMediaWorth"
+      "misc.MixinShowMediaWorth",
+      "castingmodifiers.MixinCastingContextModifiers"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

@@ -1,0 +1,20 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+      {
+        "model": "hexgloop:item/essence_stone",
+        "predicate": {
+          "hexgloop:has_essence": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/essence_stone_activated",
+        "predicate": {
+          "hexgloop:has_essence": 1
+        }
+      }
+    ],
+    "textures": {
+      "layer0": "hexgloop:item/essence_stone/shard"
+    }
+  }
