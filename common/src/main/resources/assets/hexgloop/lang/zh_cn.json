@@ -29,6 +29,10 @@
     "item.hexgloop.blaze_staff": "烈焰法杖",
     "item.hexgloop.pumpkin_staff": "南瓜……法杖？",
     "item.hexgloop.wither_staff": "凋灵法杖",
+    "item.hexgloop.ghost_staff": "幽灵法杖",
+    "item.hexgloop.owl_staff": "猫头鹰法杖",
+    "item.hexgloop.celestial_staff": "天体法杖",
+    "item.hexgloop.longinus_staff": "朗基努斯之杖",
     "item.hexgloop.hexxy_plush": "Hexxy毛绒玩偶",
     "item.hexgloop.hex_blade": "咒术之剑",
     "item.hexgloop.slate_loader": "仪式家雕刻器",
@@ -38,6 +42,10 @@
     "item.hexgloop.covered_spellbook.sealed": "密封装面法术书",
     "item.hexgloop.hand_mirror.tooltip": "影像[%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "上一影像[%s]",
+
+    "item.hexgloop.essence_stone": "精华石",
+    "item.hexgloop.script": "手稿",
+    "item.hexgloop.coping_saw": "缓释之锯",
 
     "item.hexgloop.copper_pen_fidget": "笔指记",
     "item.hexgloop.rainbow_amogus_fidget": "彩虹色船员按按乐指记",
@@ -328,8 +336,8 @@
     "hexgloop.page.pedestal.1": "坚实",
     "hexgloop.page.pedestal.2": "支座中嵌入的小片镜子允许我与其绑定，从而查看其$(l:hexgloop:patterns/spells/reflection)影像$(/l)。",
 
-    "hexgloop.page.inventorty.0": "我找到了我见过最可爱的猫猫！它似乎喜欢待在我的口袋里和物品玩耍。也许我能教它怎么玩耍更能帮到他人？$(br2)我成功教会它施法了！当我的宠物在我物品栏里时，给予它一个图案列表即可。奇怪的是，这种操作和使用收纳袋很像。它们开始施法时的栈带有一些额外信息，首先是代表我是否手持物品栏小猫的布尔值，然后是代表它所处或所看的物品栏槽位的数。",
-    "hexgloop.page.inventorty.1": "有部分图案只能由物品栏小猫绘制，这些图案大多都需要“槽位”（'slot'）参数。“槽位”并不指代某种实际的 iota 类型，而是可被物品栏小猫视作槽位的任意 iota：$(li)代表 GUI 中各槽位索引的非负数。箱子等容器中的槽位则由槽位索引 + 容器索引 * 1000 表示。$(li)施法者周围的物品实体。$(li)-2 代表鼠标中的槽位。$(li)-1000 * (物品栏与容器索引 + 1) 代表对应物品栏或容器中首个可用的目标槽位。",
+    "hexgloop.page.inventorty.0": "我找到了我见过最可爱的猫猫！它似乎喜欢待在我的口袋里和物品玩耍。也许我能教它怎么玩耍更能帮到他人？$(br2)我成功教会它施法了！给予它一个图案列表再轻抚它即可。这种操作和使用收纳袋相似得出奇。它们开始施法时的栈带有一些额外信息，首先是代表我是否拿起物品栏小猫的布尔值，然后是代表它所处或所看物品栏槽位的数。",
+    "hexgloop.page.inventorty.1": "有部分图案只能由物品栏小猫绘制，这些图案大多都需要“槽位”（'slot'）参数。“槽位”并不指代某种实际的 iota 类型，而是可被物品栏小猫视作槽位的任意 iota：$(li)代表 GUI 中各槽位索引的非负数。箱子等容器中的槽位则由槽位索引 + 容器索引 * 1000 表示。$(li)施法者周围的物品实体。$(li)-2 代表施法时鼠标所选物品的槽位。$(li)-1000 * (物品栏与容器索引 + 1) 代表对应物品栏或容器中首个可用的目标槽位。",
     "hexgloop.page.inventorty.2": "$(o)创造力令猫萌生倦意。$()",
     "hexgloop.page.inventorty.3": "消耗大约 4 个$(item)充能紫水晶$()。",
     "hexgloop.page.inventorty.4": "将最多所给数个物品从第一个槽位传输到第二个槽位。会返回输入槽中剩余物品的数量。若第二个槽位为 Null，则物品会掉落在施法者周围，并压入代表所得物品实体的 iota。",
