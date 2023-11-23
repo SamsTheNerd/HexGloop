@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/handheld_rod",
     "textures": {
-        "layer0": "hexgloop:item/morestaffs/longinus_staff"
+        "layer0": "hexgloop:item/morestaffs/longinus"
     }
 }

@@ -260,6 +260,10 @@ public class HexGloopClient {
             return HexGloopItems.ESSENCE_STONE_ITEM.get().hasEssence(stack) ? 1 : 0;
         });
 
+        ItemPropertiesRegistry.register(HexGloopItems.SCRIPT_ITEM.get(), ItemFocus.OVERLAY_PRED, (stack, level, holder, holderID) -> {
+            return HexGloopItems.SCRIPT_ITEM.get().readIotaTag(stack) == null ? 0 : 1;
+        });
+
         ItemPropertiesRegistry.register(HexGloopItems.HEX_BLADE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, (stack, level, holder, holderID) -> {
             if(!HexGloopItems.HEX_BLADE_ITEM.get().hasHex(stack)){
                 return 0;

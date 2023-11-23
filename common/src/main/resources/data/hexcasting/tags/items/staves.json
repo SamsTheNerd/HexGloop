@@ -11,6 +11,10 @@
         "hexgloop:ice_staff",
         "hexgloop:blaze_staff",
         "hexgloop:pumpkin_staff",
-        "hexgloop:wither_staff"
+        "hexgloop:wither_staff",
+        "hexgloop:longinus_staff",
+        "hexgloop:owl_staff",
+        "hexgloop:ghost_staff",
+        "hexgloop:celestial_staff"
     ]
 }

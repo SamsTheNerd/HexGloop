@@ -90,6 +90,12 @@ public class HexGloopItems{
     public static final RegistrySupplier<ItemEssenceStone> ESSENCE_STONE_ITEM = item("essence_stone",
         () -> new ItemEssenceStone(defaultSettings().maxCount(1)));
 
+    public static final RegistrySupplier<ItemPatternScript> SCRIPT_ITEM = item("script",
+        () -> new ItemPatternScript(defaultSettings().maxCount(1)));
+
+    public static final RegistrySupplier<ItemCopingSaw> COPING_SAW_ITEM = item("coping_saw",
+        () -> new ItemCopingSaw(defaultSettings().maxCount(1)));
+
     // fidgets -- todo: maybe move these out of here and into their own file
 
     public static final RegistrySupplier<ItemFidget> COPPER_PEN_FIDGET = item("copper_pen_fidget", 

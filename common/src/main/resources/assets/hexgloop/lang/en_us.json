@@ -42,7 +42,10 @@
     "item.hexgloop.covered_spellbook.sealed": "Sealed Covered Spellbook",
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "Last Reflected [%s]",
+
     "item.hexgloop.essence_stone": "Essence Stone",
+    "item.hexgloop.script": "Script",
+    "item.hexgloop.coping_saw": "Coping Saw",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",
