@@ -46,6 +46,8 @@
     "item.hexgloop.essence_stone": "Essence Stone",
     "item.hexgloop.script": "Script",
     "item.hexgloop.coping_saw": "Coping Saw",
+    "item.hexgloop.library_card": "Akashic Library Card",
+    "item.hexgloop.library_card.tooltip_dimension": "Bound to %s",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",

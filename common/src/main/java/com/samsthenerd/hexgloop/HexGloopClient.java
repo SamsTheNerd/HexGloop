@@ -19,6 +19,7 @@ import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
 import com.samsthenerd.hexgloop.items.ItemHexSword;
+import com.samsthenerd.hexgloop.items.ItemLibraryCard;
 import com.samsthenerd.hexgloop.items.ItemSlateLoader;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.network.HexGloopNetwork;
@@ -262,6 +263,10 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.SCRIPT_ITEM.get(), ItemFocus.OVERLAY_PRED, (stack, level, holder, holderID) -> {
             return HexGloopItems.SCRIPT_ITEM.get().readIotaTag(stack) == null ? 0 : 1;
+        });
+
+        ItemPropertiesRegistry.register(HexGloopItems.LIBRARY_CARD_ITEM.get(), ItemLibraryCard.DIMENSION_PREDICATE, (stack, level, holder, holderID) -> {
+            return HexGloopItems.LIBRARY_CARD_ITEM.get().getPredicateValue(HexGloopItems.LIBRARY_CARD_ITEM.get().getDimension(stack));
         });
 
         ItemPropertiesRegistry.register(HexGloopItems.HEX_BLADE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, (stack, level, holder, holderID) -> {

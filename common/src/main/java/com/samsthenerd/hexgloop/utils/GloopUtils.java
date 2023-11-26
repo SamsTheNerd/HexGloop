@@ -71,4 +71,15 @@ public class GloopUtils {
         return CACHED_STAFFS;
     }
 
+    public static String prettyPrintID(Identifier id){
+        String prettyPrinted = "";
+        String noSymbols = id.getPath().replace("_", " ").replace("/", ", ");
+        for(String word : noSymbols.split(" ")){
+            prettyPrinted += word.substring(0, 1).toUpperCase() + word.substring(1) + " ";
+        }
+        if(id.getNamespace() != "minecraft"){
+            prettyPrinted += "[" + id.getNamespace() + "]";
+        }
+        return prettyPrinted;
+    }
 }

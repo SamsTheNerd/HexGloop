@@ -96,6 +96,12 @@ public class HexGloopItems{
     public static final RegistrySupplier<ItemCopingSaw> COPING_SAW_ITEM = item("coping_saw",
         () -> new ItemCopingSaw(defaultSettings().maxCount(1)));
 
+    public static final RegistrySupplier<ItemLibraryCard> LIBRARY_CARD_ITEM = item("library_card",
+        () -> new ItemLibraryCard(defaultSettings().maxCount(1)));
+
+    public static final RegistrySupplier<ItemMindJar> MIND_JAR_ITEM = item("mind_jar",
+        () -> new ItemMindJar(defaultSettings().maxCount(1)));
+
     // fidgets -- todo: maybe move these out of here and into their own file
 
     public static final RegistrySupplier<ItemFidget> COPPER_PEN_FIDGET = item("copper_pen_fidget", 

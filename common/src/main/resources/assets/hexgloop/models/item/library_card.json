@@ -1,0 +1,38 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+        {
+          "model": "hexgloop:item/library_card",
+          "predicate": {
+            "hexgloop:dimension": 0.0
+          }
+        },
+        {
+          "model": "hexgloop:item/library_card/overworld",
+          "predicate": {
+            "hexgloop:dimension": 0.01
+          }
+        },
+        {
+          "model": "hexgloop:item/library_card/nether",
+          "predicate": {
+            "hexgloop:dimension": 0.02
+          }
+        },
+        {
+          "model": "hexgloop:item/library_card/end",
+          "predicate": {
+            "hexgloop:dimension": 0.03
+          }
+        },
+        {
+          "model": "hexgloop:item/library_card/generic",
+          "predicate": {
+            "hexgloop:dimension": 1
+          }
+        }
+      ],
+    "textures": {
+      "layer0": "hexgloop:item/library_card/card"
+    }
+}

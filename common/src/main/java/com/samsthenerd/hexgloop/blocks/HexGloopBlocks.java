@@ -46,6 +46,9 @@ public class HexGloopBlocks {
     public static final RegistrySupplier<BlockAccelerator> ACCELERATOR_BLOCK = block("accelerator", 
         () -> new BlockAccelerator(AbstractBlock.Settings.of(Material.METAL, MapColor.ORANGE).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.COPPER)));
 
+    public static final RegistrySupplier<BlockWaveLocus> REDSTONE_WAVE_LOCUS_BLOCK = block("wave_locus", 
+        () -> new BlockWaveLocus(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES)));
+
     public static final RegistrySupplier<BlockSentinelBed> SENTINEL_BED_BLOCK = block("sentinel_bed", 
         () -> new BlockSentinelBed(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 6.0f).sounds(BlockSoundGroup.DEEPSLATE_TILES)));
 

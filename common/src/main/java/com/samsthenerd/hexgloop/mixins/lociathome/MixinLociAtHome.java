@@ -100,13 +100,7 @@ public class MixinLociAtHome implements ILociHandler{
             if(locusBlock != null){
                 // enter new one
                 locusBlock.waveEnter(pos, state, world, impetus);
-                // exit old one
-                BlockPos lastBlock = trackedBlocks.get(trackedBlocks.size()-1);
-                BlockState lastState = world.getBlockState(lastBlock);
-                ILociAtHome lastLocus = LociRegistration.getLocus(lastState, lastBlock, world);
-                if(lastLocus != null){
-                    lastLocus.waveExit(lastBlock, lastState, world, impetus);
-                }
+                
                 for(Class<? extends ILocusModule> module : ILociHandler.MODULE_TYPES){
                     if(!module.isInstance(locusBlock)) continue; // verify that it has this module
                     // track it !
@@ -114,6 +108,15 @@ public class MixinLociAtHome implements ILociHandler{
                         trackedModuleBlocks.put(module, new ArrayList<>());
                     }
                     trackedModuleBlocks.get(module).add(new Pair<BlockPos, ILocusModule>(pos, module.cast(locusBlock)));
+                }
+            }
+            // exit old one
+            if(trackedBlocks.size() > 0){
+                BlockPos lastBlock = trackedBlocks.get(trackedBlocks.size()-1);
+                BlockState lastState = world.getBlockState(lastBlock);
+                ILociAtHome lastLocus = LociRegistration.getLocus(lastState, lastBlock, world);
+                if(lastLocus != null){
+                    lastLocus.waveExit(lastBlock, lastState, world, impetus);
                 }
             }
         }
