@@ -62,7 +62,10 @@
       "booktweaks.MixinCopyPatternToScrolls",
       "misc.MixinExposeCursorStackRef",
       "misc.MixinShowMediaWorth",
-      "castingmodifiers.MixinCastingContextModifiers"
+      "castingmodifiers.MixinCastingContextModifiers",
+      "misc.MixinItemFlaying",
+      "misc.MixinItemFlaying$MixinBrainsweepSpell",
+      "misc.MixinHonorLibraryCardReads"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

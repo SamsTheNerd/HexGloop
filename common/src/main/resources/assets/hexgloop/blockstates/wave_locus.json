@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "energized=false,powered=false": {"model": "hexgloop:block/redstone_locus/base"},
+        "energized=true,powered=false": {"model": "hexgloop:block/redstone_locus/energized"},
+        "powered=true": {"model": "hexgloop:block/redstone_locus/powered"}
+    }
+}

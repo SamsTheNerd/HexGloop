@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "hexgloop:item/library_card/card",
+      "layer1": "hexgloop:item/library_card/end_icon"
+    }
+}
