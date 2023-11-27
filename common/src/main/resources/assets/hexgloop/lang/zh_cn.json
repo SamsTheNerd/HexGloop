@@ -45,7 +45,9 @@
 
     "item.hexgloop.essence_stone": "精华石",
     "item.hexgloop.script": "手稿",
-    "item.hexgloop.coping_saw": "缓释之锯",
+    "item.hexgloop.coping_saw": "缓释锯",
+    "item.hexgloop.library_card": "阿卡夏借书卡",
+    "item.hexgloop.library_card.tooltip_dimension": "绑定至%s",
 
     "item.hexgloop.copper_pen_fidget": "笔指记",
     "item.hexgloop.rainbow_amogus_fidget": "彩虹色船员按按乐指记",
@@ -235,7 +237,7 @@
     "hexgloop.entry.minds_orchard": "意识果园",
     "hexgloop.page.minds_orchard.0": "我发现如果我能在意识中存下一个足够具体的想法，就可用如下图案将其摘入咒术中。类似$(l:hexgloop:items/fidgets)指记$(/l)的事物应该有助于引导思维。$(br2)我意识果园中存储的值必然是包含至少一个数的列表。不过我还没找到在其中存储多个数的方法。",
     "hexgloop.page.minds_orchard.1": "从我的意识果园中摘出一个代表我思维索引的数。",
-    "hexgloop.page.minds_orchard.2": "从我的意识果园中摘出包含各值的列表。",
+    "hexgloop.page.minds_orchard.2": "从我的意识果园中摘出包含思维索引的列表。",
 
     "hexgloop.entry.trinket_focus_patterns": "饰品型核心图案",
     "hexgloop.page.trinket_focus_patterns.0": "这些图案在有助于与$(l:hexgloop:items/trinket_focus)饰品型核心$(/l)交互。通常状况下它们和其他读写图案功能类似。",
