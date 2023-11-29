@@ -8,10 +8,14 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.blocks.BlockPedestal;
+import com.samsthenerd.hexgloop.blocks.IDynamicFlayTarget;
+import com.samsthenerd.hexgloop.items.IMindTargetItem;
 import com.samsthenerd.hexgloop.misc.HexGloopTags;
 import com.samsthenerd.hexgloop.misc.INoMoving;
+import com.samsthenerd.hexgloop.recipes.ItemFlayingRecipe;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
+import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.iota.PatternIota;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -20,7 +24,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.Entity.RemovalReason;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -40,7 +46,7 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 // switching it to sided so that it can be used by modded chutes and whatnot hopefully ?
-public class BlockEntityPedestal extends BlockEntity implements Inventory, IReallyHateForgeWhyWouldAnInventoryInterfaceNotBeAnInterfaceThatsWhatAnInterfaceIsFor {
+public class BlockEntityPedestal extends BlockEntity implements Inventory, IReallyHateForgeWhyWouldAnInventoryInterfaceNotBeAnInterfaceThatsWhatAnInterfaceIsFor, IDynamicFlayTarget {
     public static final String ITEM_DATA_TAG = "inv_storage";
     public static final String PERSISTENT_UUID_TAG = "persistent_uuid";
 
@@ -50,13 +56,18 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
     // item entity on top of pedestal
     private ItemEntity itemEnt = null; 
     private UUID persistentUUID = null;
+    
     private boolean isMirror;
+    private boolean hasMindStorage;
+    private VillagerEntity storedMind = null;
 
     public BlockEntityPedestal(BlockPos pos, BlockState state) {
         super(HexGloopBEs.PEDESTAL_BE.get(), pos, state);
         isMirror = false;
+        hasMindStorage = false;
         if(state.getBlock() instanceof BlockPedestal){
             isMirror = ((BlockPedestal)state.getBlock()).isMirror;
+            hasMindStorage = ((BlockPedestal)state.getBlock()).hasMindStorage;
         }
         if(getWorld() != null && !getWorld().isClient()){
             persistentUUID = getNewUUID();
@@ -227,6 +238,11 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
         this.storedItem = ItemStack.fromNbt(nbt.getCompound(ITEM_DATA_TAG));
         if(nbt.containsUuid(PERSISTENT_UUID_TAG))
             this.persistentUUID = nbt.getUuid(PERSISTENT_UUID_TAG);
+        if(hasMindStorage && nbt.contains("stored_mind")){
+            if(EntityType.getEntityFromNbt(nbt.getCompound("stored_mind"), world).orElse(null) instanceof VillagerEntity villager){
+                storedMind = villager;
+            }
+        }
     }
 
     @Override
@@ -237,6 +253,11 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
         }
         if(persistentUUID != null){
             nbt.putUuid(PERSISTENT_UUID_TAG, persistentUUID);
+        }
+        if(storedMind != null && hasMindStorage){
+            NbtCompound mindNbt = new NbtCompound();
+            storedMind.saveSelfNbt(mindNbt);
+            nbt.put("stored_mind", storedMind.writeNbt(mindNbt));
         }
     }
 
@@ -412,5 +433,53 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
     @Nullable
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    // flaying stuff:
+
+    public void absorbVillagerMind(VillagerEntity sacrifice, BlockPos flayPos, CastingContext ctx){
+        // this deals with dynamic stuff and recipes
+        IMindTargetItem mindTarget = ItemFlayingRecipe.getItemTarget(storedItem, sacrifice, ctx.getWorld().getRecipeManager());
+        if(mindTarget != null){
+            ItemStack result = mindTarget.absorbVillagerMind(sacrifice, storedItem, ctx);
+            if(result != storedItem){
+                if(storedItem.isEmpty()){
+                    storedItem = result; // just replace it
+                    syncItemWithEntity(true);
+                } else {
+                    // spawn a new item entity - might be nice to add a bit of velocity to it ?
+                    ItemEntity newEnt = new ItemEntity(ctx.getWorld(), 
+                    pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 
+                    result, 0, 0, 0);
+                    ctx.getWorld().spawnEntity(newEnt);
+                }
+            }
+            return;
+        }
+
+        // handle mindstorage
+        if(hasMindStorage && storedMind == null){
+            storedMind = sacrifice;
+            if(storedMind == null){
+                world.setBlockState(flayPos, world.getBlockState(flayPos).with(BlockPedestal.MINDFUL, false));
+            } else {
+                world.setBlockState(flayPos, world.getBlockState(flayPos).with(BlockPedestal.MINDFUL, true));
+            }
+            markDirty();
+        }
+    }
+    
+    // return true if it can be accepted
+    public boolean canAcceptMind(VillagerEntity sacrifice, BlockPos flayPos, CastingContext ctx){
+        IMindTargetItem mindTarget = ItemFlayingRecipe.getItemTarget(storedItem, sacrifice, ctx.getWorld().getRecipeManager());
+        if(mindTarget != null){
+            return mindTarget.canAcceptMind(sacrifice, storedItem, ctx);
+        }
+        
+        if(hasMindStorage){
+            return storedMind == null;
+        }
+        
+        return false;
     }
 }

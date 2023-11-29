@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "mindful=false,facing=up": { "model": "hexgloop:block/mind_pedestal" },
+        "mindful=false,facing=down": { "model": "hexgloop:block/mind_pedestal", "x": 180 },
+        "mindful=false,facing=north": { "model": "hexgloop:block/mind_pedestal", "x": 90 },
+        "mindful=false,facing=east":  { "model": "hexgloop:block/mind_pedestal", "x": 90, "y":  90 },
+        "mindful=false,facing=south": { "model": "hexgloop:block/mind_pedestal", "x": 90, "y": 180 },
+        "mindful=false,facing=west":  { "model": "hexgloop:block/mind_pedestal", "x": 90, "y": 270 },
+
+        "mindful=true,facing=up":    { "model": "hexgloop:block/mind_pedestal_full" },
+        "mindful=true,facing=down":  { "model": "hexgloop:block/mind_pedestal_full", "x": 180 },
+        "mindful=true,facing=north": { "model": "hexgloop:block/mind_pedestal_full", "x": 90 },
+        "mindful=true,facing=east":  { "model": "hexgloop:block/mind_pedestal_full", "x": 90, "y":  90 },
+        "mindful=true,facing=south": { "model": "hexgloop:block/mind_pedestal_full", "x": 90, "y": 180 },
+        "mindful=true,facing=west":  { "model": "hexgloop:block/mind_pedestal_full", "x": 90, "y": 270 }
+    }
+}

@@ -8,6 +8,7 @@ import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.ItemStack;
 
 // an item that can act as a substitute for a villager
+// see also: IMindTargetItem for items that can *receive* a mind
 public interface IFlayableItem {
     // doesn't need to be an actually spawned in-world villager, you can just make the entity and return it.
     // return null if there's no villager to flay

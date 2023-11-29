@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures": {
+        "side": "hexgloop:block/syncetrix/side_lit",
+        "top": "hexgloop:block/syncetrix/front_lit",
+        "bottom": "hexgloop:block/syncetrix/back_lit"
+    }
+}

@@ -146,7 +146,7 @@ public class HexGloopItems{
         }));
 
     public static final String[] NEW_STAFF_IDS = {"bone_staff", "quartz_staff", "carrot_staff", "bee_staff", "rod_staff",
-        "ice_staff", "blaze_staff", "wither_staff", "pumpkin_staff", "lovely_staff", "longinus_staff", "owl_staff", "ghost_staff", "celestial_staff"};
+        "ice_staff", "blaze_staff", "wither_staff", "pumpkin_staff", "candy_cane_staff", "menorah_staff", "lovely_staff", "longinus_staff", "owl_staff", "ghost_staff", "celestial_staff"};
     static {
         for(String id : NEW_STAFF_IDS){
             item(id, () -> new ItemStaff(defaultSettings().maxCount(1)));

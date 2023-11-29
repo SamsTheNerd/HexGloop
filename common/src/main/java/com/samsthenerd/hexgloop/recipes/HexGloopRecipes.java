@@ -25,6 +25,11 @@ public class HexGloopRecipes {
         register("data_glooping", DataGloopingRecipe.Serializer.INSTANCE);
     public static RegistrySupplier<DataGloopingRecipe.Type> DATA_GLOOPING_TYPE = 
         register("data_glooping", DataGloopingRecipe.Type.INSTANCE);
+
+    public static RegistrySupplier<ItemFlayingRecipe.Serializer> ITEM_FLAYING_RECIPE = 
+        register("item_flaying", ItemFlayingRecipe.Serializer.INSTANCE);
+    public static RegistrySupplier<ItemFlayingRecipe.Type> ITEM_FLAYING_TYPE = 
+        register("item_flaying", ItemFlayingRecipe.Type.INSTANCE);
     
 
     public static void register(){

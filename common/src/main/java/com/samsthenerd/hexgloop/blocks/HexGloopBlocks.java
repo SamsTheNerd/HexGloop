@@ -6,6 +6,7 @@ import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 
+import at.petrak.hexcasting.api.block.circle.BlockCircleComponent;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.AbstractBlock;
@@ -28,6 +29,8 @@ public class HexGloopBlocks {
         () -> new BlockPedestal(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES), false));
     public static final RegistrySupplier<BlockPedestal> MIRROR_PEDESTAL_BLOCK = block("mirror_pedestal", 
         () -> new BlockPedestal(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES), true));
+    public static final RegistrySupplier<BlockPedestal> MIND_PEDESTAL_BLOCK = block("mind_pedestal", 
+        () -> new BlockPedestal(AbstractBlock.Settings.of(Material.STONE, MapColor.RED).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES), false, true));
 
     
     public static final RegistrySupplier<BlockSlateChest> SLATE_CHEST_BLOCK = block("slate_chest", 
@@ -44,16 +47,33 @@ public class HexGloopBlocks {
         new Item.Settings()); // don't put it in item group
 
     public static final RegistrySupplier<BlockAccelerator> ACCELERATOR_BLOCK = block("accelerator", 
-        () -> new BlockAccelerator(AbstractBlock.Settings.of(Material.METAL, MapColor.ORANGE).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.COPPER)));
+        () -> new BlockAccelerator(AbstractBlock.Settings.of(Material.METAL, MapColor.ORANGE).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.COPPER).luminance(state ->{
+            return state.get(BlockCircleComponent.ENERGIZED) ? 7 : 0;
+        })));
 
     public static final RegistrySupplier<BlockWaveLocus> REDSTONE_WAVE_LOCUS_BLOCK = block("wave_locus", 
-        () -> new BlockWaveLocus(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES)));
+        () -> new BlockWaveLocus(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES)
+        .luminance(state ->{
+            return state.get(BlockCircleComponent.ENERGIZED) ? 7 : 0;
+        })));
+
+    public static final RegistrySupplier<BlockSyncetrix> SYNCETRIX_BLOCK = block("syncetrix",
+        () -> new BlockSyncetrix(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.DEEPSLATE_TILES)
+        .luminance(state ->{
+            return state.get(BlockCircleComponent.ENERGIZED) ? 10 : 0;
+        })));
 
     public static final RegistrySupplier<BlockSentinelBed> SENTINEL_BED_BLOCK = block("sentinel_bed", 
         () -> new BlockSentinelBed(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 6.0f).sounds(BlockSoundGroup.DEEPSLATE_TILES)));
 
     public static final RegistrySupplier<Block> HEXXED_GLASS_BLOCK = block("hexxed_glass", 
         () -> new BlockHexxedGlass(AbstractBlock.Settings.of(Material.GLASS, MapColor.TERRACOTTA_PURPLE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque()));
+
+    public static final RegistrySupplier<BlockSlateLamp> SLATE_LAMP_BLOCK = block("slate_lamp", 
+        () -> new BlockSlateLamp(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.AMETHYST_BLOCK)
+        .luminance(state ->{
+            return state.get(BlockSlateLamp.LIT) || state.get(BlockCircleComponent.ENERGIZED) ? 15 : 0;
+        })));
 
     public static Block.Settings defaultSettings(){
         return Block.Settings.of(Material.STONE).hardness((float)1.3);
