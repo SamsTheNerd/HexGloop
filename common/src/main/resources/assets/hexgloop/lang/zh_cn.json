@@ -19,6 +19,7 @@
     "item.hexgloop.gloopifact": "凝浆造物",
     "item.hexgloop.synchronous_gloop": "同步凝浆",
     "item.hexgloop.hand_mirror": "手镜",
+
     "item.hexgloop.lovely_staff": "爱心法杖",
     "item.hexgloop.quartz_staff": "石英法杖",
     "item.hexgloop.carrot_staff": "胡萝卜法杖",
@@ -33,6 +34,9 @@
     "item.hexgloop.owl_staff": "猫头鹰法杖",
     "item.hexgloop.celestial_staff": "天体法杖",
     "item.hexgloop.longinus_staff": "朗基努斯之杖",
+    "item.hexgloop.candy_cane_staff": "拐杖糖法杖",
+    "item.hexgloop.menorah_staff": "多连灯法杖",
+
     "item.hexgloop.hexxy_plush": "Hexxy毛绒玩偶",
     "item.hexgloop.hex_blade": "咒术之剑",
     "item.hexgloop.slate_loader": "仪式家雕刻器",
@@ -60,6 +64,8 @@
     "block.hexgloop.sentinel_bed": "哨卫床",
     "block.hexgloop.accelerator": "加速器",
     "block.hexgloop.hexxed_glass": "咒术玻璃",
+    "block.hexgloop.slate_lamp": "板岩灯",
+    "block.hexgloop.syncetrix": "Syncetrix",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
     "key.hexgloop.casting_ring": "使用施法戒指",
