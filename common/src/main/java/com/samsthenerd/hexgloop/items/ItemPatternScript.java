@@ -15,6 +15,7 @@ import net.minecraft.nbt.NbtCompound;
 public class ItemPatternScript extends Item implements IotaHolderItem{
 
     public static final String TAG_DATA = "data";
+    public static final int MAX_PATTERN_COUNT = 16;
 
     public ItemPatternScript(Settings settings){
         super(settings);
@@ -31,6 +32,10 @@ public class ItemPatternScript extends Item implements IotaHolderItem{
             return iota;
         }
         if(iota instanceof ListIota lIota){
+            // limit number of patterns
+            if(lIota.getList().size() > MAX_PATTERN_COUNT){
+                return null;
+            }
             for(Iota inIota : lIota.getList()){
                 // null if there's a non-pattern iota in there
                 if(!(inIota instanceof PatternIota)){

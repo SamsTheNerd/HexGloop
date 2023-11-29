@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube_directional",
+    "textures": {
+        "up": "hexgloop:block/syncetrix/side_lit",
+        "down": "hexgloop:block/syncetrix/side_lit",
+        "east": "hexgloop:block/syncetrix/side_lit",
+        "west": "hexgloop:block/syncetrix/side_lit",
+        "north": "hexgloop:block/syncetrix/front_lit",
+        "south": "hexgloop:block/syncetrix/back_lit"
+    }
+    
+}

@@ -13,6 +13,7 @@ import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociAtHome;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IIotaProviderLocus;
 
 import at.petrak.hexcasting.api.block.circle.BlockCircleComponent;
+import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -24,12 +25,14 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
@@ -42,17 +45,24 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class BlockPedestal extends BlockCircleComponent implements BlockEntityProvider, ILociAtHome, IIotaProviderLocus{
+public class BlockPedestal extends BlockCircleComponent implements BlockEntityProvider, ILociAtHome, IIotaProviderLocus, IDynamicFlayTarget{
     public final boolean isMirror;
+    public final boolean hasMindStorage;
     public static final DirectionProperty FACING = Properties.FACING;
+    public static final BooleanProperty MINDFUL = BooleanProperty.of("mindful");
 
-    public BlockPedestal(Settings settings, boolean isMirror) {
+    public BlockPedestal(Settings settings, boolean isMirror, boolean hasMindStorage) {
         super(settings);
         this.isMirror = isMirror;
-        this.setDefaultState(
-            this.stateManager.getDefaultState()
+        this.hasMindStorage = hasMindStorage;
+        setDefaultState(this.stateManager.getDefaultState()
                 .with(ENERGIZED, false)
-                .with(FACING, Direction.NORTH));
+                .with(FACING, Direction.NORTH)
+                .with(MINDFUL, false));
+    }
+
+    public BlockPedestal(Settings settings, boolean isMirror) {
+        this(settings, isMirror, false);
     }
 
     @Override
@@ -153,6 +163,7 @@ public class BlockPedestal extends BlockCircleComponent implements BlockEntityPr
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(FACING);
+        builder.add(MINDFUL);
     }
 
     // circle-y stuff
@@ -191,5 +202,18 @@ public class BlockPedestal extends BlockCircleComponent implements BlockEntityPr
 
     public float particleHeight(BlockPos pos, BlockState bs, World world){
         return (float)BlockEntityPedestal.HEIGHT;
+    }
+
+    public void absorbVillagerMind(VillagerEntity sacrifice, BlockPos flayPos, CastingContext ctx){
+        ctx.getWorld().getBlockEntity(flayPos, HexGloopBEs.PEDESTAL_BE.get()).ifPresent((be) -> {
+            ((BlockEntityPedestal)be).absorbVillagerMind(sacrifice, flayPos, ctx);
+        });
+    }
+    
+    // return true if it can be accepted
+    public boolean canAcceptMind(VillagerEntity sacrifice, BlockPos flayPos, CastingContext ctx){
+        return ctx.getWorld().getBlockEntity(flayPos, HexGloopBEs.PEDESTAL_BE.get()).map((be) -> {
+            return ((BlockEntityPedestal)be).canAcceptMind(sacrifice, flayPos, ctx);
+        }).orElse(false);
     }
 }

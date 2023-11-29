@@ -1,0 +1,17 @@
+{
+    "variants": {
+        "energized=false,facing=up":    { "model": "hexgloop:block/syncetrix/unlit" },
+        "energized=false,facing=down":  { "model": "hexgloop:block/syncetrix/unlit", "x": 180 },
+        "energized=false,facing=north": { "model": "hexgloop:block/syncetrix/unlit", "x": 270, "y": 180},
+        "energized=false,facing=east":  { "model": "hexgloop:block/syncetrix/unlit", "x": 270, "y":  270 },
+        "energized=false,facing=south": { "model": "hexgloop:block/syncetrix/unlit", "x": 270, "y": 0 },
+        "energized=false,facing=west":  { "model": "hexgloop:block/syncetrix/unlit", "x": 270, "y": 90 },
+
+        "energized=true,facing=up":    { "model": "hexgloop:block/syncetrix/lit" },
+        "energized=true,facing=down":  { "model": "hexgloop:block/syncetrix/lit", "x": 180 },
+        "energized=true,facing=north": { "model": "hexgloop:block/syncetrix/lit", "x": 270, "y": 180},
+        "energized=true,facing=east":  { "model": "hexgloop:block/syncetrix/lit", "x": 270, "y": 270 },
+        "energized=true,facing=south": { "model": "hexgloop:block/syncetrix/lit", "x": 270, "y": 0 },
+        "energized=true,facing=west":  { "model": "hexgloop:block/syncetrix/lit", "x": 270, "y": 90 }
+    }
+}

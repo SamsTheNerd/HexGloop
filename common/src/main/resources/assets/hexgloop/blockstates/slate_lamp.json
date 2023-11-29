@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "lit=false,energized=true": {"model": "hexgloop:block/slate_lamp/lit"},
+        "lit=true,energized=false": {"model": "hexgloop:block/slate_lamp/lit"},
+        "lit=true,energized=true": {"model": "hexgloop:block/slate_lamp/lit"},
+        "lit=false,energized=false": {"model": "hexgloop:block/slate_lamp/unlit"}
+    }
+}

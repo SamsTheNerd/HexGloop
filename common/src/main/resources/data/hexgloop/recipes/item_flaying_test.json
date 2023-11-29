@@ -1,0 +1,11 @@
+{
+    "type": "hexgloop:item_flaying",
+    "ingredient": {
+        "item": "minecraft:amethyst_shard"
+    },
+    "result": "hexcasting:charged_amethyst",
+    "villagerIn": {
+        "minLevel": 3
+    },
+    "addVillagerNbt": true
+}

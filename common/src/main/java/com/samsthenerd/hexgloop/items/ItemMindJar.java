@@ -20,7 +20,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class ItemMindJar extends Item implements IFlayableItem {
+public class ItemMindJar extends Item implements IFlayableItem, IMindTargetItem{
 
     private static String STORED_VILLAGER = "villager_mind";
 
@@ -55,5 +55,18 @@ public class ItemMindJar extends Item implements IFlayableItem {
     // do whatever, probably just decrement the stack count or clear some nbt
     public void handleBrainsweep(ItemStack stack, @Nullable ItemEntity itemEnt, CastingContext ctx){
         HexGloop.logPrint("brainsweep !");
+    }
+
+    public ItemStack absorbVillagerMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx){
+        NbtCompound nbt = new NbtCompound();
+        sacrifice.saveSelfNbt(nbt);
+        stack.getOrCreateNbt().put(STORED_VILLAGER, sacrifice.writeNbt(nbt));
+        HexGloop.logPrint("absorbed villager mind into jar");
+        return stack;
+    }
+    
+    // return true if it can be accepted
+    public boolean canAcceptMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx){
+        return true;
     }
 }

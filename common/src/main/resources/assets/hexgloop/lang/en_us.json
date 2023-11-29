@@ -19,6 +19,7 @@
     "item.hexgloop.gloopifact": "Gloopifact",
     "item.hexgloop.synchronous_gloop": "Synchronous Gloop",
     "item.hexgloop.hand_mirror": "Hand Mirror",
+
     "item.hexgloop.lovely_staff": "Lovely Staff",
     "item.hexgloop.quartz_staff": "Quartz Staff",
     "item.hexgloop.carrot_staff": "Carrot Staff",
@@ -33,6 +34,9 @@
     "item.hexgloop.owl_staff": "Owl Staff",
     "item.hexgloop.celestial_staff": "Celestial Staff",
     "item.hexgloop.longinus_staff": "Staff Of Longinus",
+    "item.hexgloop.candy_cane_staff": "Candy Cane Staff",
+    "item.hexgloop.menorah_staff": "Menorah Staff",
+
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
     "item.hexgloop.hex_blade": "Hex Blade",
     "item.hexgloop.slate_loader": "Ritualist's Inscriber",
@@ -60,6 +64,8 @@
     "block.hexgloop.sentinel_bed": "Sentinel Bed",
     "block.hexgloop.accelerator": "Accelerator",
     "block.hexgloop.hexxed_glass": "Hexxed Glass",
+    "block.hexgloop.slate_lamp": "Slate Lamp",
+    "block.hexgloop.syncetrix": "Syncetrix",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",
