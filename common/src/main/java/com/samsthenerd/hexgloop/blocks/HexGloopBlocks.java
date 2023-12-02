@@ -72,6 +72,9 @@ public class HexGloopBlocks {
     public static final RegistrySupplier<Block> CHARGED_AMETHYST_BLOCK = block("charged_amethyst_block", 
         () -> new Block(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).requiresTool().strength(5.0f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)));
 
+    public static final RegistrySupplier<Block> THINKING_CARPET_BLOCK = block("thinking_carpet", 
+        () -> new BlockThinkingCarpet(AbstractBlock.Settings.of(Material.CARPET, MapColor.TERRACOTTA_PURPLE).strength(0.1f).sounds(BlockSoundGroup.WOOL)));
+
     public static final RegistrySupplier<BlockSlateLamp> SLATE_LAMP_BLOCK = block("slate_lamp", 
         () -> new BlockSlateLamp(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.AMETHYST_BLOCK)
         .luminance(state ->{

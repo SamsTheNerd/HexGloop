@@ -16,15 +16,15 @@
         <img
           class="flay-recipe-background"
           alt="Flay Mind Recipe GUI"
-          src="{{ 'hexcasting:textures/gui/hexdoc/brainsweep.png'|hexdoc_texture }}"
+          src="{{ 'hexgloop:textures/gui/itemflaygui.png'|hexdoc_texture }}"
         >
         {{ hex_recipes.render_brainsweepee(page.recipe) }}
         <div class="flay-recipe-block-ingredient">
-          {{ texture_macros.render_item(page.recipe.ingredient.item) }}
+          {{ texture_macros.render_item(page.recipe.ingredient.item, count=page.recipe.inCount) }}
         </div>
 
         <div class="flay-recipe-result">
-          {{ texture_macros.render_item(page.recipe.result) }}
+          {{ texture_macros.render_item(page.recipe.result, count=page.recipe.resultCount) }}
         </div>
       </div>
     </div>
