@@ -177,6 +177,11 @@ public class HexGloopRegisterPatterns {
                 new Identifier(HexGloop.MOD_ID, "truename_agree_eula"),
                 new OpAgreeTruenameEULA());
 
+            // op dispense
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wqwaeqqqeddqeqd", HexDir.SOUTH_EAST), 
+                new Identifier(HexGloop.MOD_ID, "dispense"), 
+                new OpDispense());
+
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
         }

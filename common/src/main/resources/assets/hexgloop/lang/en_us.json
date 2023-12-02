@@ -19,6 +19,7 @@
     "item.hexgloop.gloopifact": "Gloopifact",
     "item.hexgloop.synchronous_gloop": "Synchronous Gloop",
     "item.hexgloop.hand_mirror": "Hand Mirror",
+    "item.hexgloop.cosmetic_energizer": "Mind Wrench",
 
     "item.hexgloop.lovely_staff": "Lovely Staff",
     "item.hexgloop.quartz_staff": "Quartz Staff",
@@ -65,6 +66,7 @@
     "block.hexgloop.accelerator": "Accelerator",
     "block.hexgloop.hexxed_glass": "Hexxed Glass",
     "block.hexgloop.slate_lamp": "Slate Lamp",
+    "block.hexgloop.charged_amethyst_block": "Block of Charged Amethyst",
     "block.hexgloop.syncetrix": "Syncetrix",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",

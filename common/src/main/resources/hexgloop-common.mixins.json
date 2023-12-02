@@ -65,7 +65,8 @@
       "castingmodifiers.MixinCastingContextModifiers",
       "misc.MixinItemFlaying",
       "misc.MixinItemFlaying$MixinBrainsweepSpell",
-      "misc.MixinHonorLibraryCardReads"
+      "misc.MixinHonorLibraryCardReads",
+      "misc.MixinDispenserBehaviorAccessor"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

@@ -1,5 +1,7 @@
 package com.samsthenerd.hexgloop.items;
 
+import javax.annotation.Nullable;
+
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.ItemStack;
@@ -9,13 +11,13 @@ import net.minecraft.item.ItemStack;
 public interface IMindTargetItem {
     // politely ask you to not modify the sacrifice
     // return resulting itemstack - will keep existing on the pedestal and spawn the new one if it doesn't match the one passed in.
-    public ItemStack absorbVillagerMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx);
+    public ItemStack absorbVillagerMind(VillagerEntity sacrifice, ItemStack stack, @Nullable CastingContext ctx);
     
     // return true if it can be accepted
-    public boolean canAcceptMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx);
+    public boolean canAcceptMind(VillagerEntity sacrifice, ItemStack stack, @Nullable CastingContext ctx);
 
     // determines whether or not it'll suck the mind out of a flaying pedestal
-    public default boolean shouldPullMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx){
+    public default boolean shouldPullMind(VillagerEntity sacrifice, ItemStack stack, @Nullable CastingContext ctx){
         return false;
     }
 

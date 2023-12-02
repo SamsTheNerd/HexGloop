@@ -69,11 +69,19 @@ public class HexGloopBlocks {
     public static final RegistrySupplier<Block> HEXXED_GLASS_BLOCK = block("hexxed_glass", 
         () -> new BlockHexxedGlass(AbstractBlock.Settings.of(Material.GLASS, MapColor.TERRACOTTA_PURPLE).strength(0.3f, 0.3f).sounds(BlockSoundGroup.GLASS).nonOpaque()));
 
+    public static final RegistrySupplier<Block> CHARGED_AMETHYST_BLOCK = block("charged_amethyst_block", 
+        () -> new Block(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).requiresTool().strength(5.0f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)));
+
     public static final RegistrySupplier<BlockSlateLamp> SLATE_LAMP_BLOCK = block("slate_lamp", 
         () -> new BlockSlateLamp(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.AMETHYST_BLOCK)
         .luminance(state ->{
             return state.get(BlockSlateLamp.LIT) || state.get(BlockCircleComponent.ENERGIZED) ? 15 : 0;
         })));
+
+    public static final RegistrySupplier<Block> ENLIGHTENMENT_GATE_BLOCK = block("enlightenment_gate", 
+        () -> new BlockEnlightenedCollision(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).strength(0.3f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK).nonOpaque(), false));
+    public static final RegistrySupplier<Block> ENLIGHTENMENT_BRIDGE_BLOCK = block("enlightenment_bridge", 
+        () -> new BlockEnlightenedCollision(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).strength(0.3f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK).nonOpaque(), true));
 
     public static Block.Settings defaultSettings(){
         return Block.Settings.of(Material.STONE).hardness((float)1.3);

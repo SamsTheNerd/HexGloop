@@ -15,6 +15,8 @@
         "hexgloop:longinus_staff",
         "hexgloop:owl_staff",
         "hexgloop:ghost_staff",
-        "hexgloop:celestial_staff"
+        "hexgloop:celestial_staff",
+        "hexgloop:menorah_staff",
+        "hexgloop:candy_cane_staff"
     ]
 }

@@ -327,6 +327,14 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
         }
         // force this update if needed
         if(wasItemUpdated) syncItemWithEntity(true);
+        // move mind into item if possible
+        if(hasMindStorage && !storedItem.isEmpty() && storedMind != null && canHeldItemAcceptMind(storedMind, null)){
+            // HexGloop.logPrint("moving mind into item");
+            flayHeldItem(storedMind, null);
+            storedMind = null;
+            world.setBlockState(pos, world.getBlockState(pos).with(BlockPedestal.MINDFUL, false));
+            markDirty();
+        }
     }
 
     public List<ItemEntity> getInputItemEntities() {
@@ -437,9 +445,11 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
 
     // flaying stuff:
 
-    public void absorbVillagerMind(VillagerEntity sacrifice, BlockPos flayPos, CastingContext ctx){
+    // abstracted here so we can call it without casting context and not deal with storing the mind in the pedestal
+    public void flayHeldItem(VillagerEntity sacrifice, @Nullable CastingContext ctx){
         // this deals with dynamic stuff and recipes
-        IMindTargetItem mindTarget = ItemFlayingRecipe.getItemTarget(storedItem, sacrifice, ctx.getWorld().getRecipeManager());
+        World world = getWorld();
+        IMindTargetItem mindTarget = ItemFlayingRecipe.getItemTarget(storedItem, sacrifice, world.getRecipeManager());
         if(mindTarget != null){
             ItemStack result = mindTarget.absorbVillagerMind(sacrifice, storedItem, ctx);
             if(result != storedItem){
@@ -448,12 +458,20 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
                     syncItemWithEntity(true);
                 } else {
                     // spawn a new item entity - might be nice to add a bit of velocity to it ?
-                    ItemEntity newEnt = new ItemEntity(ctx.getWorld(), 
+                    ItemEntity newEnt = new ItemEntity(world, 
                     pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 
                     result, 0, 0, 0);
-                    ctx.getWorld().spawnEntity(newEnt);
+                    world.spawnEntity(newEnt);
                 }
             }
+            return;
+        }
+    }
+
+    public void absorbVillagerMind(VillagerEntity sacrifice, BlockPos flayPos, CastingContext ctx){
+    
+        if(canHeldItemAcceptMind(sacrifice, ctx)){
+            flayHeldItem(sacrifice, ctx);
             return;
         }
 
@@ -469,13 +487,21 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
         }
     }
     
-    // return true if it can be accepted
-    public boolean canAcceptMind(VillagerEntity sacrifice, BlockPos flayPos, CastingContext ctx){
-        IMindTargetItem mindTarget = ItemFlayingRecipe.getItemTarget(storedItem, sacrifice, ctx.getWorld().getRecipeManager());
+    public boolean canHeldItemAcceptMind(VillagerEntity sacrifice, CastingContext ctx){
+        IMindTargetItem mindTarget = ItemFlayingRecipe.getItemTarget(storedItem, sacrifice, getWorld().getRecipeManager());
         if(mindTarget != null){
             return mindTarget.canAcceptMind(sacrifice, storedItem, ctx);
         }
+        return false;
+    }
+
+    // return true if it can be accepted
+    public boolean canAcceptMind(VillagerEntity sacrifice, BlockPos flayPos, CastingContext ctx){
         
+        if(canHeldItemAcceptMind(sacrifice, ctx)){
+            return true;
+        }
+
         if(hasMindStorage){
             return storedMind == null;
         }

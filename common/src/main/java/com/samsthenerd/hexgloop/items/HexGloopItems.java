@@ -102,6 +102,9 @@ public class HexGloopItems{
     public static final RegistrySupplier<ItemMindJar> MIND_JAR_ITEM = item("mind_jar",
         () -> new ItemMindJar(defaultSettings().maxCount(1)));
 
+    public static final RegistrySupplier<ItemCosmeticEnergizer> COSMETIC_ENERGIZER_ITEM = item("cosmetic_energizer",
+        () -> new ItemCosmeticEnergizer(defaultSettings().maxCount(1)));
+
     // fidgets -- todo: maybe move these out of here and into their own file
 
     public static final RegistrySupplier<ItemFidget> COPPER_PEN_FIDGET = item("copper_pen_fidget", 
