@@ -10,6 +10,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.samsthenerd.hexgloop.recipes.GloopingRecipes.GloopingRecipe;
 
+import at.petrak.hexcasting.api.misc.MediaConstants;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.inventory.Inventory;
@@ -52,12 +53,8 @@ public class DataGloopingRecipe implements Recipe<Inventory>, GloopingRecipe{
         for(Pair<Ingredient, Integer> ingredient : ingredients){
             ingredientString += "\n\t\t -x" + ingredient.getRight();
             for(Ingredient.Entry entry : ingredient.getLeft().entries){
-                if(entry instanceof Ingredient.StackEntry sEntry){
-                    ingredientString += "\n\t\t\t" + sEntry.stack;
-                }
-                if(entry instanceof Ingredient.TagEntry tEntry){
-                    ingredientString += "\n\t\t\t" + tEntry.tag;
-                }
+                for(ItemStack stack : entry.getStacks())
+                    ingredientString += "\n\t\t\t" + stack;
             }
         }
         return "DataGloopingRecipe(" + id + ":" +
@@ -134,6 +131,10 @@ public class DataGloopingRecipe implements Recipe<Inventory>, GloopingRecipe{
         return priority;
     }
 
+    public int getMediaCost(){
+        return mediaCost;
+    }
+
 	@Override
 	public RecipeType<?> getType() {
 		return Type.INSTANCE;
@@ -188,7 +189,7 @@ public class DataGloopingRecipe implements Recipe<Inventory>, GloopingRecipe{
             if(ingredients.isEmpty())
                 throw new IllegalStateException("No ingredients for recipe " + recipeID);
             ItemStack result = new ItemStack(JsonHelper.getItem(json, "result"));
-            int mediaCost = JsonHelper.getInt(json, "mediaCost", 0);
+            int mediaCost = JsonHelper.getInt(json, "mediaCost", MediaConstants.CRYSTAL_UNIT);
             int priority = JsonHelper.getInt(json, "priority", 0);
             return new DataGloopingRecipe(recipeID, ingredients, result, mediaCost, priority);
         }
