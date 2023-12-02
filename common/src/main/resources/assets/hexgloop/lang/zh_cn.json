@@ -19,6 +19,7 @@
     "item.hexgloop.gloopifact": "凝浆造物",
     "item.hexgloop.synchronous_gloop": "同步凝浆",
     "item.hexgloop.hand_mirror": "手镜",
+    "item.hexgloop.cosmetic_energizer": "意识扳手",
 
     "item.hexgloop.lovely_staff": "爱心法杖",
     "item.hexgloop.quartz_staff": "石英法杖",
@@ -65,6 +66,7 @@
     "block.hexgloop.accelerator": "加速器",
     "block.hexgloop.hexxed_glass": "咒术玻璃",
     "block.hexgloop.slate_lamp": "板岩灯",
+    "block.hexgloop.charged_amethyst_block": "充能紫水晶块",
     "block.hexgloop.syncetrix": "Syncetrix",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
