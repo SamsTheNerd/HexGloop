@@ -54,7 +54,7 @@ public class BlockSyncetrix extends BlockCircleComponent implements ILociAtHome,
     }
 
     public EnumSet<Direction> exitDirections(BlockPos pos, BlockState bs, World world){
-        return null;
+        return EnumSet.noneOf(Direction.class);
     }
 
     public BlockPos forceNextPos(BlockPos currentPos, BlockState currentState, World world, 

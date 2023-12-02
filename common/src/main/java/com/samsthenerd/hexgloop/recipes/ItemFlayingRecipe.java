@@ -12,10 +12,13 @@ import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.items.IMindTargetItem;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
+import at.petrak.hexcasting.common.recipe.BrainsweepRecipe;
 import at.petrak.hexcasting.common.recipe.HexRecipeStuffRegistry;
 import at.petrak.hexcasting.common.recipe.ingredient.VillagerIngredient;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -105,6 +108,7 @@ public class ItemFlayingRecipe implements Recipe<Inventory> {
     private static final Map<Item, IMindTargetItem> ITEM_FLAYING_HANDLERS = new HashMap<>();
     private static final Map<Item, IMindTargetItem> itemFlayingCache = new HashMap<>();
 
+    // TODO: modify this to get base hex block recipes too
     @Nullable
     public static IMindTargetItem getItemTarget(ItemStack stack, VillagerEntity villager, RecipeManager recman){
         // get it from an interface
@@ -124,6 +128,17 @@ public class ItemFlayingRecipe implements Recipe<Inventory> {
                 IMindTargetItem target =  new MindRecipeItem(recipe);
                 itemFlayingCache.put(stack.getItem(), target);
                 return target;
+            }
+        }
+        // try to find block
+        if(stack.getItem() instanceof BlockItem blockItem){
+            BlockState inState = blockItem.getBlock().getDefaultState();
+            for(BrainsweepRecipe recipe : recman.listAllOfType(HexRecipeStuffRegistry.BRAINSWEEP_TYPE)){
+                if(recipe.matches(inState, villager) && recipe.result().getBlock() != blockItem.getBlock()){
+                    IMindTargetItem target =  new MindRecipeBlock(recipe);
+                    itemFlayingCache.put(stack.getItem(), target);
+                    return target;
+                }
             }
         }
         itemFlayingCache.put(stack.getItem(), null);
@@ -234,6 +249,29 @@ public class ItemFlayingRecipe implements Recipe<Inventory> {
     
         public boolean canAcceptMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx){
             return recipe.matches(stack, sacrifice);
+        }
+
+    }
+
+    public static class MindRecipeBlock implements IMindTargetItem{
+        private final BrainsweepRecipe recipe;
+
+        public MindRecipeBlock(BrainsweepRecipe recipe){
+            this.recipe = recipe;
+        }
+
+        public ItemStack absorbVillagerMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx){
+            ItemStack original = stack.copy();
+            stack.decrement(1);
+
+            ItemStack result = new ItemStack(recipe.result().getBlock().asItem(), 1);
+            return result;
+        }
+    
+        public boolean canAcceptMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx){
+            if(!(stack.getItem() instanceof BlockItem blockItem)) return false;
+            BlockState inState = blockItem.getBlock().getDefaultState();
+            return recipe.matches(inState, sacrifice) && recipe.result().getBlock() != blockItem.getBlock();
         }
 
     }
