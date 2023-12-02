@@ -19,7 +19,7 @@ import kotlin.Triple;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 
 public class OpConjureTastyTreat implements SpellAction {
 
@@ -54,7 +54,7 @@ public class OpConjureTastyTreat implements SpellAction {
     @Override
     public Triple<RenderedSpell, Integer, List<ParticleSpray>> execute(List<? extends Iota> args, CastingContext context){
         // position to summon snacks
-        BlockPos pos = OperatorUtils.getBlockPos(args, 0, getArgc());
+        Vec3d pos = OperatorUtils.getVec3(args, 0, getArgc());
         context.assertVecInRange(pos);
         ItemStack snackStack = HexGloopItems.HEX_SNACK.get().getDefaultStack();
         snackStack.setCount(1);
