@@ -44,8 +44,8 @@ public class ItemFlayingRecipe implements Recipe<Inventory> {
 	}
 
     private Identifier id;
-    private Pair<Ingredient, Integer> ingredient; // ingredient and count required
-    private VillagerIngredient villagerIn;
+    public final Pair<Ingredient, Integer> ingredient; // ingredient and count required
+    public final VillagerIngredient villagerIn;
     public final Item result;
     public final boolean preserveNbt;
     public final boolean addVillagerNbt;

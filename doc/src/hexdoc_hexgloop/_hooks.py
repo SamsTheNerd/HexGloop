@@ -1,6 +1,9 @@
 from importlib.resources import Package
 from typing_extensions import override
 
+from .book.page import pages
+from .book import glooprecipe
+
 from hexdoc.plugin import (
     HookReturn,
     ModPlugin,
@@ -20,6 +23,11 @@ class HexgloopPlugin(ModPluginImpl):
     @hookimpl
     def hexdoc_mod_plugin(branch: str) -> ModPlugin:
         return HexgloopModPlugin(branch=branch)
+    
+    @staticmethod
+    @hookimpl
+    def hexdoc_load_tagged_unions() -> HookReturn[Package]:
+        return [glooprecipe, pages]
 
 
 class HexgloopModPlugin(ModPluginWithBook):

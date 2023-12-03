@@ -117,9 +117,8 @@ public class ItemSlateLoader extends ItemAbstractPassThrough implements IotaHold
                     return;
                 }
             }
-            NBTHelper.remove(stack, TAG_PATTERN_LIST);
-            setCurrentPattern(stack, null);
         }
+        erasePatterns(stack);
     }
 
     public boolean hasPatterns(ItemStack stack){
@@ -145,6 +144,15 @@ public class ItemSlateLoader extends ItemAbstractPassThrough implements IotaHold
         }
     }
 
+    private void erasePatterns(ItemStack stack){
+        var beTag = NBTHelper.getOrCreateCompound(stack, "BlockEntityTag");
+        beTag.remove(BlockEntitySlate.TAG_PATTERN);
+        if (beTag.isEmpty()) {
+            NBTHelper.remove(stack, "BlockEntityTag");
+        }
+        NBTHelper.remove(stack, TAG_PATTERN_LIST);
+    }
+
     private void setCurrentPattern(ItemStack stack, @Nullable HexPattern pattern){
         if(pattern == null){
             var beTag = NBTHelper.getOrCreateCompound(stack, "BlockEntityTag");
@@ -152,7 +160,6 @@ public class ItemSlateLoader extends ItemAbstractPassThrough implements IotaHold
             if (beTag.isEmpty()) {
                 NBTHelper.remove(stack, "BlockEntityTag");
             }
-            NBTHelper.remove(stack, TAG_PATTERN_LIST);
         } else {
             var beTag = NBTHelper.getOrCreateCompound(stack, "BlockEntityTag");
             beTag.put(BlockEntitySlate.TAG_PATTERN, pattern.serializeToNBT());
@@ -253,8 +260,9 @@ public class ItemSlateLoader extends ItemAbstractPassThrough implements IotaHold
 
     public Text getName(ItemStack stack) {
         if(hasPatterns(stack)){
+            NbtCompound tag = HexItems.SLATE.readIotaTag(getCurrentSlate(stack));
             return Text.translatable(this.getTranslationKey(stack) + ".written", 
-                HexIotaTypes.getDisplay(HexItems.SLATE.readIotaTag(getCurrentSlate(stack)))
+                tag != null ? HexIotaTypes.getDisplay(tag) : Text.of(" ")
             );
         } else {
             return Text.translatable(this.getTranslationKey(stack));

@@ -1,0 +1,13 @@
+{
+    "name": "hexcasting.entry.test_item",
+    "category": "hexcasting:items",
+    "icon": "minecraft:dirt",
+    "sortnum": 4,
+    "pages": [
+      {
+        "type": "hexgloop:itemflay",
+        "recipe": "hexgloop:item_flaying_test",
+        "text": "hexcasting.page.akashiclib.akashic_record"
+      }
+    ]
+  }

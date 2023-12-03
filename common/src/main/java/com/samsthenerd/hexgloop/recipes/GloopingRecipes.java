@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-import com.samsthenerd.hexgloop.HexGloop;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.Item;
@@ -39,13 +37,7 @@ public class GloopingRecipes {
         List<GloopingRecipe> allRecipes = new ArrayList<>(recipeManager.listAllOfType(DataGloopingRecipe.Type.INSTANCE));
         allRecipes.addAll(RECIPES);
         allRecipes.sort((a, b) -> a.getPriority() - b.getPriority());
-        HexGloop.logPrint("found " + allRecipes.size() + " recipes");
         for(GloopingRecipe recipe : allRecipes){
-            if(recipe instanceof DataGloopingRecipe dRecipe){
-                HexGloop.logPrint("checking data recipe: " + dRecipe);
-            } else {
-                HexGloop.logPrint("checking hardcoded recipe with output: " + recipe.getOutput());
-            }
             if(recipe.matches(inputs)){
                 return recipe;
             }
@@ -63,9 +55,11 @@ public class GloopingRecipes {
         public ItemStack getOutput();
 
         public int getPriority();
+
+        public int getMediaCost();
     }
 
-    public record SimpleGloopingRecipe(Supplier<List<Pair<Integer, Item>>> ingredients, Supplier<ItemStack> output, int priority) implements GloopingRecipe{
+    public record SimpleGloopingRecipe(Supplier<List<Pair<Integer, Item>>> ingredients, Supplier<ItemStack> output, int priority, int cost) implements GloopingRecipe{
         public boolean matches(List<Entity> inputs) {
             List<Pair<Integer, Item>> remainingIngredients = new ArrayList<>(ingredients.get());
             for(Entity ent : inputs){
@@ -129,6 +123,10 @@ public class GloopingRecipes {
 
         public int getPriority(){
             return priority;
+        }
+
+        public int getMediaCost(){
+            return cost;
         }
     }
 }

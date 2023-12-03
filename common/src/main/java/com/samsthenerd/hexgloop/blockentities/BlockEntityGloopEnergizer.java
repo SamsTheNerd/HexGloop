@@ -51,7 +51,7 @@ public class BlockEntityGloopEnergizer extends BlockEntity implements Inventory{
         if(this.media < MediaConstants.DUST_UNIT * 10) return;
         GloopingRecipe bestRec = detectRecipe();
         if(bestRec == null) return;
-        this.media -= MediaConstants.DUST_UNIT * 10;
+        this.media -= bestRec.getMediaCost();
         Box box = new Box(pos).expand((double) BlockGloopEnergizer.BOILER_RADIUS);
         List<Entity> potentialIngredients = world.getOtherEntities(null, box);
         doGloopCraft(bestRec, potentialIngredients, centerPos);
@@ -87,8 +87,9 @@ public class BlockEntityGloopEnergizer extends BlockEntity implements Inventory{
             Set<BlockPos> adjWater = BlockGloopEnergizer.getAdjacentWater(world, pos);
             numConnectedBlocks = adjWater.size();
             if(!adjWater.isEmpty()){
-                double decAmt = MediaConstants.DUST_UNIT / 20.0;
-                this.media = (int) Math.max(((double)this.media) - decAmt, 0);
+                // just getting rid of media drain for now
+                // double decAmt = MediaConstants.DUST_UNIT / 20.0;
+                // this.media = (int) Math.max(((double)this.media) - decAmt, 0);
                 for(BlockPos waterPos : adjWater){
                     if(rand.nextDouble() > PARTICLE_SPAWN_CHANCE) continue;
                     ((ServerWorld) world).spawnParticles(ParticleTypes.SNEEZE, 
