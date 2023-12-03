@@ -20,6 +20,11 @@ body{
     }
 }
 
+::selection {
+    background: var(--dark-gloop);
+    color: white;
+}
+
 .navbar{
     background-color: var(--darkish-slate);
 }
@@ -143,5 +148,10 @@ canvas.spell-viz {
 
     canvas.spell-viz {
         --visited-path-color: var(--mid-dark-gloop);
+    }
+
+    ::selection {
+        background: var(--mid-gloop);
+        color: var(--dark-slate);
     }
 }
