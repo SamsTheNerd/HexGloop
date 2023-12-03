@@ -4,11 +4,14 @@ from typing_extensions import override
 from .book.page import pages
 from .book import glooprecipe
 
+from hexdoc.patchouli import BookContext
+
 from hexdoc.plugin import (
     HookReturn,
     ModPlugin,
     ModPluginImpl,
     ModPluginWithBook,
+    UpdateContextImpl,
     hookimpl,
 )
 
@@ -18,7 +21,7 @@ from .__gradle_version__ import FULL_VERSION, GRADLE_VERSION
 from .__version__ import PY_VERSION
 
 
-class HexgloopPlugin(ModPluginImpl):
+class HexgloopPlugin(ModPluginImpl, UpdateContextImpl):
     @staticmethod
     @hookimpl
     def hexdoc_mod_plugin(branch: str) -> ModPlugin:
@@ -28,6 +31,16 @@ class HexgloopPlugin(ModPluginImpl):
     @hookimpl
     def hexdoc_load_tagged_unions() -> HookReturn[Package]:
         return [glooprecipe, pages]
+    
+    @staticmethod
+    @hookimpl
+    def hexdoc_update_context(context: BookContext) -> None:
+        if context.props.modid != "hexgloop":
+            return
+        context.macros |= {
+            # put your macros here
+            "$(item)": "$(#b38ef3)"
+        }
 
 
 class HexgloopModPlugin(ModPluginWithBook):

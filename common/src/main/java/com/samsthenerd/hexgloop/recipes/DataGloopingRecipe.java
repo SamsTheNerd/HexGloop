@@ -33,11 +33,11 @@ public class DataGloopingRecipe implements Recipe<Inventory>, GloopingRecipe{
 		public static final String ID = "hexgloop:data_glooping";
 	}
 
-    private final List<Pair<Ingredient, Integer>> ingredients;
-    private final ItemStack result;
-    private final Identifier id;
-    private final int mediaCost;
-    private final int priority;
+    public final List<Pair<Ingredient, Integer>> ingredients;
+    public final ItemStack result;
+    public final Identifier id;
+    public final int mediaCost;
+    public final int priority;
  
 	public DataGloopingRecipe(Identifier id, List<Pair<Ingredient, Integer>> ingredients, ItemStack result, int mediaCost, int priority) {
 		this.id = id;

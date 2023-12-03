@@ -1,4 +1,5 @@
-from typing import Any, Literal
+from typing import Any, Literal, List, Annotated, Union
+from pydantic import Field 
 
 from hexdoc.core import IsVersion, ResourceLocation
 from hexdoc.minecraft.assets import ItemWithTexture
@@ -19,3 +20,12 @@ class ItemFlayRecipe(Recipe, type="hexgloop:item_flaying"):
     addedNbt: str = ""
 
 
+class ItemIngredientWithCount(TypeTaggedUnion, type=NoValue):
+    ingredient: ItemIngredient
+    count: int = 1
+
+class Gloopcipe(Recipe, type="hexgloop:data_glooping"):
+    result: ItemWithTexture
+    priority: int = 0
+    mediaCost: int = 10000
+    ingredients: list[ItemIngredient | ItemIngredientWithCount]

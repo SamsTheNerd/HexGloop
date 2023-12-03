@@ -1,5 +1,37 @@
 {% include "hexcasting:index.css.jinja" %}
 
+body{
+    --light-amethyst: #b38ef3;
+
+    --mid-slate: #44354e;
+    --darkish-slate: #272036;
+    --dark-slate: #191325;
+    --lightest-slate: #77637c;
+    
+    --mid-light-gloop: #cafcdd;
+    --mid-gloop: #8df2cf;
+    --mid-dark-gloop: #6acca8;
+    --mid-darker-gloop: #4fab89;
+    --dark-gloop: #388a6d;
+
+    background-color: var(--dark-slate);
+    @media (prefers-color-scheme: light) {
+        background-color: #FFFFFF;
+    }
+}
+
+.navbar{
+    background-color: var(--darkish-slate);
+}
+
+a {
+    color: var(--mid-gloop);
+}
+
+a:hover{
+    color: var(--mid-darker-gloop);
+}
+
 .flay-recipe-block-ingredient .badge{
     position: absolute;
     background-color: #292929;
@@ -7,10 +39,109 @@
     right: -4px;
 }
 
-
 .flay-recipe-result .badge{
     position: absolute;
     background-color: #292929;
     bottom: -4px;
     right: -4px;
+}
+
+.gloopcipe-recipe{
+    position: relative;
+}
+
+.gloopcipe-recipe-ingredient .badge{
+    position: absolute;
+    background-color: #292929;
+    bottom: -4px;
+    right: -4px;
+}
+
+.gloopcipe-recipe-result .badge{
+    position: absolute;
+    background-color: #292929;
+    bottom: -4px;
+    right: -4px;
+}
+
+.gloopcipe-recipe-ingredient-1{
+    position: absolute;
+    left: 24px;
+    top: 70px;
+}
+.gloopcipe-recipe-ingredient-3{
+    position: absolute;
+    left: 62px;
+    top: 70px;
+}
+.gloopcipe-recipe-ingredient-2{
+    position: absolute;
+    left: 100px;
+    top: 70px;
+}
+
+.gloopcipe-recipe-ingredient-6{
+    position: absolute;
+    left: 24px;
+    top: 32px;
+}
+.gloopcipe-recipe-ingredient-5{
+    position: absolute;
+    left: 62px;
+    top: 32px;
+}
+.gloopcipe-recipe-ingredient-7{
+    position: absolute;
+    left: 100px;
+    top: 32px;
+}
+
+.gloopcipe-recipe-ingredient-8{
+    position: absolute;
+    left: 24px;
+    top: 108px;
+}
+.gloopcipe-recipe-ingredient-4{
+    position: absolute;
+    left: 62px;
+    top: 108px;
+}
+.gloopcipe-recipe-ingredient-9{
+    position: absolute;
+    left: 100px;
+    top: 108px;
+}
+
+.gloopcipe-recipe-result{
+    position: absolute;
+    left: 168px;
+    top: 98px;
+}
+
+.gloopcipe-recipe-media-cost{
+    color: var(--light-amethyst);
+}
+
+{# change pattern colors #}
+canvas.spell-viz {
+  --dot-color: var(--dark-gloop);
+  --start-dot-color: color-mix(in srgb, var(--light-amethyst) 75%, transparent);
+  --moving-dot-color: color-mix(in srgb, var(--mid-light-gloop) 75%, transparent);
+
+  --path-color: var(--mid-slate);
+  --visited-path-color: var(--mid-gloop);
+}
+
+@media (prefers-color-scheme: light) {
+    a{
+        color: var(--dark-gloop);
+    }
+
+    .navbar{
+        background-color: white;
+    }
+
+    canvas.spell-viz {
+        --visited-path-color: var(--mid-dark-gloop);
+    }
 }

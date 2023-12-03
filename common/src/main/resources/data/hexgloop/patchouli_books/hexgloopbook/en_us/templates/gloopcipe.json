@@ -1,0 +1,91 @@
+{
+    "processor": "com.samsthenerd.hexgloop.patchouli.GloopcipeProcessor",
+    "components": [
+      {
+        "type": "patchouli:image",
+        "image": "hexgloop:textures/gui/gloopcipegui.png",
+        "width": 128,
+        "y": 4,
+        "height": 128,
+        "texture_width": 128,
+        "texture_height": 128
+      },
+      {
+        "type": "patchouli:header",
+        "text": "#header",
+        "x": -1,
+        "y": -1
+      },
+
+      {
+        "type": "patchouli:item",
+        "x": 9,
+        "y": 36,
+        "item": "#input1"
+      },
+      {
+        "type": "patchouli:item",
+        "x": 28,
+        "y": 36,
+        "item": "#input3"
+      },
+      {
+        "type": "patchouli:item",
+        "x": 47,
+        "y": 36,
+        "item": "#input2"
+      },
+
+      {
+        "type": "patchouli:item",
+        "x": 9,
+        "y": 17,
+        "item": "#input6"
+      },
+      {
+        "type": "patchouli:item",
+        "x": 28,
+        "y": 17,
+        "item": "#input5"
+      },
+      {
+        "type": "patchouli:item",
+        "x": 47,
+        "y": 17,
+        "item": "#input7"
+      },
+
+      {
+        "type": "patchouli:item",
+        "x": 9,
+        "y": 54,
+        "item": "#input8"
+      },
+      {
+        "type": "patchouli:item",
+        "x": 28,
+        "y": 54,
+        "item": "#input4"
+      },
+      {
+        "type": "patchouli:item",
+        "x": 47,
+        "y": 54,
+        "item": "#input9"
+      },
+
+
+      {
+        "type": "patchouli:item",
+        "x": 96,
+        "y": 36,
+        "item": "#result",
+        "link_recipe": true
+      },
+      {
+        "type": "patchouli:text",
+        "text": "#text",
+        "y": 77
+      }
+    ]
+  }
