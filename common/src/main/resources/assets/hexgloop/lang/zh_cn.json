@@ -67,7 +67,7 @@
     "block.hexgloop.hexxed_glass": "咒术玻璃",
     "block.hexgloop.slate_lamp": "板岩灯",
     "block.hexgloop.charged_amethyst_block": "充能紫水晶块",
-    "block.hexgloop.syncetrix": "Syncetrix",
+    "block.hexgloop.syncetrix": "同步石",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
     "key.hexgloop.casting_ring": "使用施法戒指",
@@ -199,6 +199,7 @@
     "hexgloop.sketchy_foods.title": "会运行你的小食",
     "hexgloop.sketchy_foods.desc": "吃一个咒术小食，大概是纯素的？",
 
+    "hexgloop.hexdoc.gloopcipe_media_cost": "消耗%d个紫水晶粉",
 
     "hexgloop.entry.gloopytweaks": "“凝浆”至极的变化",
     "hexgloop.page.gloopytweaks.0": "我最近发现世界上出现了某些“凝浆”极了的变化。$(br2)例如，可视化图案变得更简单了。我甚至只需听见类似“\\<southeast,deaqq>”的东西就能将其完美可视化为$(m)$(0)<southeast,deaqq>$()。此外，我还能将鼠标悬停其上以获得更为清晰的视图，还可点击它们以复制。",
