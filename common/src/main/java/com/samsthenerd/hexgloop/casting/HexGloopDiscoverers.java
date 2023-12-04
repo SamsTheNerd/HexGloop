@@ -3,6 +3,7 @@ package com.samsthenerd.hexgloop.casting;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.samsthenerd.hexgloop.blocks.BlockThinkingCarpet;
 import com.samsthenerd.hexgloop.casting.mirror.SyncedItemHandling;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociHandler;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IItemProviderLocus;
@@ -33,6 +34,10 @@ public class HexGloopDiscoverers {
         DiscoveryHandlers.addLensPredicate(HexGloopDiscoverers::hasReflectedLens);
         DiscoveryHandlers.addMediaHolderDiscoverer(HexGloopDiscoverers::getReflectedMediaHolder);
         DiscoveryHandlers.addGridScaleModifier(HexGloopDiscoverers::getReflectedGridScaleModifier);
+
+        DiscoveryHandlers.addGridScaleModifier(player -> {
+            return isOnThinkingCarpet(player) ? 0.9f : 1;
+        });
     }
 
     public static List<ItemStack> getItemLoci(CastingContext ctx){
@@ -98,5 +103,9 @@ public class HexGloopDiscoverers {
         if(mainHolder != null) holders.add(mainHolder);
         if(offHolder != null && mainAlt != offAlt) holders.add(offHolder); // make sure we don't add both if they're both reflecting the same thing
         return holders;
+    }
+
+    public static boolean isOnThinkingCarpet(PlayerEntity player){
+        return player.getWorld().getBlockState(player.getBlockPos()).getBlock() instanceof BlockThinkingCarpet;
     }
 }

@@ -4,6 +4,7 @@
         "item": "minecraft:amethyst_shard"
     },
     "result": "hexcasting:charged_amethyst",
+    "resultCount": 3,
     "villagerIn": {
         "minLevel": 3
     },

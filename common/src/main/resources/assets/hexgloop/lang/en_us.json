@@ -199,6 +199,7 @@
     "hexgloop.sketchy_foods.title": "The snack that evals back",
     "hexgloop.sketchy_foods.desc": "Eat a hexxed snack, they're probably vegan?",
     
+    "hexgloop.hexdoc.gloopcipe_media_cost": "Costs %d Dust",
 
     "hexgloop.entry.gloopytweaks": "Glooptastic Changes",
     "hexgloop.page.gloopytweaks.0": "I have noticed some absolutely glooptastic changes in the world recently.$(br2)For one, it's much easier to visualize patterns. I can even hear something like \"\\<southeast,deaqq>\" and visualize it perfectly as $(m)$(0)<southeast,deaqq>$(). Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.",

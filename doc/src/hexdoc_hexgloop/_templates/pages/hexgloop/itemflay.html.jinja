@@ -1,5 +1,4 @@
 {% extends "pages/patchouli/page.html.jinja" %}
-{% import "macros/hex_recipes.html.jinja" as hex_recipes with context %}
 {% import "macros/formatting.html.jinja" as fmt with context %}
 {% import "macros/textures.html.jinja" as texture_macros with context -%}
 
@@ -14,17 +13,20 @@
       <h5>{{ page.recipe.result.name }}</h5>
       <div class="flay-recipe">
         <img
-          class="flay-recipe-background"
+          class="flay-recipe-background pixelated"
           alt="Flay Mind Recipe GUI"
-          src="{{ 'hexcasting:textures/gui/hexdoc/brainsweep.png'|hexdoc_texture }}"
+          src="{{ 'hexgloop:textures/gui/itemflaygui.png'|hexdoc_texture }}"
         >
-        {{ hex_recipes.render_brainsweepee(page.recipe) }}
+        {# {{ hex_recipes.render_brainsweepee(page.recipe) }} #}
+        {% with brainsweepee=page.recipe.villagerIn %}
+          {% include page.recipe.villagerIn.template~".html.jinja" %}
+        {% endwith %}
         <div class="flay-recipe-block-ingredient">
-          {{ texture_macros.render_item(page.recipe.ingredient.item) }}
+          {{ texture_macros.render_item(page.recipe.ingredient.item, count=page.recipe.inCount) }}
         </div>
 
         <div class="flay-recipe-result">
-          {{ texture_macros.render_item(page.recipe.result) }}
+          {{ texture_macros.render_item(page.recipe.result, count=page.recipe.resultCount) }}
         </div>
       </div>
     </div>

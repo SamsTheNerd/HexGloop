@@ -15,11 +15,13 @@
         "text": "hexgloop.page.gloop.energizer"
       },
       {
-        "type": "patchouli:text",
+        "type": "hexgloop:gloopcipe",
+        "recipe": "hexgloop:gloop",
         "text": "hexgloop.page.gloop.1"
       },
       {
-        "type": "patchouli:text",
+        "type": "hexgloop:gloopcipe",
+        "recipe": "hexgloop:synchronous_gloop",
         "text": "hexgloop.page.gloop.2"
       }
     ]

@@ -1,0 +1,51 @@
+{% extends "pages/patchouli/page.html.jinja" %}
+{% import "macros/formatting.html.jinja" as fmt with context %}
+{% import "macros/textures.html.jinja" as texture_macros with context -%}
+
+{% block body %}
+    {# just yoinking straight from macro for now #}
+  <details class="details-collapsible gloopcipe-recipe-details">
+    <summary class="collapse-details">
+      <span class="collapse-recipe-show">{{ _('hexdoc.recipe.show') }}</span>
+      <span class="collapse-recipe-hide">{{ _('hexdoc.recipe.hide') }}</span>
+    </summary>
+    <div>
+      <h5>{{ page.recipe.result.name }}</h5>
+      <div class="gloopcipe-recipe">
+        <img
+          class="gloopcipe-recipe-background pixelated"
+          alt="Gloop Energizer Recipe GUI"
+          src="{{ 'hexgloop:textures/gui/gloopcipegui.png'|hexdoc_texture }}"
+        >
+
+        {% for item in page.recipe.ingredients %}
+          {% if item.ingredient is defined %}
+            <div class="gloopcipe-recipe-ingredient gloopcipe-recipe-ingredient-{{loop.index}}">
+              {{ texture_macros.render_item(item.ingredient.item, count=item.count) }}
+            </div>
+          {% else %}
+            <div class="gloopcipe-recipe-ingredient gloopcipe-recipe-ingredient-{{loop.index}}">
+              {{ texture_macros.render_item(item.item) }}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        <div class="gloopcipe-recipe-result">
+          {{ texture_macros.render_item(page.recipe.result) }}
+        </div>
+
+        <div class="gloopcipe-recipe-media-cost">
+          {# {{ texture_macros.render_texture("hexcasting:textures/item/amethyst_dust.png"|hexdoc_texture) }} #}
+          <img
+            class="gloopcipe-recipe-media-cost-icon pixelated"
+            alt="{{ _('item.hexcasting.amethyst_dust') }}"
+            src="{{ 'hexcasting:textures/item/amethyst_dust.png'|hexdoc_texture }}"
+            style="width: 16px; height:16px"
+          >
+          {{ _("hexgloop.hexdoc.gloopcipe_media_cost") % (page.recipe.mediaCost / 1000)}}
+        </div>
+      </div>
+    </div>
+  </details>
+  {{ fmt.styled(page.text) }}
+{% endblock body %}
