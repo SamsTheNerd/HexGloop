@@ -7,10 +7,10 @@ from hexdoc.minecraft.recipe import ItemIngredient, ItemIngredientList, Recipe
 from hexdoc.model import HexdocModel, TypeTaggedUnion
 from hexdoc.utils import NoValue
 
-from hexdoc_hexcasting.book.recipes import BrainsweepRecipe, VillagerIngredient_0_10
+from hexdoc_hexcasting.book.recipes import BrainsweepRecipe, VillagerIngredient
 
 class ItemFlayRecipe(Recipe, type="hexgloop:item_flaying"):
-    villagerIn: VillagerIngredient_0_10
+    villagerIn: VillagerIngredient
     ingredient: ItemIngredient
     inCount: int = 1
     result: ItemWithTexture
@@ -20,7 +20,7 @@ class ItemFlayRecipe(Recipe, type="hexgloop:item_flaying"):
     addedNbt: str = ""
 
 
-class ItemIngredientWithCount(TypeTaggedUnion, type=NoValue):
+class ItemIngredientWithCount(HexdocModel):
     ingredient: ItemIngredient
     count: int = 1
 
@@ -28,4 +28,4 @@ class Gloopcipe(Recipe, type="hexgloop:data_glooping"):
     result: ItemWithTexture
     priority: int = 0
     mediaCost: int = 10000
-    ingredients: list[ItemIngredient | ItemIngredientWithCount]
+    ingredients: list[ItemIngredientWithCount | ItemIngredient]
