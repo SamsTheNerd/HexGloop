@@ -1,0 +1,11 @@
+{
+    "type": "hexgloop:item_flaying",
+    "ingredient": {
+        "item": "hexgloop:empty_jar"
+    },
+    "result": "hexgloop:mind_jar",
+    "villagerIn": {
+        "minLevel": 1
+    },
+    "addVillagerNbt": true
+}

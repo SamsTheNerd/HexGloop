@@ -1,50 +1,33 @@
 package com.samsthenerd.hexgloop.items;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
-import com.samsthenerd.hexgloop.HexGloop;
-
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.passive.VillagerEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.text.Text;
+import net.minecraft.village.VillagerData;
 import net.minecraft.world.World;
 
-public class ItemMindJar extends Item implements IFlayableItem, IMindTargetItem{
-
-    private static String STORED_VILLAGER = "villager_mind";
+public class ItemMindJar extends Item implements IFlayableItem{
 
     public ItemMindJar(Settings settings) {
         super(settings);
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack stack = user.getStackInHand(hand);
-        for(VillagerEntity villager : world.getEntitiesByType(EntityType.VILLAGER, user.getBoundingBox().expand(5), (villager) -> {
-            HexGloop.logPrint("found villager " + villager);
-            return true;
-        })){
-            NbtCompound nbt = new NbtCompound();
-            villager.saveSelfNbt(nbt);
-            stack.getOrCreateNbt().put(STORED_VILLAGER, villager.writeNbt(nbt));
-            return new TypedActionResult<ItemStack>(ActionResult.SUCCESS, stack);
-        }
-        return new TypedActionResult<ItemStack>(ActionResult.PASS, stack);
-    }
-
     public VillagerEntity getFlayableVillager(ItemStack stack, @Nullable ItemEntity itemEnt, CastingContext ctx){
-        NbtCompound entNbt = stack.getSubNbt(STORED_VILLAGER);
+        NbtCompound entNbt = stack.getSubNbt(IMindTargetItem.STORED_MIND_TAG);
         Optional<Entity> maybeEnt = EntityType.getEntityFromNbt(entNbt, ctx.getWorld());
         if(maybeEnt.orElse(null) instanceof VillagerEntity villager){
             return villager;
@@ -52,21 +35,24 @@ public class ItemMindJar extends Item implements IFlayableItem, IMindTargetItem{
         return null;
     }
 
-    // do whatever, probably just decrement the stack count or clear some nbt
-    public void handleBrainsweep(ItemStack stack, @Nullable ItemEntity itemEnt, CastingContext ctx){
-        HexGloop.logPrint("brainsweep !");
+    @Override
+    public void handleBrainsweep(ItemStack stack, @Nullable ItemEntity itemEnt, CastingContext ctx, Consumer<ItemStack> resultConsumer){
+        stack.decrement(1);
+        resultConsumer.accept(new ItemStack(HexGloopItems.EMPTY_JAR_ITEM.get()));
     }
 
-    public ItemStack absorbVillagerMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx){
-        NbtCompound nbt = new NbtCompound();
-        sacrifice.saveSelfNbt(nbt);
-        stack.getOrCreateNbt().put(STORED_VILLAGER, sacrifice.writeNbt(nbt));
-        HexGloop.logPrint("absorbed villager mind into jar");
-        return stack;
-    }
-    
-    // return true if it can be accepted
-    public boolean canAcceptMind(VillagerEntity sacrifice, ItemStack stack, CastingContext ctx){
-        return true;
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        NbtCompound entNbt = stack.getSubNbt(IMindTargetItem.STORED_MIND_TAG);
+        if(world != null){
+            Optional<Entity> maybeEnt = EntityType.getEntityFromNbt(entNbt, world);
+            if(maybeEnt.orElse(null) instanceof VillagerEntity villager){
+                VillagerData vData = villager.getVillagerData();
+                Text jobLevel = Text.translatable("merchant.level." + vData.getLevel());
+                Text job = Text.translatable("entity.minecraft.villager." + vData.getProfession());
+                Text full = Text.translatable("hexgloop:tooltip.mindjar", jobLevel, job);
+                tooltip.add(full);
+            }
+        }
     }
 }

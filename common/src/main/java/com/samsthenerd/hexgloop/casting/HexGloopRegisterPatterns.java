@@ -181,6 +181,12 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wqwaeqqqeddqeqd", HexDir.SOUTH_EAST), 
                 new Identifier(HexGloop.MOD_ID, "dispense"), 
                 new OpDispense());
+                
+            // op frog eat
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wawadawaewqaw", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "frog_eat"), 
+                new OpFrogEat());
+                
 
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
@@ -212,6 +218,12 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/hex_blade"),
                 new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.SHARD_UNIT));
+        });
+
+        itemDependentPatternRegisterers.put(HexGloopItems.CASTING_FROG_ITEM, () -> {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwaqqqqqeaqdqaqedeqaqdqqeaqwdwqae", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/casting_frog"),
+                new OpMakePackagedSpell<>(HexGloopItems.CASTING_FROG_ITEM.get(), MediaConstants.SHARD_UNIT));
         });
 
         // craft shoe things: waqqqqqwwaqwdwqaw        

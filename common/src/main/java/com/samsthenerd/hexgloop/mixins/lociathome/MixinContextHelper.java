@@ -47,4 +47,14 @@ public class MixinContextHelper implements IContextHelper{
     public KittyContext getKittyContext(){
         return kittyContext;
     }
+
+    private ItemStack frogStack = null;
+    
+    public void setFrog(ItemStack frog){
+        frogStack = frog;
+    }
+
+    public ItemStack getFrog(){
+        return frogStack;
+    }
 }
