@@ -1,5 +1,7 @@
 package com.samsthenerd.hexgloop.items;
 
+import java.util.function.Consumer;
+
 import javax.annotation.Nullable;
 
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
@@ -15,8 +17,9 @@ public interface IFlayableItem {
     @Nullable
     public VillagerEntity getFlayableVillager(ItemStack stack, @Nullable ItemEntity itemEnt, CastingContext ctx);
 
-    // do whatever, probably just decrement the stack count or clear some nbt
-    public void handleBrainsweep(ItemStack stack, @Nullable ItemEntity itemEnt, CastingContext ctx);
+    // do whatever, probably just decrement the stack count or clear some nbt 
+    // result consumer is used as a way to return whatever results you want
+    public void handleBrainsweep(ItemStack stack, @Nullable ItemEntity itemEnt, CastingContext ctx, Consumer<ItemStack> resultConsumer);
 
     // if it counts as murder - if so it plays the death sound and alerts villagers
     public default boolean wasMurderous(ItemStack stack, @Nullable ItemEntity itemEnt, CastingContext ctx){

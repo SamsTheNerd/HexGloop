@@ -61,6 +61,7 @@ public class ItemGloopifact extends ItemPackagedHex implements IotaHolderItem {
     public void appendTooltip(ItemStack pStack, @Nullable World pLevel, List<Text> pTooltipComponents,
                                 TooltipContext pIsAdvanced) {
         IotaHolderItem.appendHoverText(this, pStack, pTooltipComponents, pIsAdvanced);
+        super.appendTooltip(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
     public int cooldown(){

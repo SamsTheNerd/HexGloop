@@ -1,0 +1,51 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+      {
+        "model": "hexgloop:item/frog/green",
+        "predicate": {
+            "hexgloop:frog_variant": 0.0,
+            "hexcasting:has_patterns": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/frog/orange",
+        "predicate": {
+            "hexgloop:frog_variant": 0.5,
+            "hexcasting:has_patterns": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/frog/white",
+        "predicate": {
+            "hexgloop:frog_variant": 1,
+            "hexcasting:has_patterns": 0.0
+        }
+      },
+
+      {
+        "model": "hexgloop:item/frog/hat/green",
+        "predicate": {
+            "hexgloop:frog_variant": 0.0,
+            "hexcasting:has_patterns": 1
+        }
+      },
+      {
+        "model": "hexgloop:item/frog/hat/orange",
+        "predicate": {
+            "hexgloop:frog_variant": 0.5,
+            "hexcasting:has_patterns": 1
+        }
+      },
+      {
+        "model": "hexgloop:item/frog/hat/white",
+        "predicate": {
+            "hexgloop:frog_variant": 1,
+            "hexcasting:has_patterns": 1
+        }
+      }
+    ],
+    "textures": {
+      "layer0": "hexgloop:item/frog/green"
+    }
+  }

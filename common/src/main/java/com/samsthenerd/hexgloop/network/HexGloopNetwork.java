@@ -3,6 +3,8 @@ package com.samsthenerd.hexgloop.network;
 import java.util.List;
 
 import com.samsthenerd.hexgloop.HexGloop;
+import com.samsthenerd.hexgloop.items.HexGloopItems;
+import com.samsthenerd.hexgloop.items.ItemCastingFrog;
 import com.samsthenerd.hexgloop.mixins.orchard.MixinServerPlayerOrchard;
 import com.samsthenerd.hexgloop.network.booktweaks.BookScrollHandlers;
 import com.samsthenerd.hexgloop.network.booktweaks.BookScrollHandlersClient;
@@ -15,6 +17,7 @@ import at.petrak.hexcasting.common.network.MsgOpenSpellGuiAck;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 import dev.architectury.networking.NetworkManager;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -25,6 +28,8 @@ public class HexGloopNetwork {
     public static final Identifier CHANGE_WALL_SCROLL_ID = new Identifier(HexGloop.MOD_ID, "change_wall_scroll");
     public static final Identifier CLOSE_HEX_BOOK_ID = new Identifier(HexGloop.MOD_ID, "close_hex_book");
     public static final Identifier PROMPT_REPLACE_SCROLL_ID = new Identifier(HexGloop.MOD_ID, "prompt_replace_scroll");
+
+    public static final Identifier C2S_FROG_CASTING = new Identifier(HexGloop.MOD_ID, "c2s_frog_casting");
 
     public static final Identifier C2S_UPDATE_ORCHARD_ID = new Identifier(HexGloop.MOD_ID, "ctos_update_orchard"); // the important one
 
@@ -61,6 +66,21 @@ public class HexGloopNetwork {
         });
 
         NetworkManager.registerReceiver(NetworkManager.Side.C2S, CHANGE_WALL_SCROLL_ID, BookScrollHandlers::handleReplaceScroll);
+
+        NetworkManager.registerReceiver(NetworkManager.Side.C2S, C2S_FROG_CASTING, (buf, context) -> {
+            PlayerEntity player = context.getPlayer();
+            ItemStack frogStackIsh = buf.readItemStack();
+            ItemStack frogStack = null;
+            for(ItemStack maybeFrog : HexGloopItems.CASTING_FROG_ITEM.get().getEquippedFrogs(player)){
+                if(ItemStack.areEqual(maybeFrog, frogStackIsh)){
+                    frogStack = maybeFrog;
+                    break;
+                }
+            }
+            if(frogStack.getItem() instanceof ItemCastingFrog frogItem){
+                frogItem.cast(frogStack, player);
+            }
+        });
     }
 
     public static void registerClientSideOnly(){

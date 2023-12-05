@@ -14,6 +14,7 @@ import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemCastersCoin;
+import com.samsthenerd.hexgloop.items.ItemCastingFrog;
 import com.samsthenerd.hexgloop.items.ItemEssenceStone;
 import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
@@ -55,6 +56,7 @@ import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.FrogVariant;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
@@ -256,6 +258,29 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.INVENTORTY_ITEM.get(), ItemPackagedHex.HAS_PATTERNS_PRED, (stack, level, holder, holderID) -> {
             return HexGloopItems.INVENTORTY_ITEM.get().hasHex(stack) ? 1 : 0;
+        });
+
+        ItemPropertiesRegistry.register(HexGloopItems.CASTING_FROG_ITEM.get(), ItemPackagedHex.HAS_PATTERNS_PRED, (stack, level, holder, holderID) -> {
+            return HexGloopItems.CASTING_FROG_ITEM.get().hasHex(stack) ? 1 : 0;
+        });
+        ItemPropertiesRegistry.register(HexGloopItems.CASTING_FROG_ITEM.get(), ItemCastingFrog.FROG_VARIANT_PREDICATE, (stack, level, holder, holderID) -> {
+            FrogVariant variant = HexGloopItems.CASTING_FROG_ITEM.get().getFrogVariant(stack);
+            if(variant == null){
+                World world = level != null ? level : MinecraftClient.getInstance().world;
+                BlockPos pos = (holder != null ? holder : MinecraftClient.getInstance().player).getBlockPos();
+                variant = ItemCastingFrog.getFrogVariantFromWorld(world, pos);
+            }
+            // i *guess* it makes sense to just have this be an if statement like this but it's a bit silly 
+            if(variant == FrogVariant.COLD){
+                return 0; // green
+            }
+            if(variant == FrogVariant.TEMPERATE){
+                return 0.5f; // orange
+            }
+            if(variant == FrogVariant.WARM){
+                return 1; // white
+            }
+            return 0.5f; // idk default 
         });
 
         ItemPropertiesRegistry.register(HexGloopItems.ESSENCE_STONE_ITEM.get(), ItemEssenceStone.ESSENCE_PREDICATE, (stack, level, holder, holderID) -> {

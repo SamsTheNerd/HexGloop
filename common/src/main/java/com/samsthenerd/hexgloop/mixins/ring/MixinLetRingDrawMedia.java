@@ -35,6 +35,10 @@ public class MixinLetRingDrawMedia {
         if(((IContextHelper)(Object)ctx).isKitty()){
             return ((IContextHelper)(Object)ctx).getKitty();
         }
+        // and also forg
+        if(((IContextHelper)(Object)ctx).isFrogCasting()){
+            return ((IContextHelper)(Object)ctx).getFrog();
+        }
         return original;
     }
 }

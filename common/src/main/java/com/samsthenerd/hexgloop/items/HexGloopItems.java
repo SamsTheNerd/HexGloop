@@ -84,8 +84,14 @@ public class HexGloopItems{
     public static final RegistrySupplier<ItemSlateLoader> SLATE_LOADER_ITEM = item("slate_loader",
         () -> new ItemSlateLoader(defaultSettings().maxCount(1)));
 
+    public static final RegistrySupplier<Item> MEPT_LOG_ITEM = item("mept_log",
+        () -> new Item(defaultSettings()));
+
     public static final RegistrySupplier<ItemInventorty> INVENTORTY_ITEM = item("inventorty",
         () -> new ItemInventorty(defaultSettings().maxCount(1)));
+
+    public static final RegistrySupplier<ItemCastingFrog> CASTING_FROG_ITEM = item("casting_frog",
+        () -> new ItemCastingFrog(defaultSettings().maxCount(1)));
 
     public static final RegistrySupplier<ItemEssenceStone> ESSENCE_STONE_ITEM = item("essence_stone",
         () -> new ItemEssenceStone(defaultSettings().maxCount(1)));
@@ -98,6 +104,9 @@ public class HexGloopItems{
 
     public static final RegistrySupplier<ItemLibraryCard> LIBRARY_CARD_ITEM = item("library_card",
         () -> new ItemLibraryCard(defaultSettings().maxCount(1)));
+
+    public static final RegistrySupplier<Item> EMPTY_JAR_ITEM = item("empty_jar",
+        () -> new Item(defaultSettings().maxCount(16)));
 
     public static final RegistrySupplier<ItemMindJar> MIND_JAR_ITEM = item("mind_jar",
         () -> new ItemMindJar(defaultSettings().maxCount(1)));
@@ -149,7 +158,7 @@ public class HexGloopItems{
         }));
 
     public static final String[] NEW_STAFF_IDS = {"bone_staff", "quartz_staff", "carrot_staff", "bee_staff", "rod_staff",
-        "ice_staff", "blaze_staff", "wither_staff", "pumpkin_staff", "candy_cane_staff", "menorah_staff", "lovely_staff", "longinus_staff", "owl_staff", "ghost_staff", "celestial_staff"};
+        "ice_staff", "blaze_staff", "wither_staff", "pumpkin_staff", "candy_cane_staff", "menorah_staff", "christmas_tree_staff", "lovely_staff", "longinus_staff", "owl_staff", "ghost_staff", "celestial_staff"};
     static {
         for(String id : NEW_STAFF_IDS){
             item(id, () -> new ItemStaff(defaultSettings().maxCount(1)));

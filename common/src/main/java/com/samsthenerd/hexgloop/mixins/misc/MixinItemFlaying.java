@@ -1,6 +1,7 @@
 package com.samsthenerd.hexgloop.mixins.misc;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
@@ -150,7 +151,11 @@ public class MixinItemFlaying {
             } else {
                 ItemStack providerStack = sacrificeProvider.getStack();
                 if(providerStack.getItem() instanceof IFlayableItem flayableItem){
-                    flayableItem.handleBrainsweep(providerStack, sacrificeProvider, ctx);
+                    Consumer<ItemStack> resultConsumer = (result) -> {
+                        ItemEntity resultEnt = new ItemEntity(ctx.getWorld(), sacrificeProvider.getX(), sacrificeProvider.getY(), sacrificeProvider.getZ(), result, 0, 0, 0);
+                        ctx.getWorld().spawnEntity(resultEnt);
+                    };
+                    flayableItem.handleBrainsweep(providerStack, sacrificeProvider, ctx, resultConsumer);
                 }
             }
 
@@ -175,7 +180,11 @@ public class MixinItemFlaying {
             } else {
                 ItemStack providerStack = sacrificeProvider.getStack();
                 if(providerStack.getItem() instanceof IFlayableItem flayableItem){
-                    flayableItem.handleBrainsweep(providerStack, sacrificeProvider, ctx);
+                    Consumer<ItemStack> resultConsumer = (result) -> {
+                        ItemEntity resultEnt = new ItemEntity(ctx.getWorld(), sacrificeProvider.getX(), sacrificeProvider.getY(), sacrificeProvider.getZ(), result, 0, 0, 0);
+                        ctx.getWorld().spawnEntity(resultEnt);
+                    };
+                    flayableItem.handleBrainsweep(providerStack, sacrificeProvider, ctx, resultConsumer);
                 }
             }
         }
