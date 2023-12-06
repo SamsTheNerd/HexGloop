@@ -202,7 +202,10 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("deeeeeqdwewewewdwe", HexDir.EAST), 
                 new Identifier(HexGloop.MOD_ID, "can_block_write"), 
                 new OpWriteBlock(true));
-                
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("edwdqeeeeaaeaeaeaea", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "stonecut"), 
+                new OpStoneCut());
 
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
