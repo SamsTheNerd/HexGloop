@@ -37,6 +37,7 @@
     "item.hexgloop.longinus_staff": "Staff Of Longinus",
     "item.hexgloop.candy_cane_staff": "Candy Cane Staff",
     "item.hexgloop.menorah_staff": "Menorah Staff",
+    "item.hexgloop.christmas_tree_staff": "Christmas Tree Staff",
 
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
     "item.hexgloop.hex_blade": "Hex Blade",
@@ -48,6 +49,13 @@
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "Last Reflected [%s]",
 
+    "item.hexgloop.mept_log": "Mept Log",
+    "item.hexgloop.empty_jar": "Empty Jar",
+    "item.hexgloop.mind_jar": "Mind in a Jar",
+    "item.hexgloop.mind_jar.tooltip": "Contains the mind of a %s %s",
+    "item.hexgloop.mind_jar.tooltip.nojob": "Contains an untrained mind",
+    "item.hexgloop.mind_jar.tooltip.empty": "Somehow contains no mind ?",
+    
     "item.hexgloop.essence_stone": "Essence Stone",
     "item.hexgloop.script": "Script",
     "item.hexgloop.coping_saw": "Coping Saw",
@@ -186,6 +194,7 @@
     "hexgloop.source_type.wisp": "a Wisp",
     "hexgloop.source_type.gloopifact": "a Gloopifact",
     "hexgloop.source_type.inventorty": "an Inventorty",
+    "hexgloop.source_type.frog_casting": "TODO NAME THIS",
 
     "hexgloop.container.simple": "Simple",
     "hexgloop.container.result": "Result",

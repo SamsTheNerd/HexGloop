@@ -16,6 +16,8 @@ import com.samsthenerd.hexgloop.casting.inventorty.OpGetInventoryLore;
 import com.samsthenerd.hexgloop.casting.inventorty.OpGetTypeInSlot;
 import com.samsthenerd.hexgloop.casting.inventorty.OpSlotCount;
 import com.samsthenerd.hexgloop.casting.inventorty.OpStackTransfer;
+import com.samsthenerd.hexgloop.casting.ioticblocks.OpReadBlock;
+import com.samsthenerd.hexgloop.casting.ioticblocks.OpWriteBlock;
 import com.samsthenerd.hexgloop.casting.mirror.OpBindMirror;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpEvalCatchMishap;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpHahaFunnyAssertQEDGetItLikeTheMathProofLol;
@@ -186,6 +188,20 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wawadawaewqaw", HexDir.EAST), 
                 new Identifier(HexGloop.MOD_ID, "frog_eat"), 
                 new OpFrogEat());
+
+            // iotic block read and writes
+            PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqqeawqwaw", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "block_read"), 
+                new OpReadBlock(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("deeeeeqdwewewewdw", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "block_write"), 
+                new OpWriteBlock(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqqeawqwawe", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "can_block_read"), 
+                new OpReadBlock(true));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("deeeeeqdwewewewdwe", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "can_block_write"), 
+                new OpWriteBlock(true));
                 
 
         } catch (PatternRegistry.RegisterPatternException exn) {
