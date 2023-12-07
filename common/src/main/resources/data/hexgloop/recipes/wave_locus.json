@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SRS",
+        "RCR",
+        "SRS"
+    ],
+    "key": {
+        "S": {
+            "item": "hexcasting:slate_block"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        }
+    },
+    "result": {
+        "item": "hexgloop:wave_locus"
+    }
+}

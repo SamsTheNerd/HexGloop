@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "SDS",
+        " S "
+    ],
+    "key": {
+        "S": {
+            "item": "hexgloop:synchronous_gloop"
+        },
+        "D": {
+            "item": "hexcasting:empty_diretrix"
+        }
+    },
+    "result": {
+        "item": "hexgloop:syncetrix"
+    }
+}

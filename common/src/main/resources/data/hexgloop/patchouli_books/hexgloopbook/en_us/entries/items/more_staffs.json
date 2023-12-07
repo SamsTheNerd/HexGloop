@@ -27,11 +27,27 @@
       {
         "type": "patchouli:crafting",
         "recipe": "hexgloop:staffs/wither_staff",
-        "recipe2": "hexgloop:staffs/pumpkin_staff"
+        "recipe2": "hexgloop:staffs/rod_staff"
       },
       {
         "type": "patchouli:crafting",
-        "recipe": "hexgloop:staffs/rod_staff"
+        "recipe": "hexgloop:staffs/longinus_staff",
+        "recipe2": "hexgloop:staffs/celestial_staff"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:staffs/pumpkin_staff",
+        "recipe2": "hexgloop:staffs/menorah_staff"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:staffs/candy_cane_staff",
+        "recipe2": "hexgloop:staffs/christmas_tree_staff"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:staffs/owl_staff",
+        "recipe2": "hexgloop:staffs/ghost_staff"
       }
     ]
   }

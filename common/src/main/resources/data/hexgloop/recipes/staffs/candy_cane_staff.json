@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " SC",
+        " RS",
+        "S  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "R": [
+            {
+                "item": "minecraft:red_dye"
+            },
+            {
+                "tag": "c:red_dyes"
+            },
+            {
+                "tag": "forge:dyes/red"
+            }
+        ],
+        "S": {
+            "item": "minecraft:sugar"
+        }
+    },
+    "result": {
+        "item": "hexgloop:candy_cane_staff"
+    }
+}

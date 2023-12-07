@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " IC",
+        " QI",
+        "I  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "I": {
+            "item": "minecraft:iron_ingot"
+        },
+        "Q": {
+            "item": "minecraft:quartz_block"
+        }
+    },
+    "result": {
+        "item": "hexgloop:celestial_staff"
+    }
+}

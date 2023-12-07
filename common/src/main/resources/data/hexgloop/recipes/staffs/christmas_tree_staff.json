@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " GC",
+        " SG",
+        "T  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "G":{
+            "item": "minecraft:glowstone_dust"
+        },
+        "T": {
+            "item": "minecraft:stick"
+        },
+        "S":{
+            "tag": "minecraft:saplings"
+        }
+    },
+    "result": {
+        "item": "hexgloop:christmas_tree_staff"
+    }
+}

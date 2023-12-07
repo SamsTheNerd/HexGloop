@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " SD",
+        "SD ",
+        "T  "
+    ],
+    "key": {
+        "S": {
+            "item": "hexcasting:slate"
+        },
+        "D": {
+            "item": "hexcasting:amethyst_dust"
+        },
+        "T": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "hexgloop:coping_saw"
+    }
+}

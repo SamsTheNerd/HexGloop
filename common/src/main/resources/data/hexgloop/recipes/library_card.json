@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PPP",
+        "ECE",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "minecraft:paper"
+        },
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "E": {
+            "tag": "hexcasting:edified_planks"
+        }
+    },
+    "result": {
+        "item": "hexgloop:library_card"
+    }
+}

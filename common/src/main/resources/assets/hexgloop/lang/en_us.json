@@ -68,6 +68,7 @@
     "block.hexgloop.gloop_energizer": "Energizer",
     "block.hexgloop.pedestal": "Pedestal",
     "block.hexgloop.mirror_pedestal": "Mirrored Pedestal",
+    "block.hexgloop.mind_pedestal": "Flayer's Pedestal",
     "block.hexgloop.slate_chest": "Slate Chest",
     "block.hexgloop.gloopy_slate_chest": "Gloopy Slate Chest",
     "block.hexgloop.sentinel_bed": "Sentinel Bed",
@@ -76,6 +77,10 @@
     "block.hexgloop.slate_lamp": "Slate Lamp",
     "block.hexgloop.charged_amethyst_block": "Block of Charged Amethyst",
     "block.hexgloop.syncetrix": "Syncetrix",
+    "block.hexgloop.wave_locus": "Undulator",
+    "block.hexgloop.enlightenment_gate": "Caster's Gate",
+    "block.hexgloop.enlightenment_bridge": "Caster's Bridge",
+    "block.hexgloop.thinking_carpet": "Caster's Carpet",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",
