@@ -1,0 +1,18 @@
+{
+    "name": "hexgloop.entry.mepts",
+    "icon": "hexgloop:mept_log",
+    "category": "hexcasting:items",
+    "sortnum": 11,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.mepts.0"
+      },
+      {
+        "type": "hexgloop:gloopcipe",
+        "recipe": "hexgloop:mept_log",
+        "text": "hexgloop.page.mepts.1"
+      }
+    ]
+}

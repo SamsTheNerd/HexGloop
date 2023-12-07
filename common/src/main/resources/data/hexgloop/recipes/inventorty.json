@@ -2,8 +2,8 @@
     "type": "minecraft:crafting_shaped",
     "pattern": [
         "M M",
-        "ECE",
-        "MAM"
+        "EWE",
+        "MCM"
     ],
     "key": {
         "M": {
@@ -15,8 +15,8 @@
         "C": {
             "item": "chest"
         },
-        "A": {
-            "item": "hexcasting:charged_amethyst"
+        "W": {
+            "item": "hexgloop:mept_log"
         }
     },
     "result": {

@@ -1,0 +1,17 @@
+{
+    "name": "item.hexgloop.script",
+    "icon": "hexgloop:script",
+    "category": "hexcasting:items",
+    "sortnum": 2,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.script.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:script"
+      }
+    ]
+  }

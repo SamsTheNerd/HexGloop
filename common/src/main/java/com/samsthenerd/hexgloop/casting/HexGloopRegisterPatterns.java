@@ -180,7 +180,7 @@ public class HexGloopRegisterPatterns {
                 new OpAgreeTruenameEULA());
 
             // op dispense
-            PatternRegistry.mapPattern(HexPattern.fromAngles("wqwaeqqqeddqeqd", HexDir.SOUTH_EAST), 
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wqwaeqqqeddqeqd", HexDir.SOUTH_WEST), 
                 new Identifier(HexGloop.MOD_ID, "dispense"), 
                 new OpDispense());
                 
@@ -236,13 +236,13 @@ public class HexGloopRegisterPatterns {
         itemDependentPatternRegisterers.put(HexGloopItems.HEX_BLADE_ITEM, () -> {
             PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/hex_blade"),
-                new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.SHARD_UNIT));
+                new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
         });
 
         itemDependentPatternRegisterers.put(HexGloopItems.CASTING_FROG_ITEM, () -> {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaqqqqqeaqdqaqedeqaqdqqeaqwdwqae", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/casting_frog"),
-                new OpMakePackagedSpell<>(HexGloopItems.CASTING_FROG_ITEM.get(), MediaConstants.SHARD_UNIT));
+                new OpMakePackagedSpell<>(HexGloopItems.CASTING_FROG_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
         });
 
         // craft shoe things: waqqqqqwwaqwdwqaw        

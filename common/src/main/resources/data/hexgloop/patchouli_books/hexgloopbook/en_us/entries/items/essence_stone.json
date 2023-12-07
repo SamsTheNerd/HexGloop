@@ -1,0 +1,17 @@
+{
+    "name": "item.hexgloop.essence_stone",
+    "icon": "hexgloop:essence_stone",
+    "category": "hexcasting:items",
+    "sortnum": 4,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.essence_stone.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:essence_stone"
+      }
+    ]
+  }

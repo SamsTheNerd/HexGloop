@@ -1,16 +1,14 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        " S ",
-        "SDS",
-        " S "
+        "DG"
     ],
     "key": {
-        "S": {
+        "G": {
             "item": "hexgloop:synchronous_gloop"
         },
         "D": {
-            "item": "hexcasting:empty_diretrix"
+            "item": "hexcasting:empty_directrix"
         }
     },
     "result": {

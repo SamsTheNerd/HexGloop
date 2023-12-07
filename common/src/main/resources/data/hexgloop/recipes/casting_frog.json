@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "L L",
+        "SWS",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+            "item": "lily_pad"
+        },
+        "L": [
+            {
+                "item": "pearlescent_froglight"
+            },
+            {
+                "item": "verdant_froglight"
+            },
+            {
+                "item": "ochre_froglight"
+            }
+        ],
+        "W": {
+            "item": "hexgloop:mept_log"
+        },
+        "S": {
+            "item": "minecraft:slime_ball"
+        }
+    },
+    "result": {
+        "item": "hexgloop:casting_frog"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "name": "item.hexgloop.library_card",
+    "icon": "hexgloop:library_card",
+    "category": "hexcasting:greatwork",
+    "sortnum": 6,
+    "advancement": "hexcasting:enlightenment",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.library_card.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:library_card"
+      }
+    ]
+  }
