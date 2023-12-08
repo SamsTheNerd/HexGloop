@@ -17,11 +17,13 @@ public abstract class ItemHexTool extends ItemPackagedHex implements IExtendedEn
     public static final Identifier TOOL_STATUS_PREDICATE = new Identifier(HexGloop.MOD_ID, "hex_tool_status");
     private final float attackDamage;
 	private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
+    protected final float useSpeed;
 
     // note that that's base stats, so like,, when broken
     public ItemHexTool(Settings pProperties, float attackDamage, float useSpeed) {
         super(pProperties);
         this.attackDamage = attackDamage;
+        this.useSpeed = useSpeed;
 		ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
 		builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier", (double)this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
 		builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", (double)useSpeed, EntityAttributeModifier.Operation.ADDITION));

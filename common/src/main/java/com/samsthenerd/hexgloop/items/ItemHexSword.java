@@ -14,7 +14,6 @@ import net.minecraft.block.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -29,10 +28,6 @@ public class ItemHexSword extends ItemHexTool implements IExtendedEnchantable.IW
     public ItemHexSword(Settings pProperties) {
         super(pProperties, 2.0f, 3f);
     }
-
-    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-		return !miner.isCreative();
-	}
 
 	public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
 		if (state.isOf(Blocks.COBWEB)) {

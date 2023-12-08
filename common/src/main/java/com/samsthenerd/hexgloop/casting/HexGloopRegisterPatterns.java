@@ -239,6 +239,12 @@ public class HexGloopRegisterPatterns {
                 new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
         });
 
+        itemDependentPatternRegisterers.put(HexGloopItems.HEX_PICKAXE_ITEM, () -> {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwaqqqqqeaqdewaqweaewqawedqqqeaeq", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/hex_pickaxe"),
+                new OpMakePackagedSpell<>(HexGloopItems.HEX_PICKAXE_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
+        });
+
         itemDependentPatternRegisterers.put(HexGloopItems.CASTING_FROG_ITEM, () -> {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaqqqqqeaqdqaqedeqaqdqqeaqwdwqae", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/casting_frog"),

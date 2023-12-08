@@ -1,5 +1,6 @@
 package com.samsthenerd.hexgloop.items;
 
+import java.util.Set;
 import java.util.function.Supplier;
 
 import com.samsthenerd.hexgloop.HexGloop;
@@ -20,6 +21,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
@@ -80,6 +82,8 @@ public class HexGloopItems{
 
     public static final RegistrySupplier<ItemHexSword> HEX_BLADE_ITEM = item("hex_blade", 
         () -> new ItemHexSword(defaultSettings().maxCount(1).fireproof())); 
+    public static final RegistrySupplier<ItemHexMiningTool> HEX_PICKAXE_ITEM = item("hex_pickaxe", 
+        () -> new ItemHexMiningTool(defaultSettings().maxCount(1).fireproof(), 2.0F, 9.5F, Set.of(BlockTags.PICKAXE_MINEABLE), false)); 
 
     public static final RegistrySupplier<ItemSlateLoader> SLATE_LOADER_ITEM = item("slate_loader",
         () -> new ItemSlateLoader(defaultSettings().maxCount(1)));

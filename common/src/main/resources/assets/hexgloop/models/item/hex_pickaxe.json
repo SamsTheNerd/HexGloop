@@ -1,0 +1,26 @@
+{
+    "parent": "minecraft:item/handheld",
+    "overrides": [
+      {
+        "model": "hexgloop:item/hex_pickaxe/base",
+        "predicate": {
+          "hexgloop:hex_tool_status": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/hex_pickaxe/withhex",
+        "predicate": {
+          "hexgloop:hex_tool_status": 0.5
+        }
+      },
+      {
+        "model": "hexgloop:item/hex_pickaxe/powered",
+        "predicate": {
+          "hexgloop:hex_tool_status": 1.0
+        }
+      }
+    ],
+    "textures": {
+      "layer0": "hexgloop:item/hexpickaxe/powered"
+    }
+  }

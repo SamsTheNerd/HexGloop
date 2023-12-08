@@ -41,6 +41,7 @@
 
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
     "item.hexgloop.hex_blade": "Hex Blade",
+    "item.hexgloop.hex_pickaxe": "Hex Pickaxe",
     "item.hexgloop.slate_loader": "Ritualist's Inscriber",
     "item.hexgloop.inventorty": "Inventorty",
     "item.hexgloop.slate_loader.written": "Ritualist's Inscriber [%s]",
@@ -177,6 +178,7 @@
 
 
     "hexcasting.spell.hexgloop:craft/hex_blade": "Forge Hex Blade",
+    "hexcasting.spell.hexgloop:craft/hex_pickaxe": "Forge Hex Pickaxe",
 
     "hexcasting.mishap.bad_item.slot": "%s needs %s in the %s but got %dx %s",
     "hexcasting.mishap.no_item.slot": "%s needs %s in the %s but got nothing",
@@ -341,6 +343,8 @@
     "hexgloop.page.hex_tools.1": "Each of these tools can be inscribed with a hex, much like a trinket, that casts with $(k:key.use). Additionally, each tool has a casting method based on its function.$(br2)The media that powers these hexes also gives strength to the tool itself, ticking down with each use.",
     "hexgloop.page.hex_blade.0": "When I strike with this blade it casts its hex with my target on its stack.$(br2)The media edge also does a bit of damage on its own, about the same as a netherite sword.",
     "hexgloop.page.hex_blade.1": "Similar to other casting instrument creation spells. Costs about 4 $(l:items/amethyst)$(item)Charged Amethyst/$",
+    "hexgloop.page.hex_pickaxe.0": "When I mine a block with this pickaxe it casts its hex with the block's position on its stack.",
+    "hexgloop.page.hex_pickaxe.1": "Similar to other casting instrument creation spells. Costs about 4 $(l:items/amethyst)$(item)Charged Amethyst/$",
 
     "hexgloop.page.script.0": "A $(l:items/focus)$(item)Focus/$ is quite nice but it can be a bit overkill for simple hexes. Who has time to go gather glowstone these days?$(br2)A Script can store a list of up to 16 patterns.",
 
