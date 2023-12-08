@@ -191,6 +191,11 @@
     "hexcasting.mishap.bad_item.gloopifact": "a gloopifact",
     "hexcasting.mishap.bad_item.no_stonecutting": "a stonecuttable item",
 
+    "hexcasting.mishap.bad_entity.not_frog_food": "an entity the Frogi can eat",
+    
+    "hexcasting.mishap.bad_block.iota.read": "a place to read iotas from",
+    "hexcasting.mishap.bad_block.iota.write": "a place to write iotas to",
+
     "hexcasting.mishap.mirror_limits": "%s had no reflection",
 
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
@@ -339,7 +344,7 @@
     "hexgloop.page.enlightenment_bridge": "It only grants support to those with torn minds",
 
     "hexgloop.entry.hex_tools": "Hex Tools",
-    "hexgloop.page.hex_tools.0": "My hexes can largely replace any need for swords and other such tools, but I have to admit they have a certain flair to them.($br2)These hexxed tools, with their netherite sentience, fill that void quite nicely.",
+    "hexgloop.page.hex_tools.0": "My hexes can largely replace any need for swords and other such tools, but I have to admit they have a certain flair to them.$(br2)These hexxed tools, with their netherite sentience, fill that void quite nicely.",
     "hexgloop.page.hex_tools.1": "Each of these tools can be inscribed with a hex, much like a trinket, that casts with $(k:key.use). Additionally, each tool has a casting method based on its function.$(br2)The media that powers these hexes also gives strength to the tool itself, ticking down with each use.",
     "hexgloop.page.hex_blade.0": "When I strike with this blade it casts its hex with my target on its stack.$(br2)The media edge also does a bit of damage on its own, about the same as a netherite sword.",
     "hexgloop.page.hex_blade.1": "Similar to other casting instrument creation spells. Costs about 4 $(l:items/amethyst)$(item)Charged Amethyst/$",

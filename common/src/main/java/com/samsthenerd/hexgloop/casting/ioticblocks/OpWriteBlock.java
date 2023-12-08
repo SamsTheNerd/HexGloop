@@ -57,7 +57,7 @@ public class OpWriteBlock implements ConstMediaAction {
             if(simulate){
                 return List.of(new BooleanIota(false));
             } else {
-                MishapThrowerWrapper.throwMishap(MishapBadBlock.of(blockPos, "iota.read"));
+                MishapThrowerWrapper.throwMishap(MishapBadBlock.of(blockPos, "iota.write"));
                 return new ArrayList<>();
             }
         }
