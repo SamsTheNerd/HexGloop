@@ -23,7 +23,7 @@ import net.minecraft.nbt.NbtCompound;
 
 public class HexGloopIoticProviders {
     public static void register(){
-        IoticHandler.registerIoticProvider(HexBlocks.SLATE, (world, pos) -> {
+        IoticHandler.registerIoticProvider(() -> HexBlocks.SLATE, (world, pos) -> {
             Supplier<Iota> patternProvider = () -> {
                 Iota patternIota = new NullIota();
                 if (world.getBlockEntity(pos) instanceof BlockEntitySlate tile && tile.pattern != null) {
@@ -47,7 +47,7 @@ public class HexGloopIoticProviders {
             });
         });
 
-        IoticHandler.registerIoticProvider(HexBlocks.AKASHIC_BOOKSHELF, (world, pos) -> {
+        IoticHandler.registerIoticProvider(() -> HexBlocks.AKASHIC_BOOKSHELF, (world, pos) -> {
             Iota patternIota = new NullIota();
             if (world.getBlockEntity(pos) instanceof BlockEntityAkashicBookshelf tile && tile.getPattern() != null) {
                 patternIota = new PatternIota(tile.getPattern());
@@ -55,7 +55,7 @@ public class HexGloopIoticProviders {
             return new ReadOnlyIotaHolder(patternIota);
         });
 
-        IoticHandler.registerIoticProvider(HexBlocks.AKASHIC_RECORD, (world, pos) -> {
+        IoticHandler.registerIoticProvider(() -> HexBlocks.AKASHIC_RECORD, (world, pos) -> {
             List<Iota> patterns = new ArrayList<>();
             AkashicFloodfiller.floodFillFor(pos, world, (testPos, bs, testWorld) -> {
                 if(world.getBlockEntity(testPos) instanceof BlockEntityAkashicBookshelf bookshelf && bookshelf.getPattern() != null){

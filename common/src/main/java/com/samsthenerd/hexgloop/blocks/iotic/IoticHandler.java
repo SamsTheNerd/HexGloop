@@ -2,8 +2,11 @@ package com.samsthenerd.hexgloop.blocks.iotic;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
+
+import com.samsthenerd.hexgloop.HexGloop;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
 import net.minecraft.block.Block;
@@ -27,6 +30,8 @@ import net.minecraft.world.World;
 public class IoticHandler {
     @Nullable
     public static ADIotaHolder findIotaHolder(World world, BlockPos pos){
+        registerNewProviders();
+
         // first try to get a provider from the block
         BlockState state = world.getBlockState(pos);
         if(state.getBlock() instanceof IIoticProvider provider){
@@ -51,7 +56,7 @@ public class IoticHandler {
         return null; // can't find anything
     }
 
-    public static Map<Block, IIoticProvider> ioticProviders = new HashMap<>();
+    private static Map<Block, IIoticProvider> ioticProviders = new HashMap<>();
 
 
     /*
@@ -64,5 +69,21 @@ public class IoticHandler {
         }
         ioticProviders.put(block, provider);
         return true;
+    }
+
+    private static Map<Supplier<Block>, IIoticProvider> suppliedIoticProviders = new HashMap<>();
+
+    // a silly thing to allow registering providers before the blocks are registered
+    private static void registerNewProviders(){
+        suppliedIoticProviders.forEach((blockSupplier, provider) -> {
+            HexGloop.logPrint("registering iotic provider for " + blockSupplier.get());
+            registerIoticProvider(blockSupplier.get(), provider);
+        });
+        suppliedIoticProviders.clear();
+    }
+
+    // only gets registered when it's needed. good for avoiding forge registry garbage
+    public static void registerIoticProvider(Supplier<Block> suppliedBlock, IIoticProvider provider){
+        suppliedIoticProviders.put(suppliedBlock, provider);
     }
 }
