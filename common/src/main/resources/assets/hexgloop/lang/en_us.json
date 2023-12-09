@@ -65,6 +65,7 @@
     "item.hexgloop.library_card.tooltip_dimension": "Bound to %s",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
+    "item.hexgloop.dreidel_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",
 
     "block.hexgloop.gloop_energizer": "Energizer",
@@ -253,7 +254,8 @@
     "hexgloop.entry.fidgets": "Fidgets",
     "hexgloop.page.fidgets.0": "I've happened upon the most joyous of devices !$(br2)These devices, which I've been calling fidgets, help me channel my thoughts into a form detectable in my hexes. I can interact with them in much the same way as I would with a spellbook, minus the iota storage of course. For accessing these thoughts, see the section on $(l:hexgloop:patterns/minds_orchard)Mind's Orchard$(/l)",
     "hexgloop.page.fidgets.pen": "A simple device that only toggles between two states. It has a nice clicky noise though.",
-    "hexgloop.page.fidgets.amogus": "At first I was suspicious of this item, but I have now ejected all of my concerns. This whimsical device makes the most delightful popping noises, and lets me channel my thoughts through 6 states.",
+    "hexgloop.page.fidgets.amogus": "At first I was suspicious of this item, but I have now ejected all of my concerns. This whimsical device makes the most delightful popping noises, and lets me channel my thoughts through six states.",
+    "hexgloop.page.fidgets.dreidel": "I made it out of clay ! It has four sides letting me fidget between four states.",
 
     "hexgloop.entry.trinket_focus": "Trinkety Foci",
     "hexgloop.page.trinket_focus.0": "I have been overcome by a strong desire to accessorize. These trinkets act just like normal foci but I can wear them and use the $(l:hexgloop:patterns/trinket_focus_patterns)Trinkety Focus Patterns$(/l)$(br2)$(o)[Gloopy Dev Note: you need trinkets on fabric or curios on forge to wear these. You can still use them as foci otherwise though]$()",
