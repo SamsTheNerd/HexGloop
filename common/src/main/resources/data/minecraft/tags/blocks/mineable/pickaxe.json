@@ -7,7 +7,13 @@
         "hexgloop:slate_chest",
         "hexgloop:gloopy_slate_chest",
         "hexgloop:sentinel_bed",
-        "hexgloop:accelerator"
+        "hexgloop:accelerator",
+        "hexgloop:charged_amethyst_block",
+        "hexgloop:mind_pedestal",
+        "hexgloop:wave_locus",
+        "hexgloop:slate_lamp",
+        "hexgloop:enlightenment_bridge",
+        "hexgloop:syncetrix"
     ]
   }
 

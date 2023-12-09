@@ -1,0 +1,43 @@
+{
+    "name": "hexgloop.entry.hex_tools",
+    "icon": "hexgloop:hex_blade",
+    "category": "hexcasting:items",
+    "sortnum": 10,
+    "advancement": "hexcasting:enlightenment",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.hex_tools.0"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.hex_tools.1"
+      },
+      {
+        "type": "hexgloop:itemflay",
+        "recipe": "hexgloop:hex_blade",
+        "text": "hexgloop.page.hex_blade.0"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:craft/hex_blade",
+        "anchor": "hexgloop:craft/hex_blade",
+        "input": "entity, [pattern]",
+        "output": "",
+        "text": "hexgloop.page.hex_blade.1"
+      },
+      {
+        "type": "hexgloop:itemflay",
+        "recipe": "hexgloop:hex_pickaxe",
+        "text": "hexgloop.page.hex_pickaxe.0"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:craft/hex_pickaxe",
+        "anchor": "hexgloop:craft/hex_pickaxe",
+        "input": "entity, [pattern]",
+        "output": "",
+        "text": "hexgloop.page.hex_pickaxe.1"
+      }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SGS",
+        "GAG",
+        "SGS"
+    ],
+    "key": {
+        "S": {
+            "item": "hexcasting:slate_block"
+        },
+        "G": {
+            "item": "minecraft:glowstone_dust"
+        },
+        "A": {
+            "item": "minecraft:amethyst_shard"
+        }
+    },
+    "result": {
+        "item": "hexgloop:slate_lamp"
+    }
+}

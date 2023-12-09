@@ -1,0 +1,29 @@
+{
+    "name": "hexgloop.entry.item_flaying",
+    "icon": "hexgloop:mind_pedestal",
+    "category": "hexcasting:greatwork",
+    "sortnum": 6,
+    "advancement": "hexcasting:enlightenment",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.mind_pedestal.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:mind_pedestal"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.mind_jar.0"
+      },
+      {
+        "type": "hexgloop:itemflay",
+        "recipe": "hexgloop:mind_jar"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:empty_jar"
+      }
+    ]
+  }

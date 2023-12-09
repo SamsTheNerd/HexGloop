@@ -1,0 +1,16 @@
+{
+    "type": "hexgloop:data_glooping",
+    "ingredients": [
+        {
+            "item": "hexcasting:charged_amethyst"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "tag": "minecraft:logs"
+        }
+    ],
+    "result": "hexgloop:mept_log",
+    "priority": 5
+}

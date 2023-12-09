@@ -37,9 +37,11 @@
     "item.hexgloop.longinus_staff": "Staff Of Longinus",
     "item.hexgloop.candy_cane_staff": "Candy Cane Staff",
     "item.hexgloop.menorah_staff": "Menorah Staff",
+    "item.hexgloop.christmas_tree_staff": "Christmas Tree Staff",
 
     "item.hexgloop.hexxy_plush": "Hexxy Plush",
     "item.hexgloop.hex_blade": "Hex Blade",
+    "item.hexgloop.hex_pickaxe": "Hex Pickaxe",
     "item.hexgloop.slate_loader": "Ritualist's Inscriber",
     "item.hexgloop.inventorty": "Inventorty",
     "item.hexgloop.slate_loader.written": "Ritualist's Inscriber [%s]",
@@ -48,6 +50,14 @@
     "item.hexgloop.hand_mirror.tooltip": "Reflects [%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "Last Reflected [%s]",
 
+    "item.hexgloop.mept_log": "Mept Log",
+    "item.hexgloop.casting_frog": "Frogi",
+    "item.hexgloop.empty_jar": "Empty Jar",
+    "item.hexgloop.mind_jar": "Mind in a Jar",
+    "item.hexgloop.mind_jar.tooltip": "Contains the mind of a %s %s",
+    "item.hexgloop.mind_jar.tooltip.nojob": "Contains an untrained mind",
+    "item.hexgloop.mind_jar.tooltip.empty": "Somehow contains no mind ?",
+    
     "item.hexgloop.essence_stone": "Essence Stone",
     "item.hexgloop.script": "Script",
     "item.hexgloop.coping_saw": "Coping Saw",
@@ -55,11 +65,13 @@
     "item.hexgloop.library_card.tooltip_dimension": "Bound to %s",
 
     "item.hexgloop.copper_pen_fidget": "Pen Fidget",
+    "item.hexgloop.dreidel_fidget": "Pen Fidget",
     "item.hexgloop.rainbow_amogus_fidget": "Rainbow Amogus Pop It Fidget",
 
     "block.hexgloop.gloop_energizer": "Energizer",
     "block.hexgloop.pedestal": "Pedestal",
     "block.hexgloop.mirror_pedestal": "Mirrored Pedestal",
+    "block.hexgloop.mind_pedestal": "Flayer's Pedestal",
     "block.hexgloop.slate_chest": "Slate Chest",
     "block.hexgloop.gloopy_slate_chest": "Gloopy Slate Chest",
     "block.hexgloop.sentinel_bed": "Sentinel Bed",
@@ -68,6 +80,10 @@
     "block.hexgloop.slate_lamp": "Slate Lamp",
     "block.hexgloop.charged_amethyst_block": "Block of Charged Amethyst",
     "block.hexgloop.syncetrix": "Syncetrix",
+    "block.hexgloop.wave_locus": "Undulator",
+    "block.hexgloop.enlightenment_gate": "Caster's Gate",
+    "block.hexgloop.enlightenment_bridge": "Caster's Bridge",
+    "block.hexgloop.thinking_carpet": "Caster's Carpet",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",
@@ -85,6 +101,7 @@
 
     "hexgloop.tooltip.media_worth": "Worth %s",
     "hexgloop.tooltip.media_worth_each": "%s per item",
+    "hexgloop.tooltip.pigment": "Pigment: %s",
 
     "hexcasting.spell.hexgloop:craft/potion": "Craft Potion",
     "hexcasting.spell.hexgloop:set_label": "Dymo's Gambit",
@@ -130,6 +147,8 @@
 
     "hexcasting.spell.hexgloop:conjure_tasty_treat": "Conjure Tasty Treat",
 
+    "hexcasting.spell.hexgloop:dispense": "Dispense",
+    "hexcasting.spell.hexgloop:stonecut": "Cut Stone",
 
     "hexcasting.spell.hexgloop:bind_mirror": "Bind Mirror",
     "hexcasting.spell.hexgloop:temp_bind_mirror": "Temp Bind Mirror",
@@ -147,6 +166,11 @@
     "hexcasting.spell.hexgloop:gloopifact_check_read": "Gloopitor's Reflection",
     "hexcasting.spell.hexgloop:gloopifact_check_write": "Gloopessor's Distillation",
 
+    "hexcasting.spell.hexgloop:block_read": "Ritualist's Purification",
+    "hexcasting.spell.hexgloop:block_write": "Ritualist's Gambit",
+    "hexcasting.spell.hexgloop:can_block_read": "Surveyor's Purification",
+    "hexcasting.spell.hexgloop:can_block_write": "Surveyor's Distillation",
+
     "hexcasting.spell.hexgloop:craft/inventorty": "Teach Inventorty",
     "hexcasting.spell.hexgloop:torty_transfer": "Torty Transfer",
     "hexcasting.spell.hexgloop:torty_count": "Torty's Purification",
@@ -155,6 +179,12 @@
     "hexcasting.spell.hexgloop:torty_inv_sizes": "Torty's Reflection",
     "hexcasting.spell.hexgloop:torty_inv_names": "Torty's Reflection II",
 
+    "hexcasting.spell.hexgloop:craft/casting_frog": "Teach Frogi",
+    "hexcasting.spell.hexgloop:frog_eat": "Frogi Snack",
+
+
+    "hexcasting.spell.hexgloop:craft/hex_blade": "Forge Hex Blade",
+    "hexcasting.spell.hexgloop:craft/hex_pickaxe": "Forge Hex Pickaxe",
 
     "hexcasting.mishap.bad_item.slot": "%s needs %s in the %s but got %dx %s",
     "hexcasting.mishap.no_item.slot": "%s needs %s in the %s but got nothing",
@@ -165,6 +195,12 @@
     "hexgloop.slotname.mainhandring": "ring slot",
     "hexcasting.mishap.bad_item.labely_item": "a labelable item",
     "hexcasting.mishap.bad_item.gloopifact": "a gloopifact",
+    "hexcasting.mishap.bad_item.no_stonecutting": "a stonecuttable item",
+
+    "hexcasting.mishap.bad_entity.not_frog_food": "an entity the Frogi can eat",
+    
+    "hexcasting.mishap.bad_block.iota.read": "a place to read iotas from",
+    "hexcasting.mishap.bad_block.iota.write": "a place to write iotas to",
 
     "hexcasting.mishap.mirror_limits": "%s had no reflection",
 
@@ -186,6 +222,7 @@
     "hexgloop.source_type.wisp": "a Wisp",
     "hexgloop.source_type.gloopifact": "a Gloopifact",
     "hexgloop.source_type.inventorty": "an Inventorty",
+    "hexgloop.source_type.frog_casting": "a Frogi",
 
     "hexgloop.container.simple": "Simple",
     "hexgloop.container.result": "Result",
@@ -217,7 +254,8 @@
     "hexgloop.entry.fidgets": "Fidgets",
     "hexgloop.page.fidgets.0": "I've happened upon the most joyous of devices !$(br2)These devices, which I've been calling fidgets, help me channel my thoughts into a form detectable in my hexes. I can interact with them in much the same way as I would with a spellbook, minus the iota storage of course. For accessing these thoughts, see the section on $(l:hexgloop:patterns/minds_orchard)Mind's Orchard$(/l)",
     "hexgloop.page.fidgets.pen": "A simple device that only toggles between two states. It has a nice clicky noise though.",
-    "hexgloop.page.fidgets.amogus": "At first I was suspicious of this item, but I have now ejected all of my concerns. This whimsical device makes the most delightful popping noises, and lets me channel my thoughts through 6 states.",
+    "hexgloop.page.fidgets.amogus": "At first I was suspicious of this item, but I have now ejected all of my concerns. This whimsical device makes the most delightful popping noises, and lets me channel my thoughts through six states.",
+    "hexgloop.page.fidgets.dreidel": "I made it out of clay ! It has four sides letting me fidget between four states.",
 
     "hexgloop.entry.trinket_focus": "Trinkety Foci",
     "hexgloop.page.trinket_focus.0": "I have been overcome by a strong desire to accessorize. These trinkets act just like normal foci but I can wear them and use the $(l:hexgloop:patterns/trinket_focus_patterns)Trinkety Focus Patterns$(/l)$(br2)$(o)[Gloopy Dev Note: you need trinkets on fabric or curios on forge to wear these. You can still use them as foci otherwise though]$()",
@@ -226,8 +264,8 @@
 
     "hexgloop.entry.gloop": "Gloop !",
     "hexgloop.page.gloop.0": "This is glooptastic ! My calculations suggest that under the right conditions, slime and media may form together into a highly reactive and adaptive material.$(br2)It'll require a way to energize the reactants and some mechanism to prompt the reaction. I've drafted my schematics for such a device on the following page.",
-    "hexgloop.page.gloop.1": "My research suggests that 3 $(item)slime balls$(), 3 $(item)charged amethyst$(), and 1 $(item)amethyst shard$() should react to form some gloop.$(br2)The adaptive nature of this gloop leads me to believe there may be other forms out there to be discovered...",
-    "hexgloop.page.gloop.2": "I've recently discovered a new form of gloop, I've been calling is synchronous gloop, and it seems to be able to react across great distances. It can be made in an energizer with 3 $(item)slime balls$(), 3 $(item)charged amethyst$(), and 1 $(item)ender pearl$().",
+    "hexgloop.page.gloop.1": "The adaptive nature of this gloop leads me to believe there may be other forms out there to be discovered...",
+    "hexgloop.page.gloop.2": "I've recently discovered a new form of gloop, I've been calling is synchronous gloop, and it seems to be able to react across great distances.",
     "hexgloop.page.gloop.energizer": "This machine should be strong enough to channel the media through nearby water and into my reactants. I can use a device such as a hopper to feed media in. It should consume about 1 dust per second while active and draw 10 dust for a reaction.$(br2)Now I just need a way to trigger the reaction.. perhaps I can look up to nature for a strike of inspiration ?",
 
     "hexgloop.entry.multi_focus": "Multi Focus",
@@ -280,6 +318,10 @@
     "hexgloop.page.truename_protection.1": "This spell lets me renew my truename, effectively clearing any stored references to it.",
     "hexgloop.page.truename_protection.2": "Recently I've felt worries whenever I write my truename. This spell seems to silence those worries. I can always cast it again if I'd like to be more cautious.",
 
+    "hexgloop.entry.gloop_misc_spells": "Misc Gloop Spells",
+    "hexgloop.page.dispense": "Dispenses the given item entity as if it were in a dispenser at the first position facing the direction given by the second vector.$(br2)Costs half a dust for most items, 1 charged for arrows, and 3 dust for other projectiles",
+    "hexgloop.page.stonecut": "Cuts the given item entity as if it were in a stonecutter. If it's given a number it chooses the cut based on that index in the stonecutter, if it's given an item type it tries to cut it into that type.$(br2)Costs an 8th of a dust.",
+
     "hexgloop.entry.gloopmisc": "Misc Gloop",
     "hexgloop.page.gloopmisc.0": "Returns whether or not the hex is being cast in the overworld",
     "hexgloop.page.gloopmisc.1": "Returns whether or not the hex is being cast in the nether",
@@ -289,6 +331,13 @@
     "hexgloop.page.gloopmisc.5": "Casts the pattern or patterns on the stack similarly to $(l:hexcasting:patterns/meta#hexcasting:eval)Hermes' Gambit$(/l). If its cast mishaps it will continue on instead of stopping the hex. Returns whether or not the cast mishap",
     "hexgloop.page.gloopmisc.6": "Reveals the last mishap. This may behave strangely when cast directly from my staff",
     "hexgloop.page.gloopmisc.7": "Returns a string with information on the last mishap.",
+
+    "hexgloop.entry.iotic_blocks": "Iotic Blocks",
+    "hexgloop.page.iotic_blocks.0": "I've come across a few blocks that hold iotas. These seem to mostly have other ways to access the iota, but it may be convenient to access it directly.",
+    "hexgloop.page.iotic_blocks.read": "Returns the iota stored by the block at the given position",
+    "hexgloop.page.iotic_blocks.write": "Stores the given iota in the block at the given position, if possible",
+    "hexgloop.page.iotic_blocks.can_read": "Returns whether the given block contains a readable iota",
+    "hexgloop.page.iotic_blocks.can_write": "Returns if I can store the given iota in the block at the given position.",
 
     "hexgloop.entry.hotbar": "Hotbar Manipulation",
     "hexgloop.page.hotbar.0": "Returns the index of the currently selected slot",
@@ -300,14 +349,32 @@
 
     "hexgloop.page.inscriber": "Placing slates by hand has become so tedious. I've rigged together this contraption to improve the process. I can write a list of patterns to it and fill it with slates, as I would a bundle, and then using it will place a slate with the next pattern in the list.",
 
+    "hexgloop.entry.misc_blocks": "Misc Blocks",
     "hexgloop.page.hexxed_glass": "A block of amethyst dust is basically magic sand right ? Well it smelts like it atleast. Strangely, my raycasts seem to pass right through it.",
+    "hexgloop.page.charged_amethyst_block": "It's not worth much to my hexes, but it sure is pretty.",
+    "hexgloop.page.slate_lamp": "Quite similar to a redstone lamp, it'll glow a soft purple when powered, or otherwise energized",
+    "hexgloop.page.thinking_carpet": "A wonderfully comfy rug, standing on it gives a similar feeling to holding a scrying lens, though much weaker",
+    "hexgloop.page.enlightenment_gate": "It only grants passage to those with torn minds",
+    "hexgloop.page.enlightenment_bridge": "It only grants support to those with torn minds",
+
+    "hexgloop.entry.hex_tools": "Hex Tools",
+    "hexgloop.page.hex_tools.0": "My hexes can largely replace any need for swords and other such tools, but I have to admit they have a certain flair to them.$(br2)These hexxed tools, with their netherite sentience, fill that void quite nicely.",
+    "hexgloop.page.hex_tools.1": "Each of these tools can be inscribed with a hex, much like a trinket, that casts with $(k:key.use). Additionally, each tool has a casting method based on its function.$(br2)The media that powers these hexes also gives strength to the tool itself, ticking down with each use.",
+    "hexgloop.page.hex_blade.0": "When I strike with this blade it casts its hex with my target on its stack.$(br2)The media edge also does a bit of damage on its own, about the same as a netherite sword.",
+    "hexgloop.page.hex_blade.1": "Similar to other casting instrument creation spells. Costs about 4 $(l:items/amethyst)$(item)Charged Amethyst/$",
+    "hexgloop.page.hex_pickaxe.0": "When I mine a block with this pickaxe it casts its hex with the block's position on its stack.",
+    "hexgloop.page.hex_pickaxe.1": "Similar to other casting instrument creation spells. Costs about 4 $(l:items/amethyst)$(item)Charged Amethyst/$",
+
+    "hexgloop.page.script.0": "A $(l:items/focus)$(item)Focus/$ is quite nice but it can be a bit overkill for simple hexes. Who has time to go gather glowstone these days?$(br2)A Script can store a list of up to 16 patterns.",
+
+    "hexgloop.page.essence_stone.0": "Although the creatures of this world don't have the ability to cast, their thoughts may still be painted like mine.$(br2)The Essence Stone allows me to extract an entity's essence, using it as a pigment for my own thoughts. To extract the essense I can simply write the entity to the stone.",
 
     "hexgloop.page.dyebook": "I've been thinking my spellbooks could use a splash of color. Fashioning a cover for them allows me to dye them. The netherite used in the binding makes it fire proof as well.$(br2)Applying the cover doesn't disturb any of the spells written on its pages. I haven't found a good way to remove the cover yet though..",
 
     "hexgloop.entry.hex_snacks": "Hex Snacks",
     "hexgloop.page.hex_snacks.intro": "Hexxing can really work up an appetite, luckily I found some snacks !",
     "hexgloop.page.hex_snacks.gummy": "The Thought Gummy makes for a nice little snack on the go. It has a trace amount of media, but probably isn't the best trinket filler.",
-    "hexgloop.page.hex_snacks.conjure_gummy": "Conjures a thought gummy at the given position. Returns a reference to the item entity. Costs 1 dust.",
+    "hexgloop.page.hex_snacks.conjure_gummy": "Conjures a thought gummy at the given position. Costs 1 dust.",
     "hexgloop.page.hex_snacks.hexxyos": "Part of a mindful breakfast",
 
     "hexgloop.page.chests.normal": "A slate strengthened chest. It has slightly more storage space than a normal chest.",
@@ -358,6 +425,16 @@
     "hexgloop.page.inventorty.8": "Returns a list containing the sizes of every inventory the inventorty can see, sorted based on the inventory index.",
     "hexgloop.page.inventorty.9": "Returns a list containing the names of every inventory the inventorty can see, sorted based on the inventory index.",
 
+    "hexgloop.page.casting_frog.0": "I've befriended a rather silly little creature I've been calling a Frogi. It likes to hang close to me, and seems to get excited when I jump?$(br2)After giving it instructions to cast, and an appropriate hat for its job, it seems that it'll cast when I go to jump but am already in the air, an attempt to double jump as silly as that sounds.",
+    "hexgloop.page.casting_frog.craft": "Jump !",
+    "hexgloop.page.casting_frog.teach": "Costs about 4 $(item)Charged Amethyst$()",
+    "hexgloop.page.casting_frog.eat": "I've seen frogs in a nature try to eat slimes and magma cubes, perhaps my Frogi would like to do the same ?$(br2)Costs about a shard",
+
+    "hexgloop.entry.mepts": "Mepts",
+    "hexgloop.page.mepts.0": "I've now met a few friendly creatures of this world who seem to have the ability to cast for me. They all seem to be made from the same material, a sort of infused, lively, wood with amethyst crystalization. I've decided to call them Mepts, maybe there are more out there ?",
+    "hexgloop.page.mepts.1": "I believe I've worked out how to make a mept log myself.",
+
+
     "hexgloop.entry.loci": "Loci",
     "hexgloop.page.loci.intro": "So far I've only constructed spell circles with slates, impeti, and directrices, but some of the blocks I've recently discovered seem to also have interesting uses in circles. I've adopted the term Loci to categorize them. On the following pages I've described the capabilities of some loci that I had previously discovered.",
     "hexgloop.page.loci.slate_chest": "When the media wave flows through the chest it grants the circle access to the chest's inventory, as if it were the casters own. Good for large blockwork projects perhaps.",
@@ -367,8 +444,22 @@
     "hexgloop.page.accelerator.0": "Circles are by far my slowest means of casting, I believe this block should accelerate them. When the media wave hits an accelerator it boosts its speed by 200% of the original, with the boost fading by 20% each block. A single accelerator's boost will draw 2 amethyst dust from the impetus, though this cost will greatly increase as boosts are stacked. Spacing out the accelerators may help.",
     "hexgloop.page.accelerator.1": "Speedy !",
 
+    "hexgloop.page.undulator.0": "While a comparator works just fine for detecting the first time the media wave passes over my slates, I haven't had a way to detect additional passes. The undulator will emit a redstone signal whenever it holds the wave.",
+    "hexgloop.page.undulator.1": "Mesmerizing",
+
+    "hexgloop.page.syncetrix.0": "This is certainly not a traditional Directrix ! The exiting wave will always exit the face. If there is a valid block connected it will exit there, otherwise the wave will jump to the first syncetrix in front of it, up to 16 blocks away.",
+    "hexgloop.page.syncetrix.1": "Sink-Eh-Trix",
+
+    "hexgloop.entry.item_flaying": "Item Flaying",
+    "hexgloop.page.mind_pedestal.0": "I can't exactly target an item for mind flaying, but targeting a pedestal holding an item should work fine.$(br2)While this will work with any pedestal, the Flayer's Pedestal can catch and store a single mind that it will attempt to push into future held items.",
+    "hexgloop.page.mind_jar.0": "While blocks may reject a being's mind, this jar sure won't! I can reflay with this mind by passing it as an item entity in place of the villager.",
+
+    "hexgloop.page.library_card.0": "I can construct grand libraries of everything I've learned and wrote, but I can't access them across dimensions.$(br2)Using the library card on an Akashic Record will bind the card to the current dimension. As long as the card is in my inventory, any attempt to read from an akashic library will work as if I were in the bound dimension.",
+
+    "hexgloop.page.coping_saw.0": "It's all so much to bear, the thought that my hexes could take more than I can give, I may need a way of coping with what I saw.$(br2)As long as the Coping Saw is in my hotbar, my hexes won't be able to take my health as media.",
+
+
     "hexgloop.entry.addons": "Addons",
     "hexgloop.page.addons": "I've heard tales of a number of additional hex disciplines. This link seems like a good reference for a list of all of them, as well as external tools, datapacks, and more",
     "hexgloop.page.addons.link": "Addons List"
-
 }

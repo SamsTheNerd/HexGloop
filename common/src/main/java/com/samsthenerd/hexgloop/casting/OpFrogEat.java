@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.samsthenerd.hexgloop.casting.OpFrogEat.Spell;
 import com.samsthenerd.hexgloop.casting.truenameclassaction.MishapChloeIsGonnaFindSoManyWaysToBreakThisHuh;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
 
@@ -13,6 +14,7 @@ import at.petrak.hexcasting.api.spell.OperatorUtils;
 import at.petrak.hexcasting.api.spell.ParticleSpray;
 import at.petrak.hexcasting.api.spell.RenderedSpell;
 import at.petrak.hexcasting.api.spell.SpellAction;
+import at.petrak.hexcasting.api.spell.SpellAction.DefaultImpls;
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.eval.SpellContinuation;
 import at.petrak.hexcasting.api.spell.iota.Iota;

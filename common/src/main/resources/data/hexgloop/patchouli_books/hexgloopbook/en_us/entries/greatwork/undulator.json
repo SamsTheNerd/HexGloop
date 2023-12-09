@@ -1,0 +1,18 @@
+{
+    "name": "block.hexgloop.wave_locus",
+    "icon": "hexgloop:wave_locus",
+    "category": "hexcasting:greatwork",
+    "sortnum": 5,
+    "advancement": "hexcasting:enlightenment",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.undulator.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:wave_locus",
+        "text": "hexgloop.page.undulator.1"
+      }
+    ]
+  }

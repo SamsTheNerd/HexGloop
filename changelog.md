@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.2.0
+
+### Added
+
+- Hex Blade and Hex Pickaxe
+- Frogi - cast on double just
+- Holiday staves and reference staves
+- Undulator - detect circle waves
+- Library Card - access libraries across dimensions
+- Scripts - cheaper limited pattern list holders
+- Essence Stone - use spawn egg colors as your pigment
+- Syncetrix - wireless circles
+- Deco blocks:
+    - Caster's Carpet - shrinks grid while standing on it
+    - Slate Lamp - glows
+    - Charged Amethyst Block - good for beacons
+    - Caster's Gate - passage for enlightened casters
+    - Caster's Bridge - support for enlightened casters
+- Mind in a Jar
+- Mepts ! 
+- Item Flaying - flay into and from items (datapackable)
+- Improved Patchouli recipe pages for energizer recipes
+- Pigment Tooltips
+- Cut Stone and Dispense spells
+- Iotic Blocks - read and write from certain iota holding blocks
+
+### Changed
+
+- Inventorty Recipe
+- Energizer no longer passively drains media
+
+### Fixed
+
+- No gloopifact media tooltip
+- Forge crashing when making gloop (#31)
+- Incorrect Conjure Tasty Treat arguments (#33)
+
 ## 0.1.1
 
 ### Added

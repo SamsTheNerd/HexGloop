@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " FM",
+        " WF",
+        "S  "
+    ],
+    "key": {
+        "M":{
+            "item": "hexgloop:mept_log"
+        },
+        "F": [
+            {
+                "item": "minecraft:feather"
+            },
+            {
+                "tag": "c:feathers"
+            },
+            {
+                "tag": "forge:feathers"
+            }
+        ],
+        "W": {
+            "tag": "minecraft:planks"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "hexgloop:owl_staff"
+    }
+}

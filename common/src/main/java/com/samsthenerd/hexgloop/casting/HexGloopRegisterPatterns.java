@@ -16,6 +16,8 @@ import com.samsthenerd.hexgloop.casting.inventorty.OpGetInventoryLore;
 import com.samsthenerd.hexgloop.casting.inventorty.OpGetTypeInSlot;
 import com.samsthenerd.hexgloop.casting.inventorty.OpSlotCount;
 import com.samsthenerd.hexgloop.casting.inventorty.OpStackTransfer;
+import com.samsthenerd.hexgloop.casting.ioticblocks.OpReadBlock;
+import com.samsthenerd.hexgloop.casting.ioticblocks.OpWriteBlock;
 import com.samsthenerd.hexgloop.casting.mirror.OpBindMirror;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpEvalCatchMishap;
 import com.samsthenerd.hexgloop.casting.mishapprotection.OpHahaFunnyAssertQEDGetItLikeTheMathProofLol;
@@ -178,7 +180,7 @@ public class HexGloopRegisterPatterns {
                 new OpAgreeTruenameEULA());
 
             // op dispense
-            PatternRegistry.mapPattern(HexPattern.fromAngles("wqwaeqqqeddqeqd", HexDir.SOUTH_EAST), 
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wqwaeqqqeddqeqd", HexDir.SOUTH_WEST), 
                 new Identifier(HexGloop.MOD_ID, "dispense"), 
                 new OpDispense());
                 
@@ -186,7 +188,24 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wawadawaewqaw", HexDir.EAST), 
                 new Identifier(HexGloop.MOD_ID, "frog_eat"), 
                 new OpFrogEat());
-                
+
+            // iotic block read and writes
+            PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqqeawqwaw", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "block_read"), 
+                new OpReadBlock(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("deeeeeqdwewewewdw", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "block_write"), 
+                new OpWriteBlock(false));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("aqqqqqeawqwawe", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "can_block_read"), 
+                new OpReadBlock(true));
+            PatternRegistry.mapPattern(HexPattern.fromAngles("deeeeeqdwewewewdwe", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "can_block_write"), 
+                new OpWriteBlock(true));
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("edwdqeeeeaaeaeaeaea", HexDir.EAST), 
+                new Identifier(HexGloop.MOD_ID, "stonecut"), 
+                new OpStoneCut());
 
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
@@ -217,13 +236,19 @@ public class HexGloopRegisterPatterns {
         itemDependentPatternRegisterers.put(HexGloopItems.HEX_BLADE_ITEM, () -> {
             PatternRegistry.mapPattern(HexPattern.fromAngles("waqqqqqwwwaqwwwwaq", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/hex_blade"),
-                new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.SHARD_UNIT));
+                new OpMakePackagedSpell<>(HexGloopItems.HEX_BLADE_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
+        });
+
+        itemDependentPatternRegisterers.put(HexGloopItems.HEX_PICKAXE_ITEM, () -> {
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwaqqqqqeaqdewaqweaewqawedqqqeaeq", HexDir.EAST),
+                new Identifier(HexGloop.MOD_ID, "craft/hex_pickaxe"),
+                new OpMakePackagedSpell<>(HexGloopItems.HEX_PICKAXE_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
         });
 
         itemDependentPatternRegisterers.put(HexGloopItems.CASTING_FROG_ITEM, () -> {
             PatternRegistry.mapPattern(HexPattern.fromAngles("wwaqqqqqeaqdqaqedeqaqdqqeaqwdwqae", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "craft/casting_frog"),
-                new OpMakePackagedSpell<>(HexGloopItems.CASTING_FROG_ITEM.get(), MediaConstants.SHARD_UNIT));
+                new OpMakePackagedSpell<>(HexGloopItems.CASTING_FROG_ITEM.get(), MediaConstants.CRYSTAL_UNIT * 4));
         });
 
         // craft shoe things: waqqqqqwwaqwdwqaw        

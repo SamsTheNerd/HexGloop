@@ -5,9 +5,13 @@ import java.util.List;
 
 import com.samsthenerd.hexgloop.recipes.DataGloopingRecipe;
 
+import at.petrak.hexcasting.common.items.magic.ItemMediaHolder;
+import at.petrak.hexcasting.common.lib.HexItems;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariable;
@@ -60,6 +64,13 @@ public class GloopcipeProcessor implements IComponentProcessor {
             }
             case "result" -> {
                 return IVariable.from(this.recipe.getOutput());
+            }
+            case "dustIcon" -> {
+                return IVariable.from(new ItemStack(HexItems.AMETHYST_DUST));
+            }
+            case "mediaCost" -> {
+                return IVariable.from(Text.translatable("hexgloop.hexdoc.gloopcipe_media_cost", this.recipe.getMediaCost()/10000)
+                    .setStyle(Style.EMPTY.withColor(ItemMediaHolder.HEX_COLOR)));
             }
             default -> {
                 return null;

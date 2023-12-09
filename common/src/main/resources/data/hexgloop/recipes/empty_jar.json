@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "GSG",
+        "G G",
+        "GGG"
+    ],
+    "key": {
+        "S": {
+            "item": "hexcasting:slate"
+        },
+        "G": {
+            "item": "minecraft:glass"
+        }
+    },
+    "result": {
+        "item": "hexgloop:empty_jar"
+    }
+}

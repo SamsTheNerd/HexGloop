@@ -20,6 +20,7 @@ import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
 import com.samsthenerd.hexgloop.items.ItemHexSword;
+import com.samsthenerd.hexgloop.items.ItemHexTool;
 import com.samsthenerd.hexgloop.items.ItemLibraryCard;
 import com.samsthenerd.hexgloop.items.ItemSlateLoader;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
@@ -295,13 +296,17 @@ public class HexGloopClient {
             return HexGloopItems.LIBRARY_CARD_ITEM.get().getPredicateValue(HexGloopItems.LIBRARY_CARD_ITEM.get().getDimension(stack));
         });
 
-        ItemPropertiesRegistry.register(HexGloopItems.HEX_BLADE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, (stack, level, holder, holderID) -> {
-            if(!HexGloopItems.HEX_BLADE_ITEM.get().hasHex(stack)){
+        UnclampedModelPredicateProvider HEX_TOOL_PROVIDER = (stack, level, holder, holderID) -> {
+            if(!(stack.getItem() instanceof ItemHexTool hexTool)) return 0;
+            if(!hexTool.hasHex(stack)){
                 return 0;
             } else {
-                return HexGloopItems.HEX_BLADE_ITEM.get().hasMediaToUse(stack) ? 1 : 0.5f;
+                return hexTool.hasMediaToUse(stack) ? 1 : 0.5f;
             }
-        });
+        };
+
+        ItemPropertiesRegistry.register(HexGloopItems.HEX_BLADE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, HEX_TOOL_PROVIDER);
+        ItemPropertiesRegistry.register(HexGloopItems.HEX_PICKAXE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, HEX_TOOL_PROVIDER);
     }
 
     

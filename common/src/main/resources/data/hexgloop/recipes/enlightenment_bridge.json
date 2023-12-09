@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " D ",
+        "DID",
+        " D "
+    ],
+    "key": {
+        "D": {
+            "item": "hexcasting:amethyst_dust"
+        },
+        "I": {
+            "item": "minecraft:iron_bars"
+        }
+    },
+    "result": {
+        "item": "hexgloop:enlightenment_bridge",
+        "count": 4
+    }
+}

@@ -33,4 +33,8 @@ public class ClientUtils {
     public static boolean isEnlightened(){
         return ClientAdvancements.hasDone(HexAPI.modLoc("enlightenment").toString());
     }
+
+    public static float getClientTime(){
+        return MinecraftClient.getInstance().getTickDelta() + MinecraftClient.getInstance().player.getWorld().getTime();
+    }
 }

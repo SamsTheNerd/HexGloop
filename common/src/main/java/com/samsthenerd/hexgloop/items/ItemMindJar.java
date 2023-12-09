@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.village.VillagerData;
+import net.minecraft.village.VillagerProfession;
 import net.minecraft.world.World;
 
 public class ItemMindJar extends Item implements IFlayableItem{
@@ -43,16 +44,22 @@ public class ItemMindJar extends Item implements IFlayableItem{
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        NbtCompound entNbt = stack.getSubNbt(IMindTargetItem.STORED_MIND_TAG);
-        if(world != null){
+        if(world != null && stack.hasNbt() && stack.getNbt().contains(IMindTargetItem.STORED_MIND_TAG)){
+            NbtCompound entNbt = stack.getSubNbt(IMindTargetItem.STORED_MIND_TAG);
             Optional<Entity> maybeEnt = EntityType.getEntityFromNbt(entNbt, world);
             if(maybeEnt.orElse(null) instanceof VillagerEntity villager){
                 VillagerData vData = villager.getVillagerData();
-                Text jobLevel = Text.translatable("merchant.level." + vData.getLevel());
-                Text job = Text.translatable("entity.minecraft.villager." + vData.getProfession());
-                Text full = Text.translatable("hexgloop:tooltip.mindjar", jobLevel, job);
-                tooltip.add(full);
+                if(vData.getProfession() == VillagerProfession.NONE){
+                    tooltip.add(Text.translatable("item.hexgloop.mind_jar.tooltip.nojob"));
+                } else {
+                    Text jobLevel = Text.translatable("merchant.level." + vData.getLevel());
+                    Text job = Text.translatable("entity.minecraft.villager." + vData.getProfession());
+                    Text full = Text.translatable("item.hexgloop.mind_jar.tooltip", jobLevel, job);
+                    tooltip.add(full);
+                }
+                return;
             }
         }
+        tooltip.add(Text.translatable("item.hexgloop.mind_jar.tooltip.empty"));
     }
 }

@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " HC",
+        " GH",
+        "I  "
+    ],
+    "key": {
+        "C": {
+            "item": "hexcasting:charged_amethyst"
+        },
+        "G":{
+            "item": "minecraft:gold_block"
+        },
+        "I": {
+            "item": "minecraft:gold_ingot"
+        },
+        "H":{
+            "tag": "minecraft:candles"
+        }
+    },
+    "result": {
+        "item": "hexgloop:menorah_staff"
+    }
+}

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Suppliers;
 import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
+import com.samsthenerd.hexgloop.blocks.iotic.HexGloopIoticProviders;
 import com.samsthenerd.hexgloop.casting.ContextModificationHandlers;
 import com.samsthenerd.hexgloop.casting.HexGloopDiscoverers;
 import com.samsthenerd.hexgloop.casting.HexGloopRegisterPatterns;
@@ -54,5 +55,6 @@ public class HexGloop {
         LabelTypes.registerIotaLabelFunctions();
         HexGloopDiscoverers.init();
         ContextModificationHandlers.init();
+        HexGloopIoticProviders.register();
     }
 }

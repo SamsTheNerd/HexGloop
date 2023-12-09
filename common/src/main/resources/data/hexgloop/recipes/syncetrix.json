@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "DG"
+    ],
+    "key": {
+        "G": {
+            "item": "hexgloop:synchronous_gloop"
+        },
+        "D": {
+            "item": "hexcasting:empty_directrix"
+        }
+    },
+    "result": {
+        "item": "hexgloop:syncetrix"
+    }
+}

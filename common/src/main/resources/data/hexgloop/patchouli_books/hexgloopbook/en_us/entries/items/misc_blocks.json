@@ -1,0 +1,42 @@
+{
+    "name": "hexgloop.entry.misc_blocks",
+    "icon": "hexgloop:charged_amethyst_block",
+    "category": "hexcasting:items",
+    "sortnum": 7,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.hexxed_glass"
+      },
+      {
+        "type": "patchouli:smelting",
+        "recipe": "hexgloop:hexxed_glass"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:charged_amethyst_block",
+        "text": "hexgloop.page.charged_amethyst_block"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:slate_lamp",
+        "text": "hexgloop.page.slate_lamp"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:thinking_carpet",
+        "text": "hexgloop.page.thinking_carpet"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:enlightenment_gate",
+        "text": "hexgloop.page.enlightenment_gate"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:enlightenment_bridge",
+        "text": "hexgloop.page.enlightenment_bridge"
+      }
+    ]
+}

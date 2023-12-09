@@ -1,0 +1,17 @@
+{
+    "name": "item.hexgloop.coping_saw",
+    "icon": "hexgloop:coping_saw",
+    "category": "hexcasting:greatwork",
+    "sortnum": 8,
+    "advancement": "hexcasting:enlightenment",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.coping_saw.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:coping_saw"
+      }
+    ]
+  }

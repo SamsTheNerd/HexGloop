@@ -71,7 +71,7 @@
         "op_id": "hexgloop:gloopifact_check_write",
         "anchor": "hexgloop:gloopifact_check_write",
         "input": "any",
-        "output": "any, boolean",
+        "output": "boolean",
         "text": "hexgloop.page.gloopifact.9"
       }
     ]

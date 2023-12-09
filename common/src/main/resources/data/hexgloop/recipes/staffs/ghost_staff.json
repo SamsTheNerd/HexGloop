@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " PM",
+        " WP",
+        "P  "
+    ],
+    "key": {
+        "M":{
+            "item": "hexgloop:mept_log"
+        },
+        "P": {
+            "item": "minecraft:phantom_membrane"
+        },
+        "W": {
+            "tag": "minecraft:planks"
+        }
+    },
+    "result": {
+        "item": "hexgloop:ghost_staff"
+    }
+}

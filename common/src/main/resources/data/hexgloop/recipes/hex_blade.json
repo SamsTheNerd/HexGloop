@@ -1,0 +1,11 @@
+{
+    "type": "hexgloop:item_flaying",
+    "ingredient": {
+        "item": "minecraft:netherite_sword"
+    },
+    "result": "hexgloop:hex_blade",
+    "villagerIn": {
+        "minLevel": 3,
+        "profession": "weaponsmith"
+    }
+}

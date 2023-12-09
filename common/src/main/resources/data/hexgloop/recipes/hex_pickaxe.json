@@ -1,0 +1,11 @@
+{
+    "type": "hexgloop:item_flaying",
+    "ingredient": {
+        "item": "minecraft:netherite_pickaxe"
+    },
+    "result": "hexgloop:hex_pickaxe",
+    "villagerIn": {
+        "minLevel": 3,
+        "profession": "toolsmith"
+    }
+}

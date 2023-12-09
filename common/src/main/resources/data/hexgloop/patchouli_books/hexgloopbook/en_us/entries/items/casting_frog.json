@@ -1,0 +1,34 @@
+{
+    "name": "item.hexgloop.casting_frog",
+    "icon": "hexgloop:casting_frog",
+    "category": "hexcasting:items",
+    "sortnum": 11,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.casting_frog.0"
+      },
+      {
+        "type": "patchouli:crafting",
+        "recipe": "hexgloop:casting_frog",
+        "text": "hexgloop.page.casting_frog.craft"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:craft/casting_frog",
+        "anchor": "hexgloop:craft/casting_frog",
+        "input": "entity, [pattern]",
+        "output": "",
+        "text": "hexgloop.page.casting_frog.teach"
+      },
+      {
+        "type": "hexcasting:pattern",
+        "op_id": "hexgloop:frog_eat",
+        "anchor": "hexgloop:frog_eat",
+        "input": "entity",
+        "output": "",
+        "text": "hexgloop.page.casting_frog.eat"
+      }
+    ]
+}
