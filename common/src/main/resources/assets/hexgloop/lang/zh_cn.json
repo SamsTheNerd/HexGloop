@@ -37,9 +37,11 @@
     "item.hexgloop.longinus_staff": "朗基努斯之杖",
     "item.hexgloop.candy_cane_staff": "拐杖糖法杖",
     "item.hexgloop.menorah_staff": "多连灯法杖",
+    "item.hexgloop.christmas_tree_staff": "圣诞树法杖",
 
     "item.hexgloop.hexxy_plush": "Hexxy毛绒玩偶",
     "item.hexgloop.hex_blade": "咒术之剑",
+    "item.hexgloop.hex_pickaxe": "咒术镐",
     "item.hexgloop.slate_loader": "仪式家雕刻器",
     "item.hexgloop.inventorty": "物品栏小猫",
     "item.hexgloop.slate_loader.written": "仪式家雕刻器[%s]",
@@ -48,6 +50,14 @@
     "item.hexgloop.hand_mirror.tooltip": "影像[%s]",
     "item.hexgloop.hand_mirror.tooltip.not_activated": "上一影像[%s]",
 
+    "item.hexgloop.mept_log": "使偶木材",
+    "item.hexgloop.casting_frog": "蛙仔",
+    "item.hexgloop.empty_jar": "空罐子",
+    "item.hexgloop.mind_jar": "罐中意识",
+    "item.hexgloop.mind_jar.tooltip": "装有一名%s%s的意识",
+    "item.hexgloop.mind_jar.tooltip.nojob": "装有一个未经训练的意识",
+    "item.hexgloop.mind_jar.tooltip.empty": "不知怎的未装有意识？",
+    
     "item.hexgloop.essence_stone": "精华石",
     "item.hexgloop.script": "手稿",
     "item.hexgloop.coping_saw": "缓释锯",
@@ -55,11 +65,13 @@
     "item.hexgloop.library_card.tooltip_dimension": "绑定至%s",
 
     "item.hexgloop.copper_pen_fidget": "笔指记",
+    "item.hexgloop.dreidel_fidget": "四面陀螺指记",
     "item.hexgloop.rainbow_amogus_fidget": "彩虹色船员按按乐指记",
 
     "block.hexgloop.gloop_energizer": "充能器",
     "block.hexgloop.pedestal": "支座",
     "block.hexgloop.mirror_pedestal": "嵌镜支座",
+    "block.hexgloop.mind_pedestal": "剥离者支座",
     "block.hexgloop.slate_chest": "板岩箱子",
     "block.hexgloop.gloopy_slate_chest": "凝浆板岩箱子",
     "block.hexgloop.sentinel_bed": "哨卫床",
@@ -68,6 +80,10 @@
     "block.hexgloop.slate_lamp": "板岩灯",
     "block.hexgloop.charged_amethyst_block": "充能紫水晶块",
     "block.hexgloop.syncetrix": "同步石",
+    "block.hexgloop.wave_locus": "波荡器",
+    "block.hexgloop.enlightenment_gate": "施法者之门",
+    "block.hexgloop.enlightenment_bridge": "施法者之桥",
+    "block.hexgloop.thinking_carpet": "施法者地毯",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
     "key.hexgloop.casting_ring": "使用施法戒指",
@@ -85,6 +101,7 @@
 
     "hexgloop.tooltip.media_worth": "共计%s",
     "hexgloop.tooltip.media_worth_each": "%s每物品",
+    "hexgloop.tooltip.pigment": "染色剂：%s",
 
     "hexcasting.spell.hexgloop:craft/potion": "合成药水",
     "hexcasting.spell.hexgloop:set_label": "达美之策略",
@@ -130,6 +147,8 @@
 
     "hexcasting.spell.hexgloop:conjure_tasty_treat": "召唤美味点心",
 
+    "hexcasting.spell.hexgloop:dispense": "发射",
+    "hexcasting.spell.hexgloop:stonecut": "切石",
 
     "hexcasting.spell.hexgloop:bind_mirror": "绑定镜子",
     "hexcasting.spell.hexgloop:temp_bind_mirror": "暂态绑定镜子",
@@ -147,6 +166,11 @@
     "hexcasting.spell.hexgloop:gloopifact_check_read": "凝浆计员之精思",
     "hexcasting.spell.hexgloop:gloopifact_check_write": "凝浆价员之馏化",
 
+    "hexcasting.spell.hexgloop:block_read": "仪式家之纯化",
+    "hexcasting.spell.hexgloop:block_write": "仪式家之策略",
+    "hexcasting.spell.hexgloop:can_block_read": "勘测员之纯化",
+    "hexcasting.spell.hexgloop:can_block_write": "勘测员之馏化",
+
     "hexcasting.spell.hexgloop:craft/inventorty": "教导物品栏小猫",
     "hexcasting.spell.hexgloop:torty_transfer": "物品栏小猫传输",
     "hexcasting.spell.hexgloop:torty_count": "物品栏猫之纯化",
@@ -155,6 +179,12 @@
     "hexcasting.spell.hexgloop:torty_inv_sizes": "物品栏猫之精思",
     "hexcasting.spell.hexgloop:torty_inv_names": "物品栏猫之精思，第二型",
 
+    "hexcasting.spell.hexgloop:craft/casting_frog": "教导蛙仔",
+    "hexcasting.spell.hexgloop:frog_eat": "蛙仔就餐",
+
+
+    "hexcasting.spell.hexgloop:craft/hex_blade": "锻造咒术之剑",
+    "hexcasting.spell.hexgloop:craft/hex_pickaxe": "锻造咒术之镐",
 
     "hexcasting.mishap.bad_item.slot": "%1$s需要在%3$s中有%2$s，而实际为%4$dx %5$s",
     "hexcasting.mishap.no_item.slot": "%1$s需要在%3$s中有%2$s，而实际无对应物品",
@@ -165,6 +195,12 @@
     "hexgloop.slotname.mainhandring": "戒指槽",
     "hexcasting.mishap.bad_item.labely_item": "一个可标签物品",
     "hexcasting.mishap.bad_item.gloopifact": "一个凝浆造物",
+    "hexcasting.mishap.bad_item.no_stonecutting": "一个可切石物品",
+
+    "hexcasting.mishap.bad_entity.not_frog_food": "一个蛙仔能吃的实体",
+
+    "hexcasting.mishap.bad_block.iota.read": "一个可以读出iota的地方",
+    "hexcasting.mishap.bad_block.iota.write": "一个可以写入iota的地方",
 
     "hexcasting.mishap.mirror_limits": "%s没有影像",
 
@@ -186,6 +222,7 @@
     "hexgloop.source_type.wisp": "咒灵",
     "hexgloop.source_type.gloopifact": "凝浆造物",
     "hexgloop.source_type.inventorty": "物品栏小猫",
+    "hexgloop.source_type.frog_casting": "蛙仔",
 
     "hexgloop.container.simple": "简单",
     "hexgloop.container.result": "产物",
@@ -217,7 +254,8 @@
     "hexgloop.entry.fidgets": "指记",
     "hexgloop.page.fidgets.0": "我偶然发现了些极为有意思的装置！$(br2)我称这些装置为“指记”，它们能将我的思维以可被咒术探察的形态引导入咒术。我可和法术书一样与它交互，只是没有存储 iota 的功能。访问这些思维的方式参见$(l:hexgloop:patterns/minds_orchard)意识果园$(/l)部分。",
     "hexgloop.page.fidgets.pen": "一种只能在两种状态间切换的简单装置。不过切换时发出的咔哒声还算好听。",
-    "hexgloop.page.fidgets.amogus": "起初我觉得这物品很可疑，不过如今我已经把我的担心全部踢出去了。这个奇异的装置会发出最令人开心的啪啪声，且能以 6 种状态引导我的思维。",
+    "hexgloop.page.fidgets.amogus": "起初我觉得这物品很可疑，不过如今我已经把我的担心全部踢出去了。这个奇异的装置会发出最令人开心的啪啪声，且能以六种状态引导我的思维。",
+    "hexgloop.page.fidgets.dreidel": "我用黏土造出了这个小玩意！它有四个面，能在四种状态间切换。",
 
     "hexgloop.entry.trinket_focus": "饰品型核心",
     "hexgloop.page.trinket_focus.0": "我有了一种配饰的强烈欲望。这些饰品和普通的核心功能一致，区别在于我能佩戴它们并能使用$(l:hexgloop:patterns/trinket_focus_patterns)饰品型核心图案$(/l)。$(br2)$(o)[凝浆开发者笔记：Fabric 需安装 Trinkets，Forge 需安装 Curios 才能佩戴这些物品。不过没有安装时也可将其用作核心。]$()",
@@ -226,8 +264,8 @@
 
     "hexgloop.entry.gloop": "凝浆！",
     "hexgloop.page.gloop.0": "这真是“凝浆”极了！计算表明在适合条件下，黏液和媒质会形成一种反应性和适应性极高的材料。$(br2)反应的启动需要给反应物充能和某些机制的帮助。我在下页记录了我对这种装置的设计草稿。",
-    "hexgloop.page.gloop.1": "我的研究表明，3 个$(item)黏液球$()、3 个$(item)充能紫水晶$()，以及 1 个$(item)紫水晶碎片$()能反应产生紫晶凝浆。$(br2)从这种凝浆本身的适应性看来，应当还存在几种其他形态仍待发现……",
-    "hexgloop.page.gloop.2": "我最近发现了一种新形态的凝浆，称作“同步凝浆”，它似乎能间隔极远的距离发生反应。它可在充能器中用 3 个$(item)黏液球$()、3 个$(item)充能紫水晶$()，以及 1 个$(item)末影珍珠$()制成。",
+    "hexgloop.page.gloop.1": "从这种凝浆本身的适应性看来，应当还存在几种其他形态仍待发现……",
+    "hexgloop.page.gloop.2": "我最近发现了一种新形态的凝浆，称作“同步凝浆”，它似乎能间隔极远的距离发生反应。",
     "hexgloop.page.gloop.energizer": "这个机器应当足够强力，能将媒质引导入周围的水中而进一步导入反应物中。可用漏斗一类的装置送入媒质。其启动时应常态每秒消耗 1 个紫水晶粉，而反应一次则需消耗 10 个紫水晶粉。$(br2)只需要再有触发反应的方式就可以了……也许可以请求自然给予灵光一“闪”？",
 
     "hexgloop.entry.multi_focus": "多重核心",
@@ -280,6 +318,10 @@
     "hexgloop.page.truename_protection.1": "此法术能更新我的真名，并清除掉所有存储设备中对我真名的引用。",
     "hexgloop.page.truename_protection.2": "最近我在写下我的真名时总是惴惴不安。此法术似乎能将这种不安一扫而空。要是想回到原本小心谨慎的状态，可以再次施放此法术。",
 
+    "hexgloop.entry.gloop_misc_spells": "凝浆杂项法术",
+    "hexgloop.page.dispense": "将所给物品实体发射出去，如同从位于第一位置向量、朝向第二方向向量的发射器发射一样。$(br2)大多数物品消耗 1/2 个紫水晶粉，箭消耗 1 个充能紫水晶，其他弹射物消耗 3 个紫水晶粉。",
+    "hexgloop.page.stonecut": "如同在切石机中一样切凿所给物品实体。若再传入一个数，则会按照切石机中相应索引的配方切石；若再传入一个物品类型，则会尝试切凿为该类型的物品。$(br2)消耗 1/8 个紫水晶粉。",
+
     "hexgloop.entry.gloopmisc": "凝浆杂项",
     "hexgloop.page.gloopmisc.0": "检测咒术是否在主世界施放。",
     "hexgloop.page.gloopmisc.1": "检测咒术是否在下界施放。",
@@ -289,6 +331,13 @@
     "hexgloop.page.gloopmisc.5": "以类似$(l:hexcasting:patterns/meta#hexcasting:eval)赫尔墨斯之策略$(/l)的方式运行栈中图案。产生事故时不会停止，而是会继续施放。返回此次施法是否造成事故。",
     "hexgloop.page.gloopmisc.6": "揭示上一事故。用法杖直接施放时可能会表现得很奇怪。",
     "hexgloop.page.gloopmisc.7": "返回记述上一事故的字符串。",
+
+    "hexgloop.entry.iotic_blocks": "存有 Iota 的方块",
+    "hexgloop.page.iotic_blocks.0": "我曾遇见过若干能存有 iota 的方块。可以通过已有方式访问其中的 iota，但还是直接操作来得方便。",
+    "hexgloop.page.iotic_blocks.read": "返回所给位置处方块存储的 iota。",
+    "hexgloop.page.iotic_blocks.write": "如果可行，将所给 iota 存入所给位置处的方块。",
+    "hexgloop.page.iotic_blocks.can_read": "检验所给方块中是否存有可读取的 iota。",
+    "hexgloop.page.iotic_blocks.can_write": "检验能否将所给 iota 存入所给位置处的方块。",
 
     "hexgloop.entry.hotbar": "快捷栏操纵",
     "hexgloop.page.hotbar.0": "返回当前选中槽位的索引。",
@@ -300,14 +349,32 @@
 
     "hexgloop.page.inscriber": "手动铺设石板很费工夫。因此我捆出了这件工具以减少麻烦。可以向其写入图案列表并放入石板（就和放入收纳袋一样），此时使用此物品就会放置一块石板，并附上列表中的下一个图案。",
 
+    "hexgloop.entry.misc_blocks": "杂项方块",
     "hexgloop.page.hexxed_glass": "紫水晶粉块可以说是带有魔法的沙子。至少烧炼它就和烧炼沙子一样。奇怪的是，我的射线追踪会穿过这种方块。",
+    "hexgloop.page.charged_amethyst_block": "对施放咒术没什么作用，但确实很漂亮。",
+    "hexgloop.page.slate_lamp": "和红石灯很相似，提供红石信号或通过其他方式充能时会发出柔和的紫色光芒。",
+    "hexgloop.page.thinking_carpet": "极为舒服的地毯，站在上面施法时有种持有探知透镜的感觉，但这种感觉相对较弱。",
+    "hexgloop.page.enlightenment_gate": "只会允许意识撕裂的人通过。",
+    "hexgloop.page.enlightenment_bridge": "只会承载意识撕裂的人。",
+
+    "hexgloop.entry.hex_tools": "咒术工具",
+    "hexgloop.page.hex_tools.0": "咒术大体上能替代剑和其他工具，但我必须承认工具本身带有某种天分。$(br2)这些工具具有的咒术，再加上下界合金的感知力，便能兼顾两种优点。",
+    "hexgloop.page.hex_tools.1": "和缀品类似，每件工具都能存有一个咒术，按下$(k:key.use)即可施放。此外，每种工具都有与本来功能对应的独特施法方式。$(br2)用于支持咒术的媒质也会赋予工具自身以力量，且每次使用时都会消耗。",
+    "hexgloop.page.hex_blade.0": "用此剑击中目标时，其会以目标实体为初始栈施放咒术。$(br2)媒质构成的锋刃本身也能造成少量伤害，大约与下界合金剑相同。",
+    "hexgloop.page.hex_blade.1": "与其他制造施法物品的法术类似。消耗大约 4 个$(l:items/amethyst)$(item)充能紫水晶/$。",
+    "hexgloop.page.hex_pickaxe.0": "用此镐挖掘方块时，其会以该方块位置向量为初始栈施放咒术。",
+    "hexgloop.page.hex_pickaxe.1": "与其他制造施法物品的法术类似。消耗大约 4 个$(l:items/amethyst)$(item)充能紫水晶/$。",
+
+    "hexgloop.page.script.0": "$(l:items/focus)$(item)核心/$功能强大，但论及简单咒术则有种大材小用的感觉。现在谁还愿意去采集荧石呢？$(br2)手稿能存有一个最多含有 16 个图案的列表。",
+
+    "hexgloop.page.essence_stone.0": "尽管这个世界中的生物没有施法的能力，但它们的意识和我一样能被染色。$(br2)我能用精华石提取实体的本质，并用作自身思维的染色剂。将实体写入精华石就能提取出其本质。",
 
     "hexgloop.page.dyebook": "我一直都想给我的法术书加上一点色彩。给它们装上书皮就可以为其染色了。用于装订的下界合金则能使其防火。$(br2)装面的过程不会影响到书页中记载的法术。我倒是还没找到去掉这层书皮的好方法……",
 
     "hexgloop.entry.hex_snacks": "咒术小食",
     "hexgloop.page.hex_snacks.intro": "研究咒法学的劳累总是能勾起我的食欲，好在我找到了些点心和小食！",
     "hexgloop.page.hex_snacks.gummy": "思维软糖是一种不错的小食，适合忙中闲暇食用。它带有极少量的媒质，或许不算是什么优秀的缀品补剂。",
-    "hexgloop.page.hex_snacks.conjure_gummy": "在所给位置召唤一块思维软糖。返回代表该物品实体的 iota。消耗 1 个紫水晶粉。",
+    "hexgloop.page.hex_snacks.conjure_gummy": "在所给位置召唤一块思维软糖。消耗 1 个紫水晶粉。",
     "hexgloop.page.hex_snacks.hexxyos": "满溢着意识的早餐的一部分。",
 
     "hexgloop.page.chests.normal": "用石板加固的箱子。存储空间比普通箱子略大。",
@@ -358,6 +425,16 @@
     "hexgloop.page.inventorty.8": "返回一个列表，其中包含物品栏小猫能看见的所有物品栏与容器的大小，并根据物品栏与容器索引排序。",
     "hexgloop.page.inventorty.9": "返回一个列表，其中包含物品栏小猫能看见的所有物品栏与容器的名称，并根据物品栏与容器索引排序。",
 
+    "hexgloop.page.casting_frog.0": "我与一只有点蠢蠢的小生物做了朋友，我叫它“蛙仔”。它喜欢和我一起行动，而且好像会在我跳跃的时候表现得很兴奋？$(br2)给它有关施法的指示，再为其戴上适合工作的帽子之后，它就会在我身处空中并尝试跳跃时施法。换句可能有点蠢的说法，就是尝试“二段跳”的时候。",
+    "hexgloop.page.casting_frog.craft": "跳跃！",
+    "hexgloop.page.casting_frog.teach": "消耗大约 4 个$(item)充能紫水晶$()。",
+    "hexgloop.page.casting_frog.eat": "我曾见过自然界的青蛙吃下史莱姆和岩浆怪，也许我的蛙仔也能吃？$(br2)消耗大约 1 个紫水晶碎片。",
+
+    "hexgloop.entry.mepts": "使偶",
+    "hexgloop.page.mepts.0": "我近来遇见了这个世界上许多友善的小生物，它们能为我施法。它们似乎都是由同种材料构成的，某种融有能量的、有活力的、带有紫水晶结晶的木材。我决定叫它们“使偶”，也许还有更多种静待发现？",
+    "hexgloop.page.mepts.1": "我认为我已经找到了自行制作使偶木材的方法。",
+
+
     "hexgloop.entry.loci": "环核",
     "hexgloop.page.loci.intro": "截至目前，我只在法术环中使用过石板、促动石，以及导向石，但我最近发现的某些方块似乎在法术环中有独特的用处。我取了“环核”这个名称作为总括。后面几页主要用于介绍目前已发现的环核的功能。",
     "hexgloop.page.loci.slate_chest": "媒质流流过此类箱子时，法术环即可访问箱子的内容物，就像是访问施法者本人的物品一样。也许很适合巨型的方块工程计划。",
@@ -367,8 +444,22 @@
     "hexgloop.page.accelerator.0": "到目前为止，法术环是所有施法方式中最慢的，这种方块应当能加快它们的速度。媒质流离开加速器时，其速度会加上抵达时速度的 200%%。而每经过一格速度加成会减少 20%%。单台加速器的运作需从促动石处抽取 2 个紫水晶粉，不过多次加速会使得消耗量迅速增长。在加速器之间留出区间应该能解决这种麻烦。",
     "hexgloop.page.accelerator.1": "极速！",
 
+    "hexgloop.page.undulator.0": "要检测媒质波首次通过石板时，用比较器就可以了；但它无法检测媒质波的多次通过。波荡器会在媒质波通过其时发出红石信号。",
+    "hexgloop.page.undulator.1": "心醉神迷",
+
+    "hexgloop.page.syncetrix.0": "这肯定不是普通的导向石！媒质波会从带有脸的一侧流出。如果它与有效方块相邻，则会流出到该方块；否则媒质波会跳跃到其前方的第一个同步石处，最远能跳跃 16 格。",
+    "hexgloop.page.syncetrix.1": "特-红-同，波-坞-步，同步",
+
+    "hexgloop.entry.item_flaying": "物品剥离",
+    "hexgloop.page.mind_pedestal.0": "技术上来讲，剥离意识无法以物品为目标，但把目标设为放有物品的支座应该可以。$(br2)虽然所有种类的支座都有此功能，剥离者支座则能捕获并存储单个仪式，并会尝试将其送入后续放上的物品。",
+    "hexgloop.page.mind_jar.0": "方块可能会排斥生物的意识，这种罐子绝对不会！将其作为物品实体替代法术中村民的位置，就可剥离出其中的意识。",
+
+    "hexgloop.page.library_card.0": "我能用我所学所写构建包揽万物的宏伟图书馆，但我无法跨越维度获取其中的知识。$(br2)对阿卡夏记录使用借书卡就可将其与当前维度绑定。只要物品栏中有借书卡，从阿卡夏图书馆中读取的操作都与在对应维度中读取无异。",
+
+    "hexgloop.page.coping_saw.0": "我咒术的需求远超我所能提供的，这种想法如同烙印在我脑中久久不消散。我可能需要某种缓解措施释放压力。$(br2)只要缓释锯位于快捷栏中，咒术就无法将生命值用作媒质。",
+
+
     "hexgloop.entry.addons": "附属",
     "hexgloop.page.addons": "我曾听过许多有关其他咒法学派的故事。这个链接应当连接着所有这些故事的辑录。外部工具，数据包等也在其列。",
     "hexgloop.page.addons.link": "附属列表"
-
 }
