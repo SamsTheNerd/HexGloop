@@ -80,7 +80,7 @@ public class ItemFlayingRecipe implements Recipe<Inventory> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return HexRecipeStuffRegistry.BRAINSWEEP;
+        return Serializer.INSTANCE;
     }
 
     // in order to get this to be a "Recipe" we need to do a lot of bending-over-backwards
