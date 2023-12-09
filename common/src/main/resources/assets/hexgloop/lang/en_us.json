@@ -165,6 +165,11 @@
     "hexcasting.spell.hexgloop:gloopifact_check_read": "Gloopitor's Reflection",
     "hexcasting.spell.hexgloop:gloopifact_check_write": "Gloopessor's Distillation",
 
+    "hexcasting.spell.hexgloop:block_read": "Ritualist's Purification",
+    "hexcasting.spell.hexgloop:block_write": "Ritualist's Gambit",
+    "hexcasting.spell.hexgloop:can_block_read": "Surveyor's Purification",
+    "hexcasting.spell.hexgloop:can_block_write": "Surveyor's Distillation",
+
     "hexcasting.spell.hexgloop:craft/inventorty": "Teach Inventorty",
     "hexcasting.spell.hexgloop:torty_transfer": "Torty Transfer",
     "hexcasting.spell.hexgloop:torty_count": "Torty's Purification",
@@ -325,6 +330,13 @@
     "hexgloop.page.gloopmisc.6": "Reveals the last mishap. This may behave strangely when cast directly from my staff",
     "hexgloop.page.gloopmisc.7": "Returns a string with information on the last mishap.",
 
+    "hexgloop.entry.iotic_blocks": "Iotic Blocks",
+    "hexgloop.page.iotic_blocks.0": "I've come across a few blocks that hold iotas. These seem to mostly have other ways to access the iota, but it may be convenient to access it directly.",
+    "hexgloop.page.iotic_blocks.read": "Returns the iota stored by the block at the given position",
+    "hexgloop.page.iotic_blocks.write": "Stores the given iota in the block at the given position, if possible",
+    "hexgloop.page.iotic_blocks.can_read": "Returns whether the given block contains a readable iota",
+    "hexgloop.page.iotic_blocks.can_write": "Returns if I can store the given iota in the block at the given position.",
+
     "hexgloop.entry.hotbar": "Hotbar Manipulation",
     "hexgloop.page.hotbar.0": "Returns the index of the currently selected slot",
     "hexgloop.page.hotbar.1": "Selects the slot indexed by the given number",
@@ -360,7 +372,7 @@
     "hexgloop.entry.hex_snacks": "Hex Snacks",
     "hexgloop.page.hex_snacks.intro": "Hexxing can really work up an appetite, luckily I found some snacks !",
     "hexgloop.page.hex_snacks.gummy": "The Thought Gummy makes for a nice little snack on the go. It has a trace amount of media, but probably isn't the best trinket filler.",
-    "hexgloop.page.hex_snacks.conjure_gummy": "Conjures a thought gummy at the given position. Returns a reference to the item entity. Costs 1 dust.",
+    "hexgloop.page.hex_snacks.conjure_gummy": "Conjures a thought gummy at the given position. Costs 1 dust.",
     "hexgloop.page.hex_snacks.hexxyos": "Part of a mindful breakfast",
 
     "hexgloop.page.chests.normal": "A slate strengthened chest. It has slightly more storage space than a normal chest.",
