@@ -5,7 +5,7 @@
 ### Added
 
 - Hex Blade and Hex Pickaxe
-- Frogi - cast on double just
+- Frogi - cast on double jump
 - Holiday staves and reference staves
 - Undulator - detect circle waves
 - Library Card - access libraries across dimensions
