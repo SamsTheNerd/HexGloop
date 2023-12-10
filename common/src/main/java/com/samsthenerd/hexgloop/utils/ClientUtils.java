@@ -1,18 +1,22 @@
 package com.samsthenerd.hexgloop.utils;
 
+import java.util.Map;
 import java.util.UUID;
 
 import com.mojang.authlib.GameProfile;
+import com.samsthenerd.hexgloop.mixins.misc.MixinAccessClientAdvancementProgress;
 
 import at.petrak.hexcasting.api.HexAPI;
 import at.petrak.hexcasting.api.misc.DiscoveryHandlers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.AdvancementProgress;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientAdvancementManager;
 import net.minecraft.client.network.OtherClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
-import vazkii.patchouli.client.base.ClientAdvancements;
 
 public class ClientUtils {
     public static PlayerEntity makeOtherClientPlayer(UUID uuid){
@@ -31,7 +35,15 @@ public class ClientUtils {
 
     // doesn't account for enlightenment modifiers, rip i guess
     public static boolean isEnlightened(){
-        return ClientAdvancements.hasDone(HexAPI.modLoc("enlightenment").toString());
+        ClientAdvancementManager manager = MinecraftClient.getInstance().getNetworkHandler().getAdvancementHandler();
+        if(manager instanceof MixinAccessClientAdvancementProgress progressHolder){
+            Map<Advancement, AdvancementProgress> progresses = progressHolder.getAdvancementProgresses();
+            Advancement enlightenment = manager.getManager().get(HexAPI.modLoc("enlightenment"));
+            if(progresses.containsKey(enlightenment)){
+                return progresses.get(enlightenment).isDone();
+            }
+        }
+        return false;
     }
 
     public static float getClientTime(){

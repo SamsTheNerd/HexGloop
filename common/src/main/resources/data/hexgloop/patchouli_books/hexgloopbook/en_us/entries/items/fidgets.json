@@ -17,6 +17,12 @@
       },
       {
         "type": "patchouli:crafting",
+        "recipe": "hexgloop:dreidel_fidget",
+        "text": "hexgloop.page.fidgets.dreidel",
+        "anchor":"dreidel"
+      },
+      {
+        "type": "patchouli:crafting",
         "recipe": "hexgloop:amogus_fidget",
         "text": "hexgloop.page.fidgets.amogus",
         "anchor":"amogus"

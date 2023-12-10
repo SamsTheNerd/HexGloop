@@ -130,6 +130,12 @@ public class HexGloopItems{
                 return new Pair<Integer, Integer>(RenderUtils.buildCurveOptions(0, 0, false, false), 10);
             }
         }));
+
+    public static final RegistrySupplier<ItemDyeableFidget> DREIDEL_FIDGET = item("dreidel_fidget", 
+        () -> new ItemDyeableFidget(defaultSettings().maxCount(1), 
+        new FidgetSettings(4, Math.PI*0.75, 0xC0_49acff, 0xC0_ffe44a, 0xFF_3254ab, 0xFF_f2a600)
+        ));
+
     public static final RegistrySupplier<ItemFidget> RAINBOW_AMOGUS_FIDGET = item("rainbow_amogus_fidget", 
         () -> new ItemFidget(defaultSettings().maxCount(1), new FidgetSettings(6){
             @Override

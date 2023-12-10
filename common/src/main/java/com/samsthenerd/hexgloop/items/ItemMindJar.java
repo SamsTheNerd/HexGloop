@@ -13,9 +13,11 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.village.VillagerData;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.world.World;
@@ -31,9 +33,24 @@ public class ItemMindJar extends Item implements IFlayableItem{
         NbtCompound entNbt = stack.getSubNbt(IMindTargetItem.STORED_MIND_TAG);
         Optional<Entity> maybeEnt = EntityType.getEntityFromNbt(entNbt, ctx.getWorld());
         if(maybeEnt.orElse(null) instanceof VillagerEntity villager){
-            return villager;
+            VillagerEntity clone = new VillagerEntity(EntityType.VILLAGER, ctx.getWorld());
+            clone.setVillagerData(villager.getVillagerData());
+            if(itemEnt != null){
+                clone.setPos(itemEnt.getX(), itemEnt.getY(), itemEnt.getZ());
+            } else {
+                clone.setPos(ctx.getPosition().getX(), ctx.getPosition().getY(), ctx.getPosition().getZ());
+            }
+            return clone;
         }
         return null;
+    }
+
+    @Override
+    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+        if (this.isIn(group)) {
+            // just don't put it in there for now !
+            // stacks.add(new ItemStack(this));
+        }
     }
 
     @Override

@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "hexgloop:item/dyeablespellbook/dyebook_contents",
+      "layer1": "hexgloop:item/dyeablespellbook/dyebook_cover"
+    }
+  }

@@ -25,6 +25,7 @@
 - Pigment Tooltips
 - Cut Stone and Dispense spells
 - Iotic Blocks - read and write from certain iota holding blocks
+- Dreidel Fidget
 
 ### Changed
 

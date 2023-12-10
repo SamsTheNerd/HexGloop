@@ -11,13 +11,16 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.BlockView;
 
 public class HexGloopBlocks {
     public static DeferredRegister<Block> blocks = DeferredRegister.create(HexGloop.MOD_ID, Registry.BLOCK_KEY);
@@ -82,9 +85,11 @@ public class HexGloopBlocks {
         })));
 
     public static final RegistrySupplier<Block> ENLIGHTENMENT_GATE_BLOCK = block("enlightenment_gate", 
-        () -> new BlockEnlightenedCollision(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).strength(0.3f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK).nonOpaque(), false));
+        () -> new BlockEnlightenedCollision(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).strength(0.3f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)
+            .nonOpaque().dynamicBounds().suffocates((BlockState var1, BlockView var2, BlockPos var3) -> false).blockVision((BlockState var1, BlockView var2, BlockPos var3) -> false), false));
     public static final RegistrySupplier<Block> ENLIGHTENMENT_BRIDGE_BLOCK = block("enlightenment_bridge", 
-        () -> new BlockEnlightenedCollision(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).strength(0.3f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK).nonOpaque(), true));
+        () -> new BlockEnlightenedCollision(AbstractBlock.Settings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).strength(0.3f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)
+        .nonOpaque().dynamicBounds().suffocates((BlockState var1, BlockView var2, BlockPos var3) -> false).blockVision((BlockState var1, BlockView var2, BlockPos var3) -> false), true));
 
     public static Block.Settings defaultSettings(){
         return Block.Settings.of(Material.STONE).hardness((float)1.3);

@@ -16,6 +16,7 @@ import com.samsthenerd.hexgloop.items.HexGloopItems;
 import com.samsthenerd.hexgloop.items.ItemCastersCoin;
 import com.samsthenerd.hexgloop.items.ItemCastingFrog;
 import com.samsthenerd.hexgloop.items.ItemEssenceStone;
+import com.samsthenerd.hexgloop.items.ItemFidget;
 import com.samsthenerd.hexgloop.items.ItemGloopDye;
 import com.samsthenerd.hexgloop.items.ItemGloopifact;
 import com.samsthenerd.hexgloop.items.ItemHandMirror;
@@ -169,6 +170,13 @@ public class HexGloopClient {
         }, HexGloopItems.DYEABLE_SPELLBOOK_ITEM);
 
         ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
+            if(tintIndex == 0){
+                return HexGloopItems.DREIDEL_FIDGET.get().getColor(stack);
+            }
+            return 0xFF_FFFFFF;
+        }, HexGloopItems.DREIDEL_FIDGET);
+
+        ColorHandlerRegistry.registerItemColors((stack, tintIndex) -> {
             if(tintIndex == 1){
                 return HexGloopItems.ESSENCE_STONE_ITEM.get().getColors(stack).getLeft();
             }
@@ -307,6 +315,16 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.HEX_BLADE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, HEX_TOOL_PROVIDER);
         ItemPropertiesRegistry.register(HexGloopItems.HEX_PICKAXE_ITEM.get(), ItemHexSword.TOOL_STATUS_PREDICATE, HEX_TOOL_PROVIDER);
+        
+        UnclampedModelPredicateProvider FIDGET_INDEX_PROVIDER = (stack, level, holder, holderID) -> {
+            if(!(stack.getItem() instanceof ItemFidget fidget)) return 0;
+            
+            int index = ItemFidget.getPage(stack)-1;
+            return ((float)index) / (float) fidget.fidgetSettings.slots;
+        };
+        ItemPropertiesRegistry.register(HexGloopItems.COPPER_PEN_FIDGET.get(), ItemFidget.INDEX_PREDICATE, FIDGET_INDEX_PROVIDER);
+        ItemPropertiesRegistry.register(HexGloopItems.DREIDEL_FIDGET.get(), ItemFidget.INDEX_PREDICATE, FIDGET_INDEX_PROVIDER);
+        ItemPropertiesRegistry.register(HexGloopItems.RAINBOW_AMOGUS_FIDGET.get(), ItemFidget.INDEX_PREDICATE, FIDGET_INDEX_PROVIDER);
     }
 
     

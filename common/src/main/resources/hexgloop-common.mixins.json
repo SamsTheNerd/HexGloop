@@ -86,7 +86,8 @@
       "mirroritems.MixinClientTPHandRender",
       "mirroritems.MixinClientMakeHandFuzzy",
       "mirroritems.MixinClientHotbarOverlays",
-      "dyeablestaffs.MixinClientColorModelStaffs"
+      "dyeablestaffs.MixinClientColorModelStaffs",
+      "misc.MixinAccessClientAdvancementProgress"
     ],
     "injectors": {
       "defaultRequire": 1

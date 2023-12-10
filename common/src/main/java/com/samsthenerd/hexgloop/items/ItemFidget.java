@@ -28,6 +28,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.MathHelper;
@@ -35,6 +36,8 @@ import net.minecraft.world.World;
 
 public class ItemFidget extends Item implements LabelyItem, KeyboundItem{
     public FidgetSettings fidgetSettings;
+
+    public static Identifier INDEX_PREDICATE = new Identifier("hexgloop", "fidget_index");
 
     public ItemFidget(Settings settings, FidgetSettings fidgetSettings){
         super(settings);

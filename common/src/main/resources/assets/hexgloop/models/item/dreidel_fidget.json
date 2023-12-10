@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:item/generated",
+    "overrides": [
+      {
+        "model": "hexgloop:item/dreidel/nun",
+        "predicate": {
+          "hexgloop:fidget_index": 0.0
+        }
+      },
+      {
+        "model": "hexgloop:item/dreidel/shin",
+        "predicate": {
+          "hexgloop:fidget_index": 0.25
+        }
+      },
+      {
+        "model": "hexgloop:item/dreidel/hay",
+        "predicate": {
+          "hexgloop:fidget_index": 0.5
+        }
+      },
+      {
+        "model": "hexgloop:item/dreidel/gimmel",
+        "predicate": {
+          "hexgloop:fidget_index": 0.75
+        }
+      }
+    ],
+    "textures": {
+      "layer0": "hexgloop:item/dreidel/dummy"
+    }
+  }

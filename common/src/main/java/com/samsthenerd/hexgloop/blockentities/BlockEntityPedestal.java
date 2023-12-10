@@ -477,7 +477,10 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
 
         // handle mindstorage
         if(hasMindStorage && storedMind == null){
-            storedMind = sacrifice;
+            VillagerEntity clone = new VillagerEntity(EntityType.VILLAGER, world);
+            clone.setVillagerData(sacrifice.getVillagerData());
+            clone.setPos(flayPos.getX(), flayPos.getY(), flayPos.getZ());
+            storedMind = clone;
             if(storedMind == null){
                 world.setBlockState(flayPos, world.getBlockState(flayPos).with(BlockPedestal.MINDFUL, false));
             } else {
