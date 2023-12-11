@@ -55,7 +55,7 @@ A Hex Casting addon focusing on adding exciting new items, blocks, and QoL tweak
 - **Pedestals** - Can be used to embed non pattern iotas in the circle.
 - **Syncetrix** - Sends media waves across short distances for "wireless" circles.
 - **Accelerator** - Speeds up the circle.
-- **Undulator** - emits a redstone signal when the media wave is passing through it.
+- **Undulator** - Emits a redstone signal when the media wave is passing through it.
 - **Gloopy Slate Chest** - Provides an inventory for the circle to draw blocks and items from.
 
 </details>
