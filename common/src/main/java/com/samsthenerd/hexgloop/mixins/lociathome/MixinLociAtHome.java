@@ -50,6 +50,9 @@ public class MixinLociAtHome implements ILociHandler{
     private List<BlockPos> trackedBlocks;
     @Shadow
     private transient Set<BlockPos> knownBlocks;
+
+    @Shadow
+    private boolean foundAll;
     
     private boolean shouldExit = false;
     private Set<BlockPos> castedBlocks = new HashSet<BlockPos>();
@@ -196,6 +199,8 @@ public class MixinLociAtHome implements ILociHandler{
         BlockPos forced = forcedPos.get();
         if(forced != null){
             forcedPos.set(null);
+            boolean closedLoop = (this.trackedBlocks.size() >= 3 && this.trackedBlocks.get(0).equals(forced));
+            foundAll |= closedLoop;
             return forced;
         } else {
             return original;

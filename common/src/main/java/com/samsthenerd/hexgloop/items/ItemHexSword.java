@@ -3,6 +3,9 @@ package com.samsthenerd.hexgloop.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.samsthenerd.hexgloop.casting.IContextHelper;
+import com.samsthenerd.hexgloop.casting.gloopifact.ICADHarnessStorage;
+
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
@@ -27,7 +30,7 @@ import net.minecraft.world.World;
 public class ItemHexSword extends ItemHexTool implements IExtendedEnchantable.IWeaponEnchantable{
 
     public ItemHexSword(Settings pProperties) {
-        super(pProperties, 2.0f, 3f);
+        super(pProperties, 2.0f, -2.4f);
     }
 
 	public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
@@ -58,10 +61,15 @@ public class ItemHexSword extends ItemHexTool implements IExtendedEnchantable.IW
             }
             if(!(attacker instanceof ServerPlayerEntity sPlayer)) return false;
             var ctx = new CastingContext(sPlayer, attacker.getStackInHand(Hand.MAIN_HAND) == stack ? Hand.MAIN_HAND : Hand.OFF_HAND, CastingContext.CastSource.PACKAGED_HEX);
+            if(((Object)ctx) instanceof IContextHelper ctxHelper){
+                ctxHelper.setCastingItem(stack);
+            }
             var harness = new CastingHarness(ctx);
             harness.setStack(new ArrayList<Iota>(List.of(new EntityIota(target))));
             
+            ((ICADHarnessStorage)(Object)sPlayer).addHarness(harness);
             var info = harness.executeIotas(instrs, sWorld);
+            ((ICADHarnessStorage)(Object)sPlayer).removeHarness(harness);
 
             sPlayer.incrementStat(Stats.USED.getOrCreateStat(this));
             return true;

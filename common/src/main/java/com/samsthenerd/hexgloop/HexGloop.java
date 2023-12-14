@@ -19,6 +19,7 @@ import com.samsthenerd.hexgloop.misc.ITrinkety;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes;
 import com.samsthenerd.hexgloop.network.HexGloopNetwork;
 import com.samsthenerd.hexgloop.recipes.HexGloopRecipes;
+import com.samsthenerd.hexgloop.utils.GloopXPlat;
 import com.samsthenerd.hexgloop.utils.StringsToDirMap;
 
 import dev.architectury.platform.Platform;
@@ -31,6 +32,7 @@ public class HexGloop {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static ITrinkety TRINKETY_INSTANCE;
+    public static GloopXPlat GLOOPXPLAT;
 
     public static final Supplier<Registries> REGISTRIES = Suppliers.memoize(() -> Registries.get(MOD_ID));
 

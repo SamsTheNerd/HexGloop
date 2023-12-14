@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
+import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.ILociAtHome;
 import com.samsthenerd.hexgloop.casting.wehavelociathome.modules.IRedirectLocus;
 
@@ -63,13 +64,18 @@ public class BlockSyncetrix extends BlockCircleComponent implements ILociAtHome,
         BlockState immediateState = world.getBlockState(immediatePos);
         // try to find an immediate block if there is one
         if(immediateState.getBlock() instanceof BlockCircleComponent component){
+            HexGloop.logPrint("found immediate block: " + immediateState.getBlock());
             for(Direction dir : Direction.values()){
-                if(dir.equals(currentState.get(FACING).getOpposite())){
+                HexGloop.logPrint("checking direction: " + dir);
+                if(dir.equals(currentState.get(FACING))){
+                    HexGloop.logPrint("skipping opposite direction");
                     continue; // don't get it if you have to flip
                 }
-                if(component.canEnterFromDirection(currentState.get(FACING), dir, currentPos, immediateState, world)){
+                if(component.canEnterFromDirection(currentState.get(FACING).getOpposite(), dir, currentPos, immediateState, world)){
+                    HexGloop.logPrint("found valid path");
                     return immediatePos;
                 }
+                HexGloop.logPrint("no valid path");
             }
         }
         // find another syncetrix
@@ -80,7 +86,7 @@ public class BlockSyncetrix extends BlockCircleComponent implements ILociAtHome,
                 return checkPos;
             }
         }
-        return null; // TODO: this crashes 
+        return null; 
     }
 
     // it's not really a directional block

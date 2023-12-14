@@ -27,6 +27,10 @@ public class MixinTrackCADHarnesses implements ICADHarnessStorage{
         return null;
     }
 
+    public Set<CastingHarness> getHarnesses(){
+        return harnesses;
+    }
+
     public void removeHarness(CastingHarness harness){
         harnesses.remove(harness);
     }

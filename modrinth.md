@@ -43,6 +43,23 @@ A Hex Casting addon focusing on adding exciting new items, blocks, and QoL tweak
 
 ![separator]
 
+### **New Aesthetic Items**
+
+![A screenshot of a chest containing many new staves, dyed staves, dyed spellbooks, and essence stones.](https://github.com/SamsTheNerd/HexGloop/blob/main/externalassets/staffsandbooks.png?raw=true)
+
+</center>
+
+- **New Staves** - Based off of minecraft items/materials, various media I like, and holidays !
+- **Dyeable Staves** - All staves can be dyed, similarly to leather armor. Not every staff has a texture that shows the dye, but resource packs can support it.
+- **Covered Spellbooks** - Just like a regular spellbook but dyeable and fireproof.
+- **Essence Stones** - Allow you to capture an entity's essence and use their spawn egg colors as a pigment.
+- **Gloop Dye** - Dyes dyeable items with rgb values. Works with many items from other mods.
+
+<center>
+
+![separator]
+
+
 ### **New Circle Components**
 
 ![An overcomplicated spell circle for showing off the new components.](https://github.com/SamsTheNerd/HexGloop/blob/main/externalassets/GloopCircle.gif?raw=true)
@@ -60,5 +77,35 @@ A Hex Casting addon focusing on adding exciting new items, blocks, and QoL tweak
 
 </details>
 
-[separator]: https://github.com/SamsTheNerd/HexGloop/blob/main/externalassets/separator.png?raw=true "Hex Gloop Decorative Section Separator, a purple bar with green bits."
+<center>
 
+![separator]
+
+### **More Features**
+
+![A screenshot of a room with various hexgloop items on pedestals. The floor is made of charged amethyst blocks. There are slate chests on the side. The items are: two scripts, a casters coin, two casting potions, and a focal ring.](https://github.com/SamsTheNerd/HexGloop/blob/main/externalassets/shop.png?raw=true)
+
+#### *Check out the gallery for more pictures !*
+
+</center>
+
+- **Focal Jewelry** - Wearable foci you can read and write while wearing it.
+- **Scripts** - Similar to foci but can only hold lists of up to 16 patterns, great for early game hexes.
+- **Multi Focus** - A pre-end spellbook like item with fewer slots.
+- **Truename Protection** - Warnings in chat when you expose your truename and a new spell to void existing references to it.
+- **Scroll Copying** - Right clicking the Hex Notebook on a hanging scroll copies the pattern on the current page onto the scroll.
+- **Casting Potion** - Casts when you drink it. Great for shops !
+- **Fidgets and The Mind's Orchard** - A series of items that let you select states to use in your hexes.
+- **Caster's Coins** - Coins that hold an iota that can only be read once.
+- **Mirrors** - Reflect another item into your offhand for hexes to use.
+
+<center>
+
+<br><br>
+
+<a target="_blank" href="https://hexgloop.hexxy.media"><img src="https://github.com/SamsTheNerd/HexGloop/blob/main/externalassets/hexdoc-badgecozy.svg?raw=true" alt="A badge for hexdoc in the style of Devins Badges" width=225></a>
+<a target="_blank" href="https://addons.hexxy.media" height=75><img src="https://github.com/SamsTheNerd/HexGloop/blob/main/externalassets/addon-badge-cozy.svg?raw=true" alt="A badge for addons.hexxy.media in the style of Devins Badges" width=200></a>
+
+</center>
+
+[separator]: https://github.com/SamsTheNerd/HexGloop/blob/main/externalassets/separator.png?raw=true "Hex Gloop Decorative Section Separator, a purple bar with green bits."

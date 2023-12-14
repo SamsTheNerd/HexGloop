@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import com.samsthenerd.hexgloop.casting.IContextHelper;
+import com.samsthenerd.hexgloop.casting.gloopifact.ICADHarnessStorage;
+
 import at.petrak.hexcasting.api.misc.MediaConstants;
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
@@ -30,9 +33,10 @@ public class ItemHexMiningTool extends ItemHexTool implements IExtendedEnchantab
     private final Set<TagKey<Block>> effectiveBlocks;
     private final float realAttackDamage; // total
     private final boolean castOnAttack;
+    private final float miningSpeed = 10.0F;
 
-    public ItemHexMiningTool(Settings pProperties, float attackDamage, float useSpeed, Set<TagKey<Block>> effectiveBlocks, boolean castOnAttack) {
-        super(pProperties, 2.0f, useSpeed);
+    public ItemHexMiningTool(Settings pProperties, float attackDamage, float attackSpeed, Set<TagKey<Block>> effectiveBlocks, boolean castOnAttack) {
+        super(pProperties, 2.0f, attackSpeed);
         this.effectiveBlocks = effectiveBlocks;
         this.realAttackDamage = attackDamage;
         this.castOnAttack = castOnAttack;
@@ -44,7 +48,7 @@ public class ItemHexMiningTool extends ItemHexTool implements IExtendedEnchantab
         }
         for(TagKey<Block> tag : effectiveBlocks){
             if(state.isIn(tag)){
-                return this.useSpeed;
+                return miningSpeed;
             }
         }
         return 1.0F;
@@ -65,6 +69,9 @@ public class ItemHexMiningTool extends ItemHexTool implements IExtendedEnchantab
                     return false;
                 }
                 var ctx = new CastingContext(sPlayer, attacker.getStackInHand(Hand.MAIN_HAND) == stack ? Hand.MAIN_HAND : Hand.OFF_HAND, CastingContext.CastSource.PACKAGED_HEX);
+                if(((Object)ctx) instanceof IContextHelper ctxHelper){
+                    ctxHelper.setCastingItem(stack);
+                }
                 var harness = new CastingHarness(ctx);
                 harness.setStack(new ArrayList<Iota>(List.of(new EntityIota(target))));
                 
@@ -90,12 +97,17 @@ public class ItemHexMiningTool extends ItemHexTool implements IExtendedEnchantab
                 return false;
             }
             var ctx = new CastingContext(sPlayer, miner.getStackInHand(Hand.MAIN_HAND) == stack ? Hand.MAIN_HAND : Hand.OFF_HAND, CastingContext.CastSource.PACKAGED_HEX);
+            if(((Object)ctx) instanceof IContextHelper ctxHelper){
+                ctxHelper.setCastingItem(stack);
+            }
             var harness = new CastingHarness(ctx);
             harness.setStack(new ArrayList<Iota>(
                 List.of(new Vec3Iota(new Vec3d(pos.getX(), pos.getY(), pos.getZ())))
             ));
             
+            ((ICADHarnessStorage)(Object)sPlayer).addHarness(harness);
             var info = harness.executeIotas(instrs, sWorld);
+            ((ICADHarnessStorage)(Object)sPlayer).removeHarness(harness);
             sPlayer.incrementStat(Stats.USED.getOrCreateStat(this));
             return true;
         }

@@ -67,7 +67,8 @@
       "misc.MixinItemFlaying$MixinBrainsweepSpell",
       "misc.MixinHonorLibraryCardReads",
       "misc.MixinDispenserBehaviorAccessor",
-      "castingfrog.MixinCastOnDoubleJump"
+      "castingfrog.MixinCastOnDoubleJump",
+      "spellmodifiers.MixinEnchantedBlockBreaking"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",

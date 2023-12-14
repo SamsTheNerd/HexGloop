@@ -27,13 +27,16 @@ public class MixinReadCoinOnce {
     // at = @At(value="INVOKE", target="at/petrak/hexcasting/api/addldata/ADIotaHolder.readIota (Lnet/minecraft/server/world/ServerWorld;)Lat/petrak/hexcasting/api/spell/iota/Iota;", ordinal=2))
     at = @At(value="INVOKE", target="at/petrak/hexcasting/xplat/IXplatAbstractions.findDataHolder (Lnet/minecraft/item/ItemStack;)Lat/petrak/hexcasting/api/addldata/ADIotaHolder;", ordinal=2))
     private ADIotaHolder readCoinOnce(IXplatAbstractions abstractionInstance, ItemStack stack, Operation<ADIotaHolder> original, @NotNull List<? extends Iota> args, @NotNull CastingContext ctx){
-        ADIotaHolder holder = original.call(abstractionInstance, stack);
+        ItemStack cloneStack = stack.copy();
+        // get the holder based off of a duplicate stack so we can return the proper ADIotaHolder while still decrementing the count
+        ADIotaHolder holder = original.call(abstractionInstance, cloneStack);
         if(stack.getItem() instanceof ItemCastersCoin readOnlyItem){
             if(holder != null){
                 Iota iota = holder.readIota(ctx.getWorld());
                 // if it's gonna mishap then don't do the read once stuff
                 if(iota == null){
                     if(holder.emptyIota() == null){ 
+                        // need to do a silly maybe ?
                         return holder;
                     }
                 }

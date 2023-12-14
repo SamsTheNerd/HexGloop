@@ -16,6 +16,7 @@ public class HexGloopFabric implements ModInitializer {
             HexGloop.TRINKETY_INSTANCE = new TrinketyImplFake();
         }
         HexGloop.onInitialize();
+        HexGloop.GLOOPXPLAT = new GloopXPlatFabric();
         BundleResourcePackFabric.register();
     }
 }

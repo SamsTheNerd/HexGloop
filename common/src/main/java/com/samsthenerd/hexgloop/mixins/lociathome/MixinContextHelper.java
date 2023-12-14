@@ -57,4 +57,16 @@ public class MixinContextHelper implements IContextHelper{
     public ItemStack getFrog(){
         return frogStack;
     }
+
+    // moving to this in the future but don't feel like rewriting to use it for frog and cat rn bleh - should probably also move it to a different folder
+
+    private ItemStack castingStack = null;
+
+    public ItemStack getCastingItem(){
+        return castingStack;
+    }
+
+    public void setCastingItem(ItemStack stack){
+        castingStack = stack;
+    }
 }

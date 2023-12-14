@@ -7,12 +7,14 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import com.samsthenerd.hexgloop.casting.IContextHelper;
 import com.samsthenerd.hexgloop.casting.gloopifact.ICADHarnessStorage;
 
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 import at.petrak.hexcasting.api.spell.casting.ControllerInfo;
 import at.petrak.hexcasting.api.spell.iota.Iota;
 import at.petrak.hexcasting.common.items.magic.ItemPackagedHex;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 
@@ -22,6 +24,8 @@ public class MixinActuallyTrackHarnesses {
     at=@At(value="INVOKE", target="at/petrak/hexcasting/api/spell/casting/CastingHarness.executeIotas (Ljava/util/List;Lnet/minecraft/server/world/ServerWorld;)Lat/petrak/hexcasting/api/spell/casting/ControllerInfo;"))
     public ControllerInfo trackHarnesses(CastingHarness harness, List<Iota> instrs, ServerWorld sWorld, Operation<ControllerInfo> original){
         ServerPlayerEntity sPlayer = harness.getCtx().getCaster();
+        ItemStack castingStackProbably = sPlayer.getStackInHand(harness.getCtx().getCastingHand());
+        ((IContextHelper)(Object)harness.getCtx()).setCastingItem(castingStackProbably);
         if(sPlayer != null){
             ICADHarnessStorage storage = (ICADHarnessStorage)(Object)sPlayer;
             storage.addHarness(harness);

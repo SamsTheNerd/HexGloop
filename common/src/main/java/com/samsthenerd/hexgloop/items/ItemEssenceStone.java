@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import com.samsthenerd.hexgloop.HexGloop;
+
 import at.petrak.hexcasting.api.addldata.ADColorizer;
 import at.petrak.hexcasting.api.item.ColorizerItem;
 import at.petrak.hexcasting.api.item.IotaHolderItem;
@@ -52,6 +54,9 @@ public class ItemEssenceStone extends Item implements ColorizerItem, IotaHolderI
         if(iota instanceof EntityIota eIota){
             Entity ent = eIota.getEntity();
             SpawnEggItem spawnEgg = SpawnEggItem.forEntity(ent.getType());
+            if(spawnEgg == null){
+                spawnEgg = HexGloop.GLOOPXPLAT.getForgeSpawnEggForEntity(ent.getType());
+            }
             if(spawnEgg != null){
                 int primaryColor = spawnEgg.getColor(0);
                 int secondaryColor = spawnEgg.getColor(1);

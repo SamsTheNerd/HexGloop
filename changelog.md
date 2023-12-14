@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.1
+
+### Added 
+- break block uses enchantments on the casting item
+- reverse recipe for charged amethyst block
+
+### Fixed
+- forge modded entity spawn egg colors not being detected by essence stone
+- attack speeds being too high
+- caster's coin breaks when reading a single coin on forge
+- syncetrix doesn't output to impeti or directrices
+- scripts not having tooltips
+
+
 ## 0.2.0
 
 ### Added

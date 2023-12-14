@@ -46,4 +46,8 @@ public interface IContextHelper {
     public default boolean isFrogCasting(){
         return getFrog() != null;
     }
+
+    public ItemStack getCastingItem();
+
+    public void setCastingItem(ItemStack stack);
 }

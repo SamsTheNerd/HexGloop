@@ -43,6 +43,7 @@ public class HexGloopForge {
         MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, HexGloopCaps::attachBlockEntityCaps);
 
         HexGloop.onInitialize();
+        HexGloop.GLOOPXPLAT = new GloopXPlatForge();
     }
 
     private void onClientSetup(FMLClientSetupEvent event) { 

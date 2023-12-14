@@ -1,5 +1,7 @@
 package com.samsthenerd.hexgloop.casting.gloopifact;
 
+import java.util.Set;
+
 import at.petrak.hexcasting.api.spell.casting.CastingContext;
 import at.petrak.hexcasting.api.spell.casting.CastingHarness;
 
@@ -9,6 +11,8 @@ public interface ICADHarnessStorage {
 
     // get the harness that has this context
     public CastingHarness getHarness(CastingContext ctx);
+
+    public Set<CastingHarness> getHarnesses();
 
     public void removeHarness(CastingHarness harness);
 }
