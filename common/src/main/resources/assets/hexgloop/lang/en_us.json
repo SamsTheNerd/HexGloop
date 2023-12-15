@@ -266,7 +266,7 @@
     "hexgloop.page.gloop.0": "This is glooptastic ! My calculations suggest that under the right conditions, slime and media may form together into a highly reactive and adaptive material.$(br2)It'll require a way to energize the reactants and some mechanism to prompt the reaction. I've drafted my schematics for such a device on the following page.",
     "hexgloop.page.gloop.1": "The adaptive nature of this gloop leads me to believe there may be other forms out there to be discovered...",
     "hexgloop.page.gloop.2": "I've recently discovered a new form of gloop, I've been calling is synchronous gloop, and it seems to be able to react across great distances.",
-    "hexgloop.page.gloop.energizer": "This machine should be strong enough to channel the media through nearby water and into my reactants. I can use a device such as a hopper to feed media in. It should consume about 1 dust per second while active and draw 10 dust for a reaction.$(br2)Now I just need a way to trigger the reaction.. perhaps I can look up to nature for a strike of inspiration ?",
+    "hexgloop.page.gloop.energizer": "This machine should be strong enough to channel the media through nearby water and into my reactants. I can use a device such as a hopper to feed media in. $(br2)Now I just need a way to trigger the reaction.. perhaps I can look up to nature for a strike of inspiration ?",
 
     "hexgloop.entry.multi_focus": "Multi Focus",
     "hexgloop.page.multi_focus.0": "I can feel the gloop pulling at my mind, maybe I can pull back?$(br2)A gloop constructed multi focus should let me hold multiple iotas in a single item and access them quickly with $(l)$(k:key.hexgloop.open_iota_wheel)$(), sort of like a smaller spellbook. For more organizational techniques I should check my notes on $(l:hexgloop:patterns/labels)labels$(/l)",
@@ -323,8 +323,8 @@
     "hexgloop.page.stonecut": "Cuts the given item entity as if it were in a stonecutter. If it's given a number it chooses the cut based on that index in the stonecutter, if it's given an item type it tries to cut it into that type.$(br2)Costs an 8th of a dust.",
 
     "hexgloop.entry.gloopmisc": "Misc Gloop",
-    "hexgloop.page.gloopmisc.0": "Returns whether or not the hex is being cast in the overworld",
-    "hexgloop.page.gloopmisc.1": "Returns whether or not the hex is being cast in the nether",
+    "hexgloop.page.gloopmisc.0": "Returns whether or not the entity is in the overworld",
+    "hexgloop.page.gloopmisc.1": "Returns whether or not the entity is in the nether",
     "hexgloop.page.gloopmisc.2": "Returns whether or not the given entity or position is in ambit",
     "hexgloop.page.gloopmisc.3": "Asserts that the boolean is true and mishaps if not. The mishap is labeled with whatever pattern, if any, comes before it on the stack",
     "hexgloop.page.gloopmisc.4": "Does absolutely nothing.",

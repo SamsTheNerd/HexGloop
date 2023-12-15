@@ -9,7 +9,7 @@
             "type": "hexcasting:pattern",
             "op_id": "hexgloop:in_overworld",
             "anchor": "hexgloop:in_overworld",
-            "input": "",
+            "input": "entity",
             "output": "boolean",
             "text": "hexgloop.page.gloopmisc.0"
         },
@@ -17,7 +17,7 @@
             "type": "hexcasting:pattern",
             "op_id": "hexgloop:in_nether",
             "anchor": "hexgloop:in_nether",
-            "input": "",
+            "input": "entity",
             "output": "boolean",
             "text": "hexgloop.page.gloopmisc.1"
         },
