@@ -266,7 +266,7 @@
     "hexgloop.page.gloop.0": "这真是“凝浆”极了！计算表明在适合条件下，黏液和媒质会形成一种反应性和适应性极高的材料。$(br2)反应的启动需要给反应物充能和某些机制的帮助。我在下页记录了我对这种装置的设计草稿。",
     "hexgloop.page.gloop.1": "从这种凝浆本身的适应性看来，应当还存在几种其他形态仍待发现……",
     "hexgloop.page.gloop.2": "我最近发现了一种新形态的凝浆，称作“同步凝浆”，它似乎能间隔极远的距离发生反应。",
-    "hexgloop.page.gloop.energizer": "这个机器应当足够强力，能将媒质引导入周围的水中而进一步导入反应物中。可用漏斗一类的装置送入媒质。其启动时应常态每秒消耗 1 个紫水晶粉，而反应一次则需消耗 10 个紫水晶粉。$(br2)只需要再有触发反应的方式就可以了……也许可以请求自然给予灵光一“闪”？",
+    "hexgloop.page.gloop.energizer": "这个机器应当足够强力，能将媒质引导入周围的水中而进一步导入反应物中。可用漏斗一类的装置送入媒质。$(br2)只需要再有触发反应的方式就可以了……也许可以请求自然给予灵光一“闪”？",
 
     "hexgloop.entry.multi_focus": "多重核心",
     "hexgloop.page.multi_focus.0": "我能感受到紫晶凝浆对我意识的拉扯，也许我能拉扯回来？$(br2)由紫晶凝浆制成的多重核心能在单个物品中存有多个 iota，并可通过$(l)$(k:key.hexgloop.open_iota_wheel)$()快速取用，比较像一本小型法术书。更多组织整理的技巧参见有关$(l:hexgloop:patterns/labels)标签$(/l)的笔记。",
@@ -323,8 +323,8 @@
     "hexgloop.page.stonecut": "如同在切石机中一样切凿所给物品实体。若再传入一个数，则会按照切石机中相应索引的配方切石；若再传入一个物品类型，则会尝试切凿为该类型的物品。$(br2)消耗 1/8 个紫水晶粉。",
 
     "hexgloop.entry.gloopmisc": "凝浆杂项",
-    "hexgloop.page.gloopmisc.0": "检测咒术是否在主世界施放。",
-    "hexgloop.page.gloopmisc.1": "检测咒术是否在下界施放。",
+    "hexgloop.page.gloopmisc.0": "检测实体是否身处主世界。",
+    "hexgloop.page.gloopmisc.1": "检测实体是否身处下界。",
     "hexgloop.page.gloopmisc.2": "检测所给实体或位置向量是否在我影响范围内。",
     "hexgloop.page.gloopmisc.3": "断言所给布尔值为 True，否则产生事故。事故可用图案标记，若有对应标签则将其压入栈顶。",
     "hexgloop.page.gloopmisc.4": "什么都不会做。",
