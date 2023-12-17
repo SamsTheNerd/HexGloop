@@ -226,6 +226,23 @@
 
     "hexgloop.container.simple": "Simple",
     "hexgloop.container.result": "Result",
+
+    "block.minecraft.banner.hexgloop.hermes.white":      "White Hermes",
+    "block.minecraft.banner.hexgloop.hermes.orange":     "Orange Hermes",
+    "block.minecraft.banner.hexgloop.hermes.magenta":    "Magenta Hermes",
+    "block.minecraft.banner.hexgloop.hermes.light_blue": "Light Hermes Ducky",
+    "block.minecraft.banner.hexgloop.hermes.yellow":     "Yellow Hermes",
+    "block.minecraft.banner.hexgloop.hermes.lime":       "Lime Hermes",
+    "block.minecraft.banner.hexgloop.hermes.pink":       "Pink Hermes",
+    "block.minecraft.banner.hexgloop.hermes.gray":       "Gray Hermes",
+    "block.minecraft.banner.hexgloop.hermes.light_gray": "Light Hermes Ducky",
+    "block.minecraft.banner.hexgloop.hermes.cyan":       "Cyan Hermes",
+    "block.minecraft.banner.hexgloop.hermes.purple":     "Purple Hermes",
+    "block.minecraft.banner.hexgloop.hermes.blue":       "Blue Hermes",
+    "block.minecraft.banner.hexgloop.hermes.brown":      "Brown Hermes",
+    "block.minecraft.banner.hexgloop.hermes.green":      "Green Hermes",
+    "block.minecraft.banner.hexgloop.hermes.red":        "Red Hermes",
+    "block.minecraft.banner.hexgloop.hermes.black":      "Black Hermes",
     
     "hexgloop.truename_eula": "I appear to have imbued this object with my truename. I shudder to think what would happen if this fell into malicious hands. It may be comforting for me to review my notes on Truename Protection Spells",
     

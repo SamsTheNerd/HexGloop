@@ -14,6 +14,7 @@ import com.samsthenerd.hexgloop.casting.ContextModificationHandlers;
 import com.samsthenerd.hexgloop.casting.HexGloopDiscoverers;
 import com.samsthenerd.hexgloop.casting.HexGloopRegisterPatterns;
 import com.samsthenerd.hexgloop.items.HexGloopItems;
+import com.samsthenerd.hexgloop.misc.GloopBanners;
 import com.samsthenerd.hexgloop.misc.HexGloopGameEvents;
 import com.samsthenerd.hexgloop.misc.ITrinkety;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes;
@@ -58,5 +59,6 @@ public class HexGloop {
         HexGloopDiscoverers.init();
         ContextModificationHandlers.init();
         HexGloopIoticProviders.register();
+        GloopBanners.registerBannerPatterns();
     }
 }

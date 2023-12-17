@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 
 import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.items.ItemFidget.FidgetSettings;
+import com.samsthenerd.hexgloop.misc.GloopBanners;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker.Label;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes.PatternLabel;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes.PatternLabel.PatternOptions;
@@ -18,6 +19,7 @@ import at.petrak.hexcasting.common.items.ItemStaff;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -78,7 +80,8 @@ public class HexGloopItems{
     public static final RegistrySupplier<Item> HEXXY_OS = item("hexxyos",
         () -> new ItemHexxyOs(defaultSettings().food((new FoodComponent.Builder()).hunger(8).saturationModifier(0.8f).build())));
 
-    public static final RegistrySupplier<Item> HEXXY_PLUSH = item("hexxy_plush", () -> new Item(defaultSettings().maxCount(1)));
+    public static final RegistrySupplier<Item> HEXXY_PLUSH = item("hexxy_plush", () -> new BannerPatternItem(GloopBanners.HERMES_PATTERN_ITEM_KEY, defaultSettings().maxCount(1)));
+
 
     public static final RegistrySupplier<ItemHexSword> HEX_BLADE_ITEM = item("hex_blade", 
         () -> new ItemHexSword(defaultSettings().maxCount(1).fireproof())); 
