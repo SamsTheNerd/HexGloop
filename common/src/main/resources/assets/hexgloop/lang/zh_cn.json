@@ -227,6 +227,23 @@
     "hexgloop.container.simple": "简单",
     "hexgloop.container.result": "产物",
     
+    "block.minecraft.banner.hexgloop.hermes.white":      "白色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.orange":     "橙色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.magenta":    "品红色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.light_blue": "淡蓝色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.yellow":     "黄色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.lime":       "黄绿色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.pink":       "粉红色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.gray":       "灰色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.light_gray": "淡灰色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.cyan":       "青色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.purple":     "紫色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.blue":       "蓝色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.brown":      "棕色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.green":      "绿色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.red":        "红色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.black":      "黑色赫尔墨斯",
+
     "hexgloop.truename_eula": "我似乎已将我的真名注入这一物件。光是想到这件物品落入恶人手中会发生什么就令我震悚。回顾我在真名保护法术上留的笔记也许能稍作缓解。",
 
     "hexgloop.gloopvancement.title": "凝浆十足",
