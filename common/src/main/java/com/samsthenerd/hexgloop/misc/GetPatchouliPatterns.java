@@ -7,6 +7,8 @@ import javax.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.samsthenerd.hexgloop.misc.clientgreatbook.GreatBook;
+
 import at.petrak.hexcasting.api.PatternRegistry;
 import at.petrak.hexcasting.api.PatternRegistry.PatternEntry;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -64,7 +66,9 @@ public class GetPatchouliPatterns {
                 } catch (Exception e){
                     return null;
                 }
-                if(entry.isPerWorld()) return null;
+                if(entry.isPerWorld()){
+                    return GreatBook.INSTANCE.getPattern(opId);
+                }
                 return entry.prototype();
             }
         }

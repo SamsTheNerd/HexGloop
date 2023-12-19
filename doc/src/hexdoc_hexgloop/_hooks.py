@@ -31,16 +31,6 @@ class HexgloopPlugin(ModPluginImpl, UpdateContextImpl):
     @hookimpl
     def hexdoc_load_tagged_unions() -> HookReturn[Package]:
         return [glooprecipe, pages]
-    
-    @staticmethod
-    @hookimpl
-    def hexdoc_update_context(context: BookContext) -> None:
-        if context.props.modid != "hexgloop":
-            return
-        context.macros |= {
-            # put your macros here
-            "$(item)": "$(#b38ef3)"
-        }
 
 
 class HexgloopModPlugin(ModPluginWithBook):
