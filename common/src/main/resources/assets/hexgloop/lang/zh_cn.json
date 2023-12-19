@@ -227,6 +227,10 @@
     "hexgloop.container.simple": "简单",
     "hexgloop.container.result": "产物",
     
+    "hexgloop.greatbook.saved": "已将%s（%s）写入咒术笔记",
+    "hexgloop.greatbook.removed": "已从咒术笔记中清除%s",
+    "hexgloop.greatbook.cleared": "已清除咒术笔记中的卓越法术",
+
     "block.minecraft.banner.hexgloop.hermes.white":      "白色赫尔墨斯",
     "block.minecraft.banner.hexgloop.hermes.orange":     "橙色赫尔墨斯",
     "block.minecraft.banner.hexgloop.hermes.magenta":    "品红色赫尔墨斯",
