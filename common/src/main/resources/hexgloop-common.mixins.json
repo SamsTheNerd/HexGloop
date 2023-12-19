@@ -88,7 +88,10 @@
       "mirroritems.MixinClientMakeHandFuzzy",
       "mirroritems.MixinClientHotbarOverlays",
       "dyeablestaffs.MixinClientColorModelStaffs",
-      "misc.MixinAccessClientAdvancementProgress"
+      "misc.MixinAccessClientAdvancementProgress",
+      "booktweaks.MixinClientClicksForGreatBook",
+      "booktweaks.MixinClientInsertGreatPatchi",
+      "booktweaks.MixinClientAccessLookupPatternComp"
     ],
     "injectors": {
       "defaultRequire": 1

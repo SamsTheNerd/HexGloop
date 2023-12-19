@@ -25,6 +25,7 @@ import com.samsthenerd.hexgloop.items.ItemHexTool;
 import com.samsthenerd.hexgloop.items.ItemLibraryCard;
 import com.samsthenerd.hexgloop.items.ItemSlateLoader;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.misc.clientgreatbook.GreatBook;
 import com.samsthenerd.hexgloop.network.HexGloopNetwork;
 import com.samsthenerd.hexgloop.utils.GloopUtils;
 
@@ -88,6 +89,7 @@ public class HexGloopClient {
         registerScryingDisplayers();
         HexGloopKeybinds.registerKeybinds();
 
+        GreatBook.registerLoadEvent();
         registerRenderers();
 
         newTess = new Tessellator();

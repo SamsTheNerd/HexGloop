@@ -25,6 +25,8 @@ import com.samsthenerd.hexgloop.casting.mishapprotection.OpRevealLastMishap;
 import com.samsthenerd.hexgloop.casting.orchard.OpReadOrchard;
 import com.samsthenerd.hexgloop.casting.redstone.OpConjureRedstone;
 import com.samsthenerd.hexgloop.casting.redstone.OpGetComparator;
+import com.samsthenerd.hexgloop.casting.tags.OpCheckTag;
+import com.samsthenerd.hexgloop.casting.tags.OpGetTags;
 import com.samsthenerd.hexgloop.casting.trinketyfocii.OpTrinketyReadIota;
 import com.samsthenerd.hexgloop.casting.trinketyfocii.OpTrinketyWriteIota;
 import com.samsthenerd.hexgloop.casting.truenameclassaction.OpAgreeTruenameEULA;
@@ -369,6 +371,13 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("waeaeaeawa", HexDir.EAST),
                 new Identifier(HexGloop.MOD_ID, "torty_inv_names"),
                 new OpGetInventoryLore(false));
+            // tag stuff
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwedwe", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "get_tags"),
+                new OpGetTags());
+            PatternRegistry.mapPattern(HexPattern.fromAngles("wwedwew", HexDir.NORTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "check_tag"),
+                new OpCheckTag());
             
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();
