@@ -74,6 +74,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import vazkii.patchouli.common.book.Book;
+import vazkii.patchouli.common.book.BookRegistry;
 
 public class HexGloopClient {
     public static Random random = new Random();
@@ -100,6 +102,15 @@ public class HexGloopClient {
             if(atlas.getId().equals(TexturedRenderLayers.CHEST_ATLAS_TEXTURE)){
                 spriteAdder.accept(new Identifier(HexGloop.MOD_ID, "entity/chest/gloopy_slate_chest"));
                 spriteAdder.accept(new Identifier(HexGloop.MOD_ID, "entity/chest/slate_chest"));
+            }
+            if(atlas.getId().equals(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE)){
+                // should probably figure out a way to auto do these from patchi books but oh well
+                if(!BookRegistry.INSTANCE.isLoaded()) HexGloop.logPrint("patchi books not loaded");
+                for(Book book : BookRegistry.INSTANCE.books.values()){
+                    Identifier textureId = new Identifier(book.id.getNamespace(), "entity/lectern_" + book.id.getPath());
+                    spriteAdder.accept(textureId);
+                    // spriteAdder.accept(new Identifier("hexcasting:entity/lectern_thehexbook"));
+                }
             }
         });
     }
