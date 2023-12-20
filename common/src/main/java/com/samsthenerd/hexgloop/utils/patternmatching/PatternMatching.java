@@ -42,11 +42,6 @@ public class PatternMatching {
             return found.getSecond();
         } catch (Throwable e) {
         }
-        // not sure that this is actually gonna do anything that the above doesn't
-        Action foundAction = PatternRegistry.lookupPatternByShape(pat);
-        if(foundAction != null){
-            return PatternRegistry.lookupPattern(foundAction);
-        }
         // could be a special pattern
         if (pat.sigsEqual(SpecialPatterns.CONSIDERATION)) {
 			return HexAPI.modLoc("escape");
@@ -55,6 +50,11 @@ public class PatternMatching {
 		} else if (pat.sigsEqual(SpecialPatterns.RETROSPECTION)) {
 			return HexAPI.modLoc("close_paren");
 		}
+        // not sure that this is actually gonna do anything that the above doesn't
+        Action foundAction = PatternRegistry.lookupPatternByShape(pat);
+        if(foundAction != null){
+            return PatternRegistry.lookupPattern(foundAction);
+        }
         // or a handler ?
 
         // otherwise must be a great spell - or nothing
@@ -62,11 +62,17 @@ public class PatternMatching {
     }
 
     public static Text getName(HexPattern pat){
-        Identifier id = getIdentifier(pat);
-        if(id != null){
-            return PatternRegistry.lookupPattern(id).action().getDisplayName();
+        // should get name for numbers/bookkeepers, normal patterns, and 
+        Action foundAction = PatternRegistry.lookupPatternByShape(pat);
+        if(foundAction != null){
+            return foundAction.getDisplayName();
         }
-        // this doesn't work for great spells.
+        // handles great spells
+        Identifier maybeGreatSpell = PatternMatching.matchGreatSpell(pat);
+        if(maybeGreatSpell != null){
+            return PatternRegistry.lookupPattern(maybeGreatSpell).action().getDisplayName();
+        }
+        // finally handles special intro/retro/consideration
         return PatternNameHelper.representationForPattern(pat);
     }
 }

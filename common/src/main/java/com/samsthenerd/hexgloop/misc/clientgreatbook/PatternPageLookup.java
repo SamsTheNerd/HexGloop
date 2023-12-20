@@ -101,9 +101,22 @@ public class PatternPageLookup {
         return new Pair<>(Text.empty(), Text.empty());
     }
 
+    private static Map<String, String> ID_REPLACEMENTS = new HashMap<>();
+    static{
+        ID_REPLACEMENTS.put("hexcasting:const/vec/px", "hexcasting:const/vec/x");        
+        ID_REPLACEMENTS.put("hexcasting:const/vec/nx", "hexcasting:const/vec/x");        
+        ID_REPLACEMENTS.put("hexcasting:const/vec/py", "hexcasting:const/vec/y");        
+        ID_REPLACEMENTS.put("hexcasting:const/vec/ny", "hexcasting:const/vec/y");        
+        ID_REPLACEMENTS.put("hexcasting:const/vec/pz", "hexcasting:const/vec/z");        
+        ID_REPLACEMENTS.put("hexcasting:const/vec/nz", "hexcasting:const/vec/z");        
+    }
+
     @Nullable
     private static BookPage searchForPage(Identifier id){
         // HexGloop.logPrint("need to search for page for " + id.toString());
+        if(ID_REPLACEMENTS.containsKey(id.toString())){
+            id = new Identifier(ID_REPLACEMENTS.get(id.toString()));
+        }
         Book hexbook = BookRegistry.INSTANCE.books.get(HexAPI.modLoc("thehexbook"));
         for(BookEntry entry : hexbook.getContents().entries.values()){
             // HexGloop.logPrint("checking entry: " + entry.getName());

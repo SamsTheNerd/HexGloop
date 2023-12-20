@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.misc.clientgreatbook.GreatBook;
 import com.samsthenerd.hexgloop.misc.clientgreatbook.PatternPageLookup;
 import com.samsthenerd.hexgloop.utils.patternmatching.PatternMatching;
@@ -97,6 +98,7 @@ public class MixinClientClicksForGreatBook {
                 }
             } catch(Exception e){
                 // do nothing, just to catch any issues with using null
+                HexGloop.logPrint("caught in scroll tooltip: " + e.toString());
             }
         }
     }

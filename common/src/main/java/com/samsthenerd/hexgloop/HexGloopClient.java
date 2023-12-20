@@ -104,12 +104,11 @@ public class HexGloopClient {
                 spriteAdder.accept(new Identifier(HexGloop.MOD_ID, "entity/chest/slate_chest"));
             }
             if(atlas.getId().equals(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE)){
-                // should probably figure out a way to auto do these from patchi books but oh well
+                // load patchi lectern book textures if they exist
                 if(!BookRegistry.INSTANCE.isLoaded()) HexGloop.logPrint("patchi books not loaded");
                 for(Book book : BookRegistry.INSTANCE.books.values()){
                     Identifier textureId = new Identifier(book.id.getNamespace(), "entity/lectern_" + book.id.getPath());
                     spriteAdder.accept(textureId);
-                    // spriteAdder.accept(new Identifier("hexcasting:entity/lectern_thehexbook"));
                 }
             }
         });
