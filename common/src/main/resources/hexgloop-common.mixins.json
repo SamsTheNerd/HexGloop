@@ -91,7 +91,14 @@
       "misc.MixinAccessClientAdvancementProgress",
       "booktweaks.MixinClientClicksForGreatBook",
       "booktweaks.MixinClientInsertGreatPatchi",
-      "booktweaks.MixinClientAccessLookupPatternComp"
+      "booktweaks.MixinClientAccessLookupPatternComp",
+      "booktweaks.MixinClientGetPageTemplate",
+      "booktweaks.MixinClientGetTemplateText",
+      "booktweaks.MixinClientBookPageAccessor",
+      "booktweaks.MixinClientGetCustomComponent",
+      "booktweaks.MixinClientYoinkPPLangKey",
+      "booktweaks.MixinClientGetTemplateComponents",
+      "booktweaks.MixinClientLinkPattern"
     ],
     "injectors": {
       "defaultRequire": 1

@@ -41,7 +41,7 @@ public class GreatBook {
         if(patternId != null){
             HexPattern prev = storedPatterns.put(patternId, pattern);
             if(!pattern.equals(prev)){
-                Text patternName = PatternRegistry.lookupPattern(patternId).action().getDisplayName();
+                Text patternName = PatternMatching.getName(pattern);
                 MinecraftClient.getInstance().player.sendMessage(Text.translatable("hexgloop.greatbook.saved", patternName, pattern.toString()));
                 save();
             }

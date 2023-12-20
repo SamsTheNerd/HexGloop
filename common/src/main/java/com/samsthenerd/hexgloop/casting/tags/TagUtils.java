@@ -1,6 +1,7 @@
 package com.samsthenerd.hexgloop.casting.tags;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.annotation.Nullable;
@@ -26,6 +27,7 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 
 public class TagUtils {
     
@@ -92,23 +94,41 @@ public class TagUtils {
 
         public boolean hasTag(String tag){
             // Optional<RegistryEntry<Block>> blockEntry = Registry.BLOCK.getKey(asBlock()).map(key -> Registry.BLOCK.getEntry(key))
-            if(asBlock().getRegistryEntry().isIn(TagKey.of(Registry.BLOCK_KEY, new Identifier(tag)))){
+            Block block = asBlock();
+            if(block != Blocks.AIR && block.getRegistryEntry().isIn(TagKey.of(Registry.BLOCK_KEY, new Identifier(tag)))){
                 return true;
             }
-            if(asItem().getRegistryEntry().isIn(TagKey.of(Registry.ITEM_KEY, new Identifier(tag)))){
+            Item item = asItem();
+            if(item != Items.AIR && item.getRegistryEntry().isIn(TagKey.of(Registry.ITEM_KEY, new Identifier(tag)))){
                 return true;
+            }
+            Identifier id = new Identifier(tag);
+            // want to check if the tag is for what mod it's from
+            if(id.getNamespace().equals("modid")){
+                Optional<RegistryKey<Block>> blockKey = Registry.BLOCK.getKey(block);
+                if(block != Blocks.AIR && blockKey.isPresent() && blockKey.get().getValue().getNamespace().equals(id.getPath())) return true;
+                Optional<RegistryKey<Item>> itemKey = Registry.ITEM.getKey(item);
+                if(item != Items.AIR && itemKey.isPresent() && itemKey.get().getValue().getNamespace().equals(id.getPath())) return true;
             }
             return false;
         }
 
         public Set<String> getTags(){
             Set<String> tags = new HashSet<>();
-            asBlock().getRegistryEntry().streamTags().forEach(tag -> {
-                tags.add(tag.id().toTranslationKey());
-            });
-            asItem().getRegistryEntry().streamTags().forEach(tag -> {
-                tags.add(tag.id().toTranslationKey());
-            });
+            Block block = asBlock();
+            if(block != Blocks.AIR){
+                tags.add(new Identifier("modid", Registry.BLOCK.getKey(block).get().getValue().getNamespace()).toString());
+                block.getRegistryEntry().streamTags().forEach(tag -> {
+                    tags.add(tag.id().toTranslationKey());
+                });
+            }
+            Item item = asItem();
+            if(item != Items.AIR){
+                tags.add(new Identifier("modid", Registry.ITEM.getKey(item).get().getValue().getNamespace()).toString());
+                item.getRegistryEntry().streamTags().forEach(tag -> {
+                    tags.add(tag.id().toTranslationKey());
+                });
+            }
             return tags;
         }
     }

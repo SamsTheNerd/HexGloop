@@ -20,8 +20,6 @@ import com.google.gson.JsonSerializationContext;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.samsthenerd.hexgloop.screens.PatternStyle;
 
-import at.petrak.hexcasting.api.PatternRegistry;
-import at.petrak.hexcasting.api.spell.Action;
 import at.petrak.hexcasting.api.spell.iota.PatternIota;
 import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
@@ -94,13 +92,8 @@ public class MixinPatternStyle implements PatternStyle{
                 bob.append(" ");
                 bob.append(sig);
             }
-            Action action = PatternRegistry.lookupPatternByShape(pattern);
-            
             Text hoverText = Text.translatable("hexcasting.tooltip.pattern_iota",
-                Text.literal(bob.toString())).formatted(Formatting.WHITE);
-            if(action != null){
-                hoverText = action.getDisplayName().copy().formatted(Formatting.UNDERLINE).append("\n").append(hoverText);
-            }
+                Text.literal(bob.toString())).setStyle(Style.EMPTY.withItalic(false).withColor(Formatting.GOLD));
             ItemStack scrollStack = new ItemStack(HexItems.SCROLL_LARGE);
             scrollStack.setCustomName(hoverText);
             HexItems.SCROLL_LARGE.writeDatum(scrollStack, new PatternIota(pattern));
