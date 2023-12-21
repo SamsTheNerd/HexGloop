@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 import com.samsthenerd.hexgloop.items.tooltips.MirrorTooltipData;
+import com.samsthenerd.hexgloop.items.tooltips.ScriptTooltipData;
 
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.client.item.TooltipData;
@@ -31,5 +32,6 @@ public class HexGloopTooltips {
     // should be called sided in tooltip registration stuff
     public static void init(){
         tooltipDataToComponent.put(MirrorTooltipData.class, convertTooltip(MirrorTooltipData.class, MirrorTooltipComponent::new));
+        tooltipDataToComponent.put(ScriptTooltipData.class, convertTooltip(ScriptTooltipData.class, ScriptTooltipComponent::new));
     }
 }
