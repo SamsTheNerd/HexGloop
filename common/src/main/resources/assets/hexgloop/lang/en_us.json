@@ -231,6 +231,8 @@
     "hexgloop.greatbook.removed": "Removed %s from Hex Book",
     "hexgloop.greatbook.cleared": "Cleared great spells from Hex Book",
 
+    "hexgloop.tooltip.pattern_shift": "(Hold Shift for Pattern Info)",
+
     "block.minecraft.banner.hexgloop.hermes.white":      "White Hermes",
     "block.minecraft.banner.hexgloop.hermes.orange":     "Orange Hermes",
     "block.minecraft.banner.hexgloop.hermes.magenta":    "Magenta Hermes",

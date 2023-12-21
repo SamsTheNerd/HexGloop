@@ -68,7 +68,8 @@
       "misc.MixinHonorLibraryCardReads",
       "misc.MixinDispenserBehaviorAccessor",
       "castingfrog.MixinCastOnDoubleJump",
-      "spellmodifiers.MixinEnchantedBlockBreaking"
+      "spellmodifiers.MixinEnchantedBlockBreaking",
+      "booktweaks.MixinSyncLecternData"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
@@ -91,7 +92,15 @@
       "misc.MixinAccessClientAdvancementProgress",
       "booktweaks.MixinClientClicksForGreatBook",
       "booktweaks.MixinClientInsertGreatPatchi",
-      "booktweaks.MixinClientAccessLookupPatternComp"
+      "booktweaks.MixinClientAccessLookupPatternComp",
+      "booktweaks.MixinClientGetPageTemplate",
+      "booktweaks.MixinClientGetTemplateText",
+      "booktweaks.MixinClientBookPageAccessor",
+      "booktweaks.MixinClientGetCustomComponent",
+      "booktweaks.MixinClientYoinkPPLangKey",
+      "booktweaks.MixinClientGetTemplateComponents",
+      "booktweaks.MixinClientRetextureLecternBook",
+      "booktweaks.MixinClientLinkPattern"
     ],
     "injectors": {
       "defaultRequire": 1
