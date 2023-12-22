@@ -2,6 +2,7 @@
     "name": "block.hexgloop.wave_locus",
     "icon": "hexgloop:wave_locus",
     "category": "hexcasting:greatwork",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 5,
     "advancement": "hexcasting:enlightenment",
     "pages": [

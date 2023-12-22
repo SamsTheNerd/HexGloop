@@ -2,6 +2,7 @@
     "name": "item.hexgloop.gloopifact",
     "icon": "hexgloop:gloopifact",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 10,
     "advancement": "hexcasting:root",
     "pages": [

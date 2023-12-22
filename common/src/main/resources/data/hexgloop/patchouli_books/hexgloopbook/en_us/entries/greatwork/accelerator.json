@@ -2,6 +2,7 @@
     "name": "block.hexgloop.accelerator",
     "icon": "hexgloop:accelerator",
     "category": "hexcasting:greatwork",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 5,
     "advancement": "hexcasting:enlightenment",
     "pages": [

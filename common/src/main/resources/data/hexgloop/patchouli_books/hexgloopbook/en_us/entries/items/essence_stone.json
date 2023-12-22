@@ -2,6 +2,7 @@
     "name": "item.hexgloop.essence_stone",
     "icon": "hexgloop:essence_stone",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 4,
     "advancement": "hexcasting:root",
     "pages": [

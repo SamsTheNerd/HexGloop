@@ -2,6 +2,7 @@
     "name": "hexgloop.entry.loci",
     "icon": "hexgloop:mirror_pedestal",
     "category": "hexcasting:greatwork",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 4,
     "advancement": "hexcasting:enlightenment",
     "pages": [

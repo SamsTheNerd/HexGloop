@@ -2,6 +2,7 @@
     "name": "item.hexgloop.hand_mirror",
     "icon": "hexgloop:hand_mirror",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 10,
     "advancement": "hexcasting:root",
     "pages": [

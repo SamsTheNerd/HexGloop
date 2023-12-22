@@ -1,10 +1,10 @@
 {
     "name": "hexgloop.entry.labels",
     "category": "hexcasting:patterns",
+"flag": "hexgloop:gloopyserver",
     "icon": "minecraft:name_tag",
     "sortnum": 7,
     "advancement": "hexcasting:root",
-    "read_by_default": true,
     "pages": [
         {
             "type": "patchouli:text",

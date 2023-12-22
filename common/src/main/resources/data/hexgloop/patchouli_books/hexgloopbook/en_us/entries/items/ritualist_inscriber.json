@@ -2,6 +2,7 @@
     "name": "item.hexgloop.slate_loader",
     "icon": "hexgloop:slate_loader",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 10,
     "advancement": "hexcasting:enlightenment",
     "pages": [

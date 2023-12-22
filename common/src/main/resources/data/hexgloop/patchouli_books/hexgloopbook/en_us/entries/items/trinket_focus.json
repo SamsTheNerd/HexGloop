@@ -2,6 +2,7 @@
     "name": "hexgloop.entry.trinket_focus",
     "icon": "hexgloop:focal_ring",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 9,
     "advancement": "hexcasting:root",
     "pages": [
