@@ -2,6 +2,7 @@
     "name": "item.hexgloop.covered_spellbook",
     "icon": "hexgloop:covered_spellbook{display:{color:69eb96}}",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 4,
     "advancement": "hexcasting:root",
     "pages": [

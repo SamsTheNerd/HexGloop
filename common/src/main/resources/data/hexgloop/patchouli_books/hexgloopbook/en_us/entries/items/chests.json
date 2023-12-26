@@ -2,6 +2,7 @@
     "name": "block.hexgloop.slate_chest",
     "icon": "hexgloop:slate_chest",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 8,
     "advancement": "hexcasting:root",
     "pages": [

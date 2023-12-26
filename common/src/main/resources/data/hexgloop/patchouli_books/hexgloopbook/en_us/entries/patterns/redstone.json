@@ -1,6 +1,7 @@
 {
     "name": "hexgloop.entry.redstone",
     "category": "hexcasting:patterns",
+"flag": "hexgloop:gloopyserver",
     "icon": "minecraft:redstone",
     "sortnum": 7,
     "advancement": "hexcasting:root",

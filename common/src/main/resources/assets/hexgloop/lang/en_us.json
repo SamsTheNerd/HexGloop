@@ -84,6 +84,7 @@
     "block.hexgloop.enlightenment_gate": "Caster's Gate",
     "block.hexgloop.enlightenment_bridge": "Caster's Bridge",
     "block.hexgloop.thinking_carpet": "Caster's Carpet",
+    "block.hexgloop.conjured_redstone": "Conjured Redstone",
 
     "key.hexgloop.open_iota_wheel": "Open Iota Wheel",
     "key.hexgloop.casting_ring": "Use Casting Ring",

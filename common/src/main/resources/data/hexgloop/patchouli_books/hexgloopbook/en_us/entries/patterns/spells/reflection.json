@@ -1,6 +1,7 @@
 {
     "name": "hexgloop.entry.reflection",
     "category": "hexcasting:patterns/spells",
+"flag": "hexgloop:gloopyserver",
     "icon": "hexgloop:mirror_pedestal",
     "sortnum": 8,
     "advancement": "hexcasting:root",

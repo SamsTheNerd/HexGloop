@@ -1,6 +1,7 @@
 {
     "name": "hexgloop.entry.hotbar",
     "category": "hexcasting:patterns",
+"flag": "hexgloop:gloopyserver",
     "icon": "minecraft:chest",
     "sortnum": 7,
     "advancement": "hexcasting:root",

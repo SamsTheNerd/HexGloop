@@ -1,6 +1,7 @@
 {
     "name": "hexgloop.entry.truename_protection",
     "category": "hexcasting:patterns/spells",
+"flag": "hexgloop:gloopyserver",
     "icon": "minecraft:totem_of_undying",
     "sortnum": 2,
     "advancement": "hexcasting:root",

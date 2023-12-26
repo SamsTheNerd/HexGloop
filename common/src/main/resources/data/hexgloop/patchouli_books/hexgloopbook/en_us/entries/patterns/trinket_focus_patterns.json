@@ -1,10 +1,10 @@
 {
     "name": "hexgloop.entry.trinket_focus_patterns",
     "category": "hexcasting:patterns",
+"flag": "hexgloop:gloopyserver",
     "icon": "hexgloop:focal_pendant",
     "sortnum": 7,
     "advancement": "hexcasting:root",
-    "read_by_default": true,
     "pages": [
         {
             "type": "patchouli:text",

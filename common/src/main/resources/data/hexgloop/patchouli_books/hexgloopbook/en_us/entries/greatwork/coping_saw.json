@@ -2,6 +2,7 @@
     "name": "item.hexgloop.coping_saw",
     "icon": "hexgloop:coping_saw",
     "category": "hexcasting:greatwork",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 8,
     "advancement": "hexcasting:enlightenment",
     "pages": [

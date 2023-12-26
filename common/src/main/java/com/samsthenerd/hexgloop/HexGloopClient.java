@@ -27,6 +27,7 @@ import com.samsthenerd.hexgloop.items.ItemSlateLoader;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
 import com.samsthenerd.hexgloop.misc.clientgreatbook.GreatBook;
 import com.samsthenerd.hexgloop.network.HexGloopNetwork;
+import com.samsthenerd.hexgloop.network.ServerSideCheckClient;
 import com.samsthenerd.hexgloop.utils.GloopUtils;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
@@ -80,6 +81,8 @@ import vazkii.patchouli.common.book.BookRegistry;
 public class HexGloopClient {
     public static Random random = new Random();
 
+    public static boolean isServerSide = false;
+
     public static Tessellator newTess;
 
     public static void onInitializeClient() {
@@ -90,6 +93,8 @@ public class HexGloopClient {
         registerColorProviders();
         registerScryingDisplayers();
         HexGloopKeybinds.registerKeybinds();
+
+        ServerSideCheckClient.registerDisconnectUpdate();
 
         GreatBook.registerLoadEvent();
         registerRenderers();

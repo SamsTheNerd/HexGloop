@@ -1,6 +1,7 @@
 {
     "name": "hexgloop.entry.gloopmisc",
     "category": "hexcasting:patterns",
+"flag": "hexgloop:gloopyserver",
     "icon": "hexgloop:heart_pigment",
     "sortnum": 4,
     "advancement": "hexcasting:root",

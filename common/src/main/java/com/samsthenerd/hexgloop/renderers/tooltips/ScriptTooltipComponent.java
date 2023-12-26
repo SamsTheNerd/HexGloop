@@ -37,7 +37,7 @@ public class ScriptTooltipComponent implements TooltipComponent {
         int patternCount = patterns.size();
         cols = (int) Math.ceil(Math.sqrt(patternCount));
         rows = (int) Math.ceil(patternCount / (float) cols);
-        size = (RENDER_SIZE*0.9f) / Math.max(cols, rows);
+        size = (RENDER_SIZE*0.8f) / Math.max(cols, rows);
         renderablePatterns = new ArrayList<>();
         for(HexPattern pat : patterns){
             renderablePatterns.add(new RenderablePattern(pat, size));
@@ -126,7 +126,7 @@ public class ScriptTooltipComponent implements TooltipComponent {
             var outer = 0xff_d2c8c8;
             var innerLight = 0xc8_aba2a2;
             var innerDark = 0xc8_322b33;
-            float widthScale = (float)Math.sqrt(size / (RENDER_SIZE*0.9));
+            float widthScale = (float)Math.sqrt(size / (RENDER_SIZE*0.8));
             RenderLib.drawLineSeq(mat, this.zappyPoints, 6f * widthScale, 0,
                 outer, outer);
             RenderLib.drawLineSeq(mat, this.zappyPoints, 6f * 0.4f * widthScale, 0,

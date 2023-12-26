@@ -2,6 +2,7 @@
     "name": "item.hexgloop.script",
     "icon": "hexgloop:script",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 2,
     "advancement": "hexcasting:root",
     "pages": [

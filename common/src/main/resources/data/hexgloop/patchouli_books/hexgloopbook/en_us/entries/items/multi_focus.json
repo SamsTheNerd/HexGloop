@@ -2,6 +2,7 @@
     "name": "hexgloop.entry.multi_focus",
     "icon": "hexgloop:multi_focus",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 10,
     "advancement": "hexcasting:root",
     "pages": [

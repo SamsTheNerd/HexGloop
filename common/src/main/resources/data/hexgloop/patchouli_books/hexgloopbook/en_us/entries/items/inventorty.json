@@ -2,6 +2,7 @@
     "name": "item.hexgloop.inventorty",
     "icon": "hexgloop:inventorty",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 11,
     "advancement": "hexcasting:root",
     "pages": [

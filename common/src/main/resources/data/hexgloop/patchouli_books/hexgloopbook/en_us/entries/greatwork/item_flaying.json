@@ -2,6 +2,7 @@
     "name": "hexgloop.entry.item_flaying",
     "icon": "hexgloop:mind_pedestal",
     "category": "hexcasting:greatwork",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 6,
     "advancement": "hexcasting:enlightenment",
     "pages": [

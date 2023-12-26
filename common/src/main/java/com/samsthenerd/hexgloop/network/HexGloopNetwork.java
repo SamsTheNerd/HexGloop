@@ -15,9 +15,12 @@ import at.petrak.hexcasting.api.spell.math.HexDir;
 import at.petrak.hexcasting.api.spell.math.HexPattern;
 import at.petrak.hexcasting.common.network.MsgOpenSpellGuiAck;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
+import dev.architectury.event.events.common.PlayerEvent;
 import dev.architectury.networking.NetworkManager;
+import io.netty.buffer.Unpooled;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -28,8 +31,10 @@ public class HexGloopNetwork {
     public static final Identifier CHANGE_WALL_SCROLL_ID = new Identifier(HexGloop.MOD_ID, "change_wall_scroll");
     public static final Identifier CLOSE_HEX_BOOK_ID = new Identifier(HexGloop.MOD_ID, "close_hex_book");
     public static final Identifier PROMPT_REPLACE_SCROLL_ID = new Identifier(HexGloop.MOD_ID, "prompt_replace_scroll");
+    public static final Identifier S2C_GLOOPY_SERVER_ID = new Identifier(HexGloop.MOD_ID, "s2c_gloopy_server");
 
     public static final Identifier C2S_FROG_CASTING = new Identifier(HexGloop.MOD_ID, "c2s_frog_casting");
+
 
     public static final Identifier C2S_UPDATE_ORCHARD_ID = new Identifier(HexGloop.MOD_ID, "ctos_update_orchard"); // the important one
 
@@ -81,10 +86,20 @@ public class HexGloopNetwork {
                 frogItem.cast(frogStack, player);
             }
         });
+
+        registerGloopyServerSender();
     }
 
     public static void registerClientSideOnly(){
         NetworkManager.registerReceiver(NetworkManager.Side.S2C, CLOSE_HEX_BOOK_ID, BookScrollHandlersClient::handleCloseClientBook);
         NetworkManager.registerReceiver(NetworkManager.Side.S2C, PROMPT_REPLACE_SCROLL_ID, BookScrollHandlersClient::handleReplaceScrollPrompt);
+        NetworkManager.registerReceiver(NetworkManager.Side.S2C, S2C_GLOOPY_SERVER_ID, ServerSideCheckClient::handleServerSideConfirmation);
+    }
+
+    private static void registerGloopyServerSender(){
+        PlayerEvent.PLAYER_JOIN.register(player -> {
+            PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
+            NetworkManager.sendToPlayer(player, HexGloopNetwork.S2C_GLOOPY_SERVER_ID, buf);
+        });
     }
 }

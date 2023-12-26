@@ -1,6 +1,7 @@
 {
     "name": "hexgloop.entry.iotic_blocks",
     "category": "hexcasting:patterns",
+"flag": "hexgloop:gloopyserver",
     "icon": "minecraft:bookshelf",
     "sortnum": 7,
     "advancement": "hexcasting:root",

@@ -2,6 +2,7 @@
     "name": "item.hexgloop.casters_coin",
     "icon": "hexgloop:casters_coin",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 3,
     "advancement": "hexcasting:root",
     "pages": [

@@ -2,6 +2,7 @@
     "name": "hexgloop.entry.misc_blocks",
     "icon": "hexgloop:charged_amethyst_block",
     "category": "hexcasting:items",
+"flag": "hexgloop:gloopyserver",
     "sortnum": 7,
     "advancement": "hexcasting:root",
     "pages": [
