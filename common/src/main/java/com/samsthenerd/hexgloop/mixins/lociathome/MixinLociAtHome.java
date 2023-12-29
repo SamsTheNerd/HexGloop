@@ -44,11 +44,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 @Mixin(BlockEntityAbstractImpetus.class)
 public class MixinLociAtHome implements ILociHandler{
     @Shadow
     private List<BlockPos> trackedBlocks;
     @Shadow
+    @Nullable
     private transient Set<BlockPos> knownBlocks;
 
     @Shadow
@@ -160,16 +163,18 @@ public class MixinLociAtHome implements ILociHandler{
         castedBlocks = new HashSet<BlockPos>();
         trackedModuleBlocks = new HashMap<>();
         // tell them the circle stopped
-        BlockEntityAbstractImpetus impetus = (BlockEntityAbstractImpetus)(Object)this;
-        for(BlockPos pos : knownBlocks){
-            World world = impetus.getWorld();
-            BlockState state = world.getBlockState(pos);
-            ILociAtHome locus = LociRegistration.getLocus(state, pos, world);
-            if(locus != null){
-                locus.circleStopped(pos, state, world, impetus);
+        if(knownBlocks != null){
+            BlockEntityAbstractImpetus impetus = (BlockEntityAbstractImpetus)(Object)this;
+            for(BlockPos pos : knownBlocks){
+                World world = impetus.getWorld();
+                BlockState state = world.getBlockState(pos);
+                ILociAtHome locus = LociRegistration.getLocus(state, pos, world);
+                if(locus != null){
+                    locus.circleStopped(pos, state, world, impetus);
+                }
             }
         }
-    }    
+    }
 
     // specific module hooks:
 
