@@ -1,7 +1,8 @@
 {
     "name": "hexgloop.entry.gloopytweaks",
-    "icon": "hexcasting:dark_oak_staff{display:{color:8439583}}",
+    "icon": "hexcasting:dark_oak_staff{display:{ color:8439583 }}",
     "category": "hexcasting:basics",
+    "flag": "hexgloop:gloopyserver",
     "priority": false,
     "sortnum": 1,
     "advancement": "hexcasting:root",
@@ -13,14 +14,6 @@
       {
         "type": "patchouli:text",
         "text": "hexgloop.page.gloopytweaks.1"
-      },
-      {
-        "type": "patchouli:text",
-        "text": "hexgloop.page.gloopytweaks.2"
-      },
-      {
-        "type": "patchouli:text",
-        "text": "hexgloop.page.gloopytweaks.3"
       }
     ]
   }

@@ -184,11 +184,6 @@ publishMods {
         requires {
             slug = "hex-casting"
         }
-        requires{
-            // fabric api
-            // id = "hfsU4hXq"
-            slug = "fabric-api"
-        }
         requires {
             slug = "wnboi"
         }

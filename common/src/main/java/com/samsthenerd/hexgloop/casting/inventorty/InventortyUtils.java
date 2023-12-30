@@ -75,6 +75,7 @@ public class InventortyUtils {
             Slot slot = kCtx.getSlot(grabSlot);
             if(slot == null){
                 // mishap bad slot here too
+                MishapThrowerWrapper.throwMishap(MishapInvalidIota.ofType(grabbable, argc == 0 ? idx : argc - (idx + 1), "kittygrabbable"));
                 return null;
             }
             return new GrabbableSlot(slot);
