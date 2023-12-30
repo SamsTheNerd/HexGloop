@@ -41,9 +41,13 @@ regex = "{^_pattern_regex}"
 
 [textures]
 missing = [
-    "hexgloop:fake_spellbook_for_rei",
     "minecraft:chest"
 ]
+
+[textures.override]
+"hexgloop:fake_spellbook_for_rei" = { texture = "hexcasting:textures/item/spellbook_empty.png" }
+"hexgloop:slate_chest" = { texture = "hexgloop:textures/block/slate_chest.png" }
+"hexgloop:gloopy_slate_chest" = { texture = "hexgloop:textures/block/gloopy_chest.png" }
 
 # platforms
 
