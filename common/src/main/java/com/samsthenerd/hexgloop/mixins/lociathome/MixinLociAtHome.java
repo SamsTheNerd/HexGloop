@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.Nullable;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -44,12 +46,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-
 @Mixin(BlockEntityAbstractImpetus.class)
 public class MixinLociAtHome implements ILociHandler{
     @Shadow
     private List<BlockPos> trackedBlocks;
+    
     @Shadow
     @Nullable
     private transient Set<BlockPos> knownBlocks;
@@ -85,6 +86,9 @@ public class MixinLociAtHome implements ILociHandler{
     
     // blocks that the circle has energized over
     public Set<BlockPos> getKnownBlocks(){
+        if(knownBlocks == null){
+            return new HashSet<BlockPos>();
+        }
         return new HashSet<BlockPos>(knownBlocks);
     }
     
