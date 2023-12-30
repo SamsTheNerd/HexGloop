@@ -30,7 +30,10 @@ public class MixinRaycastIgnore {
     public BlockHitResult ignoreBlockRaycast(ServerWorld world, RaycastContext context, Operation<BlockHitResult> original, List<Iota> args, CastingContext ctx){
         BlockHitResult hitResult = original.call(world, context);
         while(hitResult.getType() == BlockHitResult.Type.BLOCK 
-            && world.getBlockState(hitResult.getBlockPos()).getBlock() instanceof ICantBeRaycasted){
+            && world.getBlockState(hitResult.getBlockPos()).getBlock() instanceof ICantBeRaycasted raycastModifierBlock){
+            if(!raycastModifierBlock.passThrough(world, hitResult.getBlockPos())){
+                return BlockHitResult.createMissed(hitResult.getPos(), hitResult.getSide(), hitResult.getBlockPos());
+            }
             double soFarDistance = hitResult.getPos().distanceTo(context.getStart());
             if(soFarDistance >= 32) break;
             Vec3d direction = context.getEnd().subtract(context.getStart()).normalize();
