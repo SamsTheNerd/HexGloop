@@ -5,6 +5,10 @@
 ### Added 
 - break block uses enchantments on the casting item
 - reverse recipe for charged amethyst block
+- Great Book - client side feature for storing found great spell patterns for quick hex book reference
+- Scroll/Pattern tooltips show name, input, and pattern description and link to hex book page
+- Tag Patterns - check if an item, block, or entity has a specific tag
+- Patchouli book on lectern textures
 
 ### Fixed
 - forge modded entity spawn egg colors not being detected by essence stone
@@ -12,6 +16,9 @@
 - caster's coin breaks when reading a single coin on forge
 - syncetrix doesn't output to impeti or directrices
 - scripts not having tooltips
+- hexgloop items showing up in the hex book on gloopless servers ( and then crashing )
+- give conjured redstone a proper translation key
+- inventorty not mishapping on invalid numbers
 
 
 ## 0.2.0

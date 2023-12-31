@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.Nullable;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -48,7 +50,9 @@ import net.minecraft.world.World;
 public class MixinLociAtHome implements ILociHandler{
     @Shadow
     private List<BlockPos> trackedBlocks;
+    
     @Shadow
+    @Nullable
     private transient Set<BlockPos> knownBlocks;
 
     @Shadow
@@ -82,6 +86,9 @@ public class MixinLociAtHome implements ILociHandler{
     
     // blocks that the circle has energized over
     public Set<BlockPos> getKnownBlocks(){
+        if(knownBlocks == null){
+            return new HashSet<BlockPos>();
+        }
         return new HashSet<BlockPos>(knownBlocks);
     }
     
@@ -160,16 +167,18 @@ public class MixinLociAtHome implements ILociHandler{
         castedBlocks = new HashSet<BlockPos>();
         trackedModuleBlocks = new HashMap<>();
         // tell them the circle stopped
-        BlockEntityAbstractImpetus impetus = (BlockEntityAbstractImpetus)(Object)this;
-        for(BlockPos pos : knownBlocks){
-            World world = impetus.getWorld();
-            BlockState state = world.getBlockState(pos);
-            ILociAtHome locus = LociRegistration.getLocus(state, pos, world);
-            if(locus != null){
-                locus.circleStopped(pos, state, world, impetus);
+        if(knownBlocks != null){
+            BlockEntityAbstractImpetus impetus = (BlockEntityAbstractImpetus)(Object)this;
+            for(BlockPos pos : knownBlocks){
+                World world = impetus.getWorld();
+                BlockState state = world.getBlockState(pos);
+                ILociAtHome locus = LociRegistration.getLocus(state, pos, world);
+                if(locus != null){
+                    locus.circleStopped(pos, state, world, impetus);
+                }
             }
         }
-    }    
+    }
 
     // specific module hooks:
 

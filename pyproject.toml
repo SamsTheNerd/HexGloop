@@ -33,8 +33,8 @@ gradle-version-regex = '.+?-(\d+\.\d+\.\d+)'
 
 [tool.hatch.metadata.hooks.gradle-properties]
 dependencies = [
-    "hexdoc>=1!0.1.0a1",
-    { package="hexdoc-hexcasting", op="~=", py-version="1.0.dev21", key="hexcastingVersion" },
+    "hexdoc>=1!0.1.0a6",
+    { package="hexdoc-hexcasting", op="~=", py-version="1.0.dev22", key="hexcastingVersion" },
 ]
 
 [tool.hatch.metadata.hooks.gradle-properties.optional-dependencies]

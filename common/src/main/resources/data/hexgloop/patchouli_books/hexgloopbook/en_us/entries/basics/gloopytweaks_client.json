@@ -1,0 +1,22 @@
+{
+    "name": "hexgloop.entry.gloopytweaks_client",
+    "icon": "hexcasting:spellbook",
+    "category": "hexcasting:basics",
+    "priority": false,
+    "sortnum": 1,
+    "advancement": "hexcasting:root",
+    "pages": [
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopy_client.0"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopy_client.1"
+      },
+      {
+        "type": "patchouli:text",
+        "text": "hexgloop.page.gloopy_client.2"
+      }
+    ]
+  }

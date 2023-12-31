@@ -208,6 +208,7 @@
     "hexcasting.mishap.wrong_casting_source": "%s expected to be cast from %s, but was cast from %s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s expected to be cast from one of: %s, but was cast from %s",
+    "hexcasting.mishap.invalid_value.class.kittygrabbable": "an inventorty slot",
     
     
     "hexgloop.mishap.catch_wrapper": "Last Mishap: %s",
@@ -263,10 +264,13 @@
     "hexgloop.hexdoc.gloopcipe_media_cost": "Costs %d Dust",
 
     "hexgloop.entry.gloopytweaks": "Glooptastic Changes",
-    "hexgloop.page.gloopytweaks.0": "I have noticed some absolutely glooptastic changes in the world recently.$(br2)For one, it's much easier to visualize patterns. I can even hear something like \"\\<southeast,deaqq>\" and visualize it perfectly as $(m)$(0)<southeast,deaqq>$(). Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.",
-    "hexgloop.page.gloopytweaks.1": "I've also been finding it easier to flip through my notes. Pressing $(k:key.hexgloop.open_iota_wheel) allows me to visualize my spellbook, and I can flip through it quickly with $(l)$(k:key.hexgloop.scroll_down)$() and $(l)$(k:key.hexgloop.scroll_up)$().$(br2)By far the strangest change is that my hexes $(o)feel$() different, almost like they're vibrating through my bones. Perhaps a sensitive enough scanner could pick up on this?",
-    "hexgloop.page.gloopytweaks.2": "I've noticed that it's recently become easier to reference these notes while casting, pressing $(k:key.hexgloop.open_hex_book) causes my book to fly open right to the page I left it.$(br2)The book also seems,, friendlier. When I'm on a page with a pattern and touch it to a hanging scroll, it copies the pattern onto the scroll. It even seems to get the page based on which hand I'm holding it in.",
-    "hexgloop.page.gloopytweaks.3": "I've also discovered that I can apply dye to my staffs if I want to make them more colorful.",
+    "hexgloop.page.gloopytweaks.0": "I have noticed some absolutely glooptastic changes in the world recently.$(br2)The hex book seems,, friendlier. When I'm on a page with a pattern and touch it to a hanging scroll, it copies the pattern onto the scroll. It even seems to get the page based on which hand I'm holding it in.",
+    "hexgloop.page.gloopytweaks.1": "I've also discovered that I can apply dye to my staffs if I want to make them more colorful.$(br2)By far the strangest change though is that my hexes $(o)feel$() different, almost like they're vibrating through my bones. Perhaps a sensitive enough scanner could pick up on this?",
+
+    "hexgloop.entry.gloopytweaks_client": "A Gloopy Mind",
+    "hexgloop.page.gloopy_client.0": "I feel that my mind is sharper recently, perhaps more in tune with my hexes.$(br2)For one, it's much easier to visualize patterns. I can even hear something like \"\\<southeast,deaqq>\" and visualize it perfectly as $(m)$(0)<southeast,deaqq>$(). Additionally, I can hover over these patterns to get a better view of them, or click to copy them for later.",
+    "hexgloop.page.gloopy_client.1": "I've also been finding it more natural to flip through my spellbook. Pressing $(k:key.hexgloop.open_iota_wheel) allows me to visualize my spellbook, and I can flip through it quickly with $(l)$(k:key.hexgloop.scroll_down)$() and $(l)$(k:key.hexgloop.scroll_up)$().",
+    "hexgloop.page.gloopy_client.2": "I've noticed that it's recently become easier to reference these notes while casting too, pressing $(k:key.hexgloop.open_hex_book) causes my book to fly open right to the page I left it.$(br2)Finally, it seems that I can sense more details when I look at certain items, most notably media items, pigments, and scrolls.",
 
     "hexgloop.entry.casting_ring": "Casting Ring",
     "hexgloop.page.casting_ring.0": "I do love my staff, but occasionally I find myself needing a lighter casting instrument.$(br2)The casting ring, when equipped, let's me open up a staff free casting grid by pressing $(l)$(k:key.hexgloop.casting_ring)$(). I find my grid reduced without the reach of my staff, but still, this may be a worthwhile trade-off.",
