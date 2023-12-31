@@ -208,6 +208,7 @@
     "hexcasting.mishap.wrong_casting_source": "%s本应在%s处施放，而实际施放于%s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s本应在%s中一处施放，而实际施放于%s",
+    "hexcasting.mishap.invalid_value.class.kittygrabbable": "一个物品栏槽位",
 
 
     "hexgloop.mishap.catch_wrapper": "上一事故：%s",
@@ -263,10 +264,13 @@
     "hexgloop.hexdoc.gloopcipe_media_cost": "消耗%d个紫水晶粉",
 
     "hexgloop.entry.gloopytweaks": "“凝浆”至极的变化",
-    "hexgloop.page.gloopytweaks.0": "我最近发现世界上出现了某些“凝浆”极了的变化。$(br2)例如，可视化图案变得更简单了。我甚至只需听见类似“\\<southeast,deaqq>”的东西就能将其完美可视化为$(m)$(0)<southeast,deaqq>$()。此外，我还能将鼠标悬停其上以获得更为清晰的视图，还可点击它们以复制。",
-    "hexgloop.page.gloopytweaks.1": "我还发现翻笔记变得更顺畅了。按下$(k:key.hexgloop.open_iota_wheel)就能可视化法术书，并通过$(l)$(k:key.hexgloop.scroll_down)$()和$(l)$(k:key.hexgloop.scroll_up)$()快速翻页。$(br2)到目前为止最奇怪的变化则是咒术的$(o)感觉$()不同了，甚至有种它们顺着我的骨头振动的感受。也许足够敏感的扫描器能发现其中区别？",
-    "hexgloop.page.gloopytweaks.2": "我还注意到最近施法时对照笔记更轻松了，按下$(k:key.hexgloop.open_hex_book)就能让咒术笔记飞到面前，并打开上次翻到的那页。$(br2)而书自身似乎……更平易友好了。打开到带有图案的一页并与悬挂的卷轴相碰，它就会将图案复制到卷轴上。甚至还会根据我用哪一只手持书决定复制哪一个图案。",
-    "hexgloop.page.gloopytweaks.3": "我还发现如果想让法杖更多姿多彩，可以为法杖覆上染料。",
+    "hexgloop.page.gloopytweaks.0": "我最近发现世界上出现了某些“凝浆”极了的变化。$(br2)咒术笔记自身似乎……更平易友好了。打开到带有图案的一页并与悬挂的卷轴相碰，它就会将图案复制到卷轴上。甚至还会根据我用哪一只手持书决定复制哪一个图案。",
+    "hexgloop.page.gloopytweaks.1": "我还发现如果想让法杖更多姿多彩，可以为法杖覆上染料。$(br2)到目前为止最奇怪的变化则是咒术的$(o)感觉$()不同了，甚至有种它们顺着我的骨头振动的感受。也许足够敏感的扫描器能发现其中区别？",
+
+    "hexgloop.entry.gloopytweaks_client": "“凝浆”十足的意识",
+    "hexgloop.page.gloopy_client.0": "我感觉最近我的意识更敏锐了，也许是和我的咒术步调更一致的缘故。$(br2)例如，可视化图案变得更简单了。我甚至只需听见类似“\\<southeast,deaqq>”的东西就能将其完美可视化为$(m)$(0)<southeast,deaqq>$()。此外，我还能将鼠标悬停其上以获得更为清晰的视图，还可点击它们以复制。",
+    "hexgloop.page.gloopy_client.1": "我还发现翻笔记变得更顺畅了。按下$(k:key.hexgloop.open_iota_wheel)就能可视化法术书，并通过$(l)$(k:key.hexgloop.scroll_down)$()和$(l)$(k:key.hexgloop.scroll_up)$()快速翻页。",
+    "hexgloop.page.gloopy_client.2": "我还注意到最近施法时对照笔记更轻松了，按下$(k:key.hexgloop.open_hex_book)就能让咒术笔记飞到面前，并打开上次翻到的那页。$(br2)最后，在查看某些物品时，我似乎能察觉到更多细节信息，比如媒质物品、染色剂、卷轴之类。",
 
     "hexgloop.entry.casting_ring": "施法戒指",
     "hexgloop.page.casting_ring.0": "我确实很喜欢我的法杖，但偶尔也会想要一种更轻便的施法器具。$(br2)而在佩戴上施法戒指后，我就能通过按$(l)$(k:key.hexgloop.casting_ring)$()直接打开咒术网格而不需法杖辅助。同时因为没有法杖，咒术网格的间距增大了，不过也能算值得。",
