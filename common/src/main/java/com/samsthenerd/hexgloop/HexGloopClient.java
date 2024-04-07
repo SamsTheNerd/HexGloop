@@ -62,6 +62,7 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.FrogVariant;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.FilledMapItem;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -280,6 +281,10 @@ public class HexGloopClient {
 
         ItemPropertiesRegistry.register(HexGloopItems.SLATE_LOADER_ITEM.get(), ItemSlateLoader.ACTIVATED_PRED, (stack, level, holder, holderID) -> {
             return HexGloopItems.SLATE_LOADER_ITEM.get().hasPatterns(stack) ? 1 : 0;
+        });
+
+        ItemPropertiesRegistry.register(HexGloopItems.SLATE_CANVAS_ITEM.get(), ItemSlateLoader.ACTIVATED_PRED, (stack, level, holder, holderID) -> {
+            return FilledMapItem.getMapId(stack) != null ? 1 : 0;
         });
 
         ItemPropertiesRegistry.register(HexGloopItems.INVENTORTY_ITEM.get(), ItemPackagedHex.HAS_PATTERNS_PRED, (stack, level, holder, holderID) -> {

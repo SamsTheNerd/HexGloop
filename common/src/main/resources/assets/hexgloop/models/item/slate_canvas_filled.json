@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "hexgloop:item/slate_canvas_filled"
+    }
+  }
