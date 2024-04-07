@@ -80,7 +80,7 @@ public class MixinParsePatternFormatting {
         HexPattern pattern = null;
         try{
             pattern = HexPattern.fromAngles(angleSigs, dir);
-        } catch (IllegalStateException e) {
+        } catch (Throwable e) {
         }
         return pattern;
     }
