@@ -19,6 +19,10 @@ public class ItemHexxyOs extends Item {// extends ItemSimpleMediaProvider{
         if (user instanceof PlayerEntity && ((PlayerEntity)user).getAbilities().creativeMode) {
             return itemStack;
         }
+        if(user instanceof PlayerEntity player && stack.getCount() > 0){
+            player.getInventory().offerOrDrop(new ItemStack(HexGloopItems.SLATE_BOWL.get()));
+            return itemStack;
+        }
         return new ItemStack(HexGloopItems.SLATE_BOWL.get());
     }
 
