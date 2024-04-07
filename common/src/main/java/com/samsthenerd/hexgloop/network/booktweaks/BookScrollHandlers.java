@@ -52,6 +52,8 @@ public class BookScrollHandlers {
                 HexGloop.logPrint("changeing out scroll now");
                 EntityWallScroll newWallScroll = new EntityWallScroll(wallScroll.getWorld(), wallScroll.getBlockPos(),
                     wallScroll.getHorizontalFacing(), newScroll, wallScroll.getShowsStrokeOrder(), wallScroll.blockSize);
+                newWallScroll.updateTrackedPositionAndAngles(wallScroll.getPos().getX(), wallScroll.getPos().getY(), wallScroll.getPos().getZ(), 
+                wallScroll.getYaw(), wallScroll.getPitch(), 0, false);
                 newWallScroll.setUuid(wallScroll.getUuid()); // keep the same uuid so we don't break hexes that rely on it
                 NBTHelper.putCompound(newScroll, ItemScroll.TAG_PATTERN, pattern.serializeToNBT());
                 wallScroll.discard();
