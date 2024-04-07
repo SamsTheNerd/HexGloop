@@ -1,5 +1,6 @@
 .DS_Store
 .vscode/launch.json
+.vscode/settings.json
 /TexturePSDs/
 run/
 build/

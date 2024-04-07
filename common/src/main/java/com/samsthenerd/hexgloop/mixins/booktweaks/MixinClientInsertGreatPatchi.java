@@ -1,5 +1,6 @@
 package com.samsthenerd.hexgloop.mixins.booktweaks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -11,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.datafixers.util.Pair;
 import com.samsthenerd.hexgloop.misc.clientgreatbook.GreatBook;
+import com.samsthenerd.hexgloop.misc.clientgreatbook.PatternCompGetter;
 
 import at.petrak.hexcasting.api.PatternRegistry;
 import at.petrak.hexcasting.api.spell.math.HexCoord;
@@ -24,7 +26,7 @@ import net.minecraft.util.math.Vec2f;
 import vazkii.patchouli.api.IComponentRenderContext;
 
 @Mixin(AbstractPatternComponent.class)
-public class MixinClientInsertGreatPatchi {
+public abstract class MixinClientInsertGreatPatchi implements PatternCompGetter {
 
     @Shadow
     protected transient float hexSize;
@@ -32,6 +34,11 @@ public class MixinClientInsertGreatPatchi {
     private transient List<PatternEntry> patterns;
     @Shadow
     private transient List<Vec2f> zappyPoints;
+
+    @Shadow
+    public boolean showStrokeOrder(){
+        throw new AssertionError();
+    }
 
     private HexPattern savedGreatPattern;
 
@@ -71,5 +78,15 @@ public class MixinClientInsertGreatPatchi {
     )
     public boolean modifyShowStrokeOrder(boolean original){
         return original || savedGreatPattern != null;
+    }
+
+    public List<HexPattern> getCopyablePatterns(){
+        if(savedGreatPattern != null){
+            return List.of(savedGreatPattern);
+        }
+        if(!showStrokeOrder()){
+            return new ArrayList<HexPattern>();
+        }
+        return patterns.stream().map(PatternEntry::pattern).toList();
     }
 }

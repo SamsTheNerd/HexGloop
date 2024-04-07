@@ -69,7 +69,8 @@
       "misc.MixinDispenserBehaviorAccessor",
       "castingfrog.MixinCastOnDoubleJump",
       "spellmodifiers.MixinEnchantedBlockBreaking",
-      "booktweaks.MixinSyncLecternData"
+      "booktweaks.MixinSyncLecternData",
+      "canvas.MixinPrettyVectors"
     ],
     "client": [
       "wnboi.SpellbookWNBOI",
@@ -100,7 +101,12 @@
       "booktweaks.MixinClientYoinkPPLangKey",
       "booktweaks.MixinClientGetTemplateComponents",
       "booktweaks.MixinClientRetextureLecternBook",
-      "booktweaks.MixinClientLinkPattern"
+      "booktweaks.MixinClientLinkPattern",
+      "booktweaks.MixinClientCopyPatternFromComp",
+      "canvas.MixinClientItemFrameCanvas",
+      "canvas.MixinClientHeldCanvasRenderer",
+      "canvas.MixinClientSlateyFrame",
+      "canvas.MixinClientAddSlateFrameModel"
     ],
     "injectors": {
       "defaultRequire": 1

@@ -1,0 +1,14 @@
+{
+    "variants": {
+        "map=true": {
+            "model": "hexcasting:block/slate",
+            "uvlock": true,
+            "x": 90
+        },
+        "map=false": {
+            "model": "hexcasting:block/slate",
+            "uvlock": true,
+            "x": 90
+        }
+    }
+}

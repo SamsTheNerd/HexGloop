@@ -8,6 +8,8 @@ import java.util.function.Function;
 
 import com.samsthenerd.hexgloop.HexGloop;
 import com.samsthenerd.hexgloop.blocks.HexGloopBlocks;
+import com.samsthenerd.hexgloop.casting.canvas.OpGetBlockColor;
+import com.samsthenerd.hexgloop.casting.canvas.OpPutColor;
 import com.samsthenerd.hexgloop.casting.dimensions.OpIsInDimension;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpReadGloopifact;
 import com.samsthenerd.hexgloop.casting.gloopifact.OpSyncRavenmindGloopifact;
@@ -208,6 +210,13 @@ public class HexGloopRegisterPatterns {
             PatternRegistry.mapPattern(HexPattern.fromAngles("edwdqeeeeaaeaeaeaea", HexDir.EAST), 
                 new Identifier(HexGloop.MOD_ID, "stonecut"), 
                 new OpStoneCut());
+
+            PatternRegistry.mapPattern(HexPattern.fromAngles("edeaeeeweee", HexDir.SOUTH_EAST),
+                new Identifier(HexGloop.MOD_ID, "put_canvas_color"),
+                new OpPutColor());
+            PatternRegistry.mapPattern(HexPattern.fromAngles("qqqqeqwawqwa", HexDir.NORTH_WEST),
+                new Identifier(HexGloop.MOD_ID, "get_block_color"),
+                new OpGetBlockColor());
 
         } catch (PatternRegistry.RegisterPatternException exn) {
             exn.printStackTrace();

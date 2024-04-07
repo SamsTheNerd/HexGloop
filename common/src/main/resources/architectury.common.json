@@ -17,6 +17,7 @@
         "com/samsthenerd/hexgloop/casting/mishapprotection/IMishapStorage", "com/samsthenerd/hexgloop/casting/wehavelociathome/IContextHelper",
         "com/samsthenerd/hexgloop/casting/mirror/IMirrorBinder"
       ],
-      "at/petrak/hexcasting/api/spell/casting/eval/FrameFinishEval": ["com/samsthenerd/hexgloop/casting/mishapprotection/ICatchyFrameEval"]
+      "at/petrak/hexcasting/api/spell/casting/eval/FrameFinishEval": ["com/samsthenerd/hexgloop/casting/mishapprotection/ICatchyFrameEval"],
+      "at/petrak/hexcasting/interop/patchouli/AbstractPatternComponent": ["com/samsthenerd/hexgloop/misc/clientgreatbook/PatternCompGetter"]
     }
   }

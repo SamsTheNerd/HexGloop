@@ -1,0 +1,31 @@
+{   "parent": "block/block",
+    "textures": {
+        "particle": "hexgloop:block/gloop_block_shell",
+        "shell": "hexgloop:block/gloop_block_shell",
+        "core": "hexgloop:block/gloop_block_core"
+    },
+    "elements": [
+        {   "from": [ 3, 3, 3 ],
+            "to": [ 13, 13, 13 ],
+            "faces": {
+                "down":  { "uv": [ 3, 3, 13, 13 ], "texture": "#core" },
+                "up":    { "uv": [ 3, 3, 13, 13 ], "texture": "#core" },
+                "north": { "uv": [ 3, 3, 13, 13 ], "texture": "#core" },
+                "south": { "uv": [ 3, 3, 13, 13 ], "texture": "#core" },
+                "west":  { "uv": [ 3, 3, 13, 13 ], "texture": "#core" },
+                "east":  { "uv": [ 3, 3, 13, 13 ], "texture": "#core" }
+            }
+        },
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#shell", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#shell", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#shell", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#shell", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#shell", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#shell", "cullface": "east" }
+            }
+        }
+    ]
+}

@@ -65,7 +65,7 @@ public class ItemCastingFrog extends ItemPackagedHex {
         List<ItemStack> frogs = new ArrayList<>();
         for(List<ItemStack> stacksInSlot : HexGloop.TRINKETY_INSTANCE.getTrinkets(entity).values()){
             for(ItemStack stack : stacksInSlot){
-                if(stack.getItem().equals(this)){
+                if(stack != null && stack.getItem().equals(this)){
                     frogs.add(stack);
                 }
             }
