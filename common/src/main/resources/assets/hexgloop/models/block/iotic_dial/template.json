@@ -1,0 +1,75 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures":{
+        "bottom": "minecraft:block/gold_block",
+        "top": "hexgloop:block/iotic_dial/top_base",
+        "side": "hexgloop:block/iotic_dial/side",
+        "sideoverlay": "hexgloop:block/iotic_dial/side_glow"
+    },
+    "elements": [
+      {
+        "from": [ 0, 0, 0 ],
+        "to": [ 16, 5, 16 ],
+        "faces": {
+          "down":  { "texture": "#bottom", "cullface": "down" },
+          "up":    { "texture": "#top" },
+          "north": { "texture": "#side", "uv": [ 0, 11, 16, 16 ], "cullface": "north" },
+          "south": { "texture": "#side", "uv": [ 0, 11, 16, 16 ], "cullface": "south" },
+          "west":  { "texture": "#side", "uv": [ 0, 11, 16, 16 ], "cullface": "west" },
+          "east":  { "texture": "#side", "uv": [ 0, 11, 16, 16 ], "cullface": "east" }
+        }
+      },
+      {
+        "from": [ -0.01, 0, -0.01 ],
+        "to": [ 16.01, 5, 16.01 ],
+        "faces": {
+          "north": { "texture": "#sideoverlay", "uv": [ 0, 11, 16, 16 ], "cullface": "north" , "tintindex": 0},
+          "south": { "texture": "#sideoverlay", "uv": [ 0, 11, 16, 16 ], "cullface": "south" , "tintindex": 0},
+          "west":  { "texture": "#sideoverlay", "uv": [ 0, 11, 16, 16 ], "cullface": "west"  , "tintindex": 0},
+          "east":  { "texture": "#sideoverlay", "uv": [ 0, 11, 16, 16 ], "cullface": "east"  , "tintindex": 0}
+        }
+      },
+      {
+        "from": [ 0, 5, 0 ],
+        "to": [ 16, 5.002, 16 ],
+        "faces": {
+            "up": { "texture": "#selected", "tintindex": 0 }
+        }
+      },
+      {
+        "from": [ 0, 5, 0 ],
+        "to": [ 16, 5.0011, 16 ],
+        "faces": {
+            "up": { "texture": "#uns1", "tintindex": 1}
+        }
+      },
+      {
+        "from": [ 0, 5, 0 ],
+        "to": [ 16, 5.0012, 16 ],
+        "faces": {
+            "up": { "texture": "#uns2", "tintindex": 2 }
+        }
+      },
+      {
+        "from": [ 0, 5, 0 ],
+        "to": [ 16, 5.0013, 16 ],
+        "faces": {
+            "up": { "texture": "#uns3", "tintindex": 3 }
+        }
+      },
+      {
+        "from": [ 0, 5, 0 ],
+        "to": [ 16, 5.0014, 16 ],
+        "faces": {
+            "up": { "texture": "#uns4", "tintindex": 4 }
+        }
+      },
+      {
+        "from": [ 0, 5, 0 ],
+        "to": [ 16, 5.0015, 16 ],
+        "faces": {
+            "up": { "texture": "#uns5", "tintindex": 5 }
+        }
+      }
+    ]
+  }

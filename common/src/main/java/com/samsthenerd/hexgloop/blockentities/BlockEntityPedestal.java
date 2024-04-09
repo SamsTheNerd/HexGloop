@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 
 import com.samsthenerd.hexgloop.blocks.BlockPedestal;
 import com.samsthenerd.hexgloop.blocks.IDynamicFlayTarget;
+import com.samsthenerd.hexgloop.blocks.iotic.IIoticProvider;
 import com.samsthenerd.hexgloop.items.IMindTargetItem;
 import com.samsthenerd.hexgloop.misc.HexGloopTags;
 import com.samsthenerd.hexgloop.misc.INoMoving;
@@ -46,7 +47,7 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 // switching it to sided so that it can be used by modded chutes and whatnot hopefully ?
-public class BlockEntityPedestal extends BlockEntity implements Inventory, IReallyHateForgeWhyWouldAnInventoryInterfaceNotBeAnInterfaceThatsWhatAnInterfaceIsFor, IDynamicFlayTarget {
+public class BlockEntityPedestal extends BlockEntity implements Inventory, IReallyHateForgeWhyWouldAnInventoryInterfaceNotBeAnInterfaceThatsWhatAnInterfaceIsFor, IDynamicFlayTarget, IIoticProvider {
     public static final String ITEM_DATA_TAG = "inv_storage";
     public static final String PERSISTENT_UUID_TAG = "persistent_uuid";
 
@@ -230,6 +231,11 @@ public class BlockEntityPedestal extends BlockEntity implements Inventory, IReal
         }
         // HexGloop.logPrint(logLore + "returning success");
         return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public ADIotaHolder getIotaHolder(World world, BlockPos pos){
+        return IXplatAbstractions.INSTANCE.findDataHolder(storedItem);
     }
 
     @Override

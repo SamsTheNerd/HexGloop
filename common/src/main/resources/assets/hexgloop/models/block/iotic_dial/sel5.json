@@ -1,0 +1,11 @@
+{
+    "parent": "hexgloop:block/iotic_dial/template",
+    "textures":{
+        "selected": "hexgloop:block/iotic_dial/selected/s4",
+        "uns1": "hexgloop:block/iotic_dial/back/back0",
+        "uns2": "hexgloop:block/iotic_dial/back/back1",
+        "uns3": "hexgloop:block/iotic_dial/back/back2",
+        "uns4": "hexgloop:block/iotic_dial/back/back3",
+        "uns5": "hexgloop:block/iotic_dial/back/back5"
+    }
+}

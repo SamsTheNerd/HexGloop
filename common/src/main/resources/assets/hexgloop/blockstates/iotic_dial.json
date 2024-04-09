@@ -1,0 +1,60 @@
+{
+    "variants": {
+        "facing=up,selected=0": { "model": "hexgloop:block/iotic_dial/empty" },
+        "facing=down,selected=0": { "model": "hexgloop:block/iotic_dial/empty", "x": 180 },
+        "facing=north,selected=0": { "model": "hexgloop:block/iotic_dial/empty", "x": 270, "y": 180 },
+        "facing=east,selected=0":  { "model": "hexgloop:block/iotic_dial/empty", "x": 270, "y": 270 },
+        "facing=south,selected=0": { "model": "hexgloop:block/iotic_dial/empty", "x": 270, "y": 0 },
+        "facing=west,selected=0":  { "model": "hexgloop:block/iotic_dial/empty", "x": 270, "y": 90 },
+        
+        
+        "facing=up,selected=1": { "model": "hexgloop:block/iotic_dial/sel1" },
+        "facing=down,selected=1": { "model": "hexgloop:block/iotic_dial/sel1", "x": 180 },
+        "facing=north,selected=1": { "model": "hexgloop:block/iotic_dial/sel1", "x": 270, "y": 180 },
+        "facing=east,selected=1":  { "model": "hexgloop:block/iotic_dial/sel1", "x": 270, "y": 270 },
+        "facing=south,selected=1": { "model": "hexgloop:block/iotic_dial/sel1", "x": 270, "y": 0 },
+        "facing=west,selected=1":  { "model": "hexgloop:block/iotic_dial/sel1", "x": 270, "y": 90 },
+
+        
+        "facing=up,selected=2": { "model": "hexgloop:block/iotic_dial/sel2" },
+        "facing=down,selected=2": { "model": "hexgloop:block/iotic_dial/sel2", "x": 180 },
+        "facing=north,selected=2": { "model": "hexgloop:block/iotic_dial/sel2", "x": 270, "y": 180 },
+        "facing=east,selected=2":  { "model": "hexgloop:block/iotic_dial/sel2", "x": 270, "y": 270 },
+        "facing=south,selected=2": { "model": "hexgloop:block/iotic_dial/sel2", "x": 270, "y": 0 },
+        "facing=west,selected=2":  { "model": "hexgloop:block/iotic_dial/sel2", "x": 270, "y": 90 },
+
+        
+        "facing=up,selected=3": { "model": "hexgloop:block/iotic_dial/sel3" },
+        "facing=down,selected=3": { "model": "hexgloop:block/iotic_dial/sel3", "x": 180 },
+        "facing=north,selected=3": { "model": "hexgloop:block/iotic_dial/sel3", "x": 270, "y": 180 },
+        "facing=east,selected=3":  { "model": "hexgloop:block/iotic_dial/sel3", "x": 270, "y": 270 },
+        "facing=south,selected=3": { "model": "hexgloop:block/iotic_dial/sel3", "x": 270, "y": 0 },
+        "facing=west,selected=3":  { "model": "hexgloop:block/iotic_dial/sel3", "x": 270, "y": 90 },
+
+        
+        "facing=up,selected=4": { "model": "hexgloop:block/iotic_dial/sel4" },
+        "facing=down,selected=4": { "model": "hexgloop:block/iotic_dial/sel4", "x": 180 },
+        "facing=north,selected=4": { "model": "hexgloop:block/iotic_dial/sel4", "x": 270, "y": 180 },
+        "facing=east,selected=4":  { "model": "hexgloop:block/iotic_dial/sel4", "x": 270, "y": 270 },
+        "facing=south,selected=4": { "model": "hexgloop:block/iotic_dial/sel4", "x": 270, "y": 0 },
+        "facing=west,selected=4":  { "model": "hexgloop:block/iotic_dial/sel4", "x": 270, "y": 90 },
+
+        
+        "facing=up,selected=5": { "model": "hexgloop:block/iotic_dial/sel5" },
+        "facing=down,selected=5": { "model": "hexgloop:block/iotic_dial/sel5", "x": 180 },
+        "facing=north,selected=5": { "model": "hexgloop:block/iotic_dial/sel5", "x": 270, "y": 180 },
+        "facing=east,selected=5":  { "model": "hexgloop:block/iotic_dial/sel5", "x": 270, "y": 270 },
+        "facing=south,selected=5": { "model": "hexgloop:block/iotic_dial/sel5", "x": 270, "y": 0 },
+        "facing=west,selected=5":  { "model": "hexgloop:block/iotic_dial/sel5", "x": 270, "y": 90 },
+
+        
+        "facing=up,selected=6": { "model": "hexgloop:block/iotic_dial/sel6" },
+        "facing=down,selected=6": { "model": "hexgloop:block/iotic_dial/sel6", "x": 180 },
+        "facing=north,selected=6": { "model": "hexgloop:block/iotic_dial/sel6", "x": 270, "y": 180 },
+        "facing=east,selected=6":  { "model": "hexgloop:block/iotic_dial/sel6", "x": 270, "y": 270 },
+        "facing=south,selected=6": { "model": "hexgloop:block/iotic_dial/sel6", "x": 270, "y": 0 },
+        "facing=west,selected=6":  { "model": "hexgloop:block/iotic_dial/sel6", "x": 270, "y": 90 }
+
+        
+    }
+}

@@ -125,6 +125,8 @@ public class HexGloopClient {
         BlockEntityRendererRegistry.register(HexGloopBEs.SLATE_CHEST_BE.get(), BERHexChest::new);
         RenderTypeRegistry.register(RenderLayer.getTranslucent(), HexGloopBlocks.CONJURED_REDSTONE_BLOCK.get(), HexGloopBlocks.HEXXED_GLASS_BLOCK.get(),
             HexGloopBlocks.ENLIGHTENMENT_BRIDGE_BLOCK.get(), HexGloopBlocks.ENLIGHTENMENT_GATE_BLOCK.get(), HexGloopBlocks.GLOOP_BLOCK.get());
+
+        RenderTypeRegistry.register(RenderLayer.getCutout(), HexGloopBlocks.IOTIC_DIAL_BLOCK.get());
     }
 
     private static void registerColorProviders(){

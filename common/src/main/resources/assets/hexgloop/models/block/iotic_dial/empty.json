@@ -1,0 +1,22 @@
+{
+    "parent": "block/cube_bottom_top",
+    "textures":{
+        "bottom": "minecraft:block/gold_block",
+        "top": "hexgloop:block/iotic_dial/top_base",
+        "side": "hexgloop:block/iotic_dial/side"
+    },
+    "elements": [
+      {
+        "from": [ 0, 0, 0 ],
+        "to": [ 16, 5, 16 ],
+        "faces": {
+          "down":  { "texture": "#bottom", "cullface": "down" },
+          "up":    { "texture": "#top" },
+          "north": { "texture": "#side", "uv": [ 0, 11, 16, 16 ], "cullface": "north" },
+          "south": { "texture": "#side", "uv": [ 0, 11, 16, 16 ], "cullface": "south" },
+          "west":  { "texture": "#side", "uv": [ 0, 11, 16, 16 ], "cullface": "west" },
+          "east":  { "texture": "#side", "uv": [ 0, 11, 16, 16 ], "cullface": "east" }
+        }
+      }
+    ]
+  }

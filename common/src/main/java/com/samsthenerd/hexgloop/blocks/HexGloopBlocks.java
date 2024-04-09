@@ -46,6 +46,9 @@ public class HexGloopBlocks {
         () -> HexGloopBEs.SLATE_CHEST_BE.get(),
         true));
 
+    public static final RegistrySupplier<BlockIoticDial> IOTIC_DIAL_BLOCK = block("iotic_dial", 
+        () -> new BlockIoticDial(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.GOLD).requiresTool().strength(4f, 4f).sounds(BlockSoundGroup.AMETHYST_BLOCK)));
+
     public static final RegistrySupplier<BlockConjuredRedstone> CONJURED_REDSTONE_BLOCK = block("conjured_redstone", 
         () -> new BlockConjuredRedstone(AbstractBlock.Settings.of(Material.AMETHYST, MapColor.TERRACOTTA_PURPLE).strength(1.5f, 6.0f).sounds(BlockSoundGroup.AMETHYST_BLOCK)),
         new Item.Settings()); // don't put it in item group

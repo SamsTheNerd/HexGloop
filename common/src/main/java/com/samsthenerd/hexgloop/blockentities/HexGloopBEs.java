@@ -32,6 +32,10 @@ public class HexGloopBEs {
         = blockEntities.register(new Identifier(HexGloop.MOD_ID, "conjured_redstone_tile"), 
         () -> BlockEntityType.Builder.create(BlockEntityConjuredRedstone::new, HexGloopBlocks.CONJURED_REDSTONE_BLOCK.get()).build(null));
 
+    public static RegistrySupplier<BlockEntityType<BlockEntityDial>> DIAL_BE 
+        = blockEntities.register(new Identifier(HexGloop.MOD_ID, "iotic_dial_tile"), 
+        () -> BlockEntityType.Builder.create(BlockEntityDial::new, HexGloopBlocks.IOTIC_DIAL_BLOCK.get()).build(null));
+
     public static void register(){
         blockEntities.register();
     }
