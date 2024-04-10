@@ -102,7 +102,7 @@ public class BlockIoticDial extends BlockWithEntity {
     
     static {
         faceCalcs.put(Direction.Axis.X, (mirrored, pos) -> mirrored ? new Pair<>(pos.z, pos.y) : new Pair<>(1-pos.z, pos.y));
-        faceCalcs.put(Direction.Axis.Y, (mirrored, pos) -> mirrored ? new Pair<>(pos.x, pos.z) : new Pair<>(1-pos.x, pos.z));
+        faceCalcs.put(Direction.Axis.Y, (mirrored, pos) -> mirrored ? new Pair<>(pos.x, pos.z) : new Pair<>(pos.x, 1-pos.z));
         faceCalcs.put(Direction.Axis.Z, (mirrored, pos) -> mirrored ? new Pair<>(1-pos.x, pos.y) : new Pair<>(pos.x, pos.y));
     };
 
@@ -119,6 +119,7 @@ public class BlockIoticDial extends BlockWithEntity {
             dialBE.setInnerMultiFocus(ItemStack.EMPTY);
             return ActionResult.SUCCESS;
         }
+        if(dialBE.getInnerMultiFocus().isEmpty()) return ActionResult.FAIL;
         Direction face = hit.getSide();
         Vec3d nPos = hit.getPos().subtract(pos.getX(), pos.getY(), pos.getZ());
         Pair<Double, Double> coords = faceCalcs.get(face.getAxis()).calc(face.getDirection() == Direction.AxisDirection.NEGATIVE, nPos);

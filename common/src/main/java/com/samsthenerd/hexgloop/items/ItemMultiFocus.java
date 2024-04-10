@@ -105,6 +105,17 @@ public class ItemMultiFocus extends Item implements KeyboundItem, IotaHolderItem
         }
     }
 
+    public static int setPageIdx(ItemStack stack, int indexRaw){
+        int originalIdx = ItemSpellbook.getPage(stack, 0);
+        int index = MathHelper.clamp(indexRaw, 1, MAX_FOCI_SLOTS);
+        if(originalIdx == 0){ return 0; };
+        for(int i = 0; i < Math.abs(index - originalIdx); i++){
+            boolean increase = index > originalIdx;
+            rotatePageIdx(stack, increase);
+        }
+        return index;
+    }
+
     public static int rotatePageIdx(ItemStack stack, boolean increase) {
         int idx = ItemSpellbook.getPage(stack, 0);
         if (idx != 0) {

@@ -1,7 +1,7 @@
 {
     "parent": "block/cube_bottom_top",
     "textures":{
-        "bottom": "minecraft:block/gold_block",
+        "bottom": "hexgloop:block/iotic_dial/back",
         "top": "hexgloop:block/iotic_dial/top_base",
         "side": "hexgloop:block/iotic_dial/side"
     },

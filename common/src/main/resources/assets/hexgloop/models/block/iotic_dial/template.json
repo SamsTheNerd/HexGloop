@@ -1,7 +1,8 @@
 {
     "parent": "block/cube_bottom_top",
     "textures":{
-        "bottom": "minecraft:block/gold_block",
+        "bottom": "hexgloop:block/iotic_dial/back",
+        "bottomoverlay": "hexgloop:block/iotic_dial/back_glow",
         "top": "hexgloop:block/iotic_dial/top_base",
         "side": "hexgloop:block/iotic_dial/side",
         "sideoverlay": "hexgloop:block/iotic_dial/side_glow"
@@ -20,9 +21,10 @@
         }
       },
       {
-        "from": [ -0.01, 0, -0.01 ],
+        "from": [ -0.01, -0.01, -0.01 ],
         "to": [ 16.01, 5, 16.01 ],
         "faces": {
+          "down":  { "texture": "#bottomoverlay", "cullface": "down", "tintindex": 0 },
           "north": { "texture": "#sideoverlay", "uv": [ 0, 11, 16, 16 ], "cullface": "north" , "tintindex": 0},
           "south": { "texture": "#sideoverlay", "uv": [ 0, 11, 16, 16 ], "cullface": "south" , "tintindex": 0},
           "west":  { "texture": "#sideoverlay", "uv": [ 0, 11, 16, 16 ], "cullface": "west"  , "tintindex": 0},

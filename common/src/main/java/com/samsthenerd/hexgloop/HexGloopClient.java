@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 import com.mojang.datafixers.util.Pair;
 import com.samsthenerd.hexgloop.blockentities.BERConjuredRedstone;
 import com.samsthenerd.hexgloop.blockentities.BERHexChest;
+import com.samsthenerd.hexgloop.blockentities.BlockEntityDial;
 import com.samsthenerd.hexgloop.blockentities.BlockEntityGloopEnergizer;
 import com.samsthenerd.hexgloop.blockentities.BlockEntityPedestal;
 import com.samsthenerd.hexgloop.blockentities.HexGloopBEs;
@@ -205,6 +206,31 @@ public class HexGloopClient {
             }
             return 0xFF_FFFFFF;
         }, HexGloopItems.ESSENCE_STONE_ITEM);
+
+        int emptyColor = 0x382f40;
+
+        ColorHandlerRegistry.registerBlockColors((state, world, pos, tintIndex) -> {
+            if(!(world.getBlockEntity(pos) instanceof BlockEntityDial dialBE)){
+                return emptyColor;
+            }
+            ItemStack stack = dialBE.getInnerMultiFocus().copy();
+            if(stack.isEmpty()){
+                return emptyColor;
+            }
+            if(tintIndex == 0){
+                NbtCompound tag = HexGloopItems.MULTI_FOCUS_ITEM.get().readIotaTag(stack);
+                if(tag == null){
+                    return emptyColor;
+                }
+                return HexIotaTypes.getColor(tag);
+            }
+            int selIndex = tintIndex + (tintIndex >= dialBE.getSelection() ? 1 : 0);
+            NbtCompound tag = HexGloopItems.MULTI_FOCUS_ITEM.get().readSlotIotaTag(stack, selIndex);
+            if(tag == null){
+                return emptyColor;
+            }
+            return HexIotaTypes.getColor(tag);
+        }, HexGloopBlocks.IOTIC_DIAL_BLOCK);
     }
 
     public static int tintsFromColorizer(FrozenColorizer colorizer, int tintIndex, int sections){
@@ -404,5 +430,18 @@ public class HexGloopClient {
 
         ScryingLensOverlayRegistry.addDisplayer(HexGloopBlocks.PEDESTAL_BLOCK.get(), HexGloopClient::pedestalDisplay);
         ScryingLensOverlayRegistry.addDisplayer(HexGloopBlocks.MIRROR_PEDESTAL_BLOCK.get(), HexGloopClient::pedestalDisplay);
+        ScryingLensOverlayRegistry.addDisplayer(HexGloopBlocks.MIND_PEDESTAL_BLOCK.get(), HexGloopClient::pedestalDisplay);
+        
+        ScryingLensOverlayRegistry.addDisplayer(HexGloopBlocks.IOTIC_DIAL_BLOCK.get(), 
+        (lines, state, pos, observer, world, direction) -> {
+            if(world.getBlockEntity(pos) instanceof BlockEntityDial dialBE){
+                ItemStack stack = dialBE.getInnerMultiFocus();
+                if(stack.isEmpty()) return;
+                NbtCompound tag = HexGloopItems.MULTI_FOCUS_ITEM.get().readIotaTag(stack);
+                if(tag == null) return;
+                Text iotaDesc = HexIotaTypes.getDisplay(tag);
+                lines.add(new Pair<>(stack, iotaDesc));
+            }
+        });
     }
 }
