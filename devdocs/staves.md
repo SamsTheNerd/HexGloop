@@ -53,3 +53,16 @@ Since addons/resource packs may want to support the dyeable staves when gloop is
     }
 }
 ```
+
+## Default staff color
+
+In v0.2.1 and up you can define the default color for the dyeable bit of an undyed staff using resource packs. By default this is a leather-y color to match the original textures. 
+
+### .../mymod/staffcolors/whatever.json :
+
+```json
+{
+    "mymod:mystaff": "#69eb96", // hex code
+    "mymod:myotherstaff": 2523373 // raw integer value
+}
+```

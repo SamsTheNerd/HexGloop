@@ -26,6 +26,7 @@ import com.samsthenerd.hexgloop.items.ItemHexTool;
 import com.samsthenerd.hexgloop.items.ItemLibraryCard;
 import com.samsthenerd.hexgloop.items.ItemSlateLoader;
 import com.samsthenerd.hexgloop.keybinds.HexGloopKeybinds;
+import com.samsthenerd.hexgloop.misc.StaffColorLoader;
 import com.samsthenerd.hexgloop.misc.clientgreatbook.GreatBook;
 import com.samsthenerd.hexgloop.network.HexGloopNetwork;
 import com.samsthenerd.hexgloop.network.ServerSideCheckClient;
@@ -94,6 +95,7 @@ public class HexGloopClient {
         registerModelPredicates();
         registerColorProviders();
         registerScryingDisplayers();
+        StaffColorLoader.init();
         HexGloopKeybinds.registerKeybinds();
 
         ServerSideCheckClient.registerDisconnectUpdate();
