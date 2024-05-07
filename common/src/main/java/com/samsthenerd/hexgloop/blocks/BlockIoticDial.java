@@ -15,9 +15,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
@@ -96,6 +98,19 @@ public class BlockIoticDial extends BlockWithEntity {
     public BlockRenderType getRenderType( @Nonnull BlockState state )
     {
         return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if(world.getBlockEntity(pos) instanceof BlockEntityDial dialBE 
+        // make sure it's not just changing something with the blockstate
+        && newState.getBlock() != this && world instanceof ServerWorld sWorld){
+            ItemStack stack = dialBE.getInnerMultiFocus().copy();
+            if(!stack.isEmpty()){
+                sWorld.spawnEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
+            }
+        }
+        super.onStateReplaced(state, world, pos, newState, moved);
     }
 
     private static Map<Direction.Axis, FaceCalcinator> faceCalcs = new HashMap<Direction.Axis, FaceCalcinator>();
