@@ -84,6 +84,7 @@
     "block.hexgloop.enlightenment_gate": "施法者之门",
     "block.hexgloop.enlightenment_bridge": "施法者之桥",
     "block.hexgloop.thinking_carpet": "施法者地毯",
+    "block.hexgloop.conjured_redstone": "构筑的红石",
 
     "key.hexgloop.open_iota_wheel": "打开Iota轮",
     "key.hexgloop.casting_ring": "使用施法戒指",
@@ -207,6 +208,7 @@
     "hexcasting.mishap.wrong_casting_source": "%s本应在%s处施放，而实际施放于%s",
     "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
     "hexcasting.mishap.wrong_casting_sources": "%s本应在%s中一处施放，而实际施放于%s",
+    "hexcasting.mishap.invalid_value.class.kittygrabbable": "一个物品栏槽位",
 
 
     "hexgloop.mishap.catch_wrapper": "上一事故：%s",
@@ -227,6 +229,29 @@
     "hexgloop.container.simple": "简单",
     "hexgloop.container.result": "产物",
     
+    "hexgloop.greatbook.saved": "已将%s（%s）写入咒术笔记",
+    "hexgloop.greatbook.removed": "已从咒术笔记中清除%s",
+    "hexgloop.greatbook.cleared": "已清除咒术笔记中的卓越法术",
+
+    "hexgloop.tooltip.pattern_shift": "（按住Shift查看图案信息）",
+
+    "block.minecraft.banner.hexgloop.hermes.white":      "白色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.orange":     "橙色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.magenta":    "品红色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.light_blue": "淡蓝色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.yellow":     "黄色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.lime":       "黄绿色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.pink":       "粉红色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.gray":       "灰色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.light_gray": "淡灰色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.cyan":       "青色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.purple":     "紫色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.blue":       "蓝色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.brown":      "棕色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.green":      "绿色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.red":        "红色赫尔墨斯",
+    "block.minecraft.banner.hexgloop.hermes.black":      "黑色赫尔墨斯",
+
     "hexgloop.truename_eula": "我似乎已将我的真名注入这一物件。光是想到这件物品落入恶人手中会发生什么就令我震悚。回顾我在真名保护法术上留的笔记也许能稍作缓解。",
 
     "hexgloop.gloopvancement.title": "凝浆十足",
@@ -239,10 +264,13 @@
     "hexgloop.hexdoc.gloopcipe_media_cost": "消耗%d个紫水晶粉",
 
     "hexgloop.entry.gloopytweaks": "“凝浆”至极的变化",
-    "hexgloop.page.gloopytweaks.0": "我最近发现世界上出现了某些“凝浆”极了的变化。$(br2)例如，可视化图案变得更简单了。我甚至只需听见类似“\\<southeast,deaqq>”的东西就能将其完美可视化为$(m)$(0)<southeast,deaqq>$()。此外，我还能将鼠标悬停其上以获得更为清晰的视图，还可点击它们以复制。",
-    "hexgloop.page.gloopytweaks.1": "我还发现翻笔记变得更顺畅了。按下$(k:key.hexgloop.open_iota_wheel)就能可视化法术书，并通过$(l)$(k:key.hexgloop.scroll_down)$()和$(l)$(k:key.hexgloop.scroll_up)$()快速翻页。$(br2)到目前为止最奇怪的变化则是咒术的$(o)感觉$()不同了，甚至有种它们顺着我的骨头振动的感受。也许足够敏感的扫描器能发现其中区别？",
-    "hexgloop.page.gloopytweaks.2": "我还注意到最近施法时对照笔记更轻松了，按下$(k:key.hexgloop.open_hex_book)就能让咒术笔记飞到面前，并打开上次翻到的那页。$(br2)而书自身似乎……更平易友好了。打开到带有图案的一页并与悬挂的卷轴相碰，它就会将图案复制到卷轴上。甚至还会根据我用哪一只手持书决定复制哪一个图案。",
-    "hexgloop.page.gloopytweaks.3": "我还发现如果想让法杖更多姿多彩，可以为法杖覆上染料。",
+    "hexgloop.page.gloopytweaks.0": "我最近发现世界上出现了某些“凝浆”极了的变化。$(br2)咒术笔记自身似乎……更平易友好了。打开到带有图案的一页并与悬挂的卷轴相碰，它就会将图案复制到卷轴上。甚至还会根据我用哪一只手持书决定复制哪一个图案。",
+    "hexgloop.page.gloopytweaks.1": "我还发现如果想让法杖更多姿多彩，可以为法杖覆上染料。$(br2)到目前为止最奇怪的变化则是咒术的$(o)感觉$()不同了，甚至有种它们顺着我的骨头振动的感受。也许足够敏感的扫描器能发现其中区别？",
+
+    "hexgloop.entry.gloopytweaks_client": "“凝浆”十足的意识",
+    "hexgloop.page.gloopy_client.0": "我感觉最近我的意识更敏锐了，也许是和我的咒术步调更一致的缘故。$(br2)例如，可视化图案变得更简单了。我甚至只需听见类似“\\<southeast,deaqq>”的东西就能将其完美可视化为$(m)$(0)<southeast,deaqq>$()。此外，我还能将鼠标悬停其上以获得更为清晰的视图，还可点击它们以复制。",
+    "hexgloop.page.gloopy_client.1": "我还发现翻笔记变得更顺畅了。按下$(k:key.hexgloop.open_iota_wheel)就能可视化法术书，并通过$(l)$(k:key.hexgloop.scroll_down)$()和$(l)$(k:key.hexgloop.scroll_up)$()快速翻页。",
+    "hexgloop.page.gloopy_client.2": "我还注意到最近施法时对照笔记更轻松了，按下$(k:key.hexgloop.open_hex_book)就能让咒术笔记飞到面前，并打开上次翻到的那页。$(br2)最后，在查看某些物品时，我似乎能察觉到更多细节信息，比如媒质物品、染色剂、卷轴之类。",
 
     "hexgloop.entry.casting_ring": "施法戒指",
     "hexgloop.page.casting_ring.0": "我确实很喜欢我的法杖，但偶尔也会想要一种更轻便的施法器具。$(br2)而在佩戴上施法戒指后，我就能通过按$(l)$(k:key.hexgloop.casting_ring)$()直接打开咒术网格而不需法杖辅助。同时因为没有法杖，咒术网格的间距增大了，不过也能算值得。",
@@ -266,7 +294,7 @@
     "hexgloop.page.gloop.0": "这真是“凝浆”极了！计算表明在适合条件下，黏液和媒质会形成一种反应性和适应性极高的材料。$(br2)反应的启动需要给反应物充能和某些机制的帮助。我在下页记录了我对这种装置的设计草稿。",
     "hexgloop.page.gloop.1": "从这种凝浆本身的适应性看来，应当还存在几种其他形态仍待发现……",
     "hexgloop.page.gloop.2": "我最近发现了一种新形态的凝浆，称作“同步凝浆”，它似乎能间隔极远的距离发生反应。",
-    "hexgloop.page.gloop.energizer": "这个机器应当足够强力，能将媒质引导入周围的水中而进一步导入反应物中。可用漏斗一类的装置送入媒质。其启动时应常态每秒消耗 1 个紫水晶粉，而反应一次则需消耗 10 个紫水晶粉。$(br2)只需要再有触发反应的方式就可以了……也许可以请求自然给予灵光一“闪”？",
+    "hexgloop.page.gloop.energizer": "这个机器应当足够强力，能将媒质引导入周围的水中而进一步导入反应物中。可用漏斗一类的装置送入媒质。$(br2)只需要再有触发反应的方式就可以了……也许可以请求自然给予灵光一“闪”？",
 
     "hexgloop.entry.multi_focus": "多重核心",
     "hexgloop.page.multi_focus.0": "我能感受到紫晶凝浆对我意识的拉扯，也许我能拉扯回来？$(br2)由紫晶凝浆制成的多重核心能在单个物品中存有多个 iota，并可通过$(l)$(k:key.hexgloop.open_iota_wheel)$()快速取用，比较像一本小型法术书。更多组织整理的技巧参见有关$(l:hexgloop:patterns/labels)标签$(/l)的笔记。",
@@ -323,8 +351,8 @@
     "hexgloop.page.stonecut": "如同在切石机中一样切凿所给物品实体。若再传入一个数，则会按照切石机中相应索引的配方切石；若再传入一个物品类型，则会尝试切凿为该类型的物品。$(br2)消耗 1/8 个紫水晶粉。",
 
     "hexgloop.entry.gloopmisc": "凝浆杂项",
-    "hexgloop.page.gloopmisc.0": "检测咒术是否在主世界施放。",
-    "hexgloop.page.gloopmisc.1": "检测咒术是否在下界施放。",
+    "hexgloop.page.gloopmisc.0": "检测实体是否身处主世界。",
+    "hexgloop.page.gloopmisc.1": "检测实体是否身处下界。",
     "hexgloop.page.gloopmisc.2": "检测所给实体或位置向量是否在我影响范围内。",
     "hexgloop.page.gloopmisc.3": "断言所给布尔值为 True，否则产生事故。事故可用图案标记，若有对应标签则将其压入栈顶。",
     "hexgloop.page.gloopmisc.4": "什么都不会做。",
