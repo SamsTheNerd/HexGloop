@@ -1,0 +1,495 @@
+{
+    "itemGroup.hexgloop.general": "Hex Gloop",
+    "item.hexgloop.gloop": "Глюп",
+    "item.hexgloop.multi_focus": "Мульти-Талисман",
+    "item.hexgloop.casting_ring": "Кольцо Заклинания",
+    "item.hexgloop.focal_ring": "Фокусное Кольцо",
+    "item.hexgloop.focal_ring.sealed": "Запечатанное Фокусное Кольцо",
+    "item.hexgloop.focal_pendant": "Фокусный Кулон",
+    "item.hexgloop.focal_pendant.sealed": "Запечатанный Фокусный Кулон",
+    "item.hexgloop.casting_potion": "Зелье Заклинания",
+    "item.hexgloop.gloop_dye": "Глюп цвет",
+    "item.hexgloop.slate_bowl": "Миска из скрижали",
+    "item.hexgloop.hexxyos": "Руник",
+    "item.hexgloop.hex_snack": "Мысленный Медвежонок",
+    "item.hexgloop.casters_coin": "Монетка Заклинателя",
+    "item.hexgloop.casters_coin.bound": "Привязанная Монетка Заклинателя",
+    "item.hexgloop.casters_coin.bound_caster": "Привязано к %s",
+    "item.hexgloop.heart_pigment": "Глюпстатический пигмент Сэма",
+    "item.hexgloop.gloopifact": "Глюпифакт",
+    "item.hexgloop.synchronous_gloop": "Синхронный глюп",
+    "item.hexgloop.hand_mirror": "Ручное Зеркало",
+    "item.hexgloop.cosmetic_energizer": "Ключ Разума",
+
+    "item.hexgloop.lovely_staff": "Любвиобильный посох",
+    "item.hexgloop.quartz_staff": "Кварцевый посох",
+    "item.hexgloop.carrot_staff": "Морковный посох",
+    "item.hexgloop.bee_staff": "Пчелиный посох",
+    "item.hexgloop.rod_staff": "Аметист на палке",
+    "item.hexgloop.bone_staff": "Костяной Посох",
+    "item.hexgloop.ice_staff": "Ледяной Посох",
+    "item.hexgloop.blaze_staff": "Посох Ифрита",
+    "item.hexgloop.pumpkin_staff": "Тыквенный.. посох?",
+    "item.hexgloop.wither_staff": "Иссушенный посох",
+    "item.hexgloop.ghost_staff": "Призрачный посох",
+    "item.hexgloop.owl_staff": "Совиный посох",
+    "item.hexgloop.celestial_staff": "Небесный Посох",
+    "item.hexgloop.longinus_staff": "Длиннющий Посох",
+    "item.hexgloop.candy_cane_staff": "Посох из Сахарной Трости",
+    "item.hexgloop.menorah_staff": "Посох-Семисвечник",
+    "item.hexgloop.christmas_tree_staff": "Новогодний Посох",
+
+    "item.hexgloop.hexxy_plush": "Рунная плюшка",
+    "item.hexgloop.hex_blade": "Рунный клинок",
+    "item.hexgloop.hex_pickaxe": "Рунная кирка",
+    "item.hexgloop.slate_loader": "Исписание Ритуалиста",
+    "item.hexgloop.inventorty": "Инвентарта",
+    "item.hexgloop.slate_loader.written": "Исписание Ритуалиста [%s]",
+    "item.hexgloop.covered_spellbook": "Книга Заклинаний с переплетом",
+    "item.hexgloop.covered_spellbook.sealed": "Запечатанная Книга Заклинаний с переплетом",
+    "item.hexgloop.hand_mirror.tooltip": "Отражает [%s]",
+    "item.hexgloop.hand_mirror.tooltip.not_activated": "Последнее отражение [%s]",
+
+    "item.hexgloop.Мепт_log": "Мепт Бревно",
+    "item.hexgloop.casting_frog": "Жаби",
+    "item.hexgloop.empty_jar": "Пустая банка",
+    "item.hexgloop.mind_jar": "Разум в банке",
+    "item.hexgloop.mind_jar.tooltip": "Содержит разум %s %s",
+    "item.hexgloop.mind_jar.tooltip.nojob": "Содержит нетренированный разум",
+    "item.hexgloop.mind_jar.tooltip.empty": "Не содержит разум?",
+    
+    "item.hexgloop.essence_stone": "Камень Эссенции",
+    "item.hexgloop.script": "Сценарий",
+    "item.hexgloop.coping_saw": "Пила Терпения",
+    "item.hexgloop.library_card": "Карта Библиотеки Акаши",
+    "item.hexgloop.library_card.tooltip_dimension": "Привязан к %s",
+
+    "item.hexgloop.copper_pen_fidget": "Фиджет Ручка",
+    "item.hexgloop.dreidel_fidget": "Фиджет Дрейдел",
+    "item.hexgloop.rainbow_amogus_fidget": "Радужный Попыт Амогус Фиджет",
+
+    "block.hexgloop.gloop_energizer": "Энергетик",
+    "block.hexgloop.pedestal": "Пьедестал",
+    "block.hexgloop.mirror_pedestal": "Отраженный Пьедестал",
+    "block.hexgloop.mind_pedestal": "Пьедестал Разума",
+    "block.hexgloop.slate_chest": "Скрижалевый Сундук",
+    "block.hexgloop.gloopy_slate_chest": "Глюпи Скрижалевый Сундук",
+    "block.hexgloop.sentinel_bed": "Часовая кровать",
+    "block.hexgloop.accelerator": "Ускоритель",
+    "block.hexgloop.hexxed_glass": "Рунное стекло",
+    "block.hexgloop.slate_lamp": "Скрижальная лампа",
+    "block.hexgloop.charged_amethyst_block": "Блок заряженных аметистов",
+    "block.hexgloop.gloop_block": "Глюпи Блок",
+    "block.hexgloop.syncetrix": "Синхронаправитель",
+    "block.hexgloop.wave_locus": "Отсчетчик",
+    "block.hexgloop.enlightenment_gate": "Врата Заклинателя",
+    "block.hexgloop.enlightenment_bridge": "Мост Заклинателя",
+    "block.hexgloop.thinking_carpet": "Ковер Заклинателя",
+    "block.hexgloop.conjured_redstone": "Магический редстоун",
+    "block.hexgloop.iotic_dial": "Диск Йот",
+
+    "key.hexgloop.open_iota_wheel": "Открыть колесо йот",
+    "key.hexgloop.casting_ring": "Использовать магическое кольцо",
+    "key.hexgloop.scroll_down": "Прокрутить Книгу Заклинаний вниз",
+    "key.hexgloop.scroll_up": "Прокрутить Книгу Заклинаний вверх",
+    "key.hexgloop.open_hex_book": "Открыт Рунный Блокнот",
+    "key.categories.hexgloop": "Hex Gloop",
+
+    "hexgloop.tooltip.multi_focus.page": "Выбранный слот %d/%d",
+    "hexgloop.tooltip.multi_focus.page.sealed": "Выбраанный слот %d/%d (%s)",
+    "hexgloop.tooltip.multi_focus.page_with_name": "Выбранный слот %d/%d (\"%s\")",
+    "hexgloop.tooltip.multi_focus.page_with_name.sealed": "Выбранный слот %d/%d (\"%s\") (%s)",
+    "hexgloop.tooltip.fidget.page": "Выбранный слот %d/%d",
+    "hexgloop.tooltip.fidget.page_with_name": "Выбранный слот %d/%d (\"%s\")",
+
+    "hexgloop.tooltip.media_worth": "Стоит %s",
+    "hexgloop.tooltip.media_worth_each": "%s за предмет",
+    "hexgloop.tooltip.pigment": "Пигмент: %s",
+
+    "hexcasting.spell.hexgloop:craft/potion": "Создать Зелье",
+    "hexcasting.spell.hexgloop:set_label": "Гамбит Даймо",
+    "hexcasting.spell.hexgloop:read_orchard": "Отражение Орчарда",
+    "hexcasting.spell.hexgloop:read_orchard_list": "Отражение Орчарда II",
+
+    "hexcasting.spell.hexgloop:read_pendant": "Отражение Момента",
+    "hexcasting.spell.hexgloop:write_pendant": "Гамбит Момента",
+    "hexcasting.spell.hexgloop:check_read_pendant": "Отражение Спокойствия",
+    "hexcasting.spell.hexgloop:check_write_pendant": "Отражение Настольгии",
+
+    "hexcasting.spell.hexgloop:read_ring": "Кольцевое Отражение",
+    "hexcasting.spell.hexgloop:write_ring": "Кольцевой Гамбит",
+
+    "hexcasting.spell.hexgloop:read_right_ring": "Отражение Предательства",
+    "hexcasting.spell.hexgloop:write_right_ring": "Гамбит Предательства",
+
+    "hexcasting.spell.hexgloop:read_left_ring": "Отражение Любовника",
+    "hexcasting.spell.hexgloop:write_left_ring": "Гамбит Любовника",
+
+    "hexcasting.spell.hexgloop:check_read_ring": "Отражение Вахтера",
+    "hexcasting.spell.hexgloop:check_write_ring": "Отражение Ювелира",
+    
+    "hexcasting.spell.hexgloop:read_comparator": "Преображение Эта",
+    "hexcasting.spell.hexgloop:read_redstone": "Преображение Сэта",
+    "hexcasting.spell.hexgloop:conjure_redstone": "Магический Редстоун Блок",
+
+    "hexcasting.spell.hexgloop:clear_truename": "Очистка Истинного Имени",
+    "hexcasting.spell.hexgloop:truename_agree_eula": "Узнать Истинное Имя",
+
+    "hexcasting.spell.hexgloop:in_overworld": "Отражение Терры",
+    "hexcasting.spell.hexgloop:in_nether": "Отражение Вечного Пламени",
+    "hexcasting.spell.hexgloop:opnop_useless": "Гамбит Аэргиа",
+    "hexcasting.spell.hexgloop:check_ambit": "Canary's Purification",
+    "hexcasting.spell.hexgloop:catchy_eval": "Athena's Gambit",
+    "hexcasting.spell.hexgloop:reveal_mishap": "Athena's Revelation",
+    "hexcasting.spell.hexgloop:stringify_mishap": "Athena's Reflection",
+    "hexcasting.spell.hexgloop:assert": "Преобразование Эйлера",
+    
+    "hexcasting.spell.hexgloop:get_hotbar_slot": "Отражение Рук",
+    "hexcasting.spell.hexgloop:set_hotbar_slot": "Гамбит Рук",
+    "hexcasting.spell.hexgloop:swap_hotbar_slot": "Руки вверх",
+
+    "hexcasting.spell.hexgloop:conjure_tasty_treat": "Магическая Сладость",
+
+    "hexcasting.spell.hexgloop:dispense": "Выбросить",
+    "hexcasting.spell.hexgloop:stonecut": "Порезать Камень",
+
+    "hexcasting.spell.hexgloop:bind_mirror": "Привязать Зеркало",
+    "hexcasting.spell.hexgloop:temp_bind_mirror": "Временная Привязка Зеркала",
+    
+    "hexcasting.spell.hexgloop:compare_item_bound_caster": "Преображение Нотариуса",
+    "hexcasting.spell.hexgloop:cooler_compare_item_bound_caster": "Объединение Нотариуса",
+    "hexcasting.spell.hexgloop:get_item_bound_caster": "Отражение Торганаш",
+    "hexcasting.spell.hexgloop:cooler_get_item_bound_caster": "Преображение Торгаша",
+
+    "hexcasting.spell.hexgloop:gloopimind_upload": "Отправление Глюпиразум",
+    "hexcasting.spell.hexgloop:gloopimind_download": "Загрука Глюпиразум",
+    "hexcasting.spell.hexgloop:craft/gloopifact": "Создать Глюпифакт",
+    "hexcasting.spell.hexgloop:gloopifact_read": "Отражение Глюпизаклинателя",
+    "hexcasting.spell.hexgloop:gloopifact_write": "Гамбит Глюпизаклинателя",
+    "hexcasting.spell.hexgloop:gloopifact_check_read": "Отражение Глюпитора",
+    "hexcasting.spell.hexgloop:gloopifact_check_write": "Объединение Глюпессора",
+
+    "hexcasting.spell.hexgloop:block_read": "Преображение Культиста",
+    "hexcasting.spell.hexgloop:block_write": "Гамбит Культиста",
+    "hexcasting.spell.hexgloop:can_block_read": "Преображение Геодезиста",
+    "hexcasting.spell.hexgloop:can_block_write": "Объединение Геодезиста",
+
+    "hexcasting.spell.hexgloop:craft/inventorty": "Обучить Инвентарти",
+    "hexcasting.spell.hexgloop:torty_transfer": "Перенос Тарти",
+    "hexcasting.spell.hexgloop:torty_count": "Преображение Тарти",
+    "hexcasting.spell.hexgloop:torty_max_count": "Макс. Преображение Тарти",
+    "hexcasting.spell.hexgloop:torty_get_type": "Преображение Любопытности",
+    "hexcasting.spell.hexgloop:torty_inv_sizes": "Отражение Тарти",
+    "hexcasting.spell.hexgloop:torty_inv_names": "Отражение Тарти II",
+
+    "hexcasting.spell.hexgloop:craft/casting_frog": "Обучить Жаби",
+    "hexcasting.spell.hexgloop:frog_eat": "Жаби снэк",
+
+
+    "hexcasting.spell.hexgloop:craft/hex_blade": "Сковать Рунный Клинок",
+    "hexcasting.spell.hexgloop:craft/hex_pickaxe": "Сковать Рунную Кирку",
+
+    "hexcasting.mishap.bad_item.slot": "%s требует %s в %s, но получил %dx %s",
+    "hexcasting.mishap.no_item.slot": "%s требует %s в %s, но нашел ничего",
+    "hexcasting.mishap.bad_offhand_item.caster_bound": "предмет, привязанный к заклинателю",
+    
+    "hexgloop.slotname.necklace": "слот цепочки",
+    "hexgloop.slotname.offhandring": "дополнительный слот кольца",
+    "hexgloop.slotname.mainhandring": "основной слот кольца",
+    "hexcasting.mishap.bad_item.labely_item": "называемый предмет",
+    "hexcasting.mishap.bad_item.gloopifact": "глюпифакт",
+    "hexcasting.mishap.bad_item.no_stonecutting": "резающийся камень",
+
+    "hexcasting.mishap.bad_entity.not_frog_food": "сущность, которую Жаби может есть",
+    
+    "hexcasting.mishap.bad_block.iota.read": "место чтобы читать йоты",
+    "hexcasting.mishap.bad_block.iota.write": "место чтобы написать йоты",
+
+    "hexcasting.mishap.mirror_limits": "%s не имел отражения",
+
+    "hexcasting.mishap.wrong_casting_source": "%s должен был быть исполнен %s, но был исполнен %s",
+    "hexgloop.comment.ignore": "the second param here VVV is a comma separated list of source_type translation keys. if you're working on a translation and this is preventing it from translating well lmk",
+    "hexcasting.mishap.wrong_casting_sources": "%s долен был быть исполнен из одного из: %s, но был исполнен %s",
+    "hexcasting.mishap.invalid_value.class.kittygrabbable": "слот ивентартя",
+    
+    
+    "hexgloop.mishap.catch_wrapper": "Последняя Ошибка: %s",
+    "hexgloop.mishap.catch_wrapper.none": "Это заклинание ещё вызовет ошибку",
+    "hexcasting.mishap.cleared_truename": "%s попытался использовать Истинное имя %s",
+    "hexcasting.mishap.assertion": "%s не прошел проверку",
+    "hexcasting.mishap.assertion.labeled": "%s провалил проверку на %s",
+    "hexgloop.generic_circle_spell": "Круг Заклинаний",
+
+    "hexgloop.source_type.staff": "Посох",
+    "hexgloop.source_type.circle": "Круг Заклинаний",
+    "hexgloop.source_type.packaged_hex": "Исполняющий Предмет",
+    "hexgloop.source_type.wisp": "Висп",
+    "hexgloop.source_type.gloopifact": "Глюпифакт",
+    "hexgloop.source_type.inventorty": "Инвентарти",
+    "hexgloop.source_type.frog_casting": "Жаби",
+
+    "hexgloop.container.simple": "Простой",
+    "hexgloop.container.result": "Результ",
+
+    "hexgloop.greatbook.saved": "Записал %s (%s) в Книгу Рун",
+    "hexgloop.greatbook.removed": "Убрал %s из Книги Рун",
+    "hexgloop.greatbook.cleared": "Очистил Великие руны из Книги Рун",
+
+    "hexgloop.tooltip.pattern_shift": "(Зажми шифт для информации о руне)",
+
+    "block.minecraft.banner.hexgloop.hermes.white":      "Белый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.orange":     "Оранжевый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.magenta":    "Пурпурный Гермес",
+    "block.minecraft.banner.hexgloop.hermes.light_blue": "Светло-синий Гермес",
+    "block.minecraft.banner.hexgloop.hermes.yellow":     "Желтый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.lime":       "Лаймовый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.pink":       "Розовый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.gray":       "Серый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.light_gray": "Светло-серый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.cyan":       "Бирюзовый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.purple":     "Фиолетовый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.blue":       "СинийГермес",
+    "block.minecraft.banner.hexgloop.hermes.brown":      "Коричневый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.green":      "Зеленый Гермес",
+    "block.minecraft.banner.hexgloop.hermes.red":        "Красный Гермес",
+    "block.minecraft.banner.hexgloop.hermes.black":      "Черный Гермес",
+    
+    "hexgloop.truename_eula": "Похоже я записал в этот объект мое истинное имя, я боюсь представь что случится если оно попадет не в те руки, я должен прочесть о рунах для защиты себя",
+    
+    "hexgloop.gloopvancement.title": "Глюпистатика",
+    "hexgloop.gloopvancement.desc": "Оглюпить руки",
+    "hexgloop.syncvancement.title": "Действовать глюпи на расстоянии",
+    "hexgloop.syncvancement.desc": "Синхронизируй свой глюпи",
+    "hexgloop.sketchy_foods.title": "Закуски",
+    "hexgloop.sketchy_foods.desc": "Съешь рунную закуску, они наверное без мяса?",
+    
+    "hexgloop.hexdoc.gloopcipe_media_cost": "Стоит %d пыли",
+
+    "hexgloop.entry.gloopytweaks": "Глюпстатические изменения",
+    "hexgloop.page.gloopytweaks.0": "Я обнаружил глюпстатические изменения в мире недавно.$(br2)Рунный блокнот выглядит добрее. Когда я на странице с руной, нажав по висящему свитку он скопирует руну на свиток.",
+    "hexgloop.page.gloopytweaks.1": "Я также узнал, что могу применить цвет к моим посохам если я хочу сделать их более цветастыми.$(br2)Наиболее странно то что мои заклинания $(o)ощущаются$() по-другому, будто бы вибрируя сквозь мои кости. Возможно достаточно чувственный сканнер мог бы отследить это?",
+
+    "hexgloop.entry.gloopytweaks_client": "Глюпи Разум",
+    "hexgloop.page.gloopy_client.0": "Я чувствую свой разум более четко с недавних пор, возможно вместе с моими заклинаниями.$(br2)Теперь мне куда проще представлять руны. Я даже могу слышать нечто вроде \"\\<southeast,deaqq>\" и представь себе $(m)$(0)<southeast,deaqq>$(). Также я могу навестись поверх рун чтобы получить лучший вид их или нажать чтобы скопировать их на будущее.",
+    "hexgloop.page.gloopy_client.1": "Я также могу проще переворачивать страницы моей Книги заклинаний. Нажатием $(k:key.hexgloop.open_iota_wheel) я могу представь себе мою Книгу Заклинаний, и я могу быстро переворачивать страницы с помощью $(l)$(k:key.hexgloop.scroll_down)$() и $(l)$(k:key.hexgloop.scroll_up)$().",
+    "hexgloop.page.gloopy_client.2": "Я заметил что с недавних пор мне также стало проще делать ссылки на эти письма, пока исполняю заклинания, нажимая $(k:key.hexgloop.open_hex_book) заставляет мою книгу летать открытой прямо на странице где я её оставил.$(br2)Наконец, кажется я могу чувствовать больше когда смотрю на некоторые предметы - предметы, содержащие мысли, пигменты и свитки.",
+
+    "hexgloop.entry.casting_ring": "Кольцо Заклинания",
+    "hexgloop.page.casting_ring.0": "Я люблю свой посох, но в некоторых ситуациях я понимаю, что мне нужен более простой способ исполнения заклинаний.$(br2)Кольцо Заклинания, когда экипировано, позволяет мне открыть сетку заклинания нажатием $(l)$(k:key.hexgloop.casting_ring)$(). Моя сетка будет меньше чем обычно, но, это неплохой обмен.",
+    "hexgloop.page.casting_ring.1": "Я заметил что мои заклинания предпочитают использовать предметы в моей дополнительной руке, но это будет полезно если обе моих руки будут свободны.",
+
+    "hexgloop.entry.casting_potion": "Заклинаемые Зелья",
+    "hexgloop.page.casting_potion.0": "Я обнаружил, что варя $(l:items/amethyst#dust)Аметистовую пыль(/l) (или $(l:items/pigments)пигмент$(/l)) в зелье, которое способно перенаправлять мысли в заклинания.$(br2)Я могу создавать зелья с помощью заклинания $(l:hexgloop:patterns/spells/craft_potion)Создать Зелье(/l).",
+
+    "hexgloop.entry.fidgets": "Фиджеты",
+    "hexgloop.page.fidgets.0": "Я наткнулся на одни из самых приятных устройств!$(br2)Эти устройства, которые я назвал фиджетами, позволяют мне сконцентрировать мысли и взаимодействовать с ними как с любой йотой. Для того чтобы их достать надо посмотреть секцию $(l:hexgloop:patterns/minds_orchard)Mind's Orchard$(/l)",
+    "hexgloop.page.fidgets.pen": "Простое устройство, которое издает приятный звук клика, при активации. Имеет активное и неактивное состояние.",
+    "hexgloop.page.fidgets.amogus": "По началу я был скептично настроен по отношению к этому предмету, он был подозрителен, но теперь я осознал его красоту. Это устройство издает приятные уху звуки и позволяет мне перенаправлять мои мысли через 6 состояний.",
+    "hexgloop.page.fidgets.dreidel": "Я сделал его из глины, у него 4 стороны, что позволяет мне переключаться между четыремся состояними.",
+
+    "hexgloop.entry.trinket_focus": "Талисман-Штуковина",
+    "hexgloop.page.trinket_focus.0": "Я переполнен желанием создавать аксессуары. Эта Штуковина действует как обыкновенный Талисман, но я могу носить их и использовать $(l:hexgloop:patterns/trinket_focus_patterns)Руны Талисмана-Штуковины (/l)$(br2)$(o)[Gloopy Dev Note: you need trinkets on fabric or curios on forge to wear these. You can still use them as foci otherwise though]$()",
+    "hexgloop.page.trinket_focus.pendant": "Стильный кулон, отлично подходящий для хранения йот, близко к вашему сердцу.",
+    "hexgloop.page.trinket_focus.ring": "Кольцо, скованное из сильнейших металов нижнего мира. Для самых важных йот.",
+
+    "hexgloop.entry.gloop": "Глюп!",
+    "hexgloop.page.gloop.0": "Это глюпстатично! Мои подсчеты предполагают что в некоторых условиях слизь и мысли могут соединится в одну высокоактивную и гибкую массу.$(br2)Понадобится способ зарядить реагенты и некоторый механизм для корректного проведения реакции. Я сделал записи о схеме такого устройства на следующей странице.",
+    "hexgloop.page.gloop.1": "Гибкая сущность этого глюпа привели меня к мыслям о том что еще могло быть открыто...",
+    "hexgloop.page.gloop.2": "Недавно я открыл новую форму глюпа, Я прозвал его синхронный глюп и кажется его особенность в том чтобы реагировать на больших расстояниях.",
+    "hexgloop.page.gloop.energizer": "Это устройство должно быть достаточно стабильно для проведения мысли через воду прямиком в реагенты. Я могу использовать воронку для того чтобы собрать мысли. $(br2)Теперь же мне остается только запустить саму реакцию. \"Быть может я должен обратиться к естественным  вещам?\" - прокатилось громом по моему разуму.",
+
+    "hexgloop.entry.multi_focus": "Мульти-Талисман",
+    "hexgloop.page.multi_focus.0": "Я могу чувствовать глюп выдавливает мой мозг, может я могу ответить тем же?$(br2)Сделанный из глюпа мульти-талисман должен помочь мне с хранением своих йот, он хранит несколько йот и позволяет быстро выбирать их с помощью $(l)$(k:key.hexgloop.open_iota_wheel)$(), словно небольшая книга заклинаний. Для большего количества организационных техник стоит перепрочесть мои записи о $(l:hexgloop:patterns/labels)надписях$(/l)",
+    "hexgloop.page.multi_focus.1": "$(o)Я, кажется, могу услышать звон в нём..$()",
+
+    "hexgloop.entry.gloop_dye": "Глюповый Краситель",
+    "hexgloop.page.gloop_dye.0": "Я заметил, что с помощью смешивание собственных красителей достаточно занудный процесс, было бы неплохо иметь большую точность и простоту в нем.$(br2)Поэтому я создал Глюповый Краситель, с помощью которого я смогу выбрать абсолютно любой цвет для использования на предметах вроде кожанной брони или моих посохов. Я могу выбрать цвет с помощью $(l:patterns/readwrite#hexcasting:write)Гамбита Писаря(/l) чтобы записать вектор, который обозначает RGB значение, где цифры от 0 до 255, например Оранжевый цвет это (255, 165, 0) 255 красного и 165 зеленого цвета.$(br2)Использование красителя будет стоить Мысли, но я могу перезарядить его как обычную Штуковину.",
+    "hexgloop.page.gloop_dye.1": "$(o)так много цветастости!$()",
+
+    "hexgloop.entry.labels": "Надписи",
+    "hexgloop.page.labels.0": "Несмотря на то что моя текущая система позволяет мне удобно перелистывать мои записи было бы неплохо иметь возможность давать им названия.$(br2)Это позволит мне добавлять надписи моим страницам с помощью йот. Я записал все типы надписи, что обнаружил на этой странице.",
+    "hexgloop.page.labels.1": "$(li)число/строка$(li)руны$(li)предметы (как сущность или йоты hexal)$(li)сущности$(li)Ничто (чтобы очистить надпись)",
+    "hexgloop.page.labels.2": "Установите надпись на основе данной вами йоты на текущий слот предмета в моей дополнительной руке.",
+
+    "hexgloop.entry.minds_orchard": "Сады разума",
+    "hexgloop.page.minds_orchard.0": "Я обнаружил, что если я могу достаточно четко вообразить то смогу использовать руны для вставки в мои заклинания. Нечто вроде $(l:hexgloop:items/fidgets)фиджета$(/l) должно помочь мне направить мои мысли в верное русло.$(br2)Значение, хранимое в саду всегда будет списком с хотя бы одним числом. Мне ещё предстоит найти способ хранить там несколько чисел..",
+    "hexgloop.page.minds_orchard.1": "Берет число с моего сада разума, представляя индекс моей мысли.",
+    "hexgloop.page.minds_orchard.2": "Берет значение с моего сада разума как список.",
+
+    "hexgloop.entry.trinket_focus_patterns": "Руны Талисмана-Штуковины",
+    "hexgloop.page.trinket_focus_patterns.0": "Эти руны полезные для взаимодействия с $(l:hexgloop:items/trinket_focus)Талисмано-Штуковиной(/l). В общем случае они действуют схоже с рунами для записи и чтения.",
+    "hexgloop.page.trinket_focus_patterns.read_pendant": "Копирует йоту из кулона, который я ношу и добавляет на стэк.",
+    "hexgloop.page.trinket_focus_patterns.write_pendant": "Удаляет йоту со стэка и сохраняет её в кулон, который я ношу",
+    "hexgloop.page.trinket_focus_patterns.check_read_pendant": "Возвращает Истину если в кулоне, который я ношу, есть йота, в ином случае Ложь.",
+    "hexgloop.page.trinket_focus_patterns.check_write_pendant": "Возвращает Истину если я могу записать в кулон, который я ношу, йоту, в ином случае Ложь.",
+
+    "hexgloop.page.trinket_focus_patterns.read_ring": "Копирует йоту, хранимую в кольце которое я ношу и добавляет на стэк. Если я ношу несколько колец то в приоритете то которое на другой руке относительно той которой я исполняю заклинание.",
+    "hexgloop.page.trinket_focus_patterns.write_ring": "Удаляет йоту со стэка и записывает её в кольцо, которое я ношу. Если я ношу несколько колец то в приоритете то которое на другой руке относительно той которой я исполняю заклинание.",
+    "hexgloop.page.trinket_focus_patterns.read_left_ring": "Копирует йоту, хранимую в кольце которое я ношу и добавляет на стэк. Если я ношу несколько колец то в приоритете то которое на дополнительной руке.",
+    "hexgloop.page.trinket_focus_patterns.write_left_ring": "Удаляет йоту со стэка и записывает её в кольцо, которое я ношу. Если я ношу несколько колец то в приоритете то которое на дополнительной руке.",
+    "hexgloop.page.trinket_focus_patterns.read_right_ring": "Копирует йоту, хранимую в кольце которое я ношу и добавляет на стэк. Если я ношу несколько колец то в приоритете то которое на основной руке.",
+    "hexgloop.page.trinket_focus_patterns.write_right_ring": "Удаляет йоту со стэка и записывает её в кольцо, которое я ношу. Если я ношу несколько колец то в приоритете то которое на основной руке.",
+
+    "hexgloop.page.trinket_focus_patterns.check_read_ring": "Возвращает Истину если в кольце, которое я ношу, есть йота, в ином случае Ложь.",
+    "hexgloop.page.trinket_focus_patterns.check_write_ring": "Возвращает Истину если я могу записать в кольцо, которое я ношу, йоту, в ином случае Ложь.",
+
+    "hexgloop.entry.craft_potion": "Зелье Заклинания",
+    "hexgloop.page.craft_potion.0": "Создает $(l:hexgloop:items/casting_potion)Зелье Заклинания$(/l). Стоит 1 осколок аметиста.",
+
+
+    "hexgloop.entry.redstone": "Редстоун",
+    "hexgloop.page.redstone.0": "Получается сигнал редстоуна блока на данной позиции",
+    "hexgloop.page.redstone.1": "Читает сигнал блока на данной позиции как компаратор",
+    "hexgloop.page.redstone.2": "Создает магический блок вроде редстоуна на данной позиции с данной силой сигнала. Ограничение между 0 и 15. Стоит 1 пыль.",
+
+
+    "hexgloop.entry.truename_protection": "Защита Истинного Имени",
+    "hexgloop.page.truename_protection.0": "Я знал что мое истинное имя может дать другим прямой доступ ко мне, но мои исследования показывают что существует способ исполнять заклинания от моего лица с помощью него.$(br2)Несмотря на то что это пугает, я нашел способ защитить себя от возможных эффектов, я задокументировал способ на этих страницах.",
+    "hexgloop.page.truename_protection.1": "Эта руна позволяет мне обновить мое истинное имя, очищая все предыдущие его версии.",
+    "hexgloop.page.truename_protection.2": "Недавно я переживал когда записывал свое истинное имя. Эта руна дарует мне спокойствие. Я всегда могу использовать его снова для безопасности.",
+
+    "hexgloop.entry.gloop_misc_spells": "Различные Глюп Руны",
+    "hexgloop.page.dispense": "Использует предмет на данной позиции с данным направлением как раздатчик.$(br2)Стоит половину пыли для большинства предметов, 1 заряженный аметист для стрел, и 3 пыли для других метательных снарядов.",
+    "hexgloop.page.stonecut": "Разрезает предмет, указанный сущностью как камнерез. Если дано число то выбирает в зависимости от индекса в камнерезе, если дан тип предмета то попытается порезать в этот тип предмета.$(br2)Стоит одну восьмую пыли.",
+
+    "hexgloop.entry.gloopmisc": "Различный Глюп",
+    "hexgloop.page.gloopmisc.0": "Возвращает находится ли сущность в обычном мире",
+    "hexgloop.page.gloopmisc.1": "Возвращает находится ли сущность в нижнем мире",
+    "hexgloop.page.gloopmisc.2": "Возвращает находится ли сущность или позиция в радиусе действия заклинаний",
+    "hexgloop.page.gloopmisc.3": "Проверяет что логическое значение Истинно и в ином случае выдает ошибку. Ошибка будет содержать информацию о предыдущей руне.",
+    "hexgloop.page.gloopmisc.4": "Делает ничего абсолютно ничего прям совсем ничего ну вот ничего не делает вот..",
+    "hexgloop.page.gloopmisc.5": "Исполняет руну или последовательной рун словно $(l:hexcasting:patterns/meta#hexcasting:eval)Гамбит Гермеса(/l). Если произойдет ошибка то он не остановится. Возвращает информацию о том случилась ли ошибка",
+    "hexgloop.page.gloopmisc.6": "Показывает последнюю ошибку. Это может иметь непредсказуемое поведения, когда использовано посохом",
+    "hexgloop.page.gloopmisc.7": "Возвращает строку информации о последней ошибке.",
+
+    "hexgloop.entry.iotic_blocks": "Йотные Блоки",
+    "hexgloop.page.iotic_blocks.0": "Я наткнулся на несколько блоков, которые могут хранить йоты. Похоже у них различные способы доступа к йоте, но может быть удобно напрямую получать доступ к ней.",
+    "hexgloop.page.iotic_blocks.read": "Возвращает йоту из блока на позиции",
+    "hexgloop.page.iotic_blocks.write": "Хранит йоту в блоке на позиции, если возможно",
+    "hexgloop.page.iotic_blocks.can_read": "Возвращает хранит ли данный блок читаемую йоту",
+    "hexgloop.page.iotic_blocks.can_write": "Возвращает могу ли я хранить данную йоту в блоке на данной позиции.",
+
+    "hexgloop.entry.hotbar": "Управление Инвентарем",
+    "hexgloop.page.hotbar.0": "Возвращает индекс выбранного слота активной строки",
+    "hexgloop.page.hotbar.1": "Выбирает слот активной строки по данному номеру",
+    "hexgloop.page.hotbar.2": "Меняет местами вещи в моих руках",
+
+    "hexgloop.entry.more_staffs": "Глюпи Посохи",
+    "hexgloop.page.more_staffs.0": "Я сделал новые дизайны для посохов. Они исполняют ту же функцию, имея другой стиль.",
+
+    "hexgloop.page.inscriber": "Установка скрижалей очень занудный процесс. Я создал это присособление для ускорения процесса. Я могу записать список рун на него и заполнить скрижалями, как будто мешочек, и зачем используя его я поставлю следущую скрижаль.",
+
+    "hexgloop.entry.misc_blocks": "Различные блоки",
+    "hexgloop.page.hexxed_glass": "Блок аметистовой пыли это буквально магический песок и он плавится как песок. Через стекло из него проходят лучи магии.",
+    "hexgloop.page.charged_amethyst_block": "Оно не стоит того, но достаточно красиво.",
+    "hexgloop.page.slate_lamp": "Немного схожа с редстоун лампой, она будет светиться мягким фиолетовым светом когда зажжена или иным способом заряжена",
+    "hexgloop.page.thinking_carpet": "Превосходный, комфортный ковёр, стоя на нем я испытываю чувство похожее на удержание Линзы Прозрения, но эффект всё таки слабее",
+    "hexgloop.page.enlightenment_gate": "Они пропускают только тех кто познал истину, познал Прорицание",
+    "hexgloop.page.enlightenment_bridge": "Он поддерживает на весу только тех кто познал истину, познал Прорицание",
+
+    "hexgloop.entry.hex_tools": "Рунные Инструменты",
+    "hexgloop.page.hex_tools.0": "Мои заклинания могут заменить любую нужду в мечах, кирках и прочих инструментах, но в них есть серьезная проблема.$(br2)Эти рунные инструменты с вставками незерита заполнят эту нишу.",
+    "hexgloop.page.hex_tools.1": "Каждый из этих инструментов может быть записан с руной, словно Штуковина или Артефакт, затем можно использовать заклинание с помощью $(k:key.use). Дополнительное, каждый предмет имеет свой способ исполнения заклинаний в зависимости от своей функции.$(br2)Мысли, которые запитывают заклинания также дают силу самому инструменту, уменьшаясь с использованиями.",
+    "hexgloop.page.hex_blade.0": "Когда я наношу урон с этим клинокм он исполняет заклинание на моей цели, которая добавляется на стэк.$(br2)Лезвие мысли также само по себе наносит урон, примерно как незеритовый меч.",
+    "hexgloop.page.hex_blade.1": "Схоже с тем как работает инстурмент для исполнения заклинаний. Стоит около 4 $(l:items/amethyst)$(item)Заряженных Аметистов/$",
+    "hexgloop.page.hex_pickaxe.0": "Когда я вскапываю блок с этой киркой исполняетс язаклинания, на стэке будет позиция самого блока.",
+    "hexgloop.page.hex_pickaxe.1": "Схоже с тем как работает инструмент для исполнения заклинаний. Стоит около 4 $(l:items/amethyst)$(item)Заряженных Аметистов/$",
+
+    "hexgloop.page.script.0": "$(l:items/focus)$(item)Талисман/$ неплох но для некоторых заклинаний он слишком затратный. У кого вообще есть время копать светокамень?$(br2)Сценарий может хранить список вплоть до 16 рун.",
+
+    "hexgloop.page.essence_stone.0": "Несмотря на то что обитатели этого не могут исполнять заклинаний их мысли всё ещё могут быть использованы как пигмент.$(br2)Камень Эссенции позволяет мне достать эссенцию сущности, используя её как пигмент для меня. Чтобы достать эссенцию мне просто нужно записать сущность на камень.",
+
+    "hexgloop.page.dyebook": "Я думал о том что мои Книги Заклинаний могли бы быть яркими и цветными. Я могу добавить твёрдый цветной переплет книге, незерит используется для того чтобы книга также не могла сгореть в лаве.$(br2)Использование покрытия не затронет записанные заклинания. Но отодрать переплёт обратно невозможно..",
+
+    "hexgloop.entry.hex_snacks": "Рунные закуски",
+    "hexgloop.page.hex_snacks.intro": "Написание рун это долгий процесс и за такое вермя можно проголодаться, к счастью есть способ получить закуски!",
+    "hexgloop.page.hex_snacks.gummy": "Мысленный Медвежонок это отличный небольшой перекус. В нем содержится некоторое количество Мысли, но скорее всего это не лучший вариант заполнения Артефакта.",
+    "hexgloop.page.hex_snacks.conjure_gummy": "Создает из мысли съедобное медвежонка на данной позиции. Стоит 1 пыль.",
+    "hexgloop.page.hex_snacks.hexxyos": "Часть осмыссленного завтрака",
+
+    "hexgloop.page.chests.normal": "Сундук, усиленный скрижалью. В нем слегка больше места чем в обыкновенном сундуке.",
+    "hexgloop.page.chests.gloopy": "Усиленный глюпом и скрижалью сундук. В нем помещается в два раза больше предметов чем в обычном сундуке.$(br2)Сколько же ещё мне остается открытий?",
+
+    "hexgloop.page.sentinel_bed": "Комфортная кровать для моего Часового, в ней также любят спать коты.",
+
+    "hexgloop.entry.reflection": "Зеркала",
+    "hexgloop.page.reflection.0": "Эти зеркала, сделанная из рунного стекла и синхронного глюпа, похоже позволяют мне действовать на предметы в отражении зеркала словно они в моей другой руке. Используя Линзу Прозрения, показывает отраженный предмет в моей руке.",
+    "hexgloop.page.reflection.1": "Это позволяет мне привязать себя к Отраженному Педесталу, так чтобы его отраженный предмет был в моей пустой руке.",
+    "hexgloop.page.reflection.2": "Похоже на привязку к зеркалу, но действует только одно использование заклинания.",
+
+
+    "hexgloop.page.casters_coin.0": "Учитывая важность моего истинного имени было бы не плохо ограничть его использования. На эти монеты можно записать его как на Талисман, но они читаются единоразово за монету. Я описал несколько рун для проверки кто записал монету.",
+    "hexgloop.page.casters_coin.1": "",
+    "hexgloop.page.casters_coin.2": "Принимает сущность игрока и проверяет он ли записал монету в другой моей руке.",
+    "hexgloop.page.casters_coin.3": "Принимает сущность игрока и сущность предмета и проверяет этот предмет на то что он был записан этим игроком или предмет в предмете был записан им.",
+    "hexgloop.page.casters_coin.4": "Возвращает имя того кто записал монету в другой моей руке.",
+    "hexgloop.page.casters_coin.5": "Возвращает имя того кто записал монету в данной сущности предмета.",
+
+
+    "hexgloop.page.gloopifact.0": "Глюп кажется неплохо работает для хранения и управления йотами, так что возможно он будет неплохо работать в составке исполняющего устройства.$(br2)Глюпифакт схож с артефактом, но, куда глюпее. Незеритовые вставки делают его несгораемым, никакого больше потерянного прогресса в аду.",
+    "hexgloop.page.gloopifact.1": "Талисман в его центре доступен для обыкновенного использование, но заклинания всё ещё предпочитают источник для чтения из другой руки. Я описал множество рун, крайне удивительно похожих на остальные руны, которые манипулируют йотами, но теперь-то это читается из внутреннего Талисмана.$(br2)Я также обнаружил что Разум куда более податливый и записал руны, которые позволяют общаться с моим Разумом исполнения посоха.$(br2)Но для создания, эти руны работают только когда исполнены глюпифактом",
+    "hexgloop.page.gloopifact.craft": "",
+    "hexgloop.page.gloopifact.3": "Стоит около 16 $(l:items/amethyst)$(item)Заряженного Аметиста/$",
+    "hexgloop.page.gloopifact.4": "Отправляет сохраненную информацию из Разума моего Глюпифакта в Посох",
+    "hexgloop.page.gloopifact.5": "Сохраняет Разум из моего посуха в мой Глюпифакт",
+    "hexgloop.page.gloopifact.6": "Читает йоту из внутреннего Талисмана Глюпифакта",
+    "hexgloop.page.gloopifact.7": "Записывает йоту в внутренний Талисман Глюпифакта",
+    "hexgloop.page.gloopifact.8": "Возвращает может ли внутренний Талисман быть прочитан",
+    "hexgloop.page.gloopifact.9": "Возвращает может ли йота быть записана на Внутренний Талисман.",
+
+    "hexgloop.page.hand_mirror.0": "Ручное Рунное зеркало, которое будет $(l:hexgloop:patterns/spells/reflection)отражать$(/l) любую сущность предмета записанного на него. Использование пьедестала для удержания предмета в моей руке может быть удобно. $(br2)В отличие от других отражений, которые могут быть использованы только в заклинаниях, отражение из ручного зеркало могут быть использованы будто бы они напрямую в моей руке.",
+    "hexgloop.page.hand_mirror.craft": "",
+    
+    "hexgloop.page.pedestal.0": "Я постоянно забываю о выброшенных предметах.$(br2)Пьедестал может держать один предмет для меня. Этот предмет не пропадет, но мои заклинания могут взаимодействовать с ним будто бы он лежит на земле. Должно быть он подбирает выброшенные предметы и действует как воронка.$(br2)Я чувствую что пьедесталы могут нечто ещё..",
+    "hexgloop.page.pedestal.1": "Цельный",
+    "hexgloop.page.pedestal.2": "Отражающие панели, вставленные в пьедестал позволяют привязать меня к нему и видеть его $(l:hexgloop:patterns/spells/reflection)отражение$(/l)",
+
+    "hexgloop.page.inventorty.0": "Я обнаружил милейшего маленького котенка! Ему нравится сидеть в моих карманах и играть с предметами. Быть может я могу научить его чему-то полезному?$(br2)Я научил его исполнять заклинания! Я могу дать ему список рун для исполнения когда он в инвентаре, гладя его, странно похожее на то чтобы положить в мешок что-то действие. Стэк этих заклинаний начнется с некоторой информацией, во первых держу ли я Инвентарти и затем номер, обозначающий слот в котором он сидит или на который смотрит.",
+    "hexgloop.page.inventorty.1": "Множество рун может быть исполнено только с помощью инвентарти, множество из них относится к типу слот. Это не настоящая йота, а сокращенное обращение к слоту, который может использовать инвентарти:$(li)Не-негативные числа относятся к специфическому слоту по индексу. Слоты в отдельном инвентаре как в сундуке отмечаются по их индексу + индексу инвентаря * 1000.$(li)Предметы сущности рядом с исполнителем.$(li)-2 для курсора инвентаря $(li)-1000*(индекс инвентаря + 1) для первого доступного слота в инвентаре.",
+    "hexgloop.page.inventorty.2": "$(o)Великая сила Творчества может сделать кота уставшим и сонным.$()",
+    "hexgloop.page.inventorty.3": "Стоит около четырех $(item)Заряженных Аметистов()",
+    "hexgloop.page.inventorty.4": "Переносит данное число предметов из первого слота во второй слот. Возвращает количество предметов оставшихся в слоте. Если второй слот Ничто выбрасывает предметы и дает на них йоту сущность.",
+    "hexgloop.page.inventorty.5": "Возвращает сколько предметов в данном слоте.",
+    "hexgloop.page.inventorty.6": "Возвращает сколько предметов помещается в данный слот.",
+    "hexgloop.page.inventorty.7": "Возвращает тип предмета в данном слоте",
+    "hexgloop.page.inventorty.8": "Возвращает список, содержащий размеры каждого инвентаря, который видит инвентарти, сортируя в зависимости от индекса инвентаря.",
+    "hexgloop.page.inventorty.9": "Возвращает список, содержащий имена каждого инвентаря, который видит инвентарти, сорртируя в зависимости от индекса инвентаря.",
+
+    "hexgloop.page.casting_frog.0": "Я подружился с глупым маленьким существом по имени Жаби. Ему нравится быть рядом со мной и ему нравится когда я прыгаю?$(br2)После того как я дам ему инструкции для исполнения заклинания и шляпу для работы он будет исполнять заклинание когда я пытаюсьп рыгнуть в воздухе, будто бы используя двойной прыжок.",
+    "hexgloop.page.casting_frog.craft": "Прыг!",
+    "hexgloop.page.casting_frog.teach": "Стоит около четырех $(item)Заряженных аметистов$()",
+    "hexgloop.page.casting_frog.eat": "Я видел жаб в природе, пытающихся съесть слизней и магма слизней, может быть моя Жаби может также?$(br2)Стоит около одного осколка",
+
+    "hexgloop.entry.mepts": "Мепты",
+    "hexgloop.page.mepts.0": "Я встретил несколько дружелюбных созданий этого мира, которые могли использовать заклинания мне на пользу. Все они кажется сделаны из некоторого материала, вроде сделанные из дерева и кристаллов аметиста, которые были сплавлены вместе. Я решил назвать их Мептаами, может их больше?",
+    "hexgloop.page.mepts.1": "Думаю я знаю как мне создать свое бревно мепта.",
+
+
+    "hexgloop.entry.loci": "Локи",
+    "hexgloop.page.loci.intro": "До этого момента я создавал Круги Заклинаний с помощью скрижалей, инициаторов  и направителей, но некоторые блоки, которые я открыл недавно тоже имеют интересное предназначение в кругах. Я решил назвать их Локи. На следующих страницах я описал принципы их действия.",
+    "hexgloop.page.loci.slate_chest": "Когда мысли проходят сквозь сундук, круг получает доступ в инвентарь сундука, будто бы это его собственный. Подходит для стройки.",
+    "hexgloop.page.loci.pedestal": "Когда мысли проходят сквозь пьедестал, который хранит предмет, который хранит руну, например свиток, он добавит эту руну на круг для исполнения.",
+    "hexgloop.page.loci.mirror_pedestal": "Он работает похоже на обыкновенный свой вариант, но он также поптыается встроит все не-рунные йоты. Это встраивание предполагает такие же правила как встраивание йоты в список рун.",
+
+    "hexgloop.page.accelerator.0": "Круги, как я знаю самая медленная форма исполнения заклинаний, Я предполагаю, что этот блок ускорит их. Когда мысли пройдут сквозь ускоритель он ускорит круг в 2 раза, но скорость будет уменьшаться на 20% каждый блок. Один ускоритель берет 2 аметистовой пыли из импетуса, но стоимость сильно увеличится если ускорители стоят подряд.",
+    "hexgloop.page.accelerator.1": "Быстро!",
+
+    "hexgloop.page.undulator.0": "Компаратор, конечно, работает отлично для нахождения первого раза когда мысль проходит через скрижали, я не мог использовать их для нахождения дополнительных прохождений. Отсчетчик выдаст сигнал редстоуна когда будет имеенно держать волну мысли.",
+    "hexgloop.page.undulator.1": "$(o)Завораживающе$()",
+
+    "hexgloop.page.syncetrix.0": "Это явно не стандартный Направитель! Выходящая волна всегда будет идти в одну сторону. Если есть правильно подключенный блок, он будет выходит из него, в другом случае волна перепрыгнет к первому Синхронаправителю впереди него на расстоянии до 16 блоков.",
+    "hexgloop.page.syncetrix.1": "Синхроно-Правитель",
+
+    "hexgloop.entry.item_flaying": "Очистка Предметов",
+    "hexgloop.page.mind_pedestal.0": "Я не могу напрямую очистить разум предмета, но направлясь на пьедестал с предметом это должно сработать!$(br2)Это сработает с любым пьедесталом, но Пьедестал Разума может сохранить разум и попытается впихнуть его в будущие предметы.",
+    "hexgloop.page.mind_jar.0": "Пока блоки отвергают разум существа, эта банка явно не откажет! Я могу провести повторную очистки разума с этим разумом, с помощью использования его в качестве сущности предмета вместо жителя.",
+
+    "hexgloop.page.library_card.0": "Я могу сконструировать великую библиотеку из всего что я изучил и написал, но не могу получать доступ к ней сквозь миры.$(br2)Используя Карту на Запис Акаши это привяжет карту к текущему измерению. На время пока карта в моем инвентаре, любая попытка читать из Библиотеки Акаши будет работать если я буду в привязанном измерении.",
+
+    "hexgloop.page.coping_saw.0": "Так много всего с чем мне нужно разобраться! Я устал от мыслей что заклинание может убить меня, я изобрел эту пилу.$(br2)Пока эта пила находится в моей активной строке мои заклинания не будут пытаться брать мои жизни когда не хватает мысли.",
+
+
+    "hexgloop.entry.addons": "Аддоны/Добавления",
+    "hexgloop.page.addons": "Я слышал сказания о множестве других дисциплин рунной магии! Эта ссылка неплохой источник этих инструментов, модов, подсказок и более",
+    "hexgloop.page.addons.link": "Список Аддонов"
+}
