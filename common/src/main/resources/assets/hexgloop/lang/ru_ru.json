@@ -138,10 +138,10 @@
     "hexcasting.spell.hexgloop:in_overworld": "Отражение Терры",
     "hexcasting.spell.hexgloop:in_nether": "Отражение Вечного Пламени",
     "hexcasting.spell.hexgloop:opnop_useless": "Гамбит Аэргиа",
-    "hexcasting.spell.hexgloop:check_ambit": "Canary's Purification",
-    "hexcasting.spell.hexgloop:catchy_eval": "Athena's Gambit",
-    "hexcasting.spell.hexgloop:reveal_mishap": "Athena's Revelation",
-    "hexcasting.spell.hexgloop:stringify_mishap": "Athena's Reflection",
+    "hexcasting.spell.hexgloop:check_ambit": "Преображение Канарейки",
+    "hexcasting.spell.hexgloop:catchy_eval": "Гамбит Афины",
+    "hexcasting.spell.hexgloop:reveal_mishap": "Открытие Афины",
+    "hexcasting.spell.hexgloop:stringify_mishap": "Отражение Афины",
     "hexcasting.spell.hexgloop:assert": "Преобразование Эйлера",
     
     "hexcasting.spell.hexgloop:get_hotbar_slot": "Отражение Рук",
@@ -282,13 +282,13 @@
     "hexgloop.page.casting_potion.0": "Я обнаружил, что варя $(l:items/amethyst#dust)Аметистовую пыль(/l) (или $(l:items/pigments)пигмент$(/l)) в зелье, которое способно перенаправлять мысли в заклинания.$(br2)Я могу создавать зелья с помощью заклинания $(l:hexgloop:patterns/spells/craft_potion)Создать Зелье(/l).",
 
     "hexgloop.entry.fidgets": "Фиджеты",
-    "hexgloop.page.fidgets.0": "Я наткнулся на одни из самых приятных устройств!$(br2)Эти устройства, которые я назвал фиджетами, позволяют мне сконцентрировать мысли и взаимодействовать с ними как с любой йотой. Для того чтобы их достать надо посмотреть секцию $(l:hexgloop:patterns/minds_orchard)Mind's Orchard$(/l)",
+    "hexgloop.page.fidgets.0": "Я наткнулся на одни из самых приятных устройств!$(br2)Эти устройства, которые я назвал фиджетами, позволяют мне сконцентрировать мысли и взаимодействовать с ними как с любой йотой. Для того чтобы их достать надо посмотреть секцию $(l:hexgloop:patterns/minds_orchard)Сады разума$(/l)",
     "hexgloop.page.fidgets.pen": "Простое устройство, которое издает приятный звук клика, при активации. Имеет активное и неактивное состояние.",
     "hexgloop.page.fidgets.amogus": "По началу я был скептично настроен по отношению к этому предмету, он был подозрителен, но теперь я осознал его красоту. Это устройство издает приятные уху звуки и позволяет мне перенаправлять мои мысли через 6 состояний.",
     "hexgloop.page.fidgets.dreidel": "Я сделал его из глины, у него 4 стороны, что позволяет мне переключаться между четыремся состояними.",
 
     "hexgloop.entry.trinket_focus": "Талисман-Штуковина",
-    "hexgloop.page.trinket_focus.0": "Я переполнен желанием создавать аксессуары. Эта Штуковина действует как обыкновенный Талисман, но я могу носить их и использовать $(l:hexgloop:patterns/trinket_focus_patterns)Руны Талисмана-Штуковины (/l)$(br2)$(o)[Gloopy Dev Note: you need trinkets on fabric or curios on forge to wear these. You can still use them as foci otherwise though]$()",
+    "hexgloop.page.trinket_focus.0": "Я переполнен желанием создавать аксессуары. Эта Штуковина действует как обыкновенный Талисман, но я могу носить их и использовать $(l:hexgloop:patterns/trinket_focus_patterns)Руны Талисмана-Штуковины (/l)$(br2)$(o)[Заметка от разработчика: вам нужен мод trinkets на фабрик или curios на фордж чтобы их носить. Они всегда работают как обыкновенный Талисман]$()",
     "hexgloop.page.trinket_focus.pendant": "Стильный кулон, отлично подходящий для хранения йот, близко к вашему сердцу.",
     "hexgloop.page.trinket_focus.ring": "Кольцо, скованное из сильнейших металов нижнего мира. Для самых важных йот.",
 
