@@ -198,7 +198,7 @@ public class MixinItemFlaying {
                     if(!flayableItem.wasMurderous(providerStack, sacrificeProvider, ctx)) return;
                 }
             }
-            original.call(sacrifice);
+            original.call(sacrifice, murderer);
         }
 
 
