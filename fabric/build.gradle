@@ -67,8 +67,8 @@ dependencies {
     modRuntimeOnly "maven.modrinth:hexal:${hexalVersion}"
     modRuntimeOnly "maven.modrinth:moreiotas:${moreIotasVersion}"
 
-    modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:${geckolibVersion}"
-    modRuntimeOnly "software.bernie.geckolib:geckolib-fabric-1.19:${geckolibVersion}"
+    modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolibVersion}"
+    modRuntimeOnly "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolibVersion}"
 
 	// Hex Casting Dependencies
 	modImplementation "at.petra-k.paucal:paucal-fabric-${minecraft_version}:${paucalVersion}"
@@ -165,7 +165,7 @@ publishMods {
     curseforge {
         accessToken = providers.environmentVariable("CURSEFORGE_API_KEY")
         projectId = "897558"
-        minecraftVersions.add("1.19.2")
+        minecraftVersions.add("1.20.1")
         requires {
             slug = "architectury-api"
         }
@@ -180,7 +180,7 @@ publishMods {
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_API_KEY")
         projectId = "ryfyOhoP"
-        minecraftVersions.add("1.19.2")
+        minecraftVersions.add("1.20.1")
 
         requires {
             // architectury api

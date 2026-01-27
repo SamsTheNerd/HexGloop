@@ -35,15 +35,15 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.19",
+    "fabricloader": ">=0.18.4",
     "fabric-api": "*",
-    "architectury": ">=6.5.82",
-    "minecraft": "~1.19.2",
-    "hexcasting": ">=0.10.3",
+    "architectury": ">=9.2.14",
+    "minecraft": "~1.20.1",
+    "hexcasting": ">=0.11.3",
     "java": ">=17",
-    "wnboi": ">=0.0.3"
+    "wnboi": ">=0.1.0b"
   },
   "suggests":{
-    "hexal": ">=0.2.17"
+    "hexal": ">=0.3.1"
   }
 }

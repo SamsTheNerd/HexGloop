@@ -58,10 +58,10 @@ dependencies {
 
     // // Hex Casting Dependencies
     modCompileOnly "at.petra-k.paucal:paucal-forge-${minecraft_version}:${paucalVersion}"
-    modCompileOnly "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouliVersion}"
+    modCompileOnly "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouliVersion}-FORGE"
 
     modRuntimeOnly "at.petra-k.paucal:paucal-forge-${minecraft_version}:${paucalVersion}"
-    modRuntimeOnly "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouliVersion}"
+    modRuntimeOnly "vazkii.patchouli:Patchouli:${minecraft_version}-${patchouliVersion}-FORGE"
 
     //  // Hex Optional interop
 
@@ -76,16 +76,16 @@ dependencies {
     modImplementation "maven.modrinth:moreiotas:${moreIotasVersionForge}"
     modRuntimeOnly "maven.modrinth:moreiotas:${moreIotasVersionForge}"
 
-    modImplementation "software.bernie.geckolib:geckolib-forge-1.19:${geckolibVersion}"
-    modRuntimeOnly "software.bernie.geckolib:geckolib-forge-1.19:${geckolibVersion}"
+    modImplementation "software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolibVersion}"
+    modRuntimeOnly "software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolibVersion}"
 
     runtimeOnly 'thedarkcolour:kotlinforforge:3.12.0'
 
     // modRuntimeOnly "mezz.jei:jei-$minecraft_version-forge:$jeiVersion"
 
-    modCompileOnly "top.theillusivec4.curios:curios-forge:$minecraft_version-$curiosVersion:api"
-    modRuntimeOnly "top.theillusivec4.curios:curios-forge:$minecraft_version-$curiosVersion"
-    runtimeOnly(include("com.github.llamalad7.mixinextras:mixinextras-forge:${mixinExtrasVersion}"))
+    modCompileOnly "top.theillusivec4.curios:curios-forge:$curiosVersion:api"
+    modRuntimeOnly "top.theillusivec4.curios:curios-forge:$curiosVersion"
+    runtimeOnly(include("io.github.llamalad7:mixinextras-forge:${mixinExtrasVersion}"))
 
     // modApi "com.github.Virtuoel:Pehkui:${pehkuiVersion}-${minecraft_version}-forge"
 }
@@ -156,7 +156,7 @@ publishMods {
     curseforge {
         accessToken = providers.environmentVariable("CURSEFORGE_API_KEY")
         projectId = "897558"
-        minecraftVersions.add("1.19.2")
+        minecraftVersions.add("1.20.1")
         requires {
             slug = "architectury-api"
         }
@@ -174,7 +174,7 @@ publishMods {
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_API_KEY")
         projectId = "ryfyOhoP"
-        minecraftVersions.add("1.19.2")
+        minecraftVersions.add("1.20.1")
 
         requires {
             // architectury api
