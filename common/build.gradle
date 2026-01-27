@@ -14,9 +14,9 @@ dependencies {
     modApi "dev.architectury:architectury:${rootProject.architectury_version}"
 
     // mixinextras
-    compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${mixinExtrasVersion}"))
-    
-    modImplementation "maven.modrinth:wnboi:${wnboiVersion}-fabric"
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:${mixinExtrasVersion}"))
+
+    modImplementation files('wnboi-0.1.0b-dev-fabric.jar')
 
     // modImplementation("net.fabricmc:fabric-language-kotlin:1.7.4+kotlin.1.6.21")
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
