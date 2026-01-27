@@ -85,7 +85,6 @@ dependencies {
     include "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
 
 	modImplementation "maven.modrinth:lithium:${lithiumVersion}"
-    modRuntimeOnly "maven.modrinth:phosphor:${phosphorVersion}"
 	modImplementation "maven.modrinth:sodium:${sodiumVersion}"
 
     modRuntimeOnly "maven.modrinth:tooltipfix:${tooltipfixVersion}"
