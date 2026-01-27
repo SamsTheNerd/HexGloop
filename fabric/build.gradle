@@ -61,7 +61,7 @@ dependencies {
 	// for HexCasting
 	modImplementation "at.petra-k.hexcasting:hexcasting-fabric-${project.minecraft_version}:${project.hexcastingVersion}"
 
-    modImplementation "maven.modrinth:wnboi:${wnboiVersion}-fabric"
+    modImplementation files('wnboi-0.1.0b-dev-fabric.jar')
     // modRuntimeOnly "maven.modrinth:wnboi:${wnboiVersion}-fabric"
 
     modRuntimeOnly "maven.modrinth:hexal:${hexalVersion}"

@@ -68,8 +68,8 @@ dependencies {
     modCompileOnly "mezz.jei:jei-$minecraft_version-common-api:$jeiVersion"
     modCompileOnly "mezz.jei:jei-$minecraft_version-forge-api:$jeiVersion"
 
-    modCompileOnly "maven.modrinth:wnboi:${wnboiVersion}-forge"
-    modRuntimeOnly "maven.modrinth:wnboi:${wnboiVersion}-forge"
+    modCompileOnly files('wnboi-0.1.0b-dev-forge.jar')
+    modRuntimeOnly files('wnboi-0.1.0b-dev-forge.jar')
 
     modImplementation "maven.modrinth:hexal:${hexalVersionForge}"
     modRuntimeOnly "maven.modrinth:hexal:${hexalVersionForge}"

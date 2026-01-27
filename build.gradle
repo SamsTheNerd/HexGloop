@@ -101,10 +101,10 @@ allprojects {
 }
 
 ext.trimChangelog = { changelogString -> 
-    String changelogSec = ""
+    var changelogSec = ""
     def lines = changelogString.split("\n")
-    Boolean going = false;
-    for (String line : lines){
+    var going = false;
+    for (var line : lines){
         if (line.startsWith("##") && !line.startsWith("###")){
             if(going)
                 break
