@@ -53,7 +53,7 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    runtimeOnly(include("com.github.llamalad7.mixinextras:mixinextras-fabric:${mixinExtrasVersion}"))
+    runtimeOnly(include("io.github.llamalad7:mixinextras-fabric:${mixinExtrasVersion}"))
 
 	// for REI, making sure it doesn't pop up with the keyboard
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
@@ -66,14 +66,14 @@ dependencies {
 	// for HexCasting
 	modImplementation "at.petra-k.hexcasting:hexcasting-fabric-${project.minecraft_version}:${project.hexcastingVersion}"
 
-    modImplementation "maven.modrinth:wnboi:${wnboiVersion}-fabric"
+    modImplementation files('wnboi-0.1.0b-dev-fabric.jar')
     // modRuntimeOnly "maven.modrinth:wnboi:${wnboiVersion}-fabric"
 
     modRuntimeOnly "maven.modrinth:hexal:${hexalVersion}"
     modRuntimeOnly "maven.modrinth:moreiotas:${moreIotasVersion}"
 
-    modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:${geckolibVersion}"
-    modRuntimeOnly "software.bernie.geckolib:geckolib-fabric-1.19:${geckolibVersion}"
+    modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolibVersion}"
+    modRuntimeOnly "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolibVersion}"
 
 	// Hex Casting Dependencies
 	modImplementation "at.petra-k.paucal:paucal-fabric-${minecraft_version}:${paucalVersion}"
@@ -90,7 +90,6 @@ dependencies {
     include "io.github.tropheusj:serialization-hooks:${serializationHooksVersion}"
 
 	modImplementation "maven.modrinth:lithium:${lithiumVersion}"
-    modRuntimeOnly "maven.modrinth:phosphor:${phosphorVersion}"
 	modImplementation "maven.modrinth:sodium:${sodiumVersion}"
 
     modRuntimeOnly "maven.modrinth:tooltipfix:${tooltipfixVersion}"
@@ -171,7 +170,7 @@ publishMods {
     curseforge {
         accessToken = providers.environmentVariable("CURSEFORGE_API_KEY")
         projectId = "897558"
-        minecraftVersions.add("1.19.2")
+        minecraftVersions.add("1.20.1")
         requires {
             slug = "architectury-api"
         }
@@ -186,7 +185,7 @@ publishMods {
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_API_KEY")
         projectId = "ryfyOhoP"
-        minecraftVersions.add("1.19.2")
+        minecraftVersions.add("1.20.1")
 
         requires {
             // architectury api
