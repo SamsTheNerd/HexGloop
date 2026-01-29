@@ -14,11 +14,11 @@ import com.samsthenerd.hexgloop.utils.ClientUtils;
 import com.samsthenerd.hexgloop.utils.GloopyRenderUtils;
 import com.samsthenerd.wnboi.utils.RenderUtils;
 
-import at.petrak.hexcasting.api.spell.iota.DoubleIota;
-import at.petrak.hexcasting.api.spell.iota.EntityIota;
-import at.petrak.hexcasting.api.spell.iota.Iota;
-import at.petrak.hexcasting.api.spell.iota.PatternIota;
-import at.petrak.hexcasting.api.spell.math.HexPattern;
+import at.petrak.hexcasting.api.casting.iota.DoubleIota;
+import at.petrak.hexcasting.api.casting.iota.EntityIota;
+import at.petrak.hexcasting.api.casting.iota.Iota;
+import at.petrak.hexcasting.api.casting.iota.PatternIota;
+import at.petrak.hexcasting.api.casting.math.HexPattern;
 import dev.architectury.platform.Platform;
 import net.fabricmc.api.EnvType;
 import net.minecraft.client.MinecraftClient;
@@ -117,7 +117,7 @@ public class LabelTypes {
             }
             int xOffset = (width - maxWidth) / 2;
             for(OrderedText line : lines){
-                textRenderer.draw(matrices, line, x + xOffset - width/2, y + yOffset - height /2 + textRenderer.fontHeight/2, 0xFFFFFF);
+                textRenderer.draw(matrices, line, x + xOffset - width/2, y + yOffset - height /2 + textRenderer.fontHeight/2, 0xFFFFFF); //TODO find out how to port this
                 yOffset += textRenderer.fontHeight;
             }
         }
@@ -299,9 +299,9 @@ public class LabelTypes {
     // now the iota transforming functions
 
     public static void registerIotaLabelFunctions(){
-        LabelMaker.registerIotaLabelFunction(DoubleIota.TYPE, LabelTypes::doubleToTextLabel);
-        LabelMaker.registerIotaLabelFunction(PatternIota.TYPE, LabelTypes::patternToLabel);
-        LabelMaker.registerIotaLabelFunction(EntityIota.TYPE, LabelTypes::entityToLabel);
+        LabelMaker.registerIotaLabelFunction(DoubleIota.TYPE, LabelTypes::doubleToTextLabel); //TODO find out how to port this
+        LabelMaker.registerIotaLabelFunction(PatternIota.TYPE, LabelTypes::patternToLabel); //TODO find out how to port this
+        LabelMaker.registerIotaLabelFunction(EntityIota.TYPE, LabelTypes::entityToLabel); //TODO find out how to port this
         if(Platform.isModLoaded("hexal")){
             HexalLabels.register();
         }

@@ -12,9 +12,9 @@ import com.samsthenerd.hexgloop.misc.wnboi.LabelTypes.PatternLabel.PatternOption
 import com.samsthenerd.wnboi.utils.RenderUtils;
 
 import at.petrak.hexcasting.api.misc.MediaConstants;
-import at.petrak.hexcasting.api.spell.math.HexDir;
-import at.petrak.hexcasting.api.spell.math.HexPattern;
-import at.petrak.hexcasting.common.items.ItemFocus;
+import at.petrak.hexcasting.api.casting.math.HexDir;
+import at.petrak.hexcasting.api.casting.math.HexPattern;
+import at.petrak.hexcasting.common.items.storage.ItemFocus;
 import at.petrak.hexcasting.common.items.ItemStaff;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -23,16 +23,19 @@ import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.tag.BlockTags;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
 
 public class HexGloopItems{
-    public static DeferredRegister<Item> items = DeferredRegister.create(HexGloop.MOD_ID, Registry.ITEM_KEY);
+    public static DeferredRegister<Item> items = DeferredRegister.create(HexGloop.MOD_ID, RegistryKeys.ITEM);
 
     public static final RegistrySupplier<Item> GLOOP_ITEM = item("gloop", 
-        () -> new ItemSimpleMediaProvider(defaultSettings(), MediaConstants.CRYSTAL_UNIT * 2, 950));
+        () -> new ItemSimpleMediaProvider(defaultSettings(), (int) (MediaConstants.CRYSTAL_UNIT * 2), 950));
     public static final RegistrySupplier<Item> SYNCHRONOUS_GLOOP_ITEM = item("synchronous_gloop", 
         () -> new Item(defaultSettings()));
     public static final RegistrySupplier<ItemGloopifact> GLOOPIFACT_ITEM = item("gloopifact",
@@ -71,7 +74,7 @@ public class HexGloopItems{
     public static final RegistrySupplier<Item> SLATE_BOWL = item("slate_bowl", 
         () -> new Item(defaultSettings()));
 
-    public static final int HEX_SNACK_MEDIA = MediaConstants.DUST_UNIT / 2;
+    public static final int HEX_SNACK_MEDIA = (int) (MediaConstants.DUST_UNIT / 2);
 
     public static final RegistrySupplier<Item> HEX_SNACK = item("hex_snack",
         () -> new ItemSimpleMediaProvider(defaultSettings().food((new FoodComponent.Builder()).hunger(2).saturationModifier(0.5f).snack().build()),
@@ -86,7 +89,7 @@ public class HexGloopItems{
     public static final RegistrySupplier<ItemHexSword> HEX_BLADE_ITEM = item("hex_blade", 
         () -> new ItemHexSword(defaultSettings().maxCount(1).fireproof())); 
     public static final RegistrySupplier<ItemHexMiningTool> HEX_PICKAXE_ITEM = item("hex_pickaxe", 
-        () -> new ItemHexMiningTool(defaultSettings().maxCount(1).fireproof(), 2.0F, -2.4f, Set.of(BlockTags.PICKAXE_MINEABLE), false)); 
+        () -> new ItemHexMiningTool(defaultSettings().maxCount(1).fireproof(), 2.0F, -2.4f, Set.of(BlockTags.PICKAXE_MINEABLE), false));
 
     public static final RegistrySupplier<ItemSlateLoader> SLATE_LOADER_ITEM = item("slate_loader",
         () -> new ItemSlateLoader(defaultSettings().maxCount(1)));
@@ -187,11 +190,11 @@ public class HexGloopItems{
 	}
 
     public static Item.Settings defaultSettings(){
-        return new Item.Settings().group(HEX_GLOOP_GROUP);
+        return new Item.Settings().group(HEX_GLOOP_GROUP); //TODO find out how to port this
     }
 
     public static final ItemGroup HEX_GLOOP_GROUP = CreativeTabRegistry.create(
-		new Identifier(HexGloop.MOD_ID, "general"),
+		Text.of(HexGloop.MOD_ID),
 		() -> GLOOP_ITEM.get().getDefaultStack());
 
     public static void register(){

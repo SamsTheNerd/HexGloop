@@ -6,11 +6,10 @@ import java.util.Map.Entry;
 import com.mojang.datafixers.util.Pair;
 import com.samsthenerd.hexgloop.misc.wnboi.LabelMaker;
 
-import at.petrak.hexcasting.api.PatternRegistry;
-import at.petrak.hexcasting.api.spell.iota.PatternIota;
-import at.petrak.hexcasting.api.spell.math.HexDir;
-import at.petrak.hexcasting.api.spell.math.HexPattern;
-import at.petrak.hexcasting.common.items.ItemSpellbook;
+import at.petrak.hexcasting.api.casting.iota.PatternIota;
+import at.petrak.hexcasting.api.casting.math.HexDir;
+import at.petrak.hexcasting.api.casting.math.HexPattern;
+import at.petrak.hexcasting.common.items.storage.ItemSpellbook;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.DyeableItem;
@@ -35,9 +34,9 @@ public class ItemDyeableSpellbook extends ItemSpellbook implements DyeableItem{
         return DyeableItem.super.getColor(stack);
     }
 
-    @Override
+    @Override //TODO find out how to port this
     public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-        super.appendStacks(group, stacks);
+        super.appendStacks(group, stacks); //TODO find out how to port this
         if(group == HexGloopItems.HEX_GLOOP_GROUP){
             ItemStack stack = new ItemStack(this);
             stack.getOrCreateNbt().putBoolean(GREAT_HOLDER_TAG, true);
@@ -62,12 +61,12 @@ public class ItemDyeableSpellbook extends ItemSpellbook implements DyeableItem{
         if(world instanceof ServerWorld sWorld && stack.getNbt() != null 
         && stack.getNbt().contains(GREAT_HOLDER_TAG) && stack.getNbt().getBoolean(GREAT_HOLDER_TAG)){
             // want to update it 
-            Map<String, Pair<Identifier, HexDir>> allGreatSpells = PatternRegistry.getPerWorldPatterns(sWorld);
+            Map<String, Pair<Identifier, HexDir>> allGreatSpells = PatternRegistry.getPerWorldPatterns(sWorld); //TODO find out how to port this
             for(Entry<String, Pair<Identifier, HexDir>> greatSpell : allGreatSpells.entrySet()){
                 HexPattern thisPattern = HexPattern.fromAngles(greatSpell.getKey(), greatSpell.getValue().getSecond());
                 PatternIota thisIotaPattern = new PatternIota(thisPattern);
                 writeDatum(stack, thisIotaPattern);
-                stack.setCustomName(PatternRegistry.lookupPattern(greatSpell.getValue().getFirst()).action().getDisplayName());
+                stack.setCustomName(PatternRegistry.lookupPattern(greatSpell.getValue().getFirst()).action().getDisplayName()); //TODO find out how to port this
                 lItem.putLabel(stack, LabelMaker.fromIota(thisIotaPattern).toNbt());
                 setSealed(stack, true);
                 inventoryTick(stack, world, user, hand == Hand.MAIN_HAND ? user.getInventory().selectedSlot : PlayerInventory.OFF_HAND_SLOT, false);

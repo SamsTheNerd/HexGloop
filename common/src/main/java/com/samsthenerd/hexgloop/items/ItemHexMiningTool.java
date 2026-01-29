@@ -8,11 +8,11 @@ import com.samsthenerd.hexgloop.casting.IContextHelper;
 import com.samsthenerd.hexgloop.casting.gloopifact.ICADHarnessStorage;
 
 import at.petrak.hexcasting.api.misc.MediaConstants;
-import at.petrak.hexcasting.api.spell.casting.CastingContext;
-import at.petrak.hexcasting.api.spell.casting.CastingHarness;
-import at.petrak.hexcasting.api.spell.iota.EntityIota;
-import at.petrak.hexcasting.api.spell.iota.Iota;
-import at.petrak.hexcasting.api.spell.iota.Vec3Iota;
+import at.petrak.hexcasting.api.spell.casting.CastingContext; //TODO find out how to port this
+import at.petrak.hexcasting.api.spell.casting.CastingHarness; //TODO find out how to port this
+import at.petrak.hexcasting.api.casting.iota.EntityIota;
+import at.petrak.hexcasting.api.casting.iota.Iota;
+import at.petrak.hexcasting.api.casting.iota.Vec3Iota;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
